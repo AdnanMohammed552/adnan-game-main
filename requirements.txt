@@ -1,3 +1,4 @@
+python==3.9.0
 asgiref==3.5.2
 backports.zoneinfo;python_version<"3.9"
 dj-database-url==1.0.0
