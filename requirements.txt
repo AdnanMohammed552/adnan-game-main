@@ -45,11 +45,6 @@ hyperlink==21.0.0
 idna==3.3
 imageio==2.1.2
 incremental==21.3.0
-instagram-private-api==1.6.0.0
-instagram-private-api-extensions==0.3.8
-InstagramAPI==1.0.2
-instagrapi==1.16.20
-instapy-cli==0.0.12
 isort==5.10.1
 lazy-object-proxy==1.7.1
 mccabe==0.7.0
