@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Room</title>
+{% endblock %}
+
+{% block content %}
+<h2 >الإنضمام</h2>
+<div class="container">
+
+
+<section>
+
+  <button type="submit" id="Create" class="btn btn-default">Create a room </button>
+  <button type="submit" id="Join" class="btn btn-default">Join a room </button>
+  
+  <button type="submit" id="admin" class="btn btn-default">admin </button>
+  <h4 id="error"></h4>
+</section>
+</div>
+
+
+
+<script>
+    
+    document.querySelector('#Create').onclick = function(e){
+
+        window.location.replace('create');
+
+    };
+
+    document.querySelector('#admin').onclick = function(e) {
+
+        var roomCode = document.querySelector('#code').value;
+        window.location.replace(roomCode + '/admin')
+
+
+
+    };
+    document.getElementById('Join').onclick = function(e) {
+        window.location.replace('/join')
+
+    }
+</script>
+{% endblock %}

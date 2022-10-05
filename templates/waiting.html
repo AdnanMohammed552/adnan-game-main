@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Room Admin</title>
+{% endblock %}
+{% block content %}
+    <h1>Waiting to start the game...</h1>
+
+    {{ room_code|json_script:'json-roomcode' }}
+    {{ username|json_script:'json-username'  }}
+    <script>
+
+        const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
+        const userName = JSON.parse(document.getElementById('json-username').textContent);
+        console.log("it is " , roomCode)
+        const gameSocket = new WebSocket(
+            
+            'ws://' + window.location.host + '/ws/' + roomCode + '/admin/'
+        )
+        
+        
+        gameSocket.onmessage = function (e) {
+            console.log('done');
+            const data = JSON.parse(e.data);
+            console.log(data)
+            if (data){
+                const start = data.started;
+                console.log(start)
+                if (start == true) {
+                    var url =  window.location.origin +'/join/' +roomCode + '?username=' + userName;
+                    history.pushState({}, null, url);
+                    location.reload()
+                }
+            }else{
+                alert('Message is empty');
+            }
+
+
+        }
+
+        gameSocket.onclose = function (e) {
+            console.log('fall ');
+        }
+
+    </script>
+{% endblock %}

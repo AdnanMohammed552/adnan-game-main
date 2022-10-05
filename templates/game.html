@@ -1,0 +1,478 @@
+{% extends 'base.html' %}
+   
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <section  id="table">
+    <h3>الحرف هوه: <h3 id="leetter">{{the_letter}}</h3> </h3>
+    <form method="GET" action="send">
+    <div class="table-responsive">
+        <table class="table">
+
+            <tr>
+                <td class="active"><input required id="noun" name="noun" type="text" class="form-control" id="exampleInputAmount" placeholder=" اسم صبيان"></td>
+                <td class="success"><input required id="gnoun" name="gnoun" type="text" class="form-control" id="exampleInputAmount" placeholder="اسم بنات "></td>
+                <td class="warning"><input required id="animal" name="animal" type="text" class="form-control" id="exampleInputAmount" placeholder="حيوان"></td>
+                <td class="danger"><input required id="plants" name="plants" type="text" class="form-control" id="exampleInputAmount" placeholder="نبات"></td>
+                <td class="info"><input required id="countries" name="countries" type="text" class="form-control" id="exampleInputAmount" placeholder="بلاد"></td>
+                <td class="active"><input required id="inanimate" name="inanimate" type="text" class="form-control" id="exampleInputAmount" placeholder="جماد"></td>
+                <td class="success"><input required id="sum" name="sum" type="text" class="form-control" id="exampleInputAmount" placeholder="مجموع"></td>
+            </tr>
+        </table>
+      </div>
+      <button type="submit" class="btn btn-primary">Next</button>
+      <h1 id="test"></h1>
+
+    </form>
+    <button type="submit" id="done" class="btn btn-primary">Next</button>
+    <h3 id="message">
+
+    </h3>
+  </section>
+  <section id="other"></section>
+    {{ room_code|json_script:'json-roomcode' }}
+    {{ username|json_script:'json-username' }}
+    {{ the_letter|json_script:'json-the_letter' }}
+    <script>
+
+      const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
+      const username = JSON.parse(document.getElementById('json-username').textContent);
+      const the_letter = JSON.parse(document.getElementById('json-the_letter').textContent);
+
+
+      const gameSocket = new WebSocket(
+        'ws://' + window.location.host + '/ws/' + roomCode + '/'
+      )
+     // console.log('DRE IS ' , gameSocket)
+      
+      console.log(gameSocket)
+      gameSocket.onopen = function(e){
+        gameSocket.send(JSON.stringify({
+          'ready':true
+        }))
+      gameSocket.onmessage = function (e) {
+
+        const data = JSON.parse(e.data);
+        console.log('fisrt data.',data)
+       if (data.kick === true ){
+        if (data.user === username){
+          gameSocket.close()
+          var url =  window.location.origin +'/join';
+          history.pushState({}, null, url);
+          location.reload()   
+          console.log('I have been kicked')
+        }
+        if (data.user !== username){
+          document.getElementById('div_id'+data.user).remove()
+        }
+       }
+        if (data.letterconsumer!==null&&typeof data.letterconsumer!=="undefined"&&data.letterconsumer!==""){
+          console.log('yeeesa')
+          document.querySelector('#leetter').innerHTML =data.letterconsumer;
+
+        }
+        const word = document.querySelector('#noun');
+        const noun = word.value;
+        const wordgnoun = document.querySelector('#gnoun');
+        const gnoun = wordgnoun.value;
+        const wordanimal = document.querySelector('#animal');
+        const animal = wordanimal.value;
+        const wordplants = document.querySelector('#plants');
+        const plants = wordplants.value;
+        const wordcountries = document.querySelector('#countries');
+        const countries = wordcountries.value;
+        const wordinanimate = document.querySelector('#inanimate');
+        const inanimate = wordinanimate.value;
+        const wordsum = document.querySelector('#sum');
+        const sum = wordsum.value;
+        const admin_letterr =document.getElementById('leetter');
+        const admin_letter = admin_letterr.textContent;
+        console.log('leeter usa',admin_letter)
+        console.log(noun);
+        console.log('here is it',gameSocket.onmessage)
+       if (data.pret===true){
+        if (data.last===false){
+          gameSocket.send(JSON.stringify({
+            
+            'pret':false,
+            'Noun' : noun,
+            'gnoun':gnoun,
+            'animal':animal,
+            'plants':plants,
+            'countries':countries,
+            'inanimate':inanimate,
+            'sum':sum,
+            'UserName' : username,
+            'RoomCode' : roomCode,
+            'preg':false,
+            'main_row':true,
+            'admin_letter':admin_letter,
+            'error':true,
+            'preg':true
+            
+          
+          }))
+        }
+        else if(data.last===true){
+          gameSocket.send(JSON.stringify({
+         
+            'pret':true,
+            'Noun' : noun,
+            'gnoun':gnoun,
+            'animal':animal,
+            'plants':plants,
+            'countries':countries,
+            'inanimate':inanimate,
+            'sum':sum,
+            'UserName' : username,
+            'RoomCode' : roomCode,
+            'preg':false,
+            'main_row':true,
+            'admin_letter':admin_letter,
+            'error':true,
+            'preg':false
+            
+          
+          }))
+        }
+      }
+        console.log('our data',data)
+        
+        if(data.wantletter === false){
+        if (data.noun_result !==null && data.gnoun_result!==null && data.countries_result!==null && data.result===true){
+          document.getElementById('noun_result'+data.UserName).innerHTML = data.noun_result;
+          document.getElementById('gnoun_result'+data.UserName).innerHTML = data.gnoun_result;
+          document.getElementById('animal_result'+data.UserName).innerHTML = data.animal_result;
+          document.getElementById('plants_result'+data.UserName).innerHTML = data.plants_result;
+          document.getElementById('countries_result'+data.UserName).innerHTML = data.countries_result;
+          document.getElementById('inanimate_result'+data.UserName).innerHTML = data.inanimate_result;
+          
+
+
+        }      
+        console.log('done');
+          
+          console.log(data)
+          if (data.review === true){
+            if(data.oneortwo==='one' && data.players_game!==false){
+
+              const playersfetch=data.players_game
+              const fetchedarray = []
+              console.log('I want is:',playersfetch)
+              console.log('first is',fetchedarray)
+              if (typeof playersfetch !== 'undefined'){
+              
+              for (i of playersfetch){
+                if (i !==""){
+                  fetchedarray.push(i)
+                  console.log('fetchedarray  gis',fetchedarray,i)
+                }
+                else{
+                  break
+                }
+              }
+              console.log('we are dealing with,',fetchedarray)
+              for (u of fetchedarray){
+                console.log('index is ',u)
+              const div = document.createElement("div");
+              div.setAttribute('id','div_id'+u);
+              document.body.append(div);
+              document.getElementById('div_id'+u).innerHTML += (
+              '<div class="accordion" id="'+ 
+              'accordionExample'+ u +
+              '">'+
+                '<div class="accordion-item" >'+
+                ' <h2 class="accordion-header" id="headingOne">'+
+                    '<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'+u+'" aria-expanded="true" aria-controls="collapseOne">'+
+                      u +
+                    '</button>' +
+                  '</h2>'+
+                  '<div id="collapseOne'+u+'" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#'
+                  +'accordionExample'+u+
+                  '">"' +
+                  '<div class="accordion-body" ' + 'id="' + u + '">'+
+                      '<table class="table">'+
+                        '<thead>'+
+                          '<tr>'+
+                            '<th scope="col">اللاعب</th>'+
+                            '<th scope="col">الحرف </th>'+
+                          ' <th scope="col">إسم </th>'+
+                            '<th scope="col">إسم بنت</th>'+
+                            '<th scope="col">حيوان </th>'+
+                            '<th scope="col">نبات </th>'+
+                            '<th scope="col">جماد </th>'+
+                            '<th scope="col">بلاد </th>'+
+                            '<th scope="col">الغرفة </th>'+
+                            '<th scope="col">مجموع </th>'+
+                          '</tr>'+
+                        '</thead>'+
+                        '<tbody id="divv'+u+'">'+
+                      
+                        '</tbody>'+
+                        
+                    '</table>'+
+                    '</div>'+
+                  '</div>'+
+                '</div>'+
+              
+                '</div>'
+              
+                )
+              }
+              
+            
+          }
+        }
+            else if(data.oneortwo==='two'){
+              document.getElementById('divv'+data.UserName).innerHTML += (
+            
+                 
+                "<tr>"+
+                  '<th scope="row">'+ data.UserName +'</th>'+
+                  "<td id = 'letterrrq'>"+ data.admin_letter +"</td>"+
+                  "<td id = 'noun'>"+ data.noun_review +"</td>"+
+                  "<td id = 'gnoun'>"+ data.gnoun +"</td>"+
+                  "<td id = 'animalNoun'>"+ data.animal +"</td>"+
+                  "<td id = 'plants'>"+data.plants +"</td>"+
+                  "<td id = 'inanimate'>"+ data.inanimate +"</td>"+
+                  "<td id = 'countries'>"+ data.countries +"</td>"+
+                  "<td id = 'room'>"+ data.RoomCode +"</td>"+
+                  "<td id = 'sum'>"+  +"</td>"+
+                  
+                "</tr>"+
+                "<tr>"+
+                  '<td scope="row"></td>'+
+                  '<td scope="row"></td>'+
+                  '<td  id="noun_result'+data.UserName+'"  ></td>'+
+                  '<td  id="gnoun_result'+data.UserName+'"></td>'+
+                  '<td  id="animal_result'+data.UserName+'"></td>'+
+                  '<td  id="plants_result'+data.UserName+'"></td>'+
+                  '<td  id="countries_result'+data.UserName+'"></td>'+
+                  '<td  id="inanimate_result'+data.UserName+'"></td>'+
+                  "</tr>"
+              
+        )          }
+          }
+          
+          console.log(data)
+          if ((data.noun_result===null)||(typeof data.noun_result==='undefined')){
+
+          console.log("pret is ",data.pret)
+          
+        
+         
+        if (data.pret===false){
+        console.log('DRE IS ' , gameSocket)
+
+          
+          if (data){
+            console.log("lerrty is ",data.current_letter_this)
+            const word = document.querySelector('#noun');
+            const noun = word.value;
+            const wordgnoun = document.querySelector('#gnoun');
+            const gnoun = wordgnoun.value;
+            const wordanimal = document.querySelector('#animal');
+            const animal = wordanimal.value;
+            const wordplants = document.querySelector('#plants');
+            const plants = wordplants.value;
+            const wordcountries = document.querySelector('#countries');
+            const countries = wordcountries.value;
+            const wordinanimate = document.querySelector('#inanimate');
+            const inanimate = wordinanimate.value;
+            const wordsum = document.querySelector('#sum');
+            const sum = wordsum.value;
+            const admin_letterr =document.getElementById('leetter');
+            const admin_letter = admin_letterr.textContent;
+            
+            
+
+            document.getElementById('noun').value = ""
+            document.getElementById('gnoun').value = ""
+            document.getElementById('animal').value = ""
+            document.getElementById('plants').value = ""
+            document.getElementById('countries').value = ""
+            document.getElementById('inanimate').value = ""
+            document.getElementById('sum').value = ""
+            if (typeof data.current_letter_this !=='undefined'){
+            //document.querySelector('#leetter').innerHTML = data.current_letter_this;
+            console.log('display should be none')
+            
+         
+          }
+                
+          }else{
+            alert('Message is empty');
+          }
+          console.log('data ir ' , data.end)
+          if(data.end == true){
+            const h1Element = document.createElement("h3");
+            h1Element.textContent = 'game had been ended';
+            document.body.append(h1Element);
+            setTimeout(() => {  console.log("World!"); }, 5000);
+            var url =  window.location.origin +'/end/' +roomCode + '?username=' + username;
+            history.pushState({}, null, url);
+            location.reload() 
+          }
+        }
+      }
+      else{
+        console.log('not wanted',data.noun_result)
+                
+      }
+      }
+    }
+  }  
+    gameSocket.onclose = function (e) {
+        console.log('fall ');
+      }
+
+      document.querySelector('#done').onclick = function(e){
+        const word = document.querySelector('#noun');
+        const noun = word.value;
+        const wordgnoun = document.querySelector('#gnoun');
+        const gnoun = wordgnoun.value;
+        const wordanimal = document.querySelector('#animal');
+        const animal = wordanimal.value;
+        const wordplants = document.querySelector('#plants');
+        const plants = wordplants.value;
+        const wordcountries = document.querySelector('#countries');
+        const countries = wordcountries.value;
+        const wordinanimate = document.querySelector('#inanimate');
+        const inanimate = wordinanimate.value;
+        const wordsum = document.querySelector('#sum');
+        const sum = wordsum.value;
+        const admin_letterr =document.getElementById('leetter');
+        const admin_letter = admin_letterr.textContent;
+        console.log('leeter usa',admin_letter)
+        console.log(noun);
+        console.log('here is it',gameSocket.onmessage)
+       
+        gameSocket.send(JSON.stringify({
+          'star':true,
+          'pret':true,
+          'Noun' : noun,
+          'gnoun':gnoun,
+          'animal':animal,
+          'plants':plants,
+          'countries':countries,
+          'inanimate':inanimate,
+          'sum':sum,
+          'UserName' : username,
+          'RoomCode' : roomCode,
+          'preg':false,
+          'main_row':true,
+          'admin_letter':admin_letter,
+          'error':true
+          
+        
+        }))
+        gameSocket.onmessage = function(e){
+          const data = JSON.parse(e.data)
+
+          if (data.kick === true ){
+            if (data.user === username){
+              gameSocket.close()
+              var url =  window.location.origin +'/join';
+              history.pushState({}, null, url);
+              location.reload()   
+              console.log('I have been kicked')
+            }
+            if (data.user !== username){
+              document.getElementById('div_id'+data.user).remove()
+            }
+           }
+          
+          if (data.letterconsumer !==false&&data.letterconsumer!==''&&typeof data.letterconsumer!=="undefined"){
+            console.log('yes false is not')
+            console.log('data letter',data)
+            document.querySelector('#leetter').innerHTML =data.letterconsumer;
+            
+          }
+          if (data.block === true){
+            document.getElementById("leetter").style.display = "block";
+
+          }
+        console.log('second messages are',data)
+          if (data.noun_result !==null && data.gnoun_result!==null && data.countries_result!==null && data.result===true){
+            document.getElementById('noun_result'+data.UserName).innerHTML = data.noun_result;
+            document.getElementById('gnoun_result'+data.UserName).innerHTML = data.gnoun_result;
+            document.getElementById('animal_result'+data.UserName).innerHTML = data.animal_result;
+            document.getElementById('plants_result'+data.UserName).innerHTML = data.plants_result;
+            document.getElementById('countries_result'+data.UserName).innerHTML = data.countries_result;
+            document.getElementById('inanimate_result'+data.UserName).innerHTML = data.inanimate_result;
+  
+  
+          }   
+          
+          if (data.UserName!==null &&data.Noun!=='' &&typeof data.UserName!=="undefined"){
+            console.log('review rtur',data)
+          if(data.private !== true){
+            console.log('data.username is',data.UserName)
+              document.getElementById('divv'+data.UserName).innerHTML += (
+            
+                 
+                "<tr>"+
+                  '<th scope="row">'+ data.UserName +'</th>'+
+                  "<td id = 'letterrrq'>"+ data.admin_letter +"</td>"+
+                  "<td id = 'noun'>"+ data.Noun +"</td>"+
+                  "<td id = 'gnoun'>"+ data.gnoun +"</td>"+
+                  "<td id = 'animalNoun'>"+ data.animal +"</td>"+
+                  "<td id = 'plants'>"+data.plants +"</td>"+
+                  "<td id = 'inanimate'>"+ data.inanimate +"</td>"+
+                  "<td id = 'countries'>"+ data.countries +"</td>"+
+                  "<td id = 'room'>"+ data.RoomCode +"</td>"+
+                  "<td id = 'sum'>"+  +"</td>"+
+                  
+                "</tr>"+
+                "<tr>"+
+                  '<td scope="row"></td>'+
+                  '<td scope="row"></td>'+
+                  '<td  id="noun_result'+data.UserName+'"  ></td>'+
+                  '<td  id="gnoun_result'+data.UserName+'"></td>'+
+                  '<td  id="animal_result'+data.UserName+'"></td>'+
+                  '<td  id="plants_result'+data.UserName+'"></td>'+
+                  '<td  id="countries_result'+data.UserName+'"></td>'+
+                  '<td  id="inanimate_result'+data.UserName+'"></td>'+
+                  "</tr>"
+              
+        )          }
+          }
+          if ((data.noun_result===null)||(typeof data.noun_result==='undefined')){
+
+          
+          if (data.pret === false && data.preg===false){
+    
+          const current_letter_this = data.choosens 
+          console.log('current_letter_this is ',current_letter_this)
+          //document.querySelector('#leetter').innerHTML =data.choosens;
+          gameSocket.send(JSON.stringify({
+            'pret':true,
+            'preg':true,
+            'current_letter_this':current_letter_this,
+            'main_row':false,
+            'RoomCode' : roomCode, 
+            'admin_letter': admin_letter,
+            'error':true,
+            'review':true,
+            'last':true
+          }))
+        }
+      }
+     
+        }
+        
+        
+        
+        document.getElementById('noun').value = ""
+        document.getElementById('gnoun').value = ""
+        document.getElementById('animal').value = ""
+        document.getElementById('plants').value = ""
+        document.getElementById('countries').value = ""
+        document.getElementById('inanimate').value = ""
+        document.getElementById('sum').value = ""
+        //document.querySelector('#leetter').innerHTML = data.current_letter_this;
+      }
+
+      
+    </script>
+{% endblock %}
