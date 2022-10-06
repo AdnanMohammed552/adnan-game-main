@@ -39,7 +39,7 @@
       
       const userName = document.querySelector('#username').value;           
       console.log('Ima here' , roomCode,userName)
-      const gameSocket = new WebSocketServer(
+      const gameSocket = new WebSocket(
         
          'ws://' + 'adnan-game-animal.herokuapp.com' + '/ws/' + roomCode + '/admin/'
        
