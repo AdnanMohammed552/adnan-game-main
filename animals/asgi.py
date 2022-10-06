@@ -13,8 +13,8 @@ import letter.routing
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'animals.settings')
 
 application = ProtocolTypeRouter({
-
-    'websocket': AuthMiddlewareStack(
+    'http':get_asgi_application(),
+    'websocket':AuthMiddlewareStack(
         URLRouter(
             animal.routing.websocket_urlpatterns+
             gameadmin.routing.websocket_urlpatterns+
