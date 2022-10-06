@@ -33,6 +33,12 @@
 
 
   <script>
+    window.onload=function(){
+      $(function(){
+          if(window.location.protocol==="https:")
+              window.location.protocol="http";
+      });
+  }
     document.querySelector('#submint').onclick = function(e) {
       
       const roomCode = document.querySelector('#code').value;
