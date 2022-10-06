@@ -40,13 +40,9 @@
       const userName = document.querySelector('#username').value;           
       console.log('Ima here' , roomCode,userName)
       const gameSocket = new WebSocket(
-        url.format({
-          protocol: 'ws',
-          hostname: window.location.hostname,
-          port: window.location.port,
-          // Hardcoded in WebpackDevServer
-          pathname: "'ws://' + window.location.host + '/ws/' + roomCode + '/admin/'",
-        })
+        
+         'ws://' + window.location.host + '/ws/' + roomCode + '/admin/'
+       
         
       )
       gameSocket.onopen = function(e){
