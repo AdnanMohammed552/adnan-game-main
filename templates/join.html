@@ -40,7 +40,7 @@
       const userName = document.querySelector('#username').value;           
       console.log('Ima here' , roomCode,userName)
       
-         var wsStart='ws://'
+         var wsStart='wss://'
          var endpoint=wsStart + window.location.host + '/ws/' + roomCode + '/admin/'
          var socket = new WebSocket(endpoint)
         
