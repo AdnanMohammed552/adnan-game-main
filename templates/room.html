@@ -22,7 +22,12 @@
 
 
 <script>
-    
+    window.onload=function(){
+        $(function(){
+            if(window.location.protocol==="https:")
+                window.location.protocol="http";
+        });
+    }
     document.querySelector('#Create').onclick = function(e){
 
         window.location.replace('create');

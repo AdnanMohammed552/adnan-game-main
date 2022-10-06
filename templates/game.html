@@ -34,7 +34,12 @@
     {{ username|json_script:'json-username' }}
     {{ the_letter|json_script:'json-the_letter' }}
     <script>
-
+      window.onload=function(){
+        $(function(){
+            if(window.location.protocol==="https:")
+                window.location.protocol="http";
+        });
+    }
       const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
       const username = JSON.parse(document.getElementById('json-username').textContent);
       const the_letter = JSON.parse(document.getElementById('json-the_letter').textContent);
