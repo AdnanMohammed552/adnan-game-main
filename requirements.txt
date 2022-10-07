@@ -96,3 +96,6 @@ whichcraft==0.6.1
 wrapt==1.14.1
 zope.event==4.5.0
 zope.interface==5.4.0
+dj-database-url==1.0.0
+django_heroku==0.3.1
+whitenoise==6.2.0
