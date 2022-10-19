@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import django_heroku
 from pathlib import Path
 import os
-
+import ssl
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -77,12 +77,18 @@ print(BASE_DIR, "its os")
 
 ASGI_APPLICATION = 'animals.asgi.application'
 WSGI_APPLICATION = 'animals.wsgi.application'
+ssl_context = ssl.SSLContext()
+ssl_context.check_hostname = False
 
+heroku_redis_ssl_host = {
+    'address': 'redis://:p437ccdd6e48e2b85b03f58b9be8e9cd5c2c0af5775a985eb5da6194c61c7415e@ec2-44-207-16-250.compute-1.amazonaws.com:12690' ,
+    'ssl': ssl_context
+}
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-             "hosts": [("ec2-44-207-16-250.compute-1.amazonaws.com", 12690)],
+             "hosts": [heroku_redis_ssl_host],
         },
     },
 }
