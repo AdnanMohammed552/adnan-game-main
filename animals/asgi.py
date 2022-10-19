@@ -1,5 +1,5 @@
-from email.mime import application
 import os
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'animals.settings')
 
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter,URLRouter
@@ -11,7 +11,6 @@ import gameadmin.routing
 import letter.routing
 import django
 #
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'animals.settings')
 django.setup()
 application = ProtocolTypeRouter({
     'http':get_asgi_application(),
