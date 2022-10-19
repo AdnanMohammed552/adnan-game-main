@@ -1,1 +1,1 @@
-web2: gunicorn animals.wsgi
+web: gunicorn animals.wsgi
