@@ -10,7 +10,7 @@ import animal.routing
 import gameadmin.routing
 import letter.routing
 import django
-
+#
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'animals.settings')
 django.setup()
 application = ProtocolTypeRouter({
