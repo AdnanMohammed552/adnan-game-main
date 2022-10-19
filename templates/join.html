@@ -51,8 +51,8 @@
          var socket = new WebSocket(endpoint)
         
       
-      gameSocket.onopen = function(e){
-        gameSocket.send(JSON.stringify({
+         socket.onopen = function(e){
+          socket.send(JSON.stringify({
           'userName':userName,
         }))
         
