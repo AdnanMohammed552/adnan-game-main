@@ -1,6 +1,5 @@
 import imp
 import json
-from tkinter.messagebox import NO
 #from time import pthread_getcpuclockid
 from asgiref.sync import sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
