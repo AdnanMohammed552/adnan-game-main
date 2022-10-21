@@ -71,7 +71,7 @@
           document.getElementById('div_id'+data.user).remove()
         }
        }
-        if (data.letterconsumer!==null&&typeof data.letterconsumer!=="undefined"&&data.letterconsumer!==""){
+        if (data.letterconsumer!==null&&typeof data.letterconsumer!=="undefined"&&data.letterconsumer!==""&&data.letterconsumer!==false){
           console.log('yeeesa')
           document.querySelector('#leetter').innerHTML =data.letterconsumer;
 
