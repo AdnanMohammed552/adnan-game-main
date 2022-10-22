@@ -736,7 +736,10 @@
     document.getElementById('view').onclick=function(e){
 
     
-      
+      const gameSocketlettr = new WebSocket(
+      'ws://' + window.location.host + '/ws/' + roomCode + '/letter/'
+      )
+      gameSocketlettr.onopen = function(){
         gameSocketlettr.send(JSON.stringify({
          'wantletter':'value',
           'wantletter1':'value',
@@ -752,7 +755,7 @@
            
         }
       }
-    }
+    }}
     
   
 </script>
