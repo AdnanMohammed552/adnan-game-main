@@ -4,9 +4,13 @@
 <title>Room Admin</title>
 {% endblock %}
 {% block content %}
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <!-- Font Awesome -->
+<style>
+
+</style>
 <link
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
   rel="stylesheet"
@@ -26,7 +30,9 @@
   type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"
 ></script>  
-
+<div id="anann">
+  <p>adnan</p>
+</div>
 <div class="container-xxl">
   <div id="users">
         
@@ -44,26 +50,51 @@
     </div>
     <button id="visable">👁</button>
   </div>
-  <style>
-    #removeanplayer:hover span {
-      display: none
-    }
-    
-    #removeanplayer:hover:before {
-      font-size: 16px;
-      content: "Remove player!!"
-    }
-  </style>
+  <div id="pdfgenerator"></div>
+ <style>
+  #removeme {
+    width: 150px; /* set a width so it doesnt change upon hover */
+     border: 0px solid #004B84;
+     background: green;
+     padding: 3px 21px;
+     -webkit-border-radius: 16px;
+     -moz-border-radius: 16px;
+     border-radius: 16px;
+     color: #ffffff;
+     font-size: 12px;
+     font-family: Questrial;
+     text-decoration: none;
+     vertical-align: middle;
+     letter-spacing: 2px;
+  }
+  
+  #removeme:hover span {
+    display:none
+  }
+  
+  #removeme:hover:before {
+    content:"Remove Player!";
+  }
+  
+  #removeme:hover {
+    background-color: red;
+  }
+ </style>
 {{ room_code|json_script:'json-roomcode' }}
 <script>
-  window.onload=function(){
-    $(function(){
-        if(window.location.protocol==="https:")
-            window.location.protocol="http";
-    });
-}
+  var totalarray=[]
+  const fetchedarray = []
+
   document.getElementById('done').style.display = "none"
   document.getElementById('flep').style.display ="none"
+  function generateRandomColor(){
+    
+      let color = "#";
+      for (let i = 0; i < 3; i++)
+        color += ("0" + Math.floor(((1 + Math.random()) * Math.pow(16, 2)) / 2).toString(16)).slice(-2);
+      return color;
+    }
+
   document.getElementById("visable").onclick =function(e){
     if ((window.getComputedStyle(document.getElementById('leetter')).display) === 'block'){
       document.getElementById('leetter').style.display="none"
@@ -207,7 +238,6 @@
           current_letter_this=data.current_letter_this1
           admin_letter=data.admin_letter
           const playersfetch=data.playersfetch
-          const fetchedarray = []
           console.log('I want is:',playersfetch)
           console.log('first is',fetchedarray)
 
@@ -231,7 +261,9 @@
             break
           }
 
-
+          for (uae of fetchedarray){
+            totalarray.push(uae)
+          }
         }
         gameSocket2.send(JSON.stringify({
           'oneortwo':'one',
@@ -243,7 +275,7 @@
               console.log('index is ',fetchedarray.indexOf(u))
               const div = document.createElement("div");
               div.setAttribute('id','div_id'+u);
-              document.body.append(div);
+              document.getElementById('pdfgenerator').append(div);
               document.getElementById('div_id'+u).innerHTML += (
               '<div class="accordion" id="'+ 
               'accordionExample'+ fetchedarray.indexOf(u) +
@@ -257,7 +289,7 @@
                   '<div id="collapseOne'+u+'" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#'
                   +'accordionExample'+fetchedarray.indexOf(u)+
                   '">"' +
-                  '<div class="accordion-body" ' + 'id="' + u + '">'+
+                  '<div style="background-color:'+generateRandomColor()+'" class="accordion-body" ' + 'id="' + u + '">'+
                       '<table class="table table-bordered border-primary">'+
                         '<thead>'+
                           '<tr>'+
@@ -308,11 +340,18 @@
                 'RoomCode':RoomCode
               }))
               if (data.star === true){
+                var noun_result = 'noun_result'
+                var gnoun_result = "gnoun_result"
+                var animal_result = "animal_result"
+                var plants_result = "plants_result"
+                var countries_result = "countries_result"
+                var inanimate_result = "inanimate_result"
+
             document.getElementById('divv'+UserName).innerHTML += (
             
                  
                   "<tr>"+ 
-                    '<th scope="row">⭐<button id="removeanplayer" type="button" onclick="userremove(\'' + data.UserName + '\')" class="btn btn-primary btn-rounded" >'+data.UserName+'</button> </th>'+
+                    '<th scope="row">⭐<button id="removeme" type="button" onclick="userremove(\'' + data.UserName + '\')" class="btn btn-primary btn-rounded" data-hover="CLICK ME" data-active="IM ACTIVE"><span>'+data.UserName+'</span></button> </th>'+
                     "<td style='font-size:18px;' id = 'letter'>"+ admin_letter +"</td>"+
                     "<td style='font-size:18px;' id = 'noun'>"+ noun +"</td>"+
                     "<td style='font-size:18px;' id = 'gnoun'>"+ gnoun +"</td>"+
@@ -328,65 +367,77 @@
                     '<td scope="row"></td>'+
                     '<td scope="row"></td>'+
                     
-                    '<td>'+
-                    
+                    '<td >'+
                       
-                      '<select style="font-size:16px;" id="noun_result'+UserName+'" >'+
+                      '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + noun_result+'\')" id="noun_result'+UserName+'" >'+
                         '<option style="font-size:16px;" href="#">0</option>'+
                        ' <option style="font-size:16px;" href="#">5</option>'+
                         '<option style="font-size:16px;" href="#">10</option>'+
                       '</select>'+
-                    
+                      '<div id="noun_resulttd'+ UserName +'">'+
+
+                        '<\/div>'+
+                        
                     '</td>'+
                     '<td>'+
-                    
                       
-                      '<select style="font-size:16px;" id="gnoun_result'+UserName+'" >'+
+                      
+                      '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + gnoun_result+'\' )"  id="gnoun_result'+UserName+'" >'+
                         '<option style="font-size:16px;" href="#">0</option>'+
                        ' <option style="font-size:16px;" href="#">5</option>'+
                         '<option style="font-size:16px;" href="#">10</option>'+
                       '</select>'+
-                    
+                      '<div id="gnoun_resulttd'+ UserName +'">'+
+
+                        '<\/div>'+
                     '</td>'+
                     '<td>'+
-                    
+                     
                       
-                      '<select style="font-size:16px;" id="animal_result'+UserName+'" >'+
+                      '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + animal_result+'\')"  id="animal_result'+UserName+'" >'+
                         '<option style="font-size:16px;" href="#">0</option>'+
                        ' <option style="font-size:16px;" href="#">5</option>'+
                         '<option style="font-size:16px;" href="#">10</option>'+
                       '</select>'+
-                    
+                      '<div id="animal_resulttd'+ UserName +'">'+
+
+                        '<\/div>'+
                     '</td>'+
                     '<td>'+
-                    
+                     
                       
-                      '<select style="font-size:16px;" id="plants_result'+UserName+'" >'+
+                      '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + plants_result +'\')"  id="plants_result'+UserName+'" >'+
                         '<option style="font-size:16px;" href="#">0</option>'+
                        ' <option style="font-size:16px;" href="#">5</option>'+
                         '<option style="font-size:16px;" href="#">10</option>'+
                       '</select>'+
-                    
+                      '<div id="plants_resulttd'+ UserName +'">'+
+
+                        '<\/div>'+
                     '</td>'+
                     '<td>'+
-                    
+                     
                       
-                      '<select style="font-size:16px;" id="countries_result'+UserName+'" >'+
+                      '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + countries_result +'\')"  id="countries_result'+UserName+'" >'+
                         '<option style="font-size:16px;" href="#">0</option>'+
                        ' <option style="font-size:16px;" href="#">5</option>'+
                         '<option style="font-size:16px;" href="#">10</option>'+
                       '</select>'+
-                    
+                      '<div id="countries_resulttd'+ UserName +'">'+
+
+                        '<\/div>'+
                     '</td>'+
                     '<td>'+
-                    
+                     
                       
-                      '<select style="font-size:16px;" id="inanimate_result'+UserName+'" >'+
+                      '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + inanimate_result +'\')"  id="inanimate_result'+UserName+'" >'+
                         '<option style="font-size:16px;" href="#">0</option>'+
                        ' <option style="font-size:16px;" href="#">5</option>'+
                         '<option style="font-size:16px;" href="#">10</option>'+
                       '</select>'+
-                    
+                      '<div id="inanimate_resulttd'+ UserName +'">'+
+
+                        '<\/div>'+
                     '<td class="success" id="sum'+UserName+'"></td>'+
                     '</td>'+
                     '<button type="submit" class="btn btn-primary" id="calc'+UserName+'"onclick="calc(\'' + UserName + '\' , \'' + admin_letter + '\' , \'' + noun + '\' ,\'' + gnoun + '\',\'' + animal + '\',\'' + plants + '\',\'' + inanimate + '\',\'' + countries + '\',\'' + RoomCode + '\')">Calculate</button>'
@@ -396,92 +447,111 @@
           )
         }
         else{
+          var noun_result = 'noun_result'
+          var gnoun_result = "gnoun_result"
+          var animal_result = "animal_result"
+          var plants_result = "plants_result"
+          var countries_result = "countries_result"
+          var inanimate_result = "inanimate_result"
+
           document.getElementById('divv'+UserName).innerHTML += (
             
                  
-            "<tr>"+ 
-              '<th scope="row"><button id="removeanplayer" type="button" onclick="userremove(\'' + data.UserName + '\')" class="btn btn-primary btn-rounded" style="font-size: 20px;">'+ data.UserName +'</button> </th>'+
-              "<td style='font-size:18px;' id = 'letter'>"+ admin_letter +"</td>"+
-              "<td style='font-size:18px;' id = 'noun'>"+ noun +"</td>"+
-              "<td style='font-size:18px;' id = 'gnoun'>"+ gnoun +"</td>"+
-              "<td style='font-size:18px;' id = 'animalNoun'>"+ animal +"</td>"+
-              "<td style='font-size:18px;' id = 'plants'>"+plants +"</td>"+
-              "<td style='font-size:18px;' id = 'inanimate'>"+ inanimate +"</td>"+
-              "<td style='font-size:18px;' id = 'countries'>"+ countries +"</td>"+
-              "<td style='font-size:18px;' id = 'room'>"+ RoomCode +"</td>"+
-              "<td style='font-size:18px;' id = 'sum'>"+  +"</td>"+
-              
-            "</tr>"+
-            "<tr>"+
-              '<td scope="row"></td>'+
-              '<td scope="row"></td>'+
-              
-              '<td>'+
-              
-                
-                '<select style="font-size:16px;" id="noun_result'+UserName+'" >'+
-                  '<option style="font-size:16px;" href="#">0</option>'+
-                 ' <option style="font-size:16px;" href="#">5</option>'+
-                  '<option style="font-size:16px;" href="#">10</option>'+
-                '</select>'+
-              
-              '</td>'+
-              '<td>'+
-              
-                
-                '<select style="font-size:16px;" id="gnoun_result'+UserName+'" >'+
-                  '<option style="font-size:16px;" href="#">0</option>'+
-                 ' <option style="font-size:16px;" href="#">5</option>'+
-                  '<option style="font-size:16px;" href="#">10</option>'+
-                '</select>'+
-              
-              '</td>'+
-              '<td>'+
-              
-                
-                '<select style="font-size:16px;" id="animal_result'+UserName+'" >'+
-                  '<option style="font-size:16px;" href="#">0</option>'+
-                 ' <option style="font-size:16px;" href="#">5</option>'+
-                  '<option style="font-size:16px;" href="#">10</option>'+
-                '</select>'+
-              
-              '</td>'+
-              '<td>'+
-              
-                
-                '<select style="font-size:16px;" id="plants_result'+UserName+'" >'+
-                  '<option style="font-size:16px;" href="#">0</option>'+
-                 ' <option style="font-size:16px;" href="#">5</option>'+
-                  '<option style="font-size:16px;" href="#">10</option>'+
-                '</select>'+
-              
-              '</td>'+
-              '<td>'+
-              
-                
-                '<select style="font-size:16px;" id="countries_result'+UserName+'" >'+
-                  '<option style="font-size:16px;" href="#">0</option>'+
-                 ' <option style="font-size:16px;" href="#">5</option>'+
-                  '<option style="font-size:16px;" href="#">10</option>'+
-                '</select>'+
-              
-              '</td>'+
-              '<td>'+
-              
-                
-                '<select style="font-size:16px;" id="inanimate_result'+UserName+'" >'+
-                  '<option style="font-size:16px;" href="#">0</option>'+
-                 ' <option style="font-size:16px;" href="#">5</option>'+
-                  '<option style="font-size:16px;" href="#">10</option>'+
-                '</select>'+
-              
-              '<td class="success" id="sum'+UserName+'"></td>'+
-              '</td>'+
-              '<button type="submit" class="btn btn-primary" id="calc'+UserName+'"onclick="calc(\'' + UserName + '\' , \'' + admin_letter + '\' , \'' + noun + '\' ,\'' + gnoun + '\',\'' + animal + '\',\'' + plants + '\',\'' + inanimate + '\',\'' + countries + '\',\'' + RoomCode + '\')">Calculate</button>'
+                  "<tr>"+ 
+                    '<th scope="row"><button id="removeme" type="button" onclick="userremove(\'' + data.UserName + '\')" class="btn btn-primary btn-rounded" data-hover="CLICK ME" data-active="IM ACTIVE"><span>'+data.UserName+'</span></button> </th>'+
+                    "<td style='font-size:18px;' id = 'letter'>"+ admin_letter +"</td>"+
+                    "<td style='font-size:18px;' id = 'noun'>"+ noun +"</td>"+
+                    "<td style='font-size:18px;' id = 'gnoun'>"+ gnoun +"</td>"+
+                    "<td style='font-size:18px;' id = 'animalNoun'>"+ animal +"</td>"+
+                    "<td style='font-size:18px;' id = 'plants'>"+plants +"</td>"+
+                    "<td style='font-size:18px;' id = 'inanimate'>"+ inanimate +"</td>"+
+                    "<td style='font-size:18px;' id = 'countries'>"+ countries +"</td>"+
+                    "<td style='font-size:18px;' id = 'room'>"+ RoomCode +"</td>"+
+                    "<td style='font-size:18px;' id = 'sum'>"+  +"</td>"+
+                    
+                  "</tr>"+
+                  "<tr>"+
+                    '<td scope="row"></td>'+
+                    '<td scope="row"></td>'+
+                    
+                    '<td >'+
+                      
+                      
+                      '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + noun_result+'\')" id="noun_result'+UserName+'" >'+
+                        '<option style="font-size:16px;" href="#">0</option>'+
+                       ' <option style="font-size:16px;" href="#">5</option>'+
+                        '<option style="font-size:16px;" href="#">10</option>'+
+                      '</select>'+
+                      '<div id="noun_resulttd'+ UserName +'">'+
+
+                        '<\/div>'+
+                    '</td>'+
+                    '<td>'+
+                      
+                      '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + gnoun_result+'\' )"  id="gnoun_result'+UserName+'" >'+
+                        '<option style="font-size:16px;" href="#">0</option>'+
+                       ' <option style="font-size:16px;" href="#">5</option>'+
+                        '<option style="font-size:16px;" href="#">10</option>'+
+                      '</select>'+
+                      '<div id="gnoun_resulttd'+ UserName +'">'+
+
+                        '<\/div>'+
+                      
+                    '</td>'+
+                    '<td>'+
+                      
+                      
+                      '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + animal_result+'\')"  id="animal_result'+UserName+'" >'+
+                        '<option style="font-size:16px;" href="#">0</option>'+
+                       ' <option style="font-size:16px;" href="#">5</option>'+
+                        '<option style="font-size:16px;" href="#">10</option>'+
+                      '</select>'+
+                      '<div id="animal_resulttd'+ UserName +'">'+
+
+                        '<\/div>'+
+                    '</td>'+
+                    '<td>'+
+                      
+                      
+                      '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + plants_result +'\')"  id="plants_result'+UserName+'" >'+
+                        '<option style="font-size:16px;" href="#">0</option>'+
+                       ' <option style="font-size:16px;" href="#">5</option>'+
+                        '<option style="font-size:16px;" href="#">10</option>'+
+                      '</select>'+
+                      '<div id="plants_resulttd'+ UserName +'">'+
+
+                        '<\/div>'+
+                    '</td>'+
+                    '<td>'+
+                      
+                      
+                      '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + countries_result +'\')"  id="countries_result'+UserName+'" >'+
+                        '<option style="font-size:16px;" href="#">0</option>'+
+                       ' <option style="font-size:16px;" href="#">5</option>'+
+                        '<option style="font-size:16px;" href="#">10</option>'+
+                      '</select>'+
+                      '<div id="countries_resulttd'+ UserName +'">'+
+
+                        '<\/div>'+
+                    '</td>'+
+                    '<td>'+
+                     
+                      
+                      '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + inanimate_result +'\')"  id="inanimate_result'+UserName+'" >'+
+                        '<option style="font-size:16px;" href="#">0</option>'+
+                       ' <option style="font-size:16px;" href="#">5</option>'+
+                        '<option style="font-size:16px;" href="#">10</option>'+
+                      '</select>'+
+                      '<div id="inanimate_resulttd'+ UserName +'">'+
+
+                        '<\/div>'+
+                    '<td class="success" id="sum'+UserName+'"></td>'+
+                    '</td>'+
+                    '<button type="submit" class="btn btn-primary" id="calc'+UserName+'"onclick="calc(\'' + UserName + '\' , \'' + admin_letter + '\' , \'' + noun + '\' ,\'' + gnoun + '\',\'' + animal + '\',\'' + plants + '\',\'' + inanimate + '\',\'' + countries + '\',\'' + RoomCode + '\')">Calculate</button>'
 
 
-          
-    )
+                
+          )
         }
                   }
         }
@@ -492,12 +562,78 @@
       }
     }
     }
-        
-
       
 
+  
+
+    }
+    function OnSelectedIndexChange(id,thisis){
+      console.log('hfei'+id + thisis)
+      
+      const word_result = document.getElementById(thisis+id);
+      console.log('word res is',word_result)
+      const noun_result = word_result.options[word_result.selectedIndex].text;;
+      if (noun_result == '5'){
+        document.getElementById(thisis+'td'+id).innerHTML += (
+          '<select style="font-size:16px;" onChange="changemark(\'' + id + '\',\'' + thisis + '\')" id="noun_result5'+id+''+thisis+'" >'+
+            '<option style="font-size:10px;" href="#">--Choose similar player--</option>'+
+            '<\/select>'
+             )
+             console.log(totalarray)
+            for (name of fetchedarray){
+              document.getElementById('noun_result5'+id+thisis).innerHTML += (
+                '<option style="font-size:16px;" href="#">'+name+'</option>'
+              )
+            }
+            document.querySelector('#noun_result5'+id+thisis).options.selectedIndex = 0;
+            
+            
+          
+        
+
+      }
+      else if (noun_result == '10'){
+        document.getElementById('noun_result5'+id+thisis).remove()
+      }
+      else if (noun_result == '0'){
+        document.getElementById('noun_result5'+id+thisis).remove()
+      }
+
+
+    }
+    function changemark(id2,thisis2){
+      const word_result = document.querySelector('#noun_result5'+id2+thisis2);
+      const noun_result = word_result.options[word_result.selectedIndex].text;;
+      console.log('tr is',id2)
+      document.getElementById(thisis2+noun_result).getElementsByTagName('option')[1].selected = 'selected';
     }
     document.getElementById('end').onclick = function(e){
+      
+        var data=document.getElementById('pdfgenerator').innerHTML;
+        var myWindow = window.open('', 'my div', 'height=400,width=600');
+        myWindow.document.write('<html><head><title>my div</title>');
+        /*optional stylesheet*/ //myWindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
+        myWindow.document.write('</head><body >');
+        myWindow.document.write(data);
+        myWindow.document.write('</body></html>');
+        myWindow.document.write(
+        '<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer">'+
+          '<\/script>'+
+        '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer">'+'<\/script>'+
+        '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">'+
+        '<link'+
+         ' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"'+
+          'rel="stylesheet"'+
+        '/>'+
+     
+        '<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"><\/script>'+
+          '<script>'+
+        'window.document.close(); '+
+
+            'window.focus(); '+
+            'window.print();'+
+            'window.close();'+
+        '<\/script>')
       const gameSocket1 = new WebSocket(
         
         'ws://' + window.location.host + '/ws/' + roomCode + '/'
@@ -567,7 +703,7 @@
                 countries_result,
                 inanimate_result)
                 
-        gameSocket2.onopen = function(e){
+       
                 gameSocket2.send(JSON.stringify({
                   'noun_result':noun_result,
                   'gnoun_result':gnoun_result,
@@ -592,7 +728,7 @@
                   
                 }))}
                
-    }
+    
     document.getElementById('view').onclick=function(e){
 
     
