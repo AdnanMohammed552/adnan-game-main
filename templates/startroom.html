@@ -736,16 +736,16 @@
     document.getElementById('view').onclick=function(e){
 
     
-      const gameSocketlettr = new WebSocket(
+      const gameSocketlettr3 = new WebSocket(
       'ws://' + window.location.host + '/ws/' + roomCode + '/letter/'
       )
-      gameSocketlettr.onopen = function(){
-        gameSocketlettr.send(JSON.stringify({
+      gameSocketlettr3.onopen = function(){
+        gameSocketlettr3.send(JSON.stringify({
          'wantletter':'value',
           'wantletter1':'value',
           'RoomCode':roomCode
       }))
-      gameSocketlettr.onmessage=function(e){
+      gameSocketlettr3.onmessage=function(e){
         const data = JSON.parse(e.data)
         if (data.choosens){
           document.querySelector('#leetter').innerHTML =data.choosens;
