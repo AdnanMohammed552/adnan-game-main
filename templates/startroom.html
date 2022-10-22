@@ -112,7 +112,11 @@
         const gameSocket2 = new WebSocket(
                 'ws://' + window.location.host + '/ws/' + roomCode + '/'
                 )
-  
+  gameSocketlettr.onclose = function(e){
+    const gameSocketlettr = new WebSocket(
+      'ws://' + window.location.host + '/ws/' + roomCode + '/letter/'
+      )
+  }
   document.querySelector('#view').disabled = true;
   
   const array2 =[]
