@@ -1,7 +1,11 @@
+from datetime import datetime
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
 
 
 class room_created(models.Model):
-    user = models.OneToOneField(User , on_delete=models.CASCADE)
-    room_created = models.CharField(max_length=10)
+    user = models.CharField(max_length=100)
+    room_created = models.CharField(max_length=10,null=True,blank=True,unique=True)
+    players=models.CharField(max_length=1000,null=True,blank=True)
+    table=models.TextField(max_length=10000000000000000000,default='')

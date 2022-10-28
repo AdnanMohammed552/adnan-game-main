@@ -5,43 +5,33 @@
 {% endblock %}
 
 {% block content %}
-<h2 >الإنضمام</h2>
 <div class="container">
 
-
+{% if request.user.is_authenticated %}
 <section>
-
-  <button type="submit" id="Create" class="btn btn-default">Create a room </button>
-  <button type="submit" id="Join" class="btn btn-default">Join a room </button>
-  
-  <button type="submit" id="admin" class="btn btn-default">admin </button>
+    <div class="d-grid gap-2">
+        
+        <a class="nav-link text-center display-6" href="/account/myaccount">Hello, {{request.user.username}}</a>
+        <button class="btn btn-primary" type="submit" id="Create"><h1 class="display-6">Create a room</h1>  </button>
+        <button class="btn btn-primary" type="submit" id="Join"><h1 class="display-6">Join a room </h1> </button>
+      </div>
+ 
   <h4 id="error"></h4>
 </section>
 </div>
+{% else %}
 
-
+{% endif %}
 
 <script>
-    window.onload=function(){
-        $(function(){
-            if(window.location.protocol==="https:")
-                window.location.protocol="http";
-        });
-    }
+    
     document.querySelector('#Create').onclick = function(e){
 
         window.location.replace('create');
 
     };
 
-    document.querySelector('#admin').onclick = function(e) {
-
-        var roomCode = document.querySelector('#code').value;
-        window.location.replace(roomCode + '/admin')
-
-
-
-    };
+    
     document.getElementById('Join').onclick = function(e) {
         window.location.replace('/join')
 

@@ -1,19 +1,20 @@
 import imp
 import json
+from tkinter.messagebox import NO
 #from time import pthread_getcpuclockid
 from asgiref.sync import sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
 from . import models
 import random
 import ast
-#
+from accounts import models as models2
 
 class gameConsumer(AsyncWebsocketConsumer):
     
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_code']
         self.room_group_name = 'game_%s' % self.room_name
-
+        self.user= self.scope['user']
         await self.channel_layer.group_add(self.room_group_name,self.channel_name)
         
 
@@ -28,6 +29,13 @@ class gameConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         print('its consemers')
         data= json.loads(text_data)
+        username1=self.scope['user']
+        self.glabaluser=username1
+        print('https',username1)
+        if(username1.is_authenticated): 
+            username_str = username1.username
+            print('www.',type(username_str))
+
         try:
             gnoun = data['gnoun']
         except:
@@ -196,6 +204,10 @@ class gameConsumer(AsyncWebsocketConsumer):
             star=data['star']
         except:
             star=False
+        try:
+            alltables=data['alltables']
+        except:
+            alltables=False
         print(inanimate )
         await self.save_info(noun,gnoun,animal,plants,countries,inanimate,username,the_letter,RoomCode)
 
@@ -260,7 +272,8 @@ class gameConsumer(AsyncWebsocketConsumer):
                         'ready':ready,
                         'kick':kick,
                         'user':user,
-                        'star':star
+                        'star':star,
+                        'alltables':alltables
 
                     
                     }
@@ -433,8 +446,21 @@ class gameConsumer(AsyncWebsocketConsumer):
             star=event['star']
         except:
             star=False
+        try:
+            alltables=event['alltables']
+        except:
+            alltables=False
         the_letter_choosen = ''
-        
+        #print('alllll',alltables)
+        if alltables != False:
+            self.glabaluser1=str(self.glabaluser)
+            #print('شيشي',await (self.see(self.glabaluser1,RoomCode)))
+            if await (self.see(self.glabaluser1,RoomCode)) == '<QuerySet []>':
+                try:
+                    await self.savetable(alltables,self.glabaluser1,RoomCode)
+                except:
+                    print('error')
+
         w = await self.save_array(RoomCode,array50)
         t = await self.array(RoomCode)
         await self.send(text_data=json.dumps({ 
@@ -488,7 +514,16 @@ class gameConsumer(AsyncWebsocketConsumer):
 
             
         }))
-
+    @sync_to_async
+    def see(self,user,room):
+        e=models2.room_created.objects.all().filter(user=user,room_created=room).values()
+        #print('we needis',type(e), e)
+        e=str(e)
+        print('mine',e)
+        return e
+    @sync_to_async
+    def savetable(self,table,y,room):
+        models2.room_created.objects.create(user=y,table=table,room_created=room).save()
     @sync_to_async
     def save_array(self,RoomCode,array50):
         models.array(status=array50,room=RoomCode).save()

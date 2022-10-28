@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Create New room</title>
+{% endblock %}
+{% block content %}
+{% for i in z %}
+<button type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')">{{i}}</button>
+{% endfor %}
+<div id="dis"></div>
+<script>
+    function redirect(code){
+        console.log('mu code',code)
+        var url =  window.location.origin +'/account/myaccount/' +code;
+          history.pushState({}, null, url);
+          location.reload()   
+    }
+</script>
+
+{% endblock %}

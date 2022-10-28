@@ -9,12 +9,8 @@
     {{ room_code|json_script:'json-roomcode' }}
     {{ username|json_script:'json-username'  }}
     <script>
-        window.onload=function(){
-            $(function(){
-                if(window.location.protocol==="https:")
-                    window.location.protocol="http";
-            });
-        }
+        const username = JSON.parse(document.getElementById('json-username').textContent);
+
         const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
         const userName = JSON.parse(document.getElementById('json-username').textContent);
         console.log("it is " , roomCode)
@@ -22,8 +18,25 @@
             
             'ws://' + window.location.host + '/ws/' + roomCode + '/admin/'
         )
-        
-        
+        const gameSocketkick = new WebSocket(
+        'ws://' + window.location.host + '/ws/' + roomCode + '/'
+        )
+        gameSocketkick.onmessage = function(e){
+        const data = JSON.parse(e.data)
+
+        if (data.kick === true ){
+            if (data.user === username){
+              gameSocket.close()
+              var url =  window.location.origin +'/join';
+              history.pushState({}, null, url);
+              location.reload()   
+              console.log('I have been kicked')
+            }
+            if (data.user !== username){
+              document.getElementById('div_id'+data.user).remove()
+            }
+           }
+        }
         gameSocket.onmessage = function (e) {
             console.log('done');
             const data = JSON.parse(e.data);

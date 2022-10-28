@@ -81,12 +81,7 @@
 
 {{ room_code|json_script:'json-roomcode' }}
 <script>
-  window.onload=function(){
-    $(function(){
-        if(window.location.protocol==="https:")
-            window.location.protocol="http";
-    });
-}
+
     const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
     console.log("it is " , roomCode)
     const gameSocket = new WebSocket(

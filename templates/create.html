@@ -13,16 +13,7 @@
         <input type="number" class="form-control" name="roomname" value="{{roomcode}}" id="code" placeholder="أدخل كود الغرفة">  
         <label for="exampleInputPassword1">أدخل الإسم</label>
         <input type="text" maxlength="15" name="username" class="form-control" value="{{username}}" id="username" placeholder="أدخل الإسم">
-        <div class="btn-group">
-            <button type="button" id="btn" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Action <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                {% for user in users %}
-                    <li><a id="{{user.id}}" onclick="func('{{user.username}} ')" href="#">{{user.username}}</a></li>
-              {% endfor %}
-            </ul>
-          </div>
+      
 
         <button type="submit" id="submit" class="form-control">Create a room</button>
         <button type="submit" id="admin" class="form-control">Admin</button>

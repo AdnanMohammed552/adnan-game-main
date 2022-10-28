@@ -1,10 +1,12 @@
+from statistics import mode
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 import re
 from django.contrib import auth
-
+from .import models
+from django.template import Template, Context
 
 
 def signup(request):
@@ -87,3 +89,28 @@ def logout(request):
         auth.logout(request)
 
         return redirect('room')
+def mygames(request):
+    if request.user.is_authenticated:
+        username = request.user.username
+
+        valie = models.room_created.objects.all().filter(user=username).values()
+        w=[]
+        for i in valie:
+            z = i['room_created']
+            w.append(z)
+
+        return render (request , 'mygames.html',{'z':w})
+    else:
+        return HttpResponse('please login to your account , <a href="/account/login">login</a>')
+def myaccount(request,room_code):
+    if request.user.is_authenticated:
+        valie = models.room_created.objects.all().filter(user=request.user,room_created=room_code).values()
+        for i in valie:
+            z = i['table']
+            break
+        adnan = Template(z)
+
+        print('my is ',request.user ,z , type(z))
+        return render (request , 'myaccount.html',{'z':adnan.render(Context({}))})
+    else:
+        return HttpResponse('please login to your account , <a href="/account/login">login</a>')
