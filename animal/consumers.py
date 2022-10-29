@@ -284,6 +284,7 @@ class gameConsumer(AsyncWebsocketConsumer):
             x = event['players'] 
         except:
             x= None
+        print('fegbo is',x)
         if x!= None:
             RoomCode = event['RoomCode']
             print('rooomis',RoomCode)
