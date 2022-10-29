@@ -1,7 +1,7 @@
 import json
 #from time import pthread_getcpuclockid
 from asgiref.sync import sync_to_async
-from .channels.generic.websocket import AsyncWebsocketConsumer
+from channels.generic.websocket import AsyncWebsocketConsumer
 from . import models
 import random
 from accounts import models as models2
@@ -231,6 +231,8 @@ class gameConsumer(AsyncWebsocketConsumer):
                     {
                         
                         'type':'word',
+                        'players':None,
+
                         'pret':pret,
                         'Noun':noun,
                         'gnoun':gnoun,
@@ -270,7 +272,7 @@ class gameConsumer(AsyncWebsocketConsumer):
                         'kick':kick,
                         'user':user,
                         'star':star,
-                        'alltables':alltables
+                        'alltables':alltables,
 
                     
                     }
@@ -278,10 +280,14 @@ class gameConsumer(AsyncWebsocketConsumer):
                 )
    
     async def word(self,event):
-        if event['players']:
-            RoomCode = event2['RoomCode']
+        try:
+            x = event['players'] 
+        except:
+            x= None
+        if x!= None:
+            RoomCode = event['RoomCode']
             print('rooomis',RoomCode)
-            players=event2['players']
+            players=event['players']
             await self.player_save(RoomCode,players)
             player_fetched=await self.player(RoomCode)
             print('player_fetched is',player_fetched)
