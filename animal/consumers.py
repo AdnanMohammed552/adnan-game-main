@@ -219,7 +219,7 @@ class gameConsumer(AsyncWebsocketConsumer):
             await self.channel_layer.group_send(
                 self.room_group_name,
                 {
-                    'type':'adnan',
+                    'type':'word',
                     'RoomCode':RoomCode,
                     'players':players                   
                 }
@@ -276,241 +276,243 @@ class gameConsumer(AsyncWebsocketConsumer):
                     }
                     
                 )
-    async def adnan(self,event2):
-        RoomCode = event2['RoomCode']
-        print('rooomis',RoomCode)
-        players=event2['players']
-        await self.player_save(RoomCode,players)
-        player_fetched=await self.player(RoomCode)
-        print('player_fetched is',player_fetched)
-        await self.send(text_data=json.dumps({
-            'playersfetch':player_fetched
-        }))
+   
     async def word(self,event):
-        try:
-            noun = event['Noun']
-        except:
-            noun =''
-        try:
-            username = event['UserName']
-        except:
-            username =''
-        try:
-            gnoun = event['gnoun']
-        except:
-            gnoun =''
-        try:
-            animal = event['animal']
-        except:
-            animal =''
-        try:
-            plants = event['plants']
-        except:
-            plants =''
-        try:
-            countries = event['countries']
-        except:
-            countries =''
-        try:
-            inanimate = event['inanimate']
-        except:
-            inanimate =''
-        try:
-            RoomCode = event['RoomCode']
-        except:
-            RoomCode =''
-        try:
-            end = event['end']
-        except:
-            end=False
-        try:
-            pret =event['pret']
-        except:
-            pret= False
-        try:
-            current_letter_this = event['current_letter_this']
-        except:
-            current_letter_this= None
-        try:
-            preg=event['preg']
-        except:
-            preg=False
-        try:
-            current_letter_this1=event['current_letter_this1']
-        except:
-            current_letter_this1=None
-        try:
-            array50=event['array50']
-        except:
-            array50=None
-        try:
-            admin_letter=event['admin_letter']
-        except:
-            admin_letter=None
-        try:
-            main_row=event['main_row']
-        except:
-            main_row=True
-        try:
-            noun_result=event['noun_result']
-        except:
-            noun_result=None
-        try:
-            gnoun_result=event['gnoun_result']
-        except:
-            gnoun_result=None
-        try:
-            animal_result=event['animal_result']
-        except:
-            animal_result=None
-        try:
-            plants_result=event['plants_result']
-        except:
-            plants_result=None
-        try:
-            countries_result=event['countries_result']
-        except:
-            countries_result=None
-        try:
-            inanimate_result=event['inanimate_result']
-        except:
-            inanimate_result=None
-        try:
-            sum=event['sum']
-        except:
-            sum=None
-        try:
-            review=event['review']
-        except:
-            review=False
-        try:
-            oneortwo=event['oneortwo']
-        except:
-            oneortwo=False
-        try:
-            error=event['error']
-        except:
-            error=False
-        try:
-            players_game=event['players_game']
-        except:
-            players_game=False
-        try:
-            noun_review=event['noun_review']
-        except:
-            noun_review=False
-        try:
-            result=event['result']
-        except:
-            result=False
-        try:
-            wantletter=event['wantletter']
-        except:
-            wantletter=False
-        try:
-            wantletter1=event['wantletter1']
-        except:
-            wantletter1=False
-        try:
-            last=event['last']
-        except:
-            last=False
-        try:
-            private=event['private']
-        except:
-            private=False
-        try:
-            block=event['block']
-        except:
-            block=False
-        try:
-            letterconsumer=event['letterconsumer']
-        except:
-            letterconsumer=False
-        try:
-            ready=event['ready']
-        except:
-            ready=False
-        try:
-            kick=event['kick']
-        except:
-            kick=False
-        try:
-            user=event['user']
-        except:
-            user=""
-        try:
-            star=event['star']
-        except:
-            star=False
-        try:
-            alltables=event['alltables']
-        except:
-            alltables=False
-        the_letter_choosen = ''
-        #print('alllll',alltables)
-        if alltables != False:
-            self.glabaluser1=str(self.glabaluser)
-            #print('شيشي',await (self.see(self.glabaluser1,RoomCode)))
-            if await (self.see(self.glabaluser1,RoomCode)) == '<QuerySet []>':
-                try:
-                    await self.savetable(alltables,self.glabaluser1,RoomCode)
-                except:
-                    print('error')
+        if event['players']:
+            RoomCode = event2['RoomCode']
+            print('rooomis',RoomCode)
+            players=event2['players']
+            await self.player_save(RoomCode,players)
+            player_fetched=await self.player(RoomCode)
+            print('player_fetched is',player_fetched)
+            await self.send(text_data=json.dumps({
+                'playersfetch':player_fetched
+            }))
+        else:
+            try:
+                noun = event['Noun']
+            except:
+                noun =''
+            try:
+                username = event['UserName']
+            except:
+                username =''
+            try:
+                gnoun = event['gnoun']
+            except:
+                gnoun =''
+            try:
+                animal = event['animal']
+            except:
+                animal =''
+            try:
+                plants = event['plants']
+            except:
+                plants =''
+            try:
+                countries = event['countries']
+            except:
+                countries =''
+            try:
+                inanimate = event['inanimate']
+            except:
+                inanimate =''
+            try:
+                RoomCode = event['RoomCode']
+            except:
+                RoomCode =''
+            try:
+                end = event['end']
+            except:
+                end=False
+            try:
+                pret =event['pret']
+            except:
+                pret= False
+            try:
+                current_letter_this = event['current_letter_this']
+            except:
+                current_letter_this= None
+            try:
+                preg=event['preg']
+            except:
+                preg=False
+            try:
+                current_letter_this1=event['current_letter_this1']
+            except:
+                current_letter_this1=None
+            try:
+                array50=event['array50']
+            except:
+                array50=None
+            try:
+                admin_letter=event['admin_letter']
+            except:
+                admin_letter=None
+            try:
+                main_row=event['main_row']
+            except:
+                main_row=True
+            try:
+                noun_result=event['noun_result']
+            except:
+                noun_result=None
+            try:
+                gnoun_result=event['gnoun_result']
+            except:
+                gnoun_result=None
+            try:
+                animal_result=event['animal_result']
+            except:
+                animal_result=None
+            try:
+                plants_result=event['plants_result']
+            except:
+                plants_result=None
+            try:
+                countries_result=event['countries_result']
+            except:
+                countries_result=None
+            try:
+                inanimate_result=event['inanimate_result']
+            except:
+                inanimate_result=None
+            try:
+                sum=event['sum']
+            except:
+                sum=None
+            try:
+                review=event['review']
+            except:
+                review=False
+            try:
+                oneortwo=event['oneortwo']
+            except:
+                oneortwo=False
+            try:
+                error=event['error']
+            except:
+                error=False
+            try:
+                players_game=event['players_game']
+            except:
+                players_game=False
+            try:
+                noun_review=event['noun_review']
+            except:
+                noun_review=False
+            try:
+                result=event['result']
+            except:
+                result=False
+            try:
+                wantletter=event['wantletter']
+            except:
+                wantletter=False
+            try:
+                wantletter1=event['wantletter1']
+            except:
+                wantletter1=False
+            try:
+                last=event['last']
+            except:
+                last=False
+            try:
+                private=event['private']
+            except:
+                private=False
+            try:
+                block=event['block']
+            except:
+                block=False
+            try:
+                letterconsumer=event['letterconsumer']
+            except:
+                letterconsumer=False
+            try:
+                ready=event['ready']
+            except:
+                ready=False
+            try:
+                kick=event['kick']
+            except:
+                kick=False
+            try:
+                user=event['user']
+            except:
+                user=""
+            try:
+                star=event['star']
+            except:
+                star=False
+            try:
+                alltables=event['alltables']
+            except:
+                alltables=False
+            the_letter_choosen = ''
+            #print('alllll',alltables)
+            if alltables != False:
+                self.glabaluser1=str(self.glabaluser)
+                #print('شيشي',await (self.see(self.glabaluser1,RoomCode)))
+                if await (self.see(self.glabaluser1,RoomCode)) == '<QuerySet []>':
+                    try:
+                        await self.savetable(alltables,self.glabaluser1,RoomCode)
+                    except:
+                        print('error')
 
-        w = await self.save_array(RoomCode,array50)
-        t = await self.array(RoomCode)
-        await self.send(text_data=json.dumps({ 
-            'donnee':t
-        }))
-
-        
-        
-        
-        
-        #############################
-        await self.send(text_data=json.dumps({
-            'Noun':noun,
-            'gnoun':gnoun,
-            'animal':animal,
-            'plants':plants,
-            'countries':countries,
-            'inanimate':inanimate,
-            'UserName':username,
-            'RoomCode' : RoomCode,
-            'end':end,
-            'pret':pret,
-            'preg':preg,
-            'current_letter_this1':current_letter_this1,
-            'array50':array50,
-            'admin_letter':admin_letter,
-            'main_row':main_row,
-            'noun_result':noun_result,
-            'gnoun_result':gnoun_result,
-            'animal_result':animal_result,
-            'plants_result':plants_result,
-            'countries_result':countries_result,
-            'inanimate_result':inanimate_result,
-            'sum':sum,
-            'review':review,
-            'oneortwo':oneortwo,
-            'error':error,
-            'players_game':players_game,
-            'noun_review':noun_review,
-            'result':result,
-            'wantletter':wantletter,
-            'last':last,
-            'private':private,
-            'block':block,
-            'letterconsumer':letterconsumer,
-            'ready':ready,
-            'kick':kick,
-            'user':user,
-            'star':star
-
+            w = await self.save_array(RoomCode,array50)
+            t = await self.array(RoomCode)
+            await self.send(text_data=json.dumps({ 
+                'donnee':t
+            }))
 
             
-        }))
+            
+            
+            
+            #############################
+            await self.send(text_data=json.dumps({
+                'Noun':noun,
+                'gnoun':gnoun,
+                'animal':animal,
+                'plants':plants,
+                'countries':countries,
+                'inanimate':inanimate,
+                'UserName':username,
+                'RoomCode' : RoomCode,
+                'end':end,
+                'pret':pret,
+                'preg':preg,
+                'current_letter_this1':current_letter_this1,
+                'array50':array50,
+                'admin_letter':admin_letter,
+                'main_row':main_row,
+                'noun_result':noun_result,
+                'gnoun_result':gnoun_result,
+                'animal_result':animal_result,
+                'plants_result':plants_result,
+                'countries_result':countries_result,
+                'inanimate_result':inanimate_result,
+                'sum':sum,
+                'review':review,
+                'oneortwo':oneortwo,
+                'error':error,
+                'players_game':players_game,
+                'noun_review':noun_review,
+                'result':result,
+                'wantletter':wantletter,
+                'last':last,
+                'private':private,
+                'block':block,
+                'letterconsumer':letterconsumer,
+                'ready':ready,
+                'kick':kick,
+                'user':user,
+                'star':star
+
+
+                
+            }))
     @sync_to_async
     def see(self,user,room):
         e=models2.room_created.objects.all().filter(user=user,room_created=room).values()
