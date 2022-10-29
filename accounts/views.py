@@ -7,8 +7,9 @@ import re
 from django.contrib import auth
 from .import models
 from django.template import Template, Context
+from django.views.decorators.csrf import csrf_protect
 
-
+@csrf_protect 
 def signup(request):
     if request.POST and 'signupbtn' in request.POST:
         name = None
