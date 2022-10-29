@@ -45,7 +45,7 @@
                 const start = data.started;
                 console.log(start)
                 if (start == true) {
-                    var url =  window.location.origin +'/join/' +roomCode + '?username=' + userName;
+                    var url =  window.location.origin +'/wait/' +roomCode + '?username=' + userName;
                     history.pushState({}, null, url);
                     location.reload()
                 }
