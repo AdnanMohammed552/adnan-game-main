@@ -1,8 +1,7 @@
-import imp
 import json
 #from time import pthread_getcpuclockid
 from asgiref.sync import sync_to_async
-from channels.generic.websocket import AsyncWebsocketConsumer
+from .channels.generic.websocket import AsyncWebsocketConsumer
 from . import models
 import random
 from accounts import models as models2
@@ -277,10 +276,10 @@ class gameConsumer(AsyncWebsocketConsumer):
                     }
                     
                 )
-    async def adnan(self,event):
-        RoomCode = event['RoomCode']
+    async def adnan(self,event2):
+        RoomCode = event2['RoomCode']
         print('rooomis',RoomCode)
-        players=event['players']
+        players=event2['players']
         await self.player_save(RoomCode,players)
         player_fetched=await self.player(RoomCode)
         print('player_fetched is',player_fetched)
