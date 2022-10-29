@@ -1,7 +1,7 @@
 from multiprocessing.sharedctypes import Value
 from django.db import models
 from datetime import datetime
-
+from django.utils import timezone
 class adnan_test11(models.Model):
     noun = models.CharField(max_length=150)
     gnoun = models.CharField(max_length=150)
@@ -21,7 +21,7 @@ class adnan_test11(models.Model):
 class summeryOfLetter(models.Model):
     all_letter_as = models.CharField(max_length=2000000)
     room = models.CharField(max_length=150)
-    time = models.DateTimeField(default=datetime.now())
+    time = models.DateTimeField(default=timezone.now())
     
     def __str__(self):
         return self.room
