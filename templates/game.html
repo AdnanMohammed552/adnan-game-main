@@ -20,7 +20,7 @@
 </section>    
 <section  id="table">
      
-    <h3>الحرف هو: <h3 id="leetter">{{the_letter}}</h3> </h3>
+    <h3>الحرف هوه: <h3 id="leetter">{{the_letter}}</h3> </h3>
     <form method="GET" action="send">
     <div class="table-responsive">
         <table class="table">
@@ -255,12 +255,12 @@
         
         if(data.wantletter === false){
         if (data.noun_result !==null && data.gnoun_result!==null && data.countries_result!==null && data.result===true){
-          document.getElementById('noun_result'+data.UserName).innerHTML = data.noun_result;
-          document.getElementById('gnoun_result'+data.UserName).innerHTML = data.gnoun_result;
-          document.getElementById('animal_result'+data.UserName).innerHTML = data.animal_result;
-          document.getElementById('plants_result'+data.UserName).innerHTML = data.plants_result;
-          document.getElementById('countries_result'+data.UserName).innerHTML = data.countries_result;
-          document.getElementById('inanimate_result'+data.UserName).innerHTML = data.inanimate_result;
+          document.getElementById('noun_result'+data.UserName+data.admin_letter).innerHTML = data.noun_result;
+          document.getElementById('gnoun_result'+data.UserName+data.admin_letter).innerHTML = data.gnoun_result;
+          document.getElementById('animal_result'+data.UserName+data.admin_letter).innerHTML = data.animal_result;
+          document.getElementById('plants_result'+data.UserName+data.admin_letter).innerHTML = data.plants_result;
+          document.getElementById('countries_result'+data.UserName+data.admin_letter).innerHTML = data.countries_result;
+          document.getElementById('inanimate_result'+data.UserName+data.admin_letter).innerHTML = data.inanimate_result;
           alert(data.UserName +' points is '+data.sum)
 
 
@@ -362,12 +362,12 @@
                 "<tr>"+
                   '<td scope="row"></td>'+
                   '<td scope="row"></td>'+
-                  '<td  id="noun_result'+data.UserName+'"  ></td>'+
-                  '<td  id="gnoun_result'+data.UserName+'"></td>'+
-                  '<td  id="animal_result'+data.UserName+'"></td>'+
-                  '<td  id="plants_result'+data.UserName+'"></td>'+
-                  '<td  id="countries_result'+data.UserName+'"></td>'+
-                  '<td  id="inanimate_result'+data.UserName+'"></td>'+
+                  '<td  id="noun_result'+data.UserName+data.admin_letter+'"  ></td>'+
+                  '<td  id="gnoun_result'+data.UserName+data.admin_letter+'"></td>'+
+                  '<td  id="animal_result'+data.UserName+data.admin_letter+'"></td>'+
+                  '<td  id="plants_result'+data.UserName+data.admin_letter+'"></td>'+
+                  '<td  id="countries_result'+data.UserName+data.admin_letter+'"></td>'+
+                  '<td  id="inanimate_result'+data.UserName+data.admin_letter+'"></td>'+
                   "</tr>"
               
         )    }      }
@@ -518,12 +518,12 @@
           }
         console.log('second messages are',data)
           if (data.noun_result !==null && data.gnoun_result!==null && data.countries_result!==null && data.result===true){
-            document.getElementById('noun_result'+data.UserName).innerHTML = data.noun_result;
-            document.getElementById('gnoun_result'+data.UserName).innerHTML = data.gnoun_result;
-            document.getElementById('animal_result'+data.UserName).innerHTML = data.animal_result;
-            document.getElementById('plants_result'+data.UserName).innerHTML = data.plants_result;
-            document.getElementById('countries_result'+data.UserName).innerHTML = data.countries_result;
-            document.getElementById('inanimate_result'+data.UserName).innerHTML = data.inanimate_result;
+            document.getElementById('noun_result'+data.UserName+data.admin_letter).innerHTML = data.noun_result;
+            document.getElementById('gnoun_result'+data.UserName+data.admin_letter).innerHTML = data.gnoun_result;
+            document.getElementById('animal_result'+data.UserName+data.admin_letter).innerHTML = data.animal_result;
+            document.getElementById('plants_result'+data.UserName+data.admin_letter).innerHTML = data.plants_result;
+            document.getElementById('countries_result'+data.UserName+data.admin_letter).innerHTML = data.countries_result;
+            document.getElementById('inanimate_result'+data.UserName+data.admin_letter).innerHTML = data.inanimate_result;
             alert(data.UserName +' points is '+data.sum)
   
           }   
@@ -551,12 +551,12 @@
                 "<tr>"+
                   '<td scope="row"></td>'+
                   '<td scope="row"></td>'+
-                  '<td  id="noun_result'+data.UserName+'"  ></td>'+
-                  '<td  id="gnoun_result'+data.UserName+'"></td>'+
-                  '<td  id="animal_result'+data.UserName+'"></td>'+
-                  '<td  id="plants_result'+data.UserName+'"></td>'+
-                  '<td  id="countries_result'+data.UserName+'"></td>'+
-                  '<td  id="inanimate_result'+data.UserName+'"></td>'+
+                  '<td  id="noun_result'+data.UserName+data.admin_letter+'"  ></td>'+
+                  '<td  id="gnoun_result'+data.UserName+data.admin_letter+'"></td>'+
+                  '<td  id="animal_result'+data.UserName+data.admin_letter+'"></td>'+
+                  '<td  id="plants_result'+data.UserName+data.admin_letter+'"></td>'+
+                  '<td  id="countries_result'+data.UserName+data.admin_letter+'"></td>'+
+                  '<td  id="inanimate_result'+data.UserName+data.admin_letter+'"></td>'+
                   "</tr>"
               
         )          }
