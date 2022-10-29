@@ -224,7 +224,7 @@
         gameSocket2.onmessage = function(e){
           const data = JSON.parse(e.data)
           if (data.ready){
-            
+            document.getElementById('done').click()
 
           }
         }
@@ -243,7 +243,7 @@
       // Code to run before sleep
      
       // Sleep for 3 seconds
-      await new Promise(r => setTimeout(r, 5000));
+      await new Promise(r => setTimeout(r, 3000));
    
           gameSocket2.send(JSON.stringify({
             'RoomCode':roomCode,
