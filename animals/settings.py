@@ -108,6 +108,7 @@ DATABASES = {
     }
 }
 
+CSRF_TRUSTED_ORIGINS = ["https://adnan-game-animal.herokuapp.com/"]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
