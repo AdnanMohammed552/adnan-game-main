@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['https://adnan-game-animal.herokuapp.com/']
 
+CSRF_TRUSTED_ORIGINS = ["https://adnan-game-animal.herokuapp.com"]
 
 # Application definition
 
@@ -57,7 +58,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'animals.urls'
-CSRF_TRUSTED_ORIGINS = ["https://adnan-game-animal.herokuapp.com/"]
 
 
 TEMPLATES = [
