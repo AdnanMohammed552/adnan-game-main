@@ -15,6 +15,18 @@
         const userName = JSON.parse(document.getElementById('json-username').textContent);
         console.log("it is " , roomCode)
         const gameSocket = new WebSocket(
+              
+        'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
+      )
+      gameSocket.onopen = function(e){
+        gameSocket.send(JSON.stringify({
+          'userName':userName,
+        }))
+        
+         
+  
+      }
+        const gameSocket = new WebSocket(
             
             'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
         )

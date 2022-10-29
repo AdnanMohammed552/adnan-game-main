@@ -51,18 +51,7 @@
       
       const userName = document.querySelector('#username').value;           
       console.log('Ima here' , roomCode,userName)
-      const gameSocket = new WebSocket(
-              
-        'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
-      )
-      gameSocket.onopen = function(e){
-        gameSocket.send(JSON.stringify({
-          'userName':userName,
-        }))
-        
-         
-  
-      }
+      
 
       
       window.location.replace('/wait/'+roomCode+'?username=' + userName)
