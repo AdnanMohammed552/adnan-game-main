@@ -238,13 +238,19 @@
         //const gameSocket2 = new WebSocket(
      //   'ws://' + window.location.host + '/ws/' + roomCode + '/'
      //   )
+     async function doStuff(){
+      // Code to run before sleep
+     
+      // Sleep for 3 seconds
+      await new Promise(r => setTimeout(r, 5000));
+   
           gameSocket2.send(JSON.stringify({
             'RoomCode':roomCode,
             'players': array,
             'error':false,
             'review':false
           }))
-          
+        }
         
         gameSocket2.onmessage = function(e){
           const data = JSON.parse(e.data)
