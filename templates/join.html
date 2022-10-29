@@ -61,9 +61,8 @@
           'userName':userName,
         }))
         
-          var url =  window.location.origin +'/wait/' +roomCode + '?username=' + userName;
-          history.pushState({}, null, url);
-          location.reload()   
+         
+          window.location.replace('/wait/'+roomCode+'?username=' + userName)
   
       }
 
