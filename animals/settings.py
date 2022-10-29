@@ -99,11 +99,11 @@ CHANNEL_LAYERS = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd414402ejt7af2',
-        'USER': 'tsqnnjuqgxhcqw',
-        'PASSWORD': 'fcb241558784538cd84bc30ca2ab9e3b77fce68f583ae9475da3b9e22a1cc6ff',
-        'HOST': 'ec2-44-207-253-50.compute-1.amazonaws.com',
+        'ENGINE': 'ec2-3-220-207-90.compute-1.amazonaws.com',
+        'NAME': 'dbb4sn64o1ps43',
+        'USER': 'qfhkbtnufivzmg',
+        'PASSWORD': '333cf54189601fcb5ad1fc68c9b71f594469485c3f979beb8ad68a90103b17bf',
+        'HOST': 'ec2-3-220-207-90.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
