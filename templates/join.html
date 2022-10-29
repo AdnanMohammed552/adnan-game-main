@@ -54,7 +54,7 @@
       console.log('Ima here' , roomCode,userName)
       const gameSocket = new WebSocket(
               
-        'ws://' + window.location.host + '/ws/' + roomCode + '/admin/'
+        'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
       )
       gameSocket.onopen = function(e){
         gameSocket.send(JSON.stringify({

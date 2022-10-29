@@ -126,10 +126,10 @@
   //}
   const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
   const gameSocketlettr = new WebSocket(
-        'ws://' + window.location.host + '/ws/' + roomCode + '/letter/'
+        'wss://' + window.location.host + '/ws/' + roomCode + '/letter/'
         )
         const gameSocket2 = new WebSocket(
-                'ws://' + window.location.host + '/ws/' + roomCode + '/'
+                'wss://' + window.location.host + '/ws/' + roomCode + '/'
                 )
   
   document.querySelector('#view').disabled = true;
@@ -159,7 +159,7 @@
     const array = []
     const gameSocket = new WebSocket(
         
-        'ws://' + window.location.host + '/ws/' + roomCode + '/admin/'
+        'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
       )
   
     
@@ -196,7 +196,7 @@
         //  array.splice(index, 1); // 2nd parameter means remove one item only
         //}
         const gameSocketkick = new WebSocket(
-        'ws://' + window.location.host + '/ws/' + roomCode + '/'
+        'wss://' + window.location.host + '/ws/' + roomCode + '/'
         )
         gameSocketkick.onopen = function(e){
         gameSocketkick.send(JSON.stringify({
