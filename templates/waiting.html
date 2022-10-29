@@ -13,7 +13,7 @@
 
         const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
         const userName = JSON.parse(document.getElementById('json-username').textContent);
-        console.log("it is " , roomCode)
+        console.log("it is " , roomCode,userName)
         const gameSocket = new WebSocket(
               
         'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
@@ -26,10 +26,7 @@
          
   
       }
-        const gameSocket = new WebSocket(
-            
-            'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
-        )
+        
         const gameSocketkick = new WebSocket(
         'wss://' + window.location.host + '/ws/' + roomCode + '/'
         )
@@ -57,7 +54,7 @@
                 const start = data.started;
                 console.log(start)
                 if (start == true) {
-                    var url =  window.location.origin +'/wait/' +roomCode + '?username=' + userName;
+                    var url =  window.location.origin +'/join/' +roomCode + '?username=' + userName;
                     history.pushState({}, null, url);
                     location.reload()
                 }
