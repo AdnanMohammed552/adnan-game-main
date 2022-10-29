@@ -37,7 +37,7 @@
   <!-- Grid row -->
   <div class="form-group row">
     <div class="col-sm-10">
-      <button type="submit" id="submint" class="btn btn-primary btn-md">Join room</button>
+      <button type="submit" id="submintt" class="btn btn-primary btn-md">Join room</button>
     </div>
   </div>
   <!-- Grid row -->
@@ -46,7 +46,7 @@
 
 
   <script>
-    document.querySelector('#submint').onclick = function(e) {
+    document.querySelector('#submintt').onclick = function(e) {
       
       const roomCode = document.querySelector('#code').value;
       
@@ -62,12 +62,12 @@
         }))
         
          
-          window.location.replace('/wait/'+roomCode+'?username=' + userName)
   
       }
 
       
-  
+      window.location.replace('/wait/'+roomCode+'?username=' + userName)
+
         
 
     };
