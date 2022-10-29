@@ -72,7 +72,7 @@ class AsyncConsumer:
         if handler:
             await handler(message)
         else:
-            pass
+            print('gnjrehirg')
 
     async def send(self, message):
         """
