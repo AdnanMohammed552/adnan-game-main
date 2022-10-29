@@ -41,7 +41,7 @@ class AsyncConsumer:
         self.scope = scope
 
         # Initialize channel layer
-        self.channel_layer = get_channel_layer(self.channel_layer_alias)
+        self. channel_layer = get_channel_layer(self.channel_layer_alias)
         if self.channel_layer is not None:
             self.channel_name = await self.channel_layer.new_channel()
             self.channel_receive = functools.partial(
@@ -124,7 +124,7 @@ class SyncConsumer(AsyncConsumer):
         if handler:
             handler(message)
         else:
-            raise ValueError("No handler for message type %s" % message["type"])
+            print('gnjrehirg')
 
     def send(self, message):
         """
