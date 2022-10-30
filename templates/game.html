@@ -646,9 +646,9 @@
       
     }
     function heeer(x,y,z){
-      $("."+x+y).hide()
+      $("."+x+y).toggle()
       $("."+x+y+z).hide()
-      console.log('1111',x,y,z , window.getComputedStyle(document.getElementById(x+y)).display)
+      console.log('1111',x,y,z ,$("."+x+y),$("."+x+y).toggle() )
       console.log('doc',document.getElementById(x+y))
           
     }
