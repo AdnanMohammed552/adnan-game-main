@@ -531,36 +531,48 @@
           if (data.UserName!==null &&data.Noun!=='' &&typeof data.UserName!=="undefined"){
             console.log('review rtur',data)
           if(data.private !== true){
-            console.log('data.username is',data.UserName)
-              document.getElementById('divv'+data.UserName).innerHTML += (
+            try{
+              document.getElementById('adnon'+data.UserName+data.admin_letter)
+              console.log('data.username is',data.UserName)
+                document.getElementById('divv'+data.UserName).innerHTML += (
+                  "<div id='adnon"+ data.UserName+data.admin_letter +"'>"+
+                   "<h1>adnan</h1>"+
+                   
+                  "<tr id='"+ data.UserName+data.admin_letter +"'>"+
+                    '<th scope="row">'+ data.UserName +'</th>'+
+                    "<td id = 'letterrrq'>"+ data.admin_letter +"</td>"+
+                    "<td id = 'noun'>"+ data.Noun +"</td>"+
+                    "<td id = 'gnoun'>"+ data.gnoun +"</td>"+
+                    "<td id = 'animalNoun'>"+ data.animal +"</td>"+
+                    "<td id = 'plants'>"+data.plants +"</td>"+
+                    "<td id = 'inanimate'>"+ data.inanimate +"</td>"+
+                    "<td id = 'countries'>"+ data.countries +"</td>"+
+                    "<td id = 'room'>"+ data.RoomCode +"</td>"+
+                    "<td id = 'sum'>"+  +"</td>"+
+                    
+                  "</tr>"+
+                  "<tr>"+
+                    '<td scope="row"></td>'+
+                    '<td scope="row"></td>'+
+                    '<td  id="noun_result'+data.UserName+data.admin_letter+'"  ></td>'+
+                    '<td  id="gnoun_result'+data.UserName+data.admin_letter+'"></td>'+
+                    '<td  id="animal_result'+data.UserName+data.admin_letter+'"></td>'+
+                    '<td  id="plants_result'+data.UserName+data.admin_letter+'"></td>'+
+                    '<td  id="countries_result'+data.UserName+data.admin_letter+'"></td>'+
+                    '<td  id="inanimate_result'+data.UserName+data.admin_letter+'"></td>'+
+                    "</tr>"+
+                    "<\/div>"
+                
+          )          
+              }
             
-                 "<h1>adnan</h1>"+
-                "<tr id='"+ data.UserName+data.admin_letter +"'>"+
-                  '<th scope="row">'+ data.UserName +'</th>'+
-                  "<td id = 'letterrrq'>"+ data.admin_letter +"</td>"+
-                  "<td id = 'noun'>"+ data.Noun +"</td>"+
-                  "<td id = 'gnoun'>"+ data.gnoun +"</td>"+
-                  "<td id = 'animalNoun'>"+ data.animal +"</td>"+
-                  "<td id = 'plants'>"+data.plants +"</td>"+
-                  "<td id = 'inanimate'>"+ data.inanimate +"</td>"+
-                  "<td id = 'countries'>"+ data.countries +"</td>"+
-                  "<td id = 'room'>"+ data.RoomCode +"</td>"+
-                  "<td id = 'sum'>"+  +"</td>"+
-                  
-                "</tr>"+
-                "<tr>"+
-                  '<td scope="row"></td>'+
-                  '<td scope="row"></td>'+
-                  '<td  id="noun_result'+data.UserName+data.admin_letter+'"  ></td>'+
-                  '<td  id="gnoun_result'+data.UserName+data.admin_letter+'"></td>'+
-                  '<td  id="animal_result'+data.UserName+data.admin_letter+'"></td>'+
-                  '<td  id="plants_result'+data.UserName+data.admin_letter+'"></td>'+
-                  '<td  id="countries_result'+data.UserName+data.admin_letter+'"></td>'+
-                  '<td  id="inanimate_result'+data.UserName+data.admin_letter+'"></td>'+
-                  "</tr>"
-              
-        )          }
+                  catch(e){
+                    console.log('d')
+                  }  
+            
           }
+          }
+        
           if ((data.noun_result===null)||(typeof data.noun_result==='undefined')){
 
           
