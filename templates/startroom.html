@@ -238,6 +238,47 @@
         //const gameSocket2 = new WebSocket(
      //   'ws://' + window.location.host + '/ws/' + roomCode + '/'
      //   )
+
+     function OnSelectedIndexChange(id,thisis,letter){
+      console.log('hfei'+id + thisis)
+      
+      const word_result = document.getElementById(thisis+id+letter);
+      console.log('word res is',word_result)
+      const noun_result = word_result.options[word_result.selectedIndex].text;;
+      if (noun_result == '5'){
+        document.getElementById(thisis+'td'+id+letter).innerHTML += (
+          '<select style="font-size:16px;" onChange="changemark(\'' + id + '\',\'' + thisis + '\',\'' + letter + '\')" id="noun_result5'+id+''+thisis+'" >'+
+            '<option style="font-size:10px;" href="#">--Choose similar player--</option>'+
+            '<\/select>'
+             )
+             console.log(totalarray)
+            for (name of fetchedarray){
+              document.getElementById('noun_result5'+id+thisis).innerHTML += (
+                '<option style="font-size:16px;" href="#">'+name+'</option>'
+              )
+            }
+            document.querySelector('#noun_result5'+id+thisis).options.selectedIndex = 0;
+            
+            
+          
+        
+
+      }
+      else if (noun_result == '10'){
+        document.getElementById('noun_result5'+id+thisis).remove()
+      }
+      else if (noun_result == '0'){
+        document.getElementById('noun_result5'+id+thisis).remove()
+      }
+
+
+    }
+    function changemark(id2,thisis2,letter2){
+      const word_result = document.querySelector('#noun_result5'+id2+thisis2);
+      const noun_result = word_result.options[word_result.selectedIndex].text;;
+      console.log('tr is',id2)
+      document.getElementById(thisis2+noun_result+letter2).getElementsByTagName('option')[1].selected = 'selected';
+    }
      doStuff()
      async function doStuff(){
       // Code to run before sleep
@@ -612,46 +653,7 @@
 
   
 
-    function OnSelectedIndexChange(id,thisis,letter){
-      console.log('hfei'+id + thisis)
-      
-      const word_result = document.getElementById(thisis+id+letter);
-      console.log('word res is',word_result)
-      const noun_result = word_result.options[word_result.selectedIndex].text;;
-      if (noun_result == '5'){
-        document.getElementById(thisis+'td'+id+letter).innerHTML += (
-          '<select style="font-size:16px;" onChange="changemark(\'' + id + '\',\'' + thisis + '\',\'' + letter + '\')" id="noun_result5'+id+''+thisis+'" >'+
-            '<option style="font-size:10px;" href="#">--Choose similar player--</option>'+
-            '<\/select>'
-             )
-             console.log(totalarray)
-            for (name of fetchedarray){
-              document.getElementById('noun_result5'+id+thisis).innerHTML += (
-                '<option style="font-size:16px;" href="#">'+name+'</option>'
-              )
-            }
-            document.querySelector('#noun_result5'+id+thisis).options.selectedIndex = 0;
-            
-            
-          
-        
-
-      }
-      else if (noun_result == '10'){
-        document.getElementById('noun_result5'+id+thisis).remove()
-      }
-      else if (noun_result == '0'){
-        document.getElementById('noun_result5'+id+thisis).remove()
-      }
-
-
-    }
-    function changemark(id2,thisis2,letter2){
-      const word_result = document.querySelector('#noun_result5'+id2+thisis2);
-      const noun_result = word_result.options[word_result.selectedIndex].text;;
-      console.log('tr is',id2)
-      document.getElementById(thisis2+noun_result+letter2).getElementsByTagName('option')[1].selected = 'selected';
-    }
+   
     document.getElementById('end').onclick = function(e){
       
         var data=document.getElementById('pdfgenerator').innerHTML;
