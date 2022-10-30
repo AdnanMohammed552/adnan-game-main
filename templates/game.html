@@ -46,14 +46,51 @@
 
     </h3>
   </section>
+  <script>
+    function heeer(x,y,x){
+      if (window.getComputedStyle(x+y).display === 'block'){
+      document.getElementById(x+y).style.display="none"
+      document.getElementById(x+y+z).style.display="none"
+    }
+    if (window.getComputedStyle(x+y).display === 'none'){
+      document.getElementById(x+y).style.display="block"
+      document.getElementById(x+y+z).style.display="block"
+    }
+    }
+    
+
+  </script>
   <section id="other"></section>
     {{ room_code|json_script:'json-roomcode' }}
     {{ username|json_script:'json-username' }}
     {{ the_letter|json_script:'json-the_letter' }}
     <script>
-    
+      function heeer(x,y,x){
+        if (window.getComputedStyle(x+y).display === 'block'){
+        document.getElementById(x+y).style.display="none"
+        document.getElementById(x+y+z).style.display="none"
+      }
+      if (window.getComputedStyle(x+y).display === 'none'){
+        document.getElementById(x+y).style.display="block"
+        document.getElementById(x+y+z).style.display="block"
+      }
+      }
+      
+
       all()
       function all(e){
+        function heeer(x,y,x){
+          if (window.getComputedStyle(x+y).display === 'block'){
+          document.getElementById(x+y).style.display="none"
+          document.getElementById(x+y+z).style.display="none"
+        }
+        if (window.getComputedStyle(x+y).display === 'none'){
+          document.getElementById(x+y).style.display="block"
+          document.getElementById(x+y+z).style.display="block"
+        }
+        }
+        
+
         document.getElementById('timing').style.display='none'
       
       window.onbeforeunload = function (e) {
