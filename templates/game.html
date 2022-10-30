@@ -549,7 +549,7 @@
                 
               console.log('data.username is',data.UserName)
                 document.getElementById('divv'+data.UserName).innerHTML += (
-                  '<button  type="button" onclick="hidefunc(\'' + data.UserName + '\' ,\'' + data.admin_letter + '\' , \'' + data.Noun + '\' )" id="hide' + data.UserName+data.admin_letter + '">'+
+                  '<button id="hide' + data.UserName+data.admin_letter + '" type="submit" onclick="hidefunc(\'' + data.UserName + '\' ,\'' + data.admin_letter + '\' , \'' + data.Noun + '\' )" >'+
                     u +
                   '</button>'+
                   '<div id="adnon' + data.UserName+data.admin_letter + '">'+
