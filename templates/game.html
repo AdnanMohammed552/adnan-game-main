@@ -538,6 +538,8 @@
               else{
               console.log('data.username is',data.UserName)
                 document.getElementById('divv'+data.UserName).innerHTML += (
+                  '<div id="adnon' + data.UserName+data.admin_letter + '">'+
+                    "<\/div>"+
                   '<div class="accordion" id="'+ 
               'accordionExample'+ data.UserName+data.admin_letter +
               '">'+
@@ -551,7 +553,6 @@
                   +'accordionExample'+data.UserName+data.admin_letter+
                   '">"' +
                   '<div class="accordion-body" ' + 'id="' + data.UserName+data.admin_letter + '">'+
-                    '<div id="adnon' + data.UserName+data.admin_letter + '">'+
                   "<tr id='"+ data.UserName+data.admin_letter +"'>"+
                     '<th scope="row">'+ data.UserName +'</th>'+
                     "<td id = 'letterrrq'>"+ data.admin_letter +"</td>"+
@@ -575,7 +576,6 @@
                     '<td  id="countries_result'+data.UserName+data.admin_letter+'"></td>'+
                     '<td  id="inanimate_result'+data.UserName+data.admin_letter+'"></td>'+
                     "</tr>"+
-                    "<\/div>"+
                     '</div>'+
                   '</div>'+
                 '</div>'+
