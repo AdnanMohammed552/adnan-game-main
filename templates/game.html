@@ -48,7 +48,8 @@
   </section>
   <script>
     function heeer(x,y,x){
-      if (window.getComputedStyle(document.getElementById(x+y)).display === 'block'){
+      console.log('doc',document.getElementById(x+y))
+          if (window.getComputedStyle(document.getElementById(x+y)).display === 'block'){
       document.getElementById(x+y).style.display="none"
       document.getElementById(x+y+z).style.display="none"
     }
@@ -66,7 +67,8 @@
     {{ the_letter|json_script:'json-the_letter' }}
     <script>
       function heeer(x,y,x){
-        if (window.getComputedStyle(document.getElementById(x+y)).display === 'block'){
+        console.log('doc',document.getElementById(x+y))
+          if (window.getComputedStyle(document.getElementById(x+y)).display === 'block'){
         document.getElementById(x+y).style.display="none"
         document.getElementById(x+y+z).style.display="none"
       }
@@ -80,6 +82,7 @@
       all()
       function all(e){
         function heeer(x,y,x){
+          console.log('doc',document.getElementById(x+y))
           if (window.getComputedStyle(document.getElementById(x+y)).display === 'block'){
           document.getElementById(x+y).style.display="none"
           document.getElementById(x+y+z).style.display="none"
@@ -574,7 +577,8 @@
               }
               else{
                 function hidefunc(x,y,x){
-                  if (window.getComputedStyle(document.getElementById(x+y)).display === 'block'){
+                  console.log('doc',document.getElementById(x+y))
+          if (window.getComputedStyle(document.getElementById(x+y)).display === 'block'){
                   document.getElementById(x+y).style.display="none"
                   document.getElementById(x+y+z).style.display="none"
                 }
@@ -619,7 +623,8 @@
                 
           )     
           function hidefunc(x,y,x){
-            if (window.getComputedStyle(document.getElementById(x+y)).display === 'block'){
+            console.log('doc',document.getElementById(x+y))
+          if (window.getComputedStyle(document.getElementById(x+y)).display === 'block'){
             document.getElementById(x+y).style.display="none"
             document.getElementById(x+y+z).style.display="none"
           }
@@ -681,6 +686,7 @@
         document.getElementById('inanimate').disabled=true
         document.getElementById('sum').disabled=true
         function heeer(x,y,x){
+          console.log('doc',document.getElementById(x+y))
           if (window.getComputedStyle(document.getElementById(x+y)).display === 'block'){
           document.getElementById(x+y).style.display="none"
           document.getElementById(x+y+z).style.display="none"
@@ -695,6 +701,7 @@
         //document.querySelector('#leetter').innerHTML = data.current_letter_this;
         all()
         function heeer(x,y,x){
+          console.log('doc',document.getElementById(x+y))
           if (window.getComputedStyle(document.getElementById(x+y)).display === 'block'){
           document.getElementById(x+y).style.display="none"
           document.getElementById(x+y+z).style.display="none"
@@ -708,7 +715,8 @@
 
       }
       function heeer(x,y,x){
-        if (window.getComputedStyle(document.getElementById(x+y)).display === 'block'){
+        console.log('doc',document.getElementById(x+y))
+          if (window.getComputedStyle(document.getElementById(x+y)).display === 'block'){
         document.getElementById(x+y).style.display="none"
         document.getElementById(x+y+z).style.display="none"
       }
@@ -721,7 +729,8 @@
 
     }
     function heeer(x,y,x){
-      if (window.getComputedStyle(document.getElementById(x+y)).display === 'block'){
+      console.log('doc',document.getElementById(x+y))
+          if (window.getComputedStyle(document.getElementById(x+y)).display === 'block'){
       document.getElementById(x+y).style.display="none"
       document.getElementById(x+y+z).style.display="none"
     }
