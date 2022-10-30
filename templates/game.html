@@ -644,7 +644,7 @@
       
     }
     function heeer(x,y,z){
-      console.log('1111',x,y,z)
+      console.log('1111',x,y,z , window.getComputedStyle(document.getElementById(x+y)).display)
       console.log('doc',document.getElementById(x+y))
           if (window.getComputedStyle(document.getElementById(x+y)).display === 'block'){
             console.log('blockk')
