@@ -648,10 +648,13 @@
       console.log('1111',x,y,z)
       console.log('doc',document.getElementById(x+y))
           if (window.getComputedStyle(document.getElementById(x+y)).display === 'block'){
+            console.log('blockk')
       document.getElementById(x+y).style.display="none"
       document.getElementById(x+y+z).style.display="none"
     }
     if (window.getComputedStyle(document.getElementById(x+y)).display === 'none'){
+      console.log('nonn')
+
       document.getElementById(x+y).style.display="block"
       document.getElementById(x+y+z).style.display="block"
     }
