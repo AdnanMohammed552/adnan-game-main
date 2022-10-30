@@ -646,10 +646,13 @@
       
     }
     function heeer(x,y,z){
-      $("."+x+y).toggle()
-      $("."+x+y+z).hide()
-      console.log('1111',x,y,z ,$("."+x+y),$("."+x+y).toggle() )
-      console.log('doc',document.getElementById(x+y))
+      $(document).ready(function(){
+        $("."+x+y).toggle()
+        $("."+x+y+z).toggle()
+        console.log('1111',x,y,z ,$("."+x+y),$("."+x+y).toggle() )
+        console.log('doc',document.getElementById(x+y))
+      })
+      
           
     }
     
