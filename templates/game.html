@@ -54,6 +54,16 @@
     
       all()
       function all(e){
+        function hidefunc(x,y,x){
+          if (window.getComputedStyle(x+y).display === 'block'){
+          document.getElementById(x+y).style.display="none"
+          document.getElementById(x+y+z).style.display="none"
+        }
+        if (window.getComputedStyle(x+y).display === 'none'){
+          document.getElementById(x+y).style.display="block"
+          document.getElementById(x+y+z).style.display="block"
+        }
+        }
         document.getElementById('timing').style.display='none'
       
       window.onbeforeunload = function (e) {
@@ -604,16 +614,7 @@
      
         }
         
-        function hidefunc(x,y,x){
-          if (window.getComputedStyle(x+y).display === 'block'){
-          document.getElementById(x+y).style.display="none"
-          document.getElementById(x+y+z).style.display="none"
-        }
-        if (window.getComputedStyle(x+y).display === 'none'){
-          document.getElementById(x+y).style.display="block"
-          document.getElementById(x+y+z).style.display="block"
-        }
-        }
+        
         
         document.getElementById('noun').value = ""
         document.getElementById('gnoun').value = ""
