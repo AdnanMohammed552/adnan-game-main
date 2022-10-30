@@ -338,14 +338,14 @@
             
           }
         }
-            else if(data.oneortwo==='two'){
+            else if(data.oneortwo==='two' && data.main_row !== false){
               if( document.getElementById(data.UserName+data.admin_letter)){
 
               }
               else{
               document.getElementById('divv'+data.UserName).innerHTML += (
             
-                 
+                "<h1>adnan</h1>"+
                 "<tr id='"+ data.UserName+data.admin_letter +"'>"+
                   '<th scope="row">'+ data.UserName +'</th>'+
                   "<td id = 'letterrrq'>"+ data.admin_letter +"</td>"+
@@ -534,7 +534,7 @@
             console.log('data.username is',data.UserName)
               document.getElementById('divv'+data.UserName).innerHTML += (
             
-                 
+                 "<h1>adnan</h1>"+
                 "<tr id='"+ data.UserName+data.admin_letter +"'>"+
                   '<th scope="row">'+ data.UserName +'</th>'+
                   "<td id = 'letterrrq'>"+ data.admin_letter +"</td>"+
@@ -573,7 +573,7 @@
             'pret':true,
             'preg':true,
             'current_letter_this':current_letter_this,
-            'main_row':false,
+            'main_row':false,   
             'RoomCode' : roomCode, 
             'admin_letter': admin_letter,
             'error':true,
