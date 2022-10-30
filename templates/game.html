@@ -646,14 +646,12 @@
       
     }
     function heeer(x,y,z){
-      $(document).ready(function(){
-        $("."+x+y).toggle()
-        $("."+x+y+z).toggle()
-        console.log('1111',x,y,z ,$("."+x+y).get(),$("."+x+y).get().toggle() )
-        console.log('doc',document.getElementById(x+y))
-      })
       
-          
+        var list = document.getElementById(x+y);
+        for (var i = 0; i < list.length; i++) {
+            list[i].style.display = 'none';
+        }
+        
     }
     
 
