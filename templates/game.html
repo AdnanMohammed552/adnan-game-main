@@ -538,21 +538,12 @@
               else{
               console.log('data.username is',data.UserName)
                 document.getElementById('divv'+data.UserName).innerHTML += (
+                  '<button  type="button" onclick="hidefunc('+ data.UserName+data.admin_letter +data.Noun+')" id="hide' + data.UserName+data.admin_letter + '">'+
+                    u +
+                  '</button>'+
                   '<div id="adnon' + data.UserName+data.admin_letter + '">'+
                     "<\/div>"+
-                  '<div class="accordion" id="'+ 
-              'accordionExample'+ data.UserName+data.admin_letter +
-              '">'+
-                '<div class="accordion-item" >'+
-                ' <h2 class="accordion-header" id="headingOne">'+
-                    '<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'+data.UserName+data.admin_letter+'" aria-expanded="true" aria-controls="collapseOne">'+
-                      data.UserName+data.admin_letter +
-                    '</button>' +
-                  '</h2>'+
-                  '<div id="collapseOne'+data.UserName+data.admin_letter+'" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#'
-                  +'accordionExample'+data.UserName+data.admin_letter+
-                  '">"' +
-                  '<div class="accordion-body" ' + 'id="' + data.UserName+data.admin_letter + '">'+
+                  
                   "<tr id='"+ data.UserName+data.admin_letter +"'>"+
                     '<th scope="row">'+ data.UserName +'</th>'+
                     "<td id = 'letterrrq'>"+ data.admin_letter +"</td>"+
@@ -566,7 +557,7 @@
                     "<td id = 'sum'>"+  +"</td>"+
                     
                   "</tr>"+
-                  "<tr>"+
+                  "<tr id='"+ data.UserName+data.admin_letter + data.Noun +"'>"+
                     '<td scope="row"></td>'+
                     '<td scope="row"></td>'+
                     '<td  id="noun_result'+data.UserName+data.admin_letter+'"  ></td>'+
@@ -575,12 +566,8 @@
                     '<td  id="plants_result'+data.UserName+data.admin_letter+'"></td>'+
                     '<td  id="countries_result'+data.UserName+data.admin_letter+'"></td>'+
                     '<td  id="inanimate_result'+data.UserName+data.admin_letter+'"></td>'+
-                    "</tr>"+
-                    '</div>'+
-                  '</div>'+
-                '</div>'+
-              
-                '</div>'
+                    "</tr>"
+                  
                 
           )          
         }      
@@ -617,7 +604,16 @@
      
         }
         
-        
+        function hidefunc(x,y,x){
+          if (window.getComputedStyle(x+y).display === 'block'){
+          document.getElementById(x+y).style.display="none"
+          document.getElementById(x+y+z).style.display="none"
+        }
+        if (window.getComputedStyle(x+y).display === 'none'){
+          document.getElementById(x+y).style.display="block"
+          document.getElementById(x+y+z).style.display="block"
+        }
+        }
         
         document.getElementById('noun').value = ""
         document.getElementById('gnoun').value = ""
