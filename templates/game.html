@@ -532,7 +532,10 @@
             console.log('review rtur',data)
           if(data.private !== true){
             try{
-              document.getElementById('adnon'+data.UserName+data.admin_letter)
+              if (document.getElementById('adnon'+data.UserName+data.admin_letter)){
+
+              }
+              else{
               console.log('data.username is',data.UserName)
                 document.getElementById('divv'+data.UserName).innerHTML += (
                   "<div id='adnon"+ data.UserName+data.admin_letter +"'>"+                   
@@ -562,7 +565,8 @@
                     "<\/div>"
                 
           )          
-              }
+        }      
+        }
             
                   catch(e){
                     console.log('d')
