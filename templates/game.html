@@ -54,16 +54,6 @@
     
       all()
       function all(e){
-        function hidefunc(x,y,x){
-          if (window.getComputedStyle(x+y).display === 'block'){
-          document.getElementById(x+y).style.display="none"
-          document.getElementById(x+y+z).style.display="none"
-        }
-        if (window.getComputedStyle(x+y).display === 'none'){
-          document.getElementById(x+y).style.display="block"
-          document.getElementById(x+y+z).style.display="block"
-        }
-        }
         document.getElementById('timing').style.display='none'
       
       window.onbeforeunload = function (e) {
@@ -546,6 +536,17 @@
 
               }
               else{
+                function hidefunc(x,y,x){
+                  if (window.getComputedStyle(x+y).display === 'block'){
+                  document.getElementById(x+y).style.display="none"
+                  document.getElementById(x+y+z).style.display="none"
+                }
+                if (window.getComputedStyle(x+y).display === 'none'){
+                  document.getElementById(x+y).style.display="block"
+                  document.getElementById(x+y+z).style.display="block"
+                }
+                }
+                
               console.log('data.username is',data.UserName)
                 document.getElementById('divv'+data.UserName).innerHTML += (
                   '<button  type="button" onclick="hidefunc(\'' + data.UserName + '\' ,\'' + data.admin_letter + '\' , \'' + data.Noun + '\' )" id="hide' + data.UserName+data.admin_letter + '">'+
@@ -579,7 +580,19 @@
                     "</tr>"
                   
                 
-          )          
+          )     
+          function hidefunc(x,y,x){
+            if (window.getComputedStyle(x+y).display === 'block'){
+            document.getElementById(x+y).style.display="none"
+            document.getElementById(x+y+z).style.display="none"
+          }
+          if (window.getComputedStyle(x+y).display === 'none'){
+            document.getElementById(x+y).style.display="block"
+            document.getElementById(x+y+z).style.display="block"
+          }
+          }
+          
+
         }      
         }
             
