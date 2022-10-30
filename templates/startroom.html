@@ -238,6 +238,22 @@
         //const gameSocket2 = new WebSocket(
      //   'ws://' + window.location.host + '/ws/' + roomCode + '/'
      //   )
+     doStuff()
+     async function doStuff(){
+      // Code to run before sleep
+     
+      // Sleep for 3 seconds
+      await new Promise(r => setTimeout(r, 3000));
+   
+          gameSocket2.send(JSON.stringify({
+            'RoomCode':roomCode,
+            'players': array,
+            'error':false,
+            'review':false
+          }))
+        
+        }
+      }
 
      function OnSelectedIndexChange(id,thisis,letter){
       console.log('hfei'+id + thisis)
@@ -279,22 +295,7 @@
       console.log('tr is',id2)
       document.getElementById(thisis2+noun_result+letter2).getElementsByTagName('option')[1].selected = 'selected';
     }
-     doStuff()
-     async function doStuff(){
-      // Code to run before sleep
-     
-      // Sleep for 3 seconds
-      await new Promise(r => setTimeout(r, 3000));
-   
-          gameSocket2.send(JSON.stringify({
-            'RoomCode':roomCode,
-            'players': array,
-            'error':false,
-            'review':false
-          }))
-        
-        }
-        gameSocket2.onmessage = function(e){
+     gameSocket2.onmessage = function(e){
           const data = JSON.parse(e.data)
 
           if (data.current_letter_this!==null&&typeof data.current_letter_this!=="undefined"&&data.current_letter_this!==""){
@@ -773,7 +774,7 @@
       }
     }
     
-  }
+  
 
 </script>
 {% endblock %}
