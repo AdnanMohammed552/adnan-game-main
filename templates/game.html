@@ -554,13 +554,29 @@
                 }
                 
               console.log('data.username is',data.UserName)
-                document.getElementById('divv'+data.UserName).innerHTML += (
+                document.getElementById('divv'+data.UserName).innerHTML1+= (
+
+                  
                   '<button id="hide' + data.UserName+data.admin_letter + '" type="submit" onclick="heeer(\'' + data.UserName + '\' ,\'' + data.admin_letter + '\' , \'' + data.Noun + '\' )" >'+
                     u +
                   '</button>'+
                   '<div id="adnon' + data.UserName+data.admin_letter + '">'+
-                    "<\/div>"+
-                  
+                    
+                    '<div class="accordion" id="'+ 
+                    'accordionExample'+ data.UserName +
+                    '">'+
+                      '<div class="accordion-item" >'+
+                      ' <h2 class="accordion-header" id="headingOne">'+
+                          '<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'+data.UserName+'" aria-expanded="true" aria-controls="collapseOne">'+
+                           data.UserName +
+                          '</button>' +
+                        '</h2>'+
+                        '<div id="collapseOne'+data.UserName+'" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#'
+                        +'accordionExample'+data.UserName+
+                        '">"' +
+                        '<div class="accordion-body" ' + 'id="' + data.UserName+ '">'+
+                          '<table class="table">'+
+
                   "<tr id='"+ data.UserName+data.admin_letter +"'>"+
                     '<th scope="row">'+ data.UserName +'</th>'+
                     "<td id = 'letterrrq'>"+ data.admin_letter +"</td>"+
@@ -583,8 +599,14 @@
                     '<td  id="plants_result'+data.UserName+data.admin_letter+'"></td>'+
                     '<td  id="countries_result'+data.UserName+data.admin_letter+'"></td>'+
                     '<td  id="inanimate_result'+data.UserName+data.admin_letter+'"></td>'+
-                    "</tr>"
-                  
+                    "</tr>"+
+                    "<\/div>"+
+                    '</table>'+
+                    '</div>'+
+                  '</div>'+
+                '</div>'+
+              
+                '</div>'
                 
           )     
           
