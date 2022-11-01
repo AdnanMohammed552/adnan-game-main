@@ -556,27 +556,20 @@
               console.log('data.username is',data.UserName)
                 document.getElementById('divv'+data.UserName).innerHTML+= (
 
-                  
-                  '<button id="hide' + data.UserName+data.admin_letter + '" type="submit" onclick="heeer(\'' + data.UserName + '\' ,\'' + data.admin_letter + '\' , \'' + data.Noun + '\' )" >'+
-                    u +
-                  '</button>'+
-                  '<div id="adnon' + data.UserName+data.admin_letter + '">'+
-                    
-                    '<div class="accordion" id="'+ 
-                    'accordionExample'+ data.UserName +
-                    '">'+
-                      '<div class="accordion-item" >'+
-                      ' <h2 class="accordion-header" id="headingOne">'+
-                          '<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'+data.UserName+'" aria-expanded="true" aria-controls="collapseOne">'+
-                           data.UserName +
-                          '</button>' +
-                        '</h2>'+
-                        '<div id="collapseOne'+data.UserName+'" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#'
-                        +'accordionExample'+data.UserName+
-                        '">"' +
-                        '<div class="accordion-body" ' + 'id="' + data.UserName+ '">'+
-                          '<table class="table">'+
-
+                  `
+                  <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
+                    <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+                     <td>Carlos</td>
+                     <td>Mathias</td>
+                     <td>Leme</td>
+                     <td>SP</td>
+                     <td>new</td>
+                 </tr>
+                  `+
+                  `<tr>`+
+                    ` <td colspan="12" class="hiddenRow">
+                      <div class="accordian-body collapse" id="demo1"> 
+                      <table class="table table-striped">`+
                   "<tr id='"+ data.UserName+data.admin_letter +"'>"+
                     '<th scope="row">'+ data.UserName +'</th>'+
                     "<td id = 'letterrrq'>"+ data.admin_letter +"</td>"+
@@ -600,13 +593,10 @@
                     '<td  id="countries_result'+data.UserName+data.admin_letter+'"></td>'+
                     '<td  id="inanimate_result'+data.UserName+data.admin_letter+'"></td>'+
                     "</tr>"+
-                    "<\/div>"+
-                    '</table>'+
-                    '</div>'+
-                  '</div>'+
-                '</div>'+
-              
-                '</div>'
+                  
+                    "</tr>"
+                    
+                    
                 
           )     
           
