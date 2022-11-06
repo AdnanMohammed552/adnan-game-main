@@ -107,7 +107,7 @@
         const data = JSON.parse(e.data);
         if (data.letterconsumer!==null&&typeof data.letterconsumer!=="undefined"&&data.letterconsumer!=="" &&data.letterconsumer!==false){
           console.log('yeeesa')
-          document.querySelector('#leetter').innerHTML =data.letterconsumer;
+          document.querySelector('#leetter').innerHTML =(data.letterconsumer+'ass');
           document.getElementById('noun').disabled=false
           document.getElementById('gnoun').disabled=false
           document.getElementById('animal').disabled=false
@@ -115,6 +115,7 @@
           document.getElementById('countries').disabled=false
           document.getElementById('inanimate').disabled=false
           document.getElementById('sum').disabled=false
+          console.log('foirhguipgbiergpr')
 
         }
         console.log('fisrt data.',data)
