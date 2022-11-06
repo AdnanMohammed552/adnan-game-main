@@ -191,13 +191,13 @@
             document.getElementById('countries').value = ""
             document.getElementById('inanimate').value = ""
             document.getElementById('sum').value = ""
-            document.getElementById('noun').disabled=true
-            document.getElementById('gnoun').disabled=true
-            document.getElementById('animal').disabled=true
-            document.getElementById('plants').disabled=true
-            document.getElementById('countries').disabled=true
-            document.getElementById('inanimate').disabled=true
-            document.getElementById('sum').disabled=true
+            //document.getElementById('noun').disabled=true
+            //document.getElementById('gnoun').disabled=true
+            //document.getElementById('animal').disabled=true
+            //document.getElementById('plants').disabled=true
+            //document.getElementById('countries').disabled=true
+            //document.getElementById('inanimate').disabled=true
+            //document.getElementById('sum').disabled=true
           
           
         }
@@ -306,7 +306,7 @@
               div.setAttribute('id','div_id'+u);
               document.body.append(div);
               document.getElementById('div_id'+u).innerHTML += (
-              '<div class="accordion" id="'+ 
+              '<div dir="rtl" class="accordion" id="'+ 
               'accordionExample'+ u +
               '">'+
                 '<div class="accordion-item" >'+
@@ -358,7 +358,6 @@
               else{
               document.getElementById('divv'+data.UserName).innerHTML += (
             
-                "<h1>karam</h1>"+
                 "<tr id='"+ data.UserName+data.admin_letter +"'>"+
                   '<th scope="row">'+ data.UserName +'</th>'+
                   "<td id = 'letterrrq'>"+ data.admin_letter +"</td>"+
@@ -572,12 +571,12 @@
 
                   
                   '<tr class="info">'+
-                    '<td data-toggle="collapse" data-target="#erer'+ data.UserName +'" class="accordion-toggle"></td>'+
+                    '<td data-toggle="collapse" data-target="#erer'+ data.UserName +data.admin_letter'" class="accordion-toggle">'+ admin_letter +'</td>'+
                  '</tr>'+
                   +
                   `<tr>`+
-                   '<table class="table table-striped">'+
-                  "<tr class='accordian-body collapse' id='erer"+ data.UserName +"'>"+
+                   "<table class='table table-striped accordian-body collapse' id='erer"+ data.UserName +data.admin_letter"' >"+
+                  "<tr >"+
                     '<th scope="row">'+ data.UserName +'</th>'+
                     "<td id = 'letterrrq'>"+ data.admin_letter +"</td>"+
                     "<td id = 'noun'>"+ data.Noun +"</td>"+
