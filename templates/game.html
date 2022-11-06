@@ -322,16 +322,16 @@
                       '<table class="table">'+
                         '<thead>'+
                           '<tr>'+
-                            '<th scope="col">اللاعب</th>'+
-                            '<th scope="col">الحرف </th>'+
-                          ' <th scope="col">إسم </th>'+
-                            '<th scope="col">إسم بنت</th>'+
-                            '<th scope="col">حيوان </th>'+
-                            '<th scope="col">نبات </th>'+
-                            '<th scope="col">جماد </th>'+
-                            '<th scope="col">بلاد </th>'+
-                            '<th scope="col">الغرفة </th>'+
-                            '<th scope="col">مجموع </th>'+
+                            '<th class="text-center"  scope="col">اللاعب</th>'+
+                            '<th class="text-center"  scope="col">الحرف </th>'+
+                          ' <th class="text-center" scope="col">إسم </th>'+
+                            '<th class="text-center" scope="col">إسم بنت</th>'+
+                            '<th class="text-center" scope="col">حيوان </th>'+
+                            '<th class="text-center" scope="col">نبات </th>'+
+                            '<th class="text-center" scope="col">جماد </th>'+
+                            '<th class="text-center" scope="col">بلاد </th>'+
+                            '<th class="text-center" scope="col">الغرفة </th>'+
+                            '<th class="text-center" scope="col">مجموع </th>'+
                           '</tr>'+
                         '</thead>'+
                         '<tbody id="divv'+u+'">'+
@@ -360,26 +360,26 @@
             
                 "<tr id='"+ data.UserName+data.admin_letter +"'>"+
                   '<th scope="row">'+ data.UserName +'</th>'+
-                  "<td id = 'letterrrq'>"+ data.admin_letter +"</td>"+
-                  "<td id = 'noun'>"+ data.noun_review +"</td>"+
-                  "<td id = 'gnoun'>"+ data.gnoun +"</td>"+
-                  "<td id = 'animalNoun'>"+ data.animal +"</td>"+
-                  "<td id = 'plants'>"+data.plants +"</td>"+
-                  "<td id = 'inanimate'>"+ data.inanimate +"</td>"+
-                  "<td id = 'countries'>"+ data.countries +"</td>"+
-                  "<td id = 'room'>"+ data.RoomCode +"</td>"+
-                  "<td id = 'sum'>"+  +"</td>"+
+                  "<td class='text-center' id = 'letterrrq'>"+ data.admin_letter +"</td>"+
+                  "<td class='text-center' id = 'noun'>"+ data.noun_review +"</td>"+
+                  "<td class='text-center' id = 'gnoun'>"+ data.gnoun +"</td>"+
+                  "<td class='text-center' id = 'animalNoun'>"+ data.animal +"</td>"+
+                  "<td class='text-center' id = 'plants'>"+data.plants +"</td>"+
+                  "<td class='text-center' id = 'inanimate'>"+ data.inanimate +"</td>"+
+                  "<td class='text-center' id = 'countries'>"+ data.countries +"</td>"+
+                  "<td class='text-center' id = 'room'>"+ data.RoomCode +"</td>"+
+                  "<td class='text-center' id = 'sum'>"+  +"</td>"+
                   
                 "</tr>"+
                 "<tr>"+
-                  '<td scope="row"></td>'+
-                  '<td scope="row"></td>'+
-                  '<td  id="noun_result'+data.UserName+data.admin_letter+'"  ></td>'+
-                  '<td  id="gnoun_result'+data.UserName+data.admin_letter+'"></td>'+
-                  '<td  id="animal_result'+data.UserName+data.admin_letter+'"></td>'+
-                  '<td  id="plants_result'+data.UserName+data.admin_letter+'"></td>'+
-                  '<td  id="countries_result'+data.UserName+data.admin_letter+'"></td>'+
-                  '<td  id="inanimate_result'+data.UserName+data.admin_letter+'"></td>'+
+                  '<td class="text-center" scope="row"></td>'+
+                  '<td class="text-center" scope="row"></td>'+
+                  '<td class="text-center"  id="noun_result'+data.UserName+data.admin_letter+'"  ></td>'+
+                  '<td class="text-center"  id="gnoun_result'+data.UserName+data.admin_letter+'"></td>'+
+                  '<td class="text-center"  id="animal_result'+data.UserName+data.admin_letter+'"></td>'+
+                  '<td class="text-center"  id="plants_result'+data.UserName+data.admin_letter+'"></td>'+
+                  '<td class="text-center"  id="countries_result'+data.UserName+data.admin_letter+'"></td>'+
+                  '<td class="text-center"  id="inanimate_result'+data.UserName+data.admin_letter+'"></td>'+
                   "</tr>"
               
         )    }      }
@@ -577,26 +577,28 @@
                   `<tr>`+
                    "<table class='table table-striped'>"+
                   "<tr class='accordian-body collapse' id='erer"+ data.UserName +data.admin_letter+"'>"+
-                    '<th scope="row">'+ data.UserName +'</th>'+
-                    "<td id = 'letterrrq'>"+ data.admin_letter +"</td>"+
-                    "<td id = 'noun'>"+ data.Noun +"</td>"+
-                    "<td id = 'gnoun'>"+ data.gnoun +"</td>"+
-                    "<td id = 'animalNoun'>"+ data.animal +"</td>"+
-                    "<td id = 'plants'>"+data.plants +"</td>"+
-                    "<td id = 'inanimate'>"+ data.inanimate +"</td>"+
-                    "<td id = 'countries'>"+ data.countries +"</td>"+
-                    "<td id = 'room'>"+ data.RoomCode +"</td>"+
-                    "<td id = 'sum'>"+  +"</td>"+  
+                    '<th class="text-center" scope="row">'+ data.UserName +'</th>'+
+                    "<td class='text-center' id = 'letterrrq'>"+ data.admin_letter +"</td>"+
+                    "<td class='text-center' id = 'noun'>"+ data.Noun +"</td>"+
+                    "<td class='text-center' id = 'gnoun'>"+ data.gnoun +"</td>"+
+                    "<td class='text-center' id = 'animalNoun'>"+ data.animal +"</td>"+
+                    "<td class='text-center' id = 'plants'>"+data.plants +"</td>"+
+                    "<td class='text-center' id = 'inanimate'>"+ data.inanimate +"</td>"+
+                    "<td class='text-center' id = 'countries'>"+ data.countries +"</td>"+
+                    "<td class='text-center' id = 'room'>"+ data.RoomCode +"</td>"+
+                    "<td class='text-center' id = 'sum'>"+  +"</td>"+  
                   "</tr>"+
                   "<tr class='accordian-body collapse' id='erer"+ data.UserName +data.admin_letter+"'>"+
-                    '<td scope="row"></td>'+
-                    '<td scope="row"></td>'+
-                    '<td  id="noun_result'+data.UserName+data.admin_letter+'"  ></td>'+
-                    '<td  id="gnoun_result'+data.UserName+data.admin_letter+'"></td>'+
-                    '<td  id="animal_result'+data.UserName+data.admin_letter+'"></td>'+
-                    '<td  id="plants_result'+data.UserName+data.admin_letter+'"></td>'+
-                    '<td  id="countries_result'+data.UserName+data.admin_letter+'"></td>'+
-                    '<td  id="inanimate_result'+data.UserName+data.admin_letter+'"></td>'+
+                    '<td class="text-center" scope="row"></td>'+
+                    '<td class="text-center" scope="row"></td>'+
+                    '<td class="text-center"  id="noun_result'+data.UserName+data.admin_letter+'"  ></td>'+
+                    '<td class="text-center"  id="gnoun_result'+data.UserName+data.admin_letter+'"></td>'+
+                    '<td class="text-center"  id="animal_result'+data.UserName+data.admin_letter+'"></td>'+
+                    '<td class="text-center"  id="plants_result'+data.UserName+data.admin_letter+'"></td>'+
+                    '<td class="text-center"  id="countries_result'+data.UserName+data.admin_letter+'"></td>'+
+                    '<td class="text-center"  id="inanimate_result'+data.UserName+data.admin_letter+'"></td>'+
+                    '<td class="text-center" scope="row"></td>'+
+                    '<td class="text-center" scope="row"></td>'+
                   "</tr>"+
                   "</table>"+
                   "</tr>"
