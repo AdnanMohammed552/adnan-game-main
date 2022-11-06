@@ -575,8 +575,8 @@
                  '</tr>'+
                   
                   `<tr>`+
-                   "<table class='table table-striped accordian-body collapse' id='erer"+ data.UserName +data.admin_letter+"' >"+
-                  "<tr >"+
+                   "<table class='table table-striped'>"+
+                  "<tr class='accordian-body collapse' id='erer"+ data.UserName +data.admin_letter+"'>"+
                     '<th scope="row">'+ data.UserName +'</th>'+
                     "<td id = 'letterrrq'>"+ data.admin_letter +"</td>"+
                     "<td id = 'noun'>"+ data.Noun +"</td>"+
@@ -588,7 +588,7 @@
                     "<td id = 'room'>"+ data.RoomCode +"</td>"+
                     "<td id = 'sum'>"+  +"</td>"+  
                   "</tr>"+
-                  "<tr id='"+ data.UserName+data.admin_letter + data.Noun +"'>"+
+                  "<tr class='accordian-body collapse' id='erer"+ data.UserName +data.admin_letter+"'>"+
                     '<td scope="row"></td>'+
                     '<td scope="row"></td>'+
                     '<td  id="noun_result'+data.UserName+data.admin_letter+'"  ></td>'+
