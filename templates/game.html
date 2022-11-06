@@ -58,11 +58,8 @@
       padding: 0 !important;
   }
   tbody tr.info td:hover {
-    color: #fff;
-    -webkit-transition-duration: 500ms;
-    -moz-transition-duration: 500ms;
-    -o-transition-duration: 500ms;
-    transition-duration: 500ms;
+    color: #000;
+   
     cursor: pointer;
   }
  </style>
@@ -322,7 +319,6 @@
                       '<table class="table">'+
                         '<thead>'+
                           '<tr>'+
-                            '<th class="text-center"  scope="col">اللاعب</th>'+
                             '<th class="text-center"  scope="col">الحرف </th>'+
                           ' <th class="text-center" scope="col">إسم </th>'+
                             '<th class="text-center" scope="col">إسم بنت</th>'+
@@ -359,7 +355,6 @@
               document.getElementById('divv'+data.UserName).innerHTML += (
             
                 "<tr id='"+ data.UserName+data.admin_letter +"'>"+
-                  '<th scope="row">'+ data.UserName +'</th>'+
                   "<td class='text-center' id = 'letterrrq'>"+ data.admin_letter +"</td>"+
                   "<td class='text-center' id = 'noun'>"+ data.noun_review +"</td>"+
                   "<td class='text-center' id = 'gnoun'>"+ data.gnoun +"</td>"+
@@ -372,7 +367,6 @@
                   
                 "</tr>"+
                 "<tr>"+
-                  '<td class="text-center" scope="row"></td>'+
                   '<td class="text-center" scope="row"></td>'+
                   '<td class="text-center"  id="noun_result'+data.UserName+data.admin_letter+'"  ></td>'+
                   '<td class="text-center"  id="gnoun_result'+data.UserName+data.admin_letter+'"></td>'+
@@ -577,7 +571,6 @@
                   `<tr>`+
                    "<table class='table table-striped'>"+
                   "<tr class='accordian-body collapse' id='erer"+ data.UserName +data.admin_letter+"'>"+
-                    '<th class="text-center" scope="row">'+ data.UserName +'</th>'+
                     "<td class='text-center' id = 'letterrrq'>"+ data.admin_letter +"</td>"+
                     "<td class='text-center' id = 'noun'>"+ data.Noun +"</td>"+
                     "<td class='text-center' id = 'gnoun'>"+ data.gnoun +"</td>"+
@@ -589,7 +582,6 @@
                     "<td class='text-center' id = 'sum'>"+  +"</td>"+  
                   "</tr>"+
                   "<tr class='accordian-body collapse' id='erer"+ data.UserName +data.admin_letter+"'>"+
-                    '<td class="text-center" scope="row"></td>'+
                     '<td class="text-center" scope="row"></td>'+
                     '<td class="text-center"  id="noun_result'+data.UserName+data.admin_letter+'"  ></td>'+
                     '<td class="text-center"  id="gnoun_result'+data.UserName+data.admin_letter+'"></td>'+
