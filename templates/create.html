@@ -9,7 +9,7 @@
                             {% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}
                         </li>
                     {% endfor %}
-        <label for="exampleInputEmail1">أدخل كود الغرفة</label>
+        <label for="exampleInputEmail1">أدخل كود kالغرفة</label>
         <input type="number" class="form-control" name="roomname" value="{{roomcode}}" id="code" placeholder="أدخل كود الغرفة">  
         <label for="exampleInputPassword1">أدخل الإسم</label>
         <input type="text" maxlength="15" name="username" class="form-control" value="{{request.user.username}}" id="username" placeholder="أدخل الإسم" disabled>
