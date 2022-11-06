@@ -112,7 +112,7 @@
         const data = JSON.parse(e.data);
         if (data.letterconsumer!==null&&typeof data.letterconsumer!=="undefined"&&data.letterconsumer!=="" &&data.letterconsumer!==false){
           console.log('yeeesa')
-          document.querySelector('#leetter').innerHTML =(data.letterconsumer+'ass');
+          document.querySelector('#leetter').innerHTML =(data.letterconsumer);
           document.getElementById('noun').disabled=false
           document.getElementById('gnoun').disabled=false
           document.getElementById('animal').disabled=false
