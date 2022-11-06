@@ -137,14 +137,10 @@
       
        if (data.pret===true){
         if (data.last===false){
-          doStuff()
-          async function doStuff(){
-            document.getElementById('timing').style.display='block'
 
             // Code to run before sleep
            
             // Sleep for 3 seconds
-            await new Promise(r => setTimeout(r, 10000));
          
             // Code to run after sleep
             const word = document.querySelector('#noun');
@@ -201,7 +197,7 @@
             document.getElementById('countries').disabled=true
             document.getElementById('inanimate').disabled=true
             document.getElementById('sum').disabled=true
-          }
+          
           
         }
         else if(data.last===true){
