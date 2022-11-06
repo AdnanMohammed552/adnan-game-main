@@ -354,19 +354,24 @@
               else{
               document.getElementById('divv'+data.UserName).innerHTML += (
             
-                "<tr id='"+ data.UserName+data.admin_letter +"'>"+
+                '<tr class="info">'+
+                  '<td data-toggle="collapse" data-target="#erer'+ data.UserName +data.admin_letter+'" class="accordion-toggle">'+ admin_letter +'</td>'+
+               '</tr>'+
+                
+                `<tr>`+
+                 "<table class='table table-striped'>"+
+                "<tr class='accordian-body collapse' id='erer"+ data.UserName +data.admin_letter+"'>"+
                   "<td class='text-center' id = 'letterrrq'>"+ data.admin_letter +"</td>"+
-                  "<td class='text-center' id = 'noun'>"+ data.noun_review +"</td>"+
+                  "<td class='text-center' id = 'noun'>"+ data.Noun +"</td>"+
                   "<td class='text-center' id = 'gnoun'>"+ data.gnoun +"</td>"+
                   "<td class='text-center' id = 'animalNoun'>"+ data.animal +"</td>"+
                   "<td class='text-center' id = 'plants'>"+data.plants +"</td>"+
                   "<td class='text-center' id = 'inanimate'>"+ data.inanimate +"</td>"+
                   "<td class='text-center' id = 'countries'>"+ data.countries +"</td>"+
                   "<td class='text-center' id = 'room'>"+ data.RoomCode +"</td>"+
-                  "<td class='text-center' id = 'sum'>"+  +"</td>"+
-                  
+                  "<td class='text-center' id = 'sum'>"+  +"</td>"+  
                 "</tr>"+
-                "<tr>"+
+                "<tr class='accordian-body collapse' id='erer"+ data.UserName +data.admin_letter+"'>"+
                   '<td class="text-center" scope="row"></td>'+
                   '<td class="text-center"  id="noun_result'+data.UserName+data.admin_letter+'"  ></td>'+
                   '<td class="text-center"  id="gnoun_result'+data.UserName+data.admin_letter+'"></td>'+
@@ -374,7 +379,12 @@
                   '<td class="text-center"  id="plants_result'+data.UserName+data.admin_letter+'"></td>'+
                   '<td class="text-center"  id="countries_result'+data.UserName+data.admin_letter+'"></td>'+
                   '<td class="text-center"  id="inanimate_result'+data.UserName+data.admin_letter+'"></td>'+
-                  "</tr>"
+                  '<td class="text-center" scope="row"></td>'+
+                  '<td class="text-center" scope="row"></td>'+
+                "</tr>"+
+                "</table>"+
+                "</tr>"
+                               
               
         )    }      }
           }
