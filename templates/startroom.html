@@ -103,6 +103,7 @@
 
   var totalarray=[]
   const fetchedarray = []
+  const totalsarray=[]
 
   document.getElementById('done').style.display = "block"
   document.getElementById('flep').style.display ="none"
@@ -670,6 +671,7 @@
 
    
     document.getElementById('end').onclick = function(e){
+      console.log(totalsarray)
       
         var data=document.getElementById('pdfgenerator').innerHTML;
         var myWindow = window.open('', 'my div');
@@ -727,6 +729,7 @@
                 const wordinanimate_result = document.querySelector('#inanimate_result'+x+re);
                 const inanimate_result = wordinanimate_result.options[wordinanimate_result.selectedIndex].text;;
                 var total =parseInt(noun_result)+parseInt(gnoun_result)+parseInt(animal_result)+parseInt(plants_result)+parseInt(countries_result)+parseInt(inanimate_result)
+                totalsarray.append(total)
                 document.querySelector('#sum'+x+re).innerHTML=total
                 document.querySelector('#noun_result'+x+re).disabled = true;
                 document.querySelector('#gnoun_result'+x+re).disabled = true;
