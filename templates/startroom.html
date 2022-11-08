@@ -487,6 +487,8 @@
     
                   
             )
+            
+
           }
           else{
             var noun_result = 'noun_result'
@@ -518,10 +520,10 @@
                       
                       '<td >'+
                         
-                        
+                        '<h3 id="noun_resultx'+UserName+admin_letter+'"></h3>'
                         '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + noun_result+'\',\'' + admin_letter +'\')" id="noun_result'+UserName+admin_letter+'" >'+
                           '<option style="font-size:16px;" href="#">0</option>'+
-                         ' <option style="font-size:16px;" href="#">5</option>'+
+                         ' <option style="font-size:16px;"  href="#">5</option>'+
                           '<option style="font-size:16px;" href="#">10</option>'+
                         '</select>'+
                         '<div id="noun_resulttd'+ UserName +admin_letter+'">'+
@@ -529,7 +531,8 @@
                           '<\/div>'+
                       '</td>'+
                       '<td>'+
-                        
+                        '<h3 id="gnoun_resultx'+UserName+admin_letter+'"></h3>'
+
                         '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + gnoun_result+'\' ,\'' + admin_letter +'\')"  id="gnoun_result'+UserName+admin_letter+'" >'+
                           '<option style="font-size:16px;" href="#">0</option>'+
                          ' <option style="font-size:16px;" href="#">5</option>'+
@@ -542,10 +545,11 @@
                       '</td>'+
                       '<td>'+
                         
-                        
+                        '<h3 id="animal_resultx'+UserName+admin_letter+'"></h3>'
+
                         '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + animal_result+'\',\'' + admin_letter +'\')"  id="animal_result'+UserName+admin_letter+'" >'+
                           '<option style="font-size:16px;" href="#">0</option>'+
-                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">5</option>'+
                           '<option style="font-size:16px;" href="#">10</option>'+
                         '</select>'+
                         '<div id="animal_resulttd'+ UserName +admin_letter+'">'+
@@ -554,7 +558,8 @@
                       '</td>'+
                       '<td>'+
                         
-                        
+                        '<h3 id="plants_resultx'+UserName+admin_letter+'"></h3>'
+
                         '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + plants_result +'\',\'' + admin_letter +'\')"  id="plants_result'+UserName+admin_letter+'" >'+
                           '<option style="font-size:16px;" href="#">0</option>'+
                          ' <option style="font-size:16px;" href="#">5</option>'+
@@ -566,7 +571,8 @@
                       '</td>'+
                       '<td>'+
                         
-                        
+                        '<h3 id="countries_resultx'+UserName+admin_letter+'"></h3>'
+
                         '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + countries_result +'\',\'' + admin_letter +'\')"  id="countries_result'+UserName+admin_letter+'" >'+
                           '<option style="font-size:16px;" href="#">0</option>'+
                          ' <option style="font-size:16px;" href="#">5</option>'+
@@ -578,7 +584,8 @@
                       '</td>'+
                       '<td>'+
                        
-                        
+                        '<h3 id="inanimate_resultx'+UserName+admin_letter+'"></h3>'
+
                         '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + inanimate_result +'\',\'' + admin_letter +'\')"  id="inanimate_result'+UserName+admin_letter+'" >'+
                           '<option style="font-size:16px;" href="#">0</option>'+
                          ' <option style="font-size:16px;" href="#">5</option>'+
@@ -715,12 +722,20 @@
                 const inanimate_result = wordinanimate_result.options[wordinanimate_result.selectedIndex].text;;
                 var total =parseInt(noun_result)+parseInt(gnoun_result)+parseInt(animal_result)+parseInt(plants_result)+parseInt(countries_result)+parseInt(inanimate_result)
                 document.querySelector('#sum'+x+re).innerHTML=total
-                document.querySelector('#noun_result'+x+re).disabled = true;
-                document.querySelector('#gnoun_result'+x+re).disabled = true;
-                document.querySelector('#animal_result'+x+re).disabled = true;
-                document.querySelector('#plants_result'+x+re).disabled = true;
-                document.querySelector('#countries_result'+x+re).disabled = true;
-                document.querySelector('#inanimate_result'+x+re).disabled = true;
+                document.querySelector('#noun_result'+x+re).style.display = 'none';
+                document.querySelector('#gnoun_result'+x+re).style.display = 'none';
+                document.querySelector('#animal_result'+x+re).style.display = 'none';
+                document.querySelector('#plants_result'+x+re).style.display = 'none';
+                document.querySelector('#countries_result'+x+re).style.display = 'none';
+                document.querySelector('#inanimate_result'+x+re).style.display = 'none';
+
+                document.querySelector('#noun_resultx'+x+re).innerHTML = noun_result;
+                document.querySelector('#gnoun_resultx'+x+re).innerHTML = gnoun_result;
+                document.querySelector('#animal_resultx'+x+re).innerHTML = animal_result;
+                document.querySelector('#plants_resultx'+x+re).innerHTML = plants_result;
+                document.querySelector('#countries_resultx'+x+re).innerHTML = countries_result;
+                document.querySelector('#inanimate_resultx'+x+re).innerHTML = inanimate_result;
+
                 document.querySelector('#view').disabled = false;
                 console.log('heere we go',x,noun_result,
                 gnoun_result,
