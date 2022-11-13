@@ -103,9 +103,7 @@
 
   var totalarray=[]
   const fetchedarray = []
-  const totalsarray={
-
-  }
+  const totalsarray=[]
 
   
   document.getElementById('done').style.display = "block"
@@ -679,7 +677,7 @@
       console.log('totalsarray is:',totalsarray)
       const oddarray= []
       const evenarray=[]
-
+     
         var data=document.getElementById('pdfgenerator').innerHTML;
         var myWindow = window.open('', 'my div');
         myWindow.document.write('<html><head><title>my div</title>');
@@ -736,7 +734,8 @@
                 const wordinanimate_result = document.querySelector('#inanimate_result'+x+re);
                 const inanimate_result = wordinanimate_result.options[wordinanimate_result.selectedIndex].text;;
                 var total =parseInt(noun_result)+parseInt(gnoun_result)+parseInt(animal_result)+parseInt(plants_result)+parseInt(countries_result)+parseInt(inanimate_result)
-                totalsarray.x = total
+                totalsarray.push({name:"%s",x})
+
                 document.querySelector('#sum'+x+re).innerHTML=total
                 document.querySelector('#noun_result'+x+re).disabled = true;
                 document.querySelector('#gnoun_result'+x+re).disabled = true;
