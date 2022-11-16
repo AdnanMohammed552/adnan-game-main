@@ -715,7 +715,8 @@
 
         }))
         console.log('ejgbe is:',fetchedarray)
-        for (x of fetchedarray){
+        for (x in fetchedarray)
+        {
 
         for(var i = 1; i < document.getElementById('table'+x).rows.length; i++)
         {
