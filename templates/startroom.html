@@ -719,11 +719,14 @@
         {
           console.log('xxnx:',x)
           console.log('ddd',document.getElementById('table'+x))
+
           sumVal=0
         for(var i = 1; i < document.getElementById('table'+x).rows.length; i++)
         {
-            sumVal = sumVal + parseInt(table.rows[i].cells[8].innerHTML);
-            console.log('table.rows is3',table.rows[i].cells[8].innerHTML)
+            if (i% 2 == 0){
+            sumVal = sumVal + parseInt(document.getElementById('table'+x).rows[i].cells[8].innerHTML);
+            console.log('table.rows is3',document.getElementById('table'+x).rows[i].cells[8].innerHTML)
+          }
 
           console.log('sim su',sumVal)
           document.getElementById('gjro').innerHTML += (sumVal+x)
