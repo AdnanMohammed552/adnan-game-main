@@ -9,6 +9,8 @@ urlpatterns = [
     path('wait/<int:room_code>/' , views.wait),
     path('end/<int:room_code>/' , views.end),
     path('<int:room_code>/admin' , views.room_admin ),
+    path('<int:room_code>/admin/end' , views.room_end ),
+
     path('join',views.join)
 
 ]

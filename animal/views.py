@@ -10,6 +10,10 @@ from django.contrib.auth.models import User
 x= ["أ","ب","ت","ث","ج","ح","خ","د","ذ","ر","ز","س","ش","ص","ض","ط","ع","غ","ف","ق","ك","ل","م","ن","ه","و","ي"]
 the_letter = 'ب'
 print('this is letterc from views',the_letter)
+
+def room_end(request):
+    req=request.GET['anan']
+    return render(request,'endAdmin.html',{'user':req})
 def roomentering(request):
     return render(request,'room.html')
 
