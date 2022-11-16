@@ -6,14 +6,22 @@ import random
 from animal import models
 from django.http import HttpResponse
 from django.contrib.auth.models import User 
-
+from django.template import Template, Context
+from accounts import models as md
 x= ["أ","ب","ت","ث","ج","ح","خ","د","ذ","ر","ز","س","ش","ص","ض","ط","ع","غ","ف","ق","ك","ل","م","ن","ه","و","ي"]
 the_letter = 'ب'
 print('this is letterc from views',the_letter)
 
 def room_end(request,room_code):
     req=request.GET['anan']
-    return render(request,'endAdmin.html',{'user':req})
+    valie = md.room_created.objects.all().filter(user=request.user,room_created=room_code).values()
+    for i in valie:
+        z = i['table']
+        break
+    adnan = Template(z)
+
+    print('my is ',request.user ,z , type(z))
+    return render(request,'endAdmin.html',{'user':req,'z':adnan.render(Context({}))})
 def roomentering(request):
     return render(request,'room.html')
 
