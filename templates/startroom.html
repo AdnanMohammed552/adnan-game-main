@@ -674,21 +674,7 @@
 
   
 
-    document.getElementById('roww').onclick=function(e){
-      var table = document.getElementById("table"), sumVal = 0;
-
-      for(var i = 1; i < table.rows.length; i++)
-      {
-          if (i% 2 == 0){
-          sumVal = sumVal + parseInt(table.rows[i].cells[2].innerHTML);
-          console.log('table.rows is',table.rows[i])
-          console.log('table.rows is2',table.rows[i].cells[2])
-          console.log('table.rows is3',table.rows[i].cells[8].innerHTML)
-        }
-
-      }
-      console.log('summ is:',sumVal)
-    }
+    
     document.getElementById('end').onclick = function(e){
       console.log('totalsarray is:',totalsarray)
      
@@ -727,6 +713,17 @@
         
 
         }))
+        var table = document.getElementById("table"), sumVal = 0;
+
+        for(var i = 1; i < table.rows.length; i++)
+        {
+            if (i% 2 == 0){
+            sumVal = sumVal + parseInt(table.rows[i].cells[8].innerHTML);
+            console.log('table.rows is3',table.rows[i].cells[8].innerHTML)
+          }
+          console.log('sim su',sumVal)
+  
+        }
 
 
       
