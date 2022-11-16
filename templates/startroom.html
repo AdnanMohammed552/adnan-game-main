@@ -17,7 +17,8 @@
         
      <h3 id="flep">الحرف القادم هو<span class="badge badge-primary" id="leetter"></span></h5>   
      
-  
+      <button type="button" class="btn btn-primary btn-rounded" id="roww">rooww</button>
+
     <button type="button" class="btn btn-primary btn-rounded" id="done">Start game</button>
     
 
@@ -335,7 +336,7 @@
                      
                     '<div style="background-color:'+generateRandomColor()+'" class="accordion-body" ' + 'id="' + u + '">'+
                       
-                        '<table class="table table-bordered border-primary">'+
+                        '<table class="table table-bordered border-primary" id="table">'+
                           '<thead>'+
                             '<tr>'+
                               '<th style="font-size:20px;" scope="col">اللاعب</th>'+
@@ -672,11 +673,16 @@
 
   
 
-   
+    document.getElementById('roww').onclick=function(e){
+      var table = document.getElementById("table"), sumVal = 0;
+
+      for(var i = 1; i < table.rows.length; i++)
+      {
+          sumVal = sumVal + parseInt(table.rows[i].cells[2].innerHTML);
+      }
+    }
     document.getElementById('end').onclick = function(e){
       console.log('totalsarray is:',totalsarray)
-      const oddarray= []
-      const evenarray=[]
      
         var data=document.getElementById('pdfgenerator').innerHTML;
         var myWindow = window.open('', 'my div');
@@ -704,7 +710,6 @@
             'window.close();'+
         '<\/script>')
        
-        
         var alltables = document.getElementById('pdfgenerator').innerHTML;
         gameSocket2.send(JSON.stringify({
             'end' : true,
@@ -714,6 +719,8 @@
         
 
         }))
+
+
       
       
 
