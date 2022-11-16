@@ -679,11 +679,12 @@
 
       for(var i = 1; i < table.rows.length; i++)
       {
+          if (i% 2 == 0){
           sumVal = sumVal + parseInt(table.rows[i].cells[2].innerHTML);
           console.log('table.rows is',table.rows[i])
           console.log('table.rows is2',table.rows[i].cells[2])
           console.log('table.rows is3',table.rows[i].cells[8].innerHTML)
-
+        }
 
       }
       console.log('summ is:',sumVal)
@@ -751,7 +752,6 @@
                 totalsarray.push({name:x,total:total})
 
                 document.querySelector('#sum'+x+re).innerHTML=total
-                document.querySelector('#sum2'+x+re).innerHTML=total
 
                 document.querySelector('#noun_result'+x+re).disabled = true;
                 document.querySelector('#gnoun_result'+x+re).disabled = true;
