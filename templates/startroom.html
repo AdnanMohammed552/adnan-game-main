@@ -405,8 +405,9 @@
                       "<td style='font-size:18px;' id = 'plants'>"+plants +"</td>"+
                       "<td style='font-size:18px;' id = 'inanimate'>"+ inanimate +"</td>"+
                       "<td style='font-size:18px;' id = 'countries'>"+ countries +"</td>"+
+                      "<td style='font-size:18px;' id = 'sum2"+ UserName+admin_letter +"'>"+  +"</td>"+
                       "<td style='font-size:18px;' id = 'room'>"+ RoomCode +"</td>"+
-                      "<td style='font-size:18px;' id = 'sum'>"+  +"</td>"+
+
                       
                     "</tr>"+
                     "<tr>"+
@@ -520,8 +521,8 @@
                       "<td style='font-size:18px;' id = 'plants'>"+plants +"</td>"+
                       "<td style='font-size:18px;' id = 'inanimate'>"+ inanimate +"</td>"+
                       "<td style='font-size:18px;' id = 'countries'>"+ countries +"</td>"+
+                      "<td style='font-size:18px;' id = 'sum2"+ UserName+admin_letter +"'>"+  +"</td>"+
                       "<td style='font-size:18px;' id = 'room'>"+ RoomCode +"</td>"+
-                      "<td style='font-size:18px;' id = 'sum'>"+  +"</td>"+
                       
                     "</tr>"+
                     "<tr>"+
@@ -681,7 +682,7 @@
           sumVal = sumVal + parseInt(table.rows[i].cells[2].innerHTML);
           console.log('table.rows is',table.rows[i])
           console.log('table.rows is2',table.rows[i].cells[2])
-          console.log('table.rows is3',table.rows[i].cells[3])
+          console.log('table.rows is3',table.rows[i].cells[8].innerHTML)
 
 
       }
@@ -750,6 +751,8 @@
                 totalsarray.push({name:x,total:total})
 
                 document.querySelector('#sum'+x+re).innerHTML=total
+                document.querySelector('#sum2'+x+re).innerHTML=total
+
                 document.querySelector('#noun_result'+x+re).disabled = true;
                 document.querySelector('#gnoun_result'+x+re).disabled = true;
                 document.querySelector('#animal_result'+x+re).disabled = true;
