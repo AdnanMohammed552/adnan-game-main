@@ -11,7 +11,7 @@ x= ["أ","ب","ت","ث","ج","ح","خ","د","ذ","ر","ز","س","ش","ص","ض","
 the_letter = 'ب'
 print('this is letterc from views',the_letter)
 
-def room_end(request):
+def room_end(request,room_code):
     req=request.GET['anan']
     return render(request,'endAdmin.html',{'user':req})
 def roomentering(request):
