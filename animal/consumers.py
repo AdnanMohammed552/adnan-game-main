@@ -464,6 +464,7 @@ class gameConsumer(AsyncWebsocketConsumer):
                 if await (self.see(self.glabaluser1,RoomCode)) == '<QuerySet []>':
                     try:
                         await self.savetable(alltables,self.glabaluser1,RoomCode)
+                        await self.delete(RoomCode=RoomCode)
                     except:
                         print('error')
 
@@ -520,6 +521,14 @@ class gameConsumer(AsyncWebsocketConsumer):
 
                 
             }))
+
+    @sync_to_async
+    def delete(self,RoomCode):
+        models.adnan_test11.get(room=RoomCode).delete()
+        models.summeryOfLetter.get(room=RoomCode).delete()
+        models.array.get(room=RoomCode).delete()
+        models.players.get(room=RoomCode).delete()
+
     @sync_to_async
     def see(self,user,room):
         e=models2.room_created.objects.all().filter(user=user,room_created=room).values()
