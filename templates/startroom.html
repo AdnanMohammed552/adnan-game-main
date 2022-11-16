@@ -14,7 +14,8 @@
 </div>
 </div>
 <div class="container-xxl">
-        
+  
+    <h3 id="gjro"></h3>
      <h3 id="flep">الحرف القادم هو<span class="badge badge-primary" id="leetter"></span></h5>   
      
       <button type="button" class="btn btn-primary btn-rounded" id="roww">rooww</button>
@@ -336,7 +337,7 @@
                      
                     '<div style="background-color:'+generateRandomColor()+'" class="accordion-body" ' + 'id="' + u + '">'+
                       
-                        '<table class="table table-bordered border-primary" id="table">'+
+                        '<table class="table table-bordered border-primary" id="table'+ u +'">'+
                           '<thead>'+
                             '<tr>'+
                               '<th style="font-size:20px;" scope="col">اللاعب</th>'+
@@ -713,18 +714,20 @@
         
 
         }))
-        var table = document.getElementById("table"), sumVal = 0;
+        for (x of fetchedarray){
 
-        for(var i = 1; i < table.rows.length; i++)
+        for(var i = 1; i < document.getElementById('table'+x).rows.length; i++)
         {
             if (i% 2 == 0){
             sumVal = sumVal + parseInt(table.rows[i].cells[8].innerHTML);
             console.log('table.rows is3',table.rows[i].cells[8].innerHTML)
           }
+
           console.log('sim su',sumVal)
+          document.getElementById('gjro').innerHTML += (sumVal+x)
   
         }
-
+      }
 
       
       
