@@ -721,10 +721,8 @@
           console.log('ddd',document.getElementById('table'+x))
         for(var i = 1; i < document.getElementById('table'+x).rows.length; i++)
         {
-            if (i% 2 != 0){
             sumVal = sumVal + parseInt(table.rows[i].cells[8].innerHTML);
             console.log('table.rows is3',table.rows[i].cells[8].innerHTML)
-          }
 
           console.log('sim su',sumVal)
           document.getElementById('gjro').innerHTML += (sumVal+x)
