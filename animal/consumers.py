@@ -3,6 +3,7 @@ import json
 from asgiref.sync import sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
 from . import models
+from letter import models as m
 import random
 from accounts import models as models2
 
