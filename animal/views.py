@@ -131,6 +131,7 @@ def joinnow(request,room_code):
 def wait(request , room_code):
     from gameadmin.models import startingroom
     x=startingroom.objects.all().filter(room=room_code).values()
+    print('zzfegeg',x)
     z=False
     for i in x:
         z=i['started']
