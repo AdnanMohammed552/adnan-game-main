@@ -78,7 +78,7 @@ def room_admin(request,room_code):
     import qrcode
     context ={}
     factory = qrcode.image.svg.SvgImage
-    qr_image = qrcode.make('https://adnan-game-animal.herokuapp.com/joinqr/'+room_code,image_factory=factory, box_size=20)    
+    qr_image = qrcode.make(f'https://adnan-game-animal.herokuapp.com/joinqr/{room_code}',image_factory=factory, box_size=20)    
     bufstore = io.BytesIO()
     qr_image.save(bufstore)    
     
