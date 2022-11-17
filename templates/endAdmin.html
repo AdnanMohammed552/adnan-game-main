@@ -6,8 +6,15 @@
 
 {% block content %}
 {{user}}
+<!--...
 {{z}}
+-->
+{{ user|json_script:'json-roomcode' }}
+
 
 <script>
+    const user = JSON.parse(document.getElementById('json-roomcode').textContent);
+    console.log('eeew;',euser)
+
 </script>
 {% endblock %}
