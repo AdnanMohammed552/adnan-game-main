@@ -29,17 +29,15 @@
             sin.push(y)
         }
     }
-    for (i of sin){
-    
+    while(sin.length!==0){
     tan=Math.max.apply(Math,sin)
     const index = sin.indexOf(tan);
-    if (index > -1) { 
     sin.splice(index, 1); 
-    }
+    
     cotangent=tan.toString()
     csc=cos.indexOf(cotangent)
     
-    console.log('winner is',cos[csc-1])
+    console.log('winner is',cos[csc-1],tan)
 }
 </script>
 {% endblock %}
