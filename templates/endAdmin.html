@@ -11,6 +11,8 @@
 {{z}}
 
 {{ user|json_script:'json-roomcode' }}
+{{ rr|json_script:'json-rr' }}
+
 <style>
     @import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Lato:300,400,700,900&display=swap');
     *{
@@ -208,6 +210,8 @@
 
 <script>
     const user = JSON.parse(document.getElementById('json-roomcode').textContent);
+    const roomCode = JSON.parse(document.getElementById('json-rr').textContent);
+
     console.log('eeew;',user)
     console.log('eeew;',[user])
 

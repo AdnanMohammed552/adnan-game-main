@@ -21,7 +21,7 @@ def room_end(request,room_code):
     adnan = Template(z)
 
     print('my is ',request.user ,z , type(z))
-    return render(request,'endAdmin.html',{'user':req,'z':adnan.render(Context({}))})
+    return render(request,'endAdmin.html',{'rr':room_code,'user':req,'z':adnan.render(Context({}))})
     #return render(request,'endAdmin.html',{'user':req})
 def roomentering(request):
     return render(request,'room.html')
