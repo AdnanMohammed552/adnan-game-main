@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block content %}
+<div id="myrank"></div>
 <table class="table table-bordered border-primary" id="table'+ u +'">
     <thead>
       <tr>
@@ -20,14 +21,23 @@
 {{z}}
 {{ room|json_script:'json-rr' }}
 
+{{ user|json_script:'json-user' }}
+
 <script>
     const roomCode = JSON.parse(document.getElementById('json-rr').textContent);
+
+    const usernamee = JSON.parse(document.getElementById('json-user').textContent);
 
     const gameSocketlettr = new WebSocket(
         'wss://' + window.location.host + '/ws/' + roomCode + '/letter/'
         )
         gameSocketlettr.onmessage=function(e){
             const data = JSON.parse(e.data);
+            if (data.players_final===usernamee){
+              document.getElementById('myrank').innerHTML+=(
+                `<h3>Your rank is `+data.rank+`</h3>`
+              )
+            }
 
             document.getElementById('divv').innerHTML+=(
                 "<tr>"+ 
