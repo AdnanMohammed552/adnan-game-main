@@ -11,6 +11,7 @@ urlpatterns = [
     path('<int:room_code>/admin' , views.room_admin ),
     path('<int:room_code>/admin/end' , views.room_end ),
 
-    path('join',views.join)
+    path('join',views.join),
+    path('joinqr/<int:room_code>',views.joinqr)
 
 ]

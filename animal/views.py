@@ -73,12 +73,22 @@ def room_admin(request,room_code):
 
     info = adnan_test11.objects.filter(room=room_code)
     models.summeryOfLetter.objects.create(all_letter_as="['أ','ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي']",room=room_code)
-
+    import io   
+    import qrcode.image.svg 
+    import qrcode
+    context ={}
+    factory = qrcode.image.svg.SvgImage
+    qr_image = qrcode.make('https://adnan-game-animal.herokuapp.com/joinqr/'+room_code,image_factory=factory, box_size=20)    
+    bufstore = io.BytesIO()
+    qr_image.save(bufstore)    
     
-    return render(request, "startroom.html", {'info': info , 'room_code':room_code ,'the_letter':the_letter})
+    context["svg"] = bufstore.getvalue().decode() 
+    return render(request, "startroom.html", {'info': info , 'room_code':room_code ,'the_letter':the_letter},context=context)
 
 def join(request):
     return render(request,'join.html')
+def joinqr(request,room_code):
+    return render(request,'joinqr.html',{'room':room_code})
 
 def joinnow(request,room_code):
     users = User.objects.all()
