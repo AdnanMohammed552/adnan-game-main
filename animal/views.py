@@ -133,4 +133,4 @@ def wait(request , room_code):
 
 
 def end(request , room_code):
-    return render(request , 'end.html')
+    return render(request , 'end.html',{'room':room_code})

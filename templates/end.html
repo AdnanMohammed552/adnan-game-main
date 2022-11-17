@@ -17,7 +17,11 @@
     </tbody>
     
 </table>
+{{ room|json_script:'json-rr' }}
+
 <script>
+    const roomCode = JSON.parse(document.getElementById('json-rr').textContent);
+
     const gameSocketlettr = new WebSocket(
         'wss://' + window.location.host + '/ws/' + roomCode + '/letter/'
         )
