@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block content %}
-{{user}}
 
-{{z}}
 
 <div id="ranking"></div>
+{{z}}
+
 {{ user|json_script:'json-roomcode' }}
 <style>
     @import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Lato:300,400,700,900&display=swap');
