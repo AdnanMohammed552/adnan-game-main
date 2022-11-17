@@ -471,7 +471,7 @@ class gameConsumer(AsyncWebsocketConsumer):
             if alltables != False:
                 self.glabaluser1=str(self.glabaluser)
                 #print('شيشي',await (self.see(self.glabaluser1,RoomCode)))
-                if await (self.see(self.glabaluser1,RoomCode)) == '<QuerySet []>' or adnan==True:
+                if True:
                     try:
                         await self.savetable(alltables,self.glabaluser1,RoomCode)
                         await self.delete(RoomCode=RoomCode)
