@@ -108,7 +108,7 @@ def myaccount(request,room_code):
         valie = models.room_created.objects.all().filter(user=request.user,room_created=room_code).order_by('-pk').values()
         
 
-        print('my is ',request.user ,z , type(z))
+       # print('my is ',request.user ,z , type(z))
         return render (request , 'myaccount.html',{'z':valie})
     else:
         return HttpResponse('please login to your account , <a href="/account/login">login</a>')
