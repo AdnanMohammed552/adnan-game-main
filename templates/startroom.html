@@ -681,7 +681,15 @@
     document.getElementById('end').onclick = function(e){
       console.log('totalsarray is:',totalsarray)
      
-        
+      var alltables = document.getElementById('pdfgenerator').innerHTML;
+      gameSocket2.send(JSON.stringify({
+          'end' : true,
+          'RoomCode' : roomCode,
+          'alltables':alltables
+
+      
+
+      }))
         const last=[]
         console.log('ejgbe is:',fetchedarray)
         for (x of fetchedarray)
