@@ -215,8 +215,13 @@
     const gameSocketlettr = new WebSocket(
       'wss://' + window.location.host + '/ws/' + roomCode + '/letter/'
       )
-      gameSocketlettr.onopen=function(e){}
-    
+      doStuff()
+      async function doStuff(){
+       // Code to run before sleep
+      
+       // Sleep for 3 seconds
+       await new Promise(r => setTimeout(r, 3000));
+
     console.log('eeew;',user)
     console.log('eeew;',[user])
 
@@ -309,6 +314,6 @@ while(document.getElementById('bare')){
 }
 
         
-      
+}
 </script>
 {% endblock %}
