@@ -16,11 +16,12 @@
 </div>
 </div>
 <div class="container-xxl">
+  <div id="qrcode">
   {{ svg|safe }}
+</div>
     <h3 id="gjro"></h3>
      <h3 id="flep">الحرف القادم هو<span class="badge badge-primary" id="leetter"></span></h5>   
      
-      <button type="button" class="btn btn-primary btn-rounded" id="roww">rooww</button>
 
     <button type="button" class="btn btn-primary btn-rounded" id="done">Start game</button>
     
@@ -104,6 +105,8 @@
 <script>
   
   document.getElementById('end').style.display='none'
+
+  document.getElementById('done').style.display='none'
 
   var totalarray=[]
   const fetchedarray = []
@@ -218,6 +221,7 @@
       }
      
       document.querySelector('#send').onclick = function(e){
+        
         document.getElementById('send').style.display='none'
         document.getElementById('end').style.display='block'
         const started = false
@@ -234,6 +238,9 @@
 
           }
         }
+        document.getElementById('qrcode').style.display = "none"
+        document.getElementById('done').click()
+
 
       }
       document.querySelector('#done').onclick = function(e){
