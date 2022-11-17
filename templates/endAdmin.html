@@ -30,7 +30,7 @@
         }
     }
     console.log('sin:',sin)
-    tan=Math.max(sin)
+    tan=Math.max.apply(Math,sin)
     console.log('tan:',tan)
 
     csc=cos.indexOf(tan)
