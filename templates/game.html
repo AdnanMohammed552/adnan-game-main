@@ -434,6 +434,12 @@
           }
           console.log('data ir ' , data.end)
           if(data.end == true){
+            doStuff()
+          async function doStuff(){
+          // Code to run before sleep
+          
+          // Sleep for 3 seconds
+          await new Promise(r => setTimeout(r, 3000));
             const h1Element = document.createElement("h3");
             h1Element.textContent = 'game had been ended';
             document.body.append(h1Element);
@@ -441,6 +447,7 @@
             var url =  window.location.origin +'/end/' +roomCode + '?username=' + username;
             history.pushState({}, null, url);
             location.reload() 
+          }
           }
         }
       }

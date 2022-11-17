@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '6577Fd65D17144C781787Cb1E90Ba7866F540Ecec4Ae0C74'
 
 # SECURITY WARNING: don't run with debug turned on in production
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://adnan-game-animal.herokuapp.com/']
 
@@ -101,9 +101,9 @@ CHANNEL_LAYERS = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd922ke3l91opuq',
-        'USER': 'ttejrtniceglod',
-        'PASSWORD': '7f1f32861790736faccdf574142b7eef7e03d99b35e6cdf4cadea97bc0024b27',
+        'NAME': 'd1rree2j0dr73d',
+        'USER': 'iqdqbgigzyikrv',
+        'PASSWORD': 'dde08b1b680362b5a20171d7d8dc33917494acd4ac6d2a6da47c31bc4626af8a',
         'HOST': 'ec2-3-219-135-162.compute-1.amazonaws.com',
         'PORT': '5432',
     }
