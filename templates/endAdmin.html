@@ -6,9 +6,9 @@
 
 {% block content %}
 {{user}}
-<!--...
+
 {{z}}
--->
+
 <div id="ranking"></div>
 {{ user|json_script:'json-roomcode' }}
 <style>
@@ -205,20 +205,7 @@
     
     
 </style>
-<script>
-    $(document).ready(function(){
-  
-        $(".winner-wrap").hover(
-          function () {
-              $('.team-wrap').removeClass('inactive').addClass('active');
-          },
-          function () {
-              $('.team-wrap').removeClass('active').addClass('inactive');
-          }
-      );
-        
-        });
-</script>
+
 <script>
     const user = JSON.parse(document.getElementById('json-roomcode').textContent);
     console.log('eeew;',user)
