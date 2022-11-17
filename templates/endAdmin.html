@@ -17,7 +17,20 @@
     console.log('eeew;',user)
     console.log('eeew;',[user])
 
-    console.log('eeew;',[user.split(",")])
+    console.log('eeew;',user.split(","))
+    cos=user.split(",")
+    const sin =[]
+    for(x of cos){
+        if(typeof x ==="string"){
+
+        }
+        else{
+            sin.push(x)
+        }
+    }
+    tan=Math.max(sin)
+    csc=cos.indexOf(tan)
+    console.log('winner is',cos[csc-1])
 
 </script>
 {% endblock %}
