@@ -138,8 +138,12 @@ def wait(request , room_code):
         break
 
     if z != True:
-        username = request.GET['username']
-        return render(request , 'waiting.html' , {'room_code':room_code ,'username':username ,})
+        if x != '<QuerySet []>':
+            username = request.GET['username']
+            return render(request , 'waiting.html' , {'room_code':room_code ,'username':username ,})
+        else:
+            return HttpResponse('No game with this code')
+            
     else:
         return HttpResponse('Game already started')
 
