@@ -703,6 +703,10 @@
         'window.document.close(); '+
 
             'window.focus(); '+
+            "while(document.getElementById('bare')){"+
+             " document.getElementById('bare').remove()"+
+            "}"+
+
             'window.print();'+
             'window.close();'+
         '<\/script>')
