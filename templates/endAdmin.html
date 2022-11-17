@@ -234,6 +234,16 @@
     csc=cos.indexOf(cotangent)
     
     console.log('winner is',cos[csc-1],tan)
+    const gameSocketlettr = new WebSocket(
+        'wss://' + window.location.host + '/ws/' + roomCode + '/letter/'
+        )
+    gameSocketlettr.onopen=function(e){
+      gameSocketlettr.send(JSON.stringify({
+        'rank':i,
+        'players_final':cos[csc-1],
+        'players_final_res':tan
+      }))
+    }
     if(i===1){
     document.getElementById('ranking').innerHTML+=(
     `
@@ -291,5 +301,8 @@ i++
 while(document.getElementById('bare')){
   document.getElementById('bare').remove()
 }
+
+        
+      
 </script>
 {% endblock %}

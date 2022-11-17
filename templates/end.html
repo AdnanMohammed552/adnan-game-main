@@ -4,7 +4,36 @@
 {% endblock %}
 
 {% block content %}
-<script>
+<table class="table table-bordered border-primary" id="table'+ u +'">
+    <thead>
+      <tr>
+        <th style="font-size:20px;" scope="col">الترتيب</th>
+        <th style="font-size:20px;" scope="col">اللاعب </th>
+        <th style="font-size:20px;" scope="col">مجموع </th>
+      </tr>
+    </thead>
+    <tbody id="divv">
+  
+    </tbody>
     
+</table>
+<script>
+    const gameSocketlettr = new WebSocket(
+        'wss://' + window.location.host + '/ws/' + roomCode + '/letter/'
+        )
+        gameSocketlettr.onmessage=function(e){
+            const data = JSON.parse(e.data);
+
+            document.getElementById('divv').innerHTML+=(
+                "<tr>"+ 
+                    "<td style='font-size:18px;' id = 'letter'>"+ data.rank +"</td>"+
+                    "<td style='font-size:18px;' id = 'noun'>"+ data.players_final +"</td>"+
+                    "<td style='font-size:18px;' id = 'room'>"+ data.players_final_res +"</td>"+
+
+                    
+                  "</tr>"+
+            )
+
+        }
 </script>
 {% endblock %}

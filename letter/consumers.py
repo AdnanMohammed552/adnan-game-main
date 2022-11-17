@@ -26,6 +26,18 @@ class gameConsumer(AsyncWebsocketConsumer):
         print('its consemers')
         data= json.loads(text_data)
         try:
+            players_final=data['players_final']
+        except:
+            players_final=''
+        try:
+            rank=data['rank']
+        except:
+            rank=''
+        try:
+            players_final_res=data['players_final_res']
+        except:
+            players_final_res=''
+        try:
             wantletter=data['wantletter']
         except:
             wantletter=''
@@ -44,12 +56,23 @@ class gameConsumer(AsyncWebsocketConsumer):
                     'type':'word',
                     'wantletter':wantletter,
                     'wantletter1':wantletter1,
-                    'RoomCode':RoomCode
+                    'RoomCode':RoomCode,
+                    'players_final':players_final,
+                    'players_final_res':players_final_res,
+                    'rank':rank
 
                 
                 }
         )
     async def word(self,event):
+        try:
+            players_final=event['players_final']
+        except:
+            players_final=''
+        try:
+            players_final_res=event['players_final_res']
+        except:
+            players_final_res=''
         try:
             wantletter=event['wantletter']
         except:
@@ -62,7 +85,17 @@ class gameConsumer(AsyncWebsocketConsumer):
             RoomCode=event['RoomCode']
         except:
             RoomCode=''
+        try:
+            rank=event['rank']
+        except:
+            rank=''
+        if players_final!= '':
+            await self.send(text_data=json.dumps({
+                'players_final':players_final,
+                'players_final_res':players_final_res,
+                'rank':rank
 
+            }))
         if wantletter== 'value' and wantletter1=='value':
             print('consumer room cide is',RoomCode)
             e = await self.des(RoomCode)
