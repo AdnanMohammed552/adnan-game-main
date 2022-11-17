@@ -140,7 +140,7 @@ def wait(request , room_code):
         username = request.GET['username']
         return render(request , 'waiting.html' , {'room_code':room_code ,'username':username ,})
     else:
-        return HttpResponse('Eror')
+        return HttpResponse('Game already started')
 
 def end(request , room_code):
     username = request.GET['username']
