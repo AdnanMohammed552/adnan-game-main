@@ -93,6 +93,7 @@ def joinqr(request,room_code):
     return render(request,'joinqr.html',{'room':room_code})
 
 def joinnow(request,room_code):
+
     users = User.objects.all()
     mydata = models.summeryOfLetter.objects.all().values()
     t =[]
@@ -128,10 +129,16 @@ def joinnow(request,room_code):
 
 
 def wait(request , room_code):
-    
-    username = request.GET['username']
-    return render(request , 'waiting.html' , {'room_code':room_code ,'username':username ,})
-
+    from gameadmin.models import startingroom
+    x=startingroom.objects.all().filter(room=room_code).values()
+    for i in x:
+        z=i['started']
+        break
+    if z != True:
+        username = request.GET['username']
+        return render(request , 'waiting.html' , {'room_code':room_code ,'username':username ,})
+    else:
+        return HttpResponse('Eror')
 
 def end(request , room_code):
     username = request.GET['username']
