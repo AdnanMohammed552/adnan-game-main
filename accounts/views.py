@@ -106,9 +106,7 @@ def mygames(request):
 def myaccount(request,room_code):
     if request.user.is_authenticated:
         valie = models.room_created.objects.all().filter(user=request.user,room_created=room_code).last()
-        for i in valie:
-            z = i['table']
-            break
+        z = valie['table']
         adnan = Template(z)
 
         print('my is ',request.user ,z , type(z))
