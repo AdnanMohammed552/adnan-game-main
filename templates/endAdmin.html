@@ -209,9 +209,12 @@
 </style>
 
 <script>
+  
     const user = JSON.parse(document.getElementById('json-roomcode').textContent);
     const roomCode = JSON.parse(document.getElementById('json-rr').textContent);
-
+    const gameSocketlettr = new WebSocket(
+      'wss://' + window.location.host + '/ws/' + roomCode + '/letter/'
+      )
     console.log('eeew;',user)
     console.log('eeew;',[user])
 
@@ -238,16 +241,13 @@
     csc=cos.indexOf(cotangent)
     
     console.log('winner is',cos[csc-1],tan)
-    const gameSocketlettr = new WebSocket(
-        'wss://' + window.location.host + '/ws/' + roomCode + '/letter/'
-        )
-    gameSocketlettr.onopen=function(e){
+    
       gameSocketlettr.send(JSON.stringify({
         'rank':i,
         'players_final':cos[csc-1],
         'players_final_res':tan
       }))
-    }
+    
     if(i===1){
     document.getElementById('ranking').innerHTML+=(
     `
