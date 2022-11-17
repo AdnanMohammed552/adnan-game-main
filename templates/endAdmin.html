@@ -245,8 +245,7 @@
     csc=cos.indexOf(cotangent)
     
     console.log('winner is',cos[csc-1],tan)
-}
-document.getElementById('ranking').innerHTML+=(
+    document.getElementById('ranking').innerHTML+=(
     `
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
 
@@ -254,8 +253,8 @@ document.getElementById('ranking').innerHTML+=(
     <div class="winner-wrap">
       <div class="border"></div>
       <div class="medal-box"><i class="fas fa-medal"></i></div>
-      <h1>Ocean Race Challenge 2019</h1>
-      <h2>Team Alpha</h2>
+      <h1>`+cos[csc-1]+`</h1>
+      <h2>`+tan+`</h2>
       <div class="winner-ribbon">WINNER</div>
       <div class="right-ribbon"></div>
       <div class="left-ribbon"></div>
@@ -270,6 +269,8 @@ document.getElementById('ranking').innerHTML+=(
   </section>
     `
 )
+}
+
 
 </script>
 {% endblock %}
