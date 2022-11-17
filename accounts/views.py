@@ -105,10 +105,13 @@ def mygames(request):
         return HttpResponse('please login to your account , <a href="/account/login">login</a>')
 def myaccount(request,room_code):
     if request.user.is_authenticated:
-        valie = models.room_created.objects.all().filter(user=request.user,room_created=room_code).values()
-        
+        valie = models.room_created.objects.all().filter(user=request.user,room_created=room_code).order_by('-pk').values()
+        for i in valie:
+            z = i['table']
+            break
+        adnan = Template(z)
 
-       # print('my is ',request.user ,z , type(z))
-        return render (request , 'myaccount.html',{'z':valie})
+        print('my is ',request.user ,z , type(z))
+        return render (request , 'myaccount.html',{'z':adnan.render(Context({}))})
     else:
         return HttpResponse('please login to your account , <a href="/account/login">login</a>')
