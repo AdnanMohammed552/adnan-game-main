@@ -215,6 +215,8 @@
     const gameSocketlettr = new WebSocket(
       'wss://' + window.location.host + '/ws/' + roomCode + '/letter/'
       )
+      gameSocketlettr.onopen=function(e){}
+    
     console.log('eeew;',user)
     console.log('eeew;',[user])
 
