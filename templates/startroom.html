@@ -714,6 +714,7 @@
         
 
         }))
+        const last=[]
         console.log('ejgbe is:',fetchedarray)
         for (x of fetchedarray)
         {
@@ -729,14 +730,18 @@
           }
 
           console.log('sim su',sumVal)
+          
   
         }
+        last.append(x)
+        last.append(sumVal)
+
         document.getElementById('gjro').innerHTML += (sumVal+x)
 
       }
 
 
-      window.location.replace(window.location.pathname+'/end?anan='+document.getElementById('gjro').innerHTML)
+      window.location.replace(window.location.pathname+'/end?anan='+last)
 
       
       
