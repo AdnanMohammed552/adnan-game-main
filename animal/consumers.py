@@ -210,6 +210,10 @@ class gameConsumer(AsyncWebsocketConsumer):
             adnan=data['adnan']
         except:
             adnan=False
+        try:
+            alltables2=data['alltables2']
+        except:
+            alltables2=False   
         print(inanimate )
         await self.save_info(noun,gnoun,animal,plants,countries,inanimate,username,the_letter,RoomCode)
 
@@ -278,7 +282,8 @@ class gameConsumer(AsyncWebsocketConsumer):
                         'user':user,
                         'star':star,
                         'alltables':alltables,
-                        'adnan':adnan
+                        'adnan':adnan,
+                        'alltables2':alltables2,
 
                     
                     }
@@ -466,6 +471,10 @@ class gameConsumer(AsyncWebsocketConsumer):
                 adnan=event['adnan']
             except:
                 adnan=False
+            try:
+                alltables2=event['alltables2']
+            except:
+                alltables2=False                
             the_letter_choosen = ''
             #print('alllll',alltables)
             if alltables != False:
@@ -475,6 +484,15 @@ class gameConsumer(AsyncWebsocketConsumer):
                     try:
                         await self.savetable(alltables,self.glabaluser1,RoomCode)
                         await self.delete(RoomCode=RoomCode)
+                    except:
+                        print('error')
+
+            if alltables2 != False:
+                self.glabaluser1=str(self.glabaluser)
+                #print('شيشي',await (self.see(self.glabaluser1,RoomCode)))
+                if True:
+                    try:
+                        await self.savetable(alltables2,self.glabaluser1,RoomCode)
                     except:
                         print('error')
 
@@ -526,7 +544,8 @@ class gameConsumer(AsyncWebsocketConsumer):
                 'ready':ready,
                 'kick':kick,
                 'user':user,
-                'star':star
+                'star':star,
+                
 
 
                 
