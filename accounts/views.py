@@ -105,7 +105,7 @@ def mygames(request):
         return HttpResponse('please login to your account , <a href="/account/login">login</a>')
 def myaccount(request,room_code):
     if request.user.is_authenticated:
-        valie = models.room_created.objects.all().filter(user=request.user,room_created=room_code).order_by('id').values()
+        valie = models.room_created.objects.all().filter(user=request.user,room_created=room_code).values()
         for i in valie:
             z = i['table']
             break
