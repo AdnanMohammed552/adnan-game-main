@@ -32,7 +32,10 @@
     for (i of sin){
     
     tan=Math.max.apply(Math,sin)
-    sin.remove(tan)
+    const index = array.indexOf(tan);
+    if (index > -1) { 
+    sin.splice(index, 1); 
+    }
     cotangent=tan.toString()
     csc=cos.indexOf(cotangent)
     
