@@ -82,8 +82,8 @@ def room_admin(request,room_code):
     bufstore = io.BytesIO()
     qr_image.save(bufstore)    
     
-    context["svg"] = bufstore.getvalue().decode() 
-    return render(request, "startroom.html", {'info': info , 'room_code':room_code ,'the_letter':the_letter},context=context)
+    svg = bufstore.getvalue().decode() 
+    return render(request, "startroom.html", {'info': info , 'room_code':room_code ,'the_letter':the_letter,'svg':svg})
 
 def join(request):
     return render(request,'join.html')
