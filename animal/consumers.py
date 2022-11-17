@@ -206,6 +206,10 @@ class gameConsumer(AsyncWebsocketConsumer):
             alltables=data['alltables']
         except:
             alltables=False
+        try:
+            adnan=data['adnan']
+        except:
+            adnan=False
         print(inanimate )
         await self.save_info(noun,gnoun,animal,plants,countries,inanimate,username,the_letter,RoomCode)
 
@@ -274,6 +278,7 @@ class gameConsumer(AsyncWebsocketConsumer):
                         'user':user,
                         'star':star,
                         'alltables':alltables,
+                        'adnan':adnan
 
                     
                     }
@@ -457,12 +462,16 @@ class gameConsumer(AsyncWebsocketConsumer):
                 alltables=event['alltables']
             except:
                 alltables=False
+            try:
+                adnan=event['adnan']
+            except:
+                adnan=False
             the_letter_choosen = ''
             #print('alllll',alltables)
             if alltables != False:
                 self.glabaluser1=str(self.glabaluser)
                 #print('شيشي',await (self.see(self.glabaluser1,RoomCode)))
-                if await (self.see(self.glabaluser1,RoomCode)) == '<QuerySet []>':
+                if await (self.see(self.glabaluser1,RoomCode)) == '<QuerySet []>' or adnan==True:
                     try:
                         await self.savetable(alltables,self.glabaluser1,RoomCode)
                         await self.delete(RoomCode=RoomCode)
