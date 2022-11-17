@@ -18,6 +18,7 @@ def room_end(request,room_code):
     for i in valie:
         z = i['table']
         break
+    global adnan
     adnan = Template(z)
 
     print('my is ',request.user ,z , type(z))
@@ -133,4 +134,4 @@ def wait(request , room_code):
 
 
 def end(request , room_code):
-    return render(request , 'end.html',{'room':room_code})
+    return render(request , 'end.html',{'room':room_code,'z':adnan.render(Context({}))})
