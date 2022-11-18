@@ -31,11 +31,19 @@
                     'nogame':'no'
                   
                   }))  
+                  doStuff()
+                  async function doStuff(){
+                   // Code to run before sleep
+                  
+                   // Sleep for 3 seconds
+                   await new Promise(r => setTimeout(r, 3000));
+                    var url =  window.location.origin + '/' +roomCode + '/admin';
+                    history.pushState({}, null, url);
+                    location.reload()   
+                  }
               }
                 
-                //var url =  window.location.origin + '/' +roomCode + '/admin';
-                //history.pushState({}, null, url);
-                //location.reload()    
+                
 
             };
             function func(id){
