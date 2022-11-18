@@ -45,6 +45,14 @@ class gameConsumer(AsyncWebsocketConsumer):
             end = data['end']
         except:
             end=False
+        try:
+            nogame = data['nogame']
+        except:
+            nogame=False
+        try:
+            room = data['room']
+        except:
+            room=False
 
         await self.save(roomCode,started,end)
         
@@ -54,7 +62,9 @@ class gameConsumer(AsyncWebsocketConsumer):
                 'type':'word',
                 'started' :started,
                 'userName':userName,
-                'end':end
+                'end':end,
+                'nogame':nogame,
+                'room':room
             }
             
         )
@@ -72,15 +82,31 @@ class gameConsumer(AsyncWebsocketConsumer):
             end = event['end']
         except:
             end= False
+        try:
+            nogame = event['nogame']
+        except:
+            nogame=False
+        try:
+            room = event['room']
+        except:
+            room=False
+        if nogame == 'no' and room != False:
+            self.savve(room)
 
         await self.send(text_data=json.dumps({
 
             'started':started,
             'userName':userName,
-            'end':end
+            'end':end,
+            
             
         }))
 
     @sync_to_async
     def save(self,room,started,end):
         startingroom.objects.create(room=room,started=started,end=end)
+
+    @sync_to_async
+    def savve(self,room):
+        from .models import room
+        room.objects.create(room=room).save()

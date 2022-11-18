@@ -7,3 +7,6 @@ class startingroom(models.Model):
     end = models.BooleanField()
     def __str__(self):
         return self.room
+
+class room(models.Model):
+    room = models.CharField(max_length=150)

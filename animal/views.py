@@ -131,6 +131,10 @@ def joinnow(request,room_code):
 def wait(request , room_code):
     from gameadmin.models import startingroom
     x=startingroom.objects.all().filter(room=room_code).values()
+    from gameadmin.models import room
+
+    savve= room.objects.all().filter(room=room_code)
+    print('roomisss',savve)
     print('zzfegeg',x)
     z=False
     for i in x:
@@ -138,7 +142,7 @@ def wait(request , room_code):
         break
 
     if z != True:
-        if x != '<QuerySet []>':
+        if savve != '<QuerySet []>':
             username = request.GET['username']
             return render(request , 'waiting.html' , {'room_code':room_code ,'username':username ,})
         else:
