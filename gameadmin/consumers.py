@@ -91,6 +91,7 @@ class gameConsumer(AsyncWebsocketConsumer):
         except:
             room=False
         if nogame == 'no' and room != False:
+            print('fjkwlegbkwenfoe99')
             self.savve(room)
 
         await self.send(text_data=json.dumps({
