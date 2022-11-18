@@ -90,6 +90,8 @@ class gameConsumer(AsyncWebsocketConsumer):
             room = event['room']
         except:
             room=False
+
+        print('costheta',nogame,room)
         if nogame == 'no' and room != False:
             print('fjkwlegbkwenfoe99')
             self.savve(room)
