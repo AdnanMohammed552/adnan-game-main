@@ -17,33 +17,21 @@
 
         <button type="submit" id="admin" class="form-control">Admin</button>
         <script>
-            
-             document.querySelector('#admin').onclick = function(e){
-                var roomCode = document.querySelector('#code').value;
-                var userName = document.querySelector('#username').value;
-                const gameSocket = new WebSocket(
+            const gameSocket = new WebSocket(
         
                 'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
               )
-              gameSocket.onopen=function(e){
                 gameSocket.send(JSON.stringify({
-                    'room' : roomCode,
-                    'nogame':'no'
-                  
-                  }))  
-                  doStuff()
-                  async function doStuff(){
-                   // Code to run before sleep
-                  
-                   // Sleep for 3 seconds
-                   await new Promise(r => setTimeout(r, 3000));
-                    var url =  window.location.origin + '/' +roomCode + '/admin';
-                    history.pushState({}, null, url);
-                    location.reload()   
-                  }
-              }
+                  'room' : roomCode,
+                  'nogame':'no'
                 
-                
+                }))  
+             document.querySelector('#admin').onclick = function(e){
+                var roomCode = document.querySelector('#code').value;
+                var userName = document.querySelector('#username').value;
+                var url =  window.location.origin + '/' +roomCode + '/admin';
+                history.pushState({}, null, url);
+                location.reload()    
 
             };
             function func(id){
