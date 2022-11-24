@@ -22,9 +22,15 @@
              document.querySelector('#admin').onclick = function(e){
                 var roomCode = document.querySelector('#code').value;
                 var userName = document.querySelector('#username').value;
-                var url =  window.location.origin + '/' +roomCode + '/admin';
+                if(isNaN(parseInt(roomCode))){
+                    alert('Error, pleasr enter numbers')
+                }
+                else{
+                    var url =  window.location.origin + '/' +roomCode + '/admin';
                 history.pushState({}, null, url);
                 location.reload()    
+                }
+               
 
             };
             function func(id){
