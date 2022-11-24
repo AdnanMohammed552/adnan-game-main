@@ -12,16 +12,18 @@
                             {% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}
                         </li>
                     {% endfor %}
-        <label style="color: white" for="exampleInputEmail1">أدخل كودالغرفة</label>
-        <input type="number" class="form-control" name="roomname" value="{{roomcode}}" id="code" placeholder="أدخل كود الغرفة">  
-        <label style="color: white" for="exampleInputPassword1">أدخل الإسم</label>
-        <input type="text" maxlength="15" name="username" class="form-control" value="{{request.user.username}}" id="username" placeholder="أدخل الإسم" disabled>
+        <div  dir="ltr">
+        <label style="color: white" for="exampleInputEmail1">Enter room code</label>
+        <input type="number" class="form-control" name="roomname" value="{{roomcode}}" id="code" placeholder="Enter room code">  
+        <label style="color: white" for="exampleInputPassword1">Enter admin name</label>
+        <input type="text" maxlength="15" name="username" class="form-control" value="{{request.user.username}}" id="username" placeholder="Enter admin name" disabled>
       
-        <div class="form-group row" dir="ltr">
+        <div class="form-group row">
             <div class="col-sm-10">
               <button type="button" id="admin" class="btn btn-primary btn-md">Join room</button>
             </div>
           </div>
+        </div>
         <script>
              document.querySelector('#admin').onclick = function(e){
                 var roomCode = document.querySelector('#code').value;
