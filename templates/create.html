@@ -6,6 +6,7 @@
 {% endblock %}
 {% block content %}
 {% if request.user.is_authenticated %}
+
                     {% for message in messages %}
                         <li class="{{ message.tags }}">
                             {% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}
@@ -16,7 +17,7 @@
         <label style="color: white" for="exampleInputPassword1">أدخل الإسم</label>
         <input type="text" maxlength="15" name="username" class="form-control" value="{{request.user.username}}" id="username" placeholder="أدخل الإسم" disabled>
       
-        <div class="form-group row">
+        <div class="form-group row" dir="ltr">
             <div class="col-sm-10">
               <button type="button" id="admin" class="btn btn-primary btn-md">Join room</button>
             </div>
