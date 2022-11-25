@@ -146,7 +146,7 @@
        
         
       
-       if (data.pret===true){
+       if (data.pret===true && data.disabled===true){
         if (data.last===false){
 
             // Code to run before sleep
@@ -194,6 +194,7 @@
               
             
             }))
+            
             document.getElementById('noun').disabled=true
             document.getElementById('gnoun').disabled=true
             document.getElementById('animal').disabled=true
@@ -504,6 +505,7 @@
         console.log('here is it',gameSocket.onmessage)
        
         gameSocket.send(JSON.stringify({
+          'disabled':true,
           'star':true,
           'pret':true,
           'Noun' : noun,

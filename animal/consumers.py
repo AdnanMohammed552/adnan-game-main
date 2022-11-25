@@ -214,6 +214,10 @@ class gameConsumer(AsyncWebsocketConsumer):
             alltables2=data['alltables2']
         except:
             alltables2=False   
+        try:
+            disabled=data['disabled']
+        except:
+            disabled=False   
         print(inanimate )
         await self.save_info(noun,gnoun,animal,plants,countries,inanimate,username,the_letter,RoomCode)
 
@@ -284,6 +288,7 @@ class gameConsumer(AsyncWebsocketConsumer):
                         'alltables':alltables,
                         'adnan':adnan,
                         'alltables2':alltables2,
+                        'disabled':disabled
 
                     
                     }
@@ -474,7 +479,11 @@ class gameConsumer(AsyncWebsocketConsumer):
             try:
                 alltables2=event['alltables2']
             except:
-                alltables2=False                
+                alltables2=False   
+            try:
+                disabled=event['disabled']
+            except:
+                disabled=False   
             the_letter_choosen = ''
             #print('alllll',alltables)
             if alltables != False:
@@ -545,6 +554,7 @@ class gameConsumer(AsyncWebsocketConsumer):
                 'kick':kick,
                 'user':user,
                 'star':star,
+                'disabled':disabled
                 
 
 
