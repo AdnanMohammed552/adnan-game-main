@@ -262,6 +262,9 @@
               
             
             }))
+            if (data.letterconsumer !==false&&data.letterconsumer!==''&&typeof data.letterconsumer!=="undefined"){
+            }
+            else{
             document.getElementById('noun').disabled=true
             document.getElementById('gnoun').disabled=true
             document.getElementById('animal').disabled=true
@@ -269,6 +272,7 @@
             document.getElementById('countries').disabled=true
             document.getElementById('inanimate').disabled=true
             document.getElementById('sum').disabled=true
+          }
             document.getElementById('noun').value = ""
             document.getElementById('gnoun').value = ""
             document.getElementById('animal').value = ""
@@ -674,7 +678,10 @@
      
         }
         
-        
+        if (data.letterconsumer !==false&&data.letterconsumer!==''&&typeof data.letterconsumer!=="undefined"){
+
+        }
+        else{
         document.getElementById('noun').disabled=true
         document.getElementById('gnoun').disabled=true
         document.getElementById('animal').disabled=true
@@ -682,6 +689,7 @@
         document.getElementById('countries').disabled=true
         document.getElementById('inanimate').disabled=true
         document.getElementById('sum').disabled=true
+      }
         document.getElementById('noun').value = ""
         document.getElementById('gnoun').value = ""
         document.getElementById('animal').value = ""
