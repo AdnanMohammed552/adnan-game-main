@@ -202,7 +202,7 @@
               gameSocket.send(JSON.stringify({
               
                 'pret':false,
-                'Noun' : noun,
+                'Noun' : noun+'N/A',
                 'gnoun':gnoun,
                 'animal':animal,
                 'plants':plants,
@@ -277,7 +277,7 @@
             gameSocket.send(JSON.stringify({
          
               'pret':true,
-              'Noun' : noun,
+              'Noun' : noun+'N/A',
               'gnoun':gnoun,
               'animal':animal,
               'plants':plants,
@@ -537,7 +537,7 @@
           'disabled':true,
           'star':true,
           'pret':true,
-          'Noun' : noun,
+          'Noun' : noun+'N/A',
           'gnoun':gnoun,
           'animal':animal,
           'plants':plants,
