@@ -176,22 +176,22 @@
             console.log(noun);
             console.log('here is it',gameSocket.onmessage)
             if(noun===''){
-              noun="N/A"
+              const noun="N/A"
             }
             if(gnoun===''){
-              gnoun="N/A"
+              const gnoun="N/A"
             }
             if(animal===''){
-              animal="N/A"
+              const animal="N/A"
             }
             if(plants===''){
-              plants="N/A"
+              const plants="N/A"
             }
             if(countries===''){
-              countries="N/A"
+              const countries="N/A"
             }
             if(inanimate===''){
-              inanimate="N/A"
+              const inanimate="N/A"
             }
             gameSocket.send(JSON.stringify({
               
