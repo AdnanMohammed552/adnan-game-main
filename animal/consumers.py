@@ -37,31 +37,31 @@ class gameConsumer(AsyncWebsocketConsumer):
         try:
             gnoun = data['gnoun']
         except:
-            gnoun = ''    
+            gnoun = 'N/A'    
         try:
             noun = data['Noun']
         except:
-            noun = ''    
+            noun = 'N/A'      
         try:
             animal = data['animal']
         except:
-            animal = ''    
+            animal = 'N/A'      
         try:
             plants = data['plants']
         except:
-            plants = ''    
+            plants = 'N/A'       
         try:
             countries = data['countries']
         except:
-            countries = ''    
+            countries = 'N/A'   
         try:
             inanimate = data['inanimate']
         except:
-            inanimate = ''    
+            inanimate = 'N/A'   
         try:
             sum = data['sum']
         except:
-            sum = ''    
+            sum = '' 
         try:
             username = data['UserName']
         except:
