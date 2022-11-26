@@ -175,7 +175,24 @@
             animal)
             console.log(noun);
             console.log('here is it',gameSocket.onmessage)
-  
+            if(noun===''){
+              noun="N/A"
+            }
+            if(gnoun===''){
+              gnoun="N/A"
+            }
+            if(animal===''){
+              animal="N/A"
+            }
+            if(plants===''){
+              plants="N/A"
+            }
+            if(countries===''){
+              countries="N/A"
+            }
+            if(inanimate===''){
+              inanimate="N/A"
+            }
             gameSocket.send(JSON.stringify({
               
               'pret':false,
