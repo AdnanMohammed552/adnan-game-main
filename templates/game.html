@@ -175,44 +175,32 @@
             animal)
             console.log(noun);
             console.log('here is it',gameSocket.onmessage)
-            if(noun===''){
+            if(noun ==='' || gnoun==='' || animal==='' || plants==='' || countries==='' || inanimate===''){
               const noun="N/A"
-            }
-            if(gnoun===''){
-              const gnoun="N/A"
-            }
-            if(animal===''){
-              const animal="N/A"
-            }
-            if(plants===''){
-              const plants="N/A"
-            }
-            if(countries===''){
-              const countries="N/A"
-            }
-            if(inanimate===''){
-              const inanimate="N/A"
-            }
-            gameSocket.send(JSON.stringify({
+              gameSocket.send(JSON.stringify({
               
-              'pret':false,
-              'Noun' : noun,
-              'gnoun':gnoun,
-              'animal':animal,
-              'plants':plants,
-              'countries':countries,
-              'inanimate':inanimate,
-              'sum':sum,
-              'UserName' : username,
-              'RoomCode' : roomCode,
-              'preg':false,
-              'main_row':true,
-              'admin_letter':admin_letter,
-              'error':true,
-              'preg':true
+                'pret':false,
+                'Noun' : 'N/A',
+                'gnoun':gnoun,
+                'animal':animal,
+                'plants':plants,
+                'countries':countries,
+                'inanimate':inanimate,
+                'sum':sum,
+                'UserName' : username,
+                'RoomCode' : roomCode,
+                'preg':false,
+                'main_row':true,
+                'admin_letter':admin_letter,
+                'error':true,
+                'preg':true
+                
               
+              }))
+
+            }
             
-            }))
+            
             
             document.getElementById('noun').disabled=true
             document.getElementById('gnoun').disabled=true
