@@ -176,7 +176,6 @@
             console.log(noun);
             console.log('here is it',gameSocket.onmessage)
             if(noun ==='' || gnoun==='' || animal==='' || plants==='' || countries==='' || inanimate===''){
-              const noun="N/A"
               gameSocket.send(JSON.stringify({
               
                 'pret':false,
