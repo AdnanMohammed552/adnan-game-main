@@ -180,7 +180,30 @@
               gameSocket.send(JSON.stringify({
               
                 'pret':false,
-                'Noun' : 'N/A',
+                'Noun' : noun+'N/A',
+                'gnoun':gnoun,
+                'animal':animal,
+                'plants':plants,
+                'countries':countries,
+                'inanimate':inanimate,
+                'sum':sum,
+                'UserName' : username,
+                'RoomCode' : roomCode,
+                'preg':false,
+                'main_row':true,
+                'admin_letter':admin_letter,
+                'error':true,
+                'preg':true
+                
+              
+              }))
+
+            }
+            else{
+              gameSocket.send(JSON.stringify({
+              
+                'pret':false,
+                'Noun' : noun,
                 'gnoun':gnoun,
                 'animal':animal,
                 'plants':plants,
