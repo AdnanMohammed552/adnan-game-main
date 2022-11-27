@@ -14,7 +14,6 @@
     font-family: 'Noto Sans Arabic';font-size: 22px;
 }
 </style>
-<button type="submit" id="ready" class="btn btn-primary">Ready</button>
 
 <section class="pb-4" id="timing">
   <div class="bg-white border rounded-5">
@@ -81,27 +80,8 @@
     {{ username|json_script:'json-username' }}
     {{ the_letter|json_script:'json-the_letter' }}
     <script>
-      document.getElementById('ready').onclick=function(e){
-        document.getElementById('ready').style.display='none'
-        if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
-        (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-         if (document.documentElement.requestFullScreen) {  
-           document.documentElement.requestFullScreen();  
-         } else if (document.documentElement.mozRequestFullScreen) {  
-           document.documentElement.mozRequestFullScreen();  
-         } else if (document.documentElement.webkitRequestFullScreen) {  
-           document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);  
-         }  
-       } else {  
-         if (document.cancelFullScreen) {  
-           document.cancelFullScreen();  
-         } else if (document.mozCancelFullScreen) {  
-           document.mozCancelFullScreen();  
-         } else if (document.webkitCancelFullScreen) {  
-           document.webkitCancelFullScreen();  
-         }  
-       }  
-
+     
+  
 
       all()
       function all(e){
@@ -756,7 +736,7 @@
         }
         
     }
-  }
+  
 
     </script>
   </div>
