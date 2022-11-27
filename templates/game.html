@@ -14,6 +14,7 @@
     font-family: 'Noto Sans Arabic';font-size: 22px;
 }
 </style>
+<button type="submit" id="ready" class="btn btn-primary">Ready</button>
 
 <section class="pb-4" id="timing">
   <div class="bg-white border rounded-5">
@@ -80,10 +81,8 @@
     {{ username|json_script:'json-username' }}
     {{ the_letter|json_script:'json-the_letter' }}
     <script>
-      
-
-      all()
-      function all(e){
+      document.getElementById('ready').onclick=function(e){
+        document.getElementById('ready').style.display='none'
         if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
         (!document.mozFullScreen && !document.webkitIsFullScreen)) {
          if (document.documentElement.requestFullScreen) {  
@@ -103,6 +102,10 @@
          }  
        }  
 
+
+      all()
+      function all(e){
+        
         document.getElementById('timing').style.display='none'
       
       window.onbeforeunload = function (e) {
@@ -753,7 +756,7 @@
         }
         
     }
-    
+  }
 
     </script>
   </div>
