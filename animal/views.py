@@ -133,6 +133,8 @@ def wait(request , room_code):
     x=startingroom.objects.all().filter(room=room_code).values()
     print('zzfegeg',x)
     z=False
+    time=False
+    admin=False
     for i in x:
         z=i['started']
         time=i['time']
