@@ -23,7 +23,6 @@
     <h3 id="gjro"></h3>
      <h3 id="flep">الحرف القادم هو<span class="badge badge-primary" id="leetter"></span></h5>   
      
-      <button type="button" class="btn btn-primary btn-rounded" id="jewghoww">e game</button>
 
     <button type="button" class="btn btn-primary btn-rounded" id="done">Start game</button>
     
@@ -137,19 +136,6 @@
     
   //}
   const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
-  document.getElementById('jewghoww').onclick=function(e){
-    const gameSocket = new WebSocket(
-        
-        'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
-      )
-    
-      const user_id = JSON.parse(document.getElementById('user_id').textContent);
-      gameSocket.send(JSON.stringify({
-        'started' : true,
-        'room' : roomCode,
-        'admin':user_id
-      
-      }))  }
   const gameSocketlettr = new WebSocket(
         'wss://' + window.location.host + '/ws/' + roomCode + '/letter/'
         )
@@ -182,6 +168,11 @@
     }
     console.log("it is " , roomCode)
     const array = []
+    const gameSocket = new WebSocket(
+        
+        'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
+      )
+  
     
       gameSocket.onmessage = function (e) {
         console.log('done');
@@ -237,7 +228,13 @@
         document.getElementById('end').style.display='block'
         const started = false
         console.log(started)
+        const user_id = JSON.parse(document.getElementById('user_id').textContent);
+        gameSocket.send(JSON.stringify({
+          'started' : true,
+          'room' : roomCode,
+          'admin':user_id
         
+        }))  
         document.getElementById('send').style.display = "none"
         gameSocket2.onmessage = function(e){
           const data = JSON.parse(e.data)
