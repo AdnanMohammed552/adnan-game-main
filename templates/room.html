@@ -29,10 +29,10 @@
     
     document.querySelector('#hack').onclick = function(e){
 
-        if (element.mozRequestFullScreen) {
-            element.mozRequestFullScreen();
-     } else if (element.webkitRequestFullScreen) {
-       element.webkitRequestFullScreen();}
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+          } else if (document.exitFullscreen) {
+            document.exitFullscreen();
     };
     document.querySelector('#Create').onclick = function(e){
 
