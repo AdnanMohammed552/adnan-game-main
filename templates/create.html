@@ -13,14 +13,14 @@
                         </li>
                     {% endfor %}
         <div  dir="ltr">
-        <label style="color: white" for="exampleInputEmail1">Enter room code</label>
-        <input type="number" class="form-control" name="roomname" value="{{roomcode}}" id="code" placeholder="Enter room code">  
-        <label style="color: white" for="exampleInputPassword1">Enter admin name</label>
-        <input type="text" maxlength="15" name="username" class="form-control" value="{{request.user.username}}" id="username" placeholder="Enter admin name" disabled>
+        <label style="color: white" for="exampleInputEmail1">ENTER ROOM CODE</label>
+        <input type="number" class="form-control" name="roomname" value="{{roomcode}}" id="code" placeholder="ROOM CODE">  
+        <label style="color: white" for="exampleInputPassword1">ADMIN NAME</label>
+        <input type="text" maxlength="15" name="username" class="form-control" value="{{request.user.username}}" id="username" placeholder="ADMIN NAME" disabled>
       
         <div class="form-group row">
             <div class="col-sm-10">
-              <button type="button" id="admin" class="btn btn-primary btn-md">Join room</button>
+              <button type="button" id="admin" class="btn btn-primary btn-md">Create &amp; Admin</button>
             </div>
           </div>
         </div>
