@@ -173,7 +173,13 @@
         'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
       )
   
-    
+      const user_id = JSON.parse(document.getElementById('user_id').textContent);
+      gameSocket.send(JSON.stringify({
+        'started' : true,
+        'room' : roomCode,
+        'admin':user_id
+      
+      }))  
       gameSocket.onmessage = function (e) {
         console.log('done');
         const data = JSON.parse(e.data);
@@ -228,13 +234,7 @@
         document.getElementById('end').style.display='block'
         const started = false
         console.log(started)
-        const user_id = JSON.parse(document.getElementById('user_id').textContent);
-        gameSocket.send(JSON.stringify({
-          'started' : true,
-          'room' : roomCode,
-          'admin':user_id
         
-        }))  
         document.getElementById('send').style.display = "none"
         gameSocket2.onmessage = function(e){
           const data = JSON.parse(e.data)
