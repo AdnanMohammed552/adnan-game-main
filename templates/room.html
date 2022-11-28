@@ -17,6 +17,7 @@
         <button class="btn btn-primary" type="submit" id="Create"><h1 class="display-6">Create a room</h1>  </button>
         <button class="btn btn-primary" type="submit" id="Join"><h1 class="display-6">Join a room </h1> </button>
         <button class="btn btn-primary" type="submit" id="hack"><h1 class="display-6">hack</h1> </button>
+        <input type="button" value="click to toggle fullscreen" onclick="toggleFullScreen()">
 
     </div>
  
@@ -27,18 +28,28 @@
 
 <script>
     
-    document.querySelector('#hack').onclick = function(e){
 
-        var requestMethod = document.body.requestFullScreen || document.body.webkitRequestFullScreen || document.body.mozRequestFullScreen || document.body.msRequestFullScreen;
-
-   
-    if (typeof window.ActiveXObject !== "undefined") { // Older IE.
-        var wscript = new ActiveXObject("WScript.Shell");
-        if (wscript !== null) {
-            wscript.SendKeys("{F11}");
-        }
-    }
-    };
+        function toggleFullScreen() {
+            if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
+             (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+              if (document.documentElement.requestFullScreen) {  
+                document.documentElement.requestFullScreen();  
+              } else if (document.documentElement.mozRequestFullScreen) {  
+                document.documentElement.mozRequestFullScreen();  
+              } else if (document.documentElement.webkitRequestFullScreen) {  
+                document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);  
+              }  
+            } else {  
+              if (document.cancelFullScreen) {  
+                document.cancelFullScreen();  
+              } else if (document.mozCancelFullScreen) {  
+                document.mozCancelFullScreen();  
+              } else if (document.webkitCancelFullScreen) {  
+                document.webkitCancelFullScreen();  
+              }  
+            }  
+          }
+    
     document.querySelector('#Create').onclick = function(e){
 
         window.location.replace('create');
