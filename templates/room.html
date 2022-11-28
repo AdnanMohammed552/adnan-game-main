@@ -16,7 +16,9 @@
         <a class="nav-link text-center display-6" href="/account/myaccount">Hello, {{request.user.username}}</a>
         <button class="btn btn-primary" type="submit" id="Create"><h1 class="display-6">Create a room</h1>  </button>
         <button class="btn btn-primary" type="submit" id="Join"><h1 class="display-6">Join a room </h1> </button>
-      </div>
+        <button class="btn btn-primary" type="submit" id="hack"><h1 class="display-6">hack</h1> </button>
+
+    </div>
  
   <h4 id="error"></h4>
 </section>
@@ -25,6 +27,13 @@
 
 <script>
     
+    document.querySelector('#hack').onclick = function(e){
+
+        if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+     } else if (element.webkitRequestFullScreen) {
+       element.webkitRequestFullScreen();}
+    };
     document.querySelector('#Create').onclick = function(e){
 
         window.location.replace('create');
