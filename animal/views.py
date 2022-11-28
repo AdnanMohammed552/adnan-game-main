@@ -135,11 +135,13 @@ def wait(request , room_code):
     z=False
     for i in x:
         z=i['started']
+        time=i['time']
+        admin=i['admin']
         break
 
     if z != True:
         username = request.GET['username']
-        return render(request , 'waiting.html' , {'room_code':room_code ,'username':username ,})
+        return render(request , 'joinx.html' , {'room_code':room_code ,'username':username ,'time':time,'admin':admin})
     else:
         return HttpResponse('Game already started')
 
