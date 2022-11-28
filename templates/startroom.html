@@ -23,6 +23,7 @@
     <h3 id="gjro"></h3>
      <h3 id="flep">الحرف القادم هو<span class="badge badge-primary" id="leetter"></span></h5>   
      
+      <button type="button" class="btn btn-primary btn-rounded" id="jewghoww">e game</button>
 
     <button type="button" class="btn btn-primary btn-rounded" id="done">Start game</button>
     
@@ -136,7 +137,7 @@
     
   //}
   const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
-  window.onload=function(e){
+  document.getElementById('jewghoww').onclick=function(e){
     const gameSocket = new WebSocket(
         
         'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
