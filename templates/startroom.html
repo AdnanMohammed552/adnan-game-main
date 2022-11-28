@@ -136,6 +136,19 @@
     
   //}
   const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
+  window.onload=function(e){
+    const gameSocket = new WebSocket(
+        
+        'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
+      )
+    
+      const user_id = JSON.parse(document.getElementById('user_id').textContent);
+      gameSocket.send(JSON.stringify({
+        'started' : true,
+        'room' : roomCode,
+        'admin':user_id
+      
+      }))  }
   const gameSocketlettr = new WebSocket(
         'wss://' + window.location.host + '/ws/' + roomCode + '/letter/'
         )
@@ -168,19 +181,7 @@
     }
     console.log("it is " , roomCode)
     const array = []
-    window.onload=function(e){
-    const gameSocket = new WebSocket(
-        
-        'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
-      )
     
-      const user_id = JSON.parse(document.getElementById('user_id').textContent);
-      gameSocket.send(JSON.stringify({
-        'started' : true,
-        'room' : roomCode,
-        'admin':user_id
-      
-      }))  }
       gameSocket.onmessage = function (e) {
         console.log('done');
         const data = JSON.parse(e.data);
