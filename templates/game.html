@@ -107,6 +107,12 @@
       const gameSocket = new WebSocket(
         'wss://' + window.location.host + '/ws/' + roomCode + '/'
       )
+      gameSocket.onclose=function(e){
+        gameSocket=null
+        const gameSocket = new WebSocket(
+        'wss://' + window.location.host + '/ws/' + roomCode + '/'
+      )
+      }
      // console.log('DRE IS ' , gameSocket)
       
       console.log(gameSocket)
@@ -115,7 +121,11 @@
           'ready':true
         }))
       gameSocket.onmessage = function (e) {
-
+        gameSocket.onclose=function(e){
+          gameSocket=null
+          const gameSocket = new WebSocket(
+          'wss://' + window.location.host + '/ws/' + roomCode + '/'
+        )
         const data = JSON.parse(e.data);
         if (data.letterconsumer!==null&&typeof data.letterconsumer!=="undefined"&&data.letterconsumer!=="" &&data.letterconsumer!==false){
           console.log('yeeesa')
@@ -511,7 +521,11 @@
       }
 
       document.querySelector('#done').onclick = function(e){
-        
+        gameSocket.onclose=function(e){
+          gameSocket=null
+          const gameSocket = new WebSocket(
+          'wss://' + window.location.host + '/ws/' + roomCode + '/'
+        )
         
         const word = document.querySelector('#noun');
         const noun = word.value;
@@ -720,7 +734,11 @@
       }
      
         }
-        
+        gameSocket.onclose=function(e){
+          gameSocket=null
+          const gameSocket = new WebSocket(
+          'wss://' + window.location.host + '/ws/' + roomCode + '/'
+        )
         
         
         
