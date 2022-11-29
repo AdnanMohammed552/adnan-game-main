@@ -415,7 +415,7 @@
                   "<td class='text-center' id = 'inanimate'>"+ data.inanimate +"</td>"+
                   "<td class='text-center' id = 'countries'>"+ data.countries +"</td>"+
                   "<td class='text-center' id = 'room'>"+ data.RoomCode +"</td>"+
-                  "<td class='text-center' id = 'sum'>"+  +"</td>"+  
+                  "<td class='text-center' id = '"+data.UserName +data.admin_letter+"sum'>"+  +"</td>"+  
                 "</tr>"+
                 "<tr class='accordian-body collapse' id='erer"+ data.UserName +data.admin_letter+"'>"+
                   '<td class="text-center" scope="row"></td>'+
@@ -611,6 +611,8 @@
             document.getElementById('plants_result'+data.UserName+data.admin_letter).innerHTML = data.plants_result;
             document.getElementById('countries_result'+data.UserName+data.admin_letter).innerHTML = data.countries_result;
             document.getElementById('inanimate_result'+data.UserName+data.admin_letter).innerHTML = data.inanimate_result;
+            document.getElementById(data.UserName+data.admin_letter+"sum").innerHTML = data.sum;
+            id = '"+data.UserName +data.admin_letter+"sum'>"
          //   alert(data.UserName +' points is '+data.sum)
   
           }   
@@ -664,7 +666,7 @@
                     "<td class='text-center' id = 'inanimate'>"+ data.inanimate +"</td>"+
                     "<td class='text-center' id = 'countries'>"+ data.countries +"</td>"+
                     "<td class='text-center' id = 'room'>"+ data.RoomCode +"</td>"+
-                    "<td class='text-center' id = 'sum'>"+  +"</td>"+  
+                    "<td class='text-center' id = '"+data.UserName +data.admin_letter+"sum'>"+  +"</td>"+  
                   "</tr>"+
                   "<tr class='accordian-body collapse' id='erer"+ data.UserName +data.admin_letter+"'>"+
                     '<td class="text-center" scope="row"></td>'+
