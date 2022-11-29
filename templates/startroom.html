@@ -142,7 +142,16 @@
         const gameSocket2 = new WebSocket(
                 'wss://' + window.location.host + '/ws/' + roomCode + '/'
                 )
-  
+                gameSocket2.onclose=function(e){
+                  const gameSocket2 = new WebSocket(
+                'wss://' + window.location.host + '/ws/' + roomCode + '/'
+                )
+                }
+                gameSocketlettr.onclose=function(e){
+                  const gameSocketlettr = new WebSocket(
+                    'wss://' + window.location.host + '/ws/' + roomCode + '/letter/'
+                    )
+                }
   document.querySelector('#view').disabled = true;
   
   const array2 =[]
