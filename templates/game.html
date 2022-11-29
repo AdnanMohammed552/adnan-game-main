@@ -125,7 +125,7 @@
           gameSocket=null
           const gameSocket = new WebSocket(
           'wss://' + window.location.host + '/ws/' + roomCode + '/'
-        )
+        )}
         const data = JSON.parse(e.data);
         if (data.letterconsumer!==null&&typeof data.letterconsumer!=="undefined"&&data.letterconsumer!=="" &&data.letterconsumer!==false){
           console.log('yeeesa')
@@ -526,7 +526,7 @@
           const gameSocket = new WebSocket(
           'wss://' + window.location.host + '/ws/' + roomCode + '/'
         )
-        
+        }
         const word = document.querySelector('#noun');
         const noun = word.value;
         const wordgnoun = document.querySelector('#gnoun');
@@ -739,7 +739,7 @@
           const gameSocket = new WebSocket(
           'wss://' + window.location.host + '/ws/' + roomCode + '/'
         )
-        
+        }
         
         
         //document.querySelector('#leetter').innerHTML = data.current_letter_this;
