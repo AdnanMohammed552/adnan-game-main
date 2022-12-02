@@ -115,3 +115,12 @@ def myaccount(request,room_code):
         return render (request , 'myaccount.html',{'z':adnan.render(Context({}))})
     else:
         return HttpResponse('please login to your account , <a href="/account/login">login</a>')
+def home(request):
+    return render (request , 'accounthome.html')
+
+def played(request):
+    from .models import played
+    valie = played.objects.all().values()
+    return render (request , 'played.html',{'z':valie})
+
+

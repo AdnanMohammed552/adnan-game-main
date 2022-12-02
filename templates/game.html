@@ -502,6 +502,10 @@
             h1Element.textContent = 'game had been ended';
             document.body.append(h1Element);
             setTimeout(() => {  console.log("World!"); }, 5000);
+            gameSocket.send(JSON.stringify({
+              'player_this':username,
+              'room_this':roomCode
+            }))
             var url =  window.location.origin +'/end/' +roomCode + '?username=' + username;
             history.pushState({}, null, url);
             location.reload() 

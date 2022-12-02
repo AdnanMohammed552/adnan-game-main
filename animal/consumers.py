@@ -217,10 +217,19 @@ class gameConsumer(AsyncWebsocketConsumer):
         try:
             disabled=data['disabled']
         except:
-            disabled=False   
+            disabled=False 
+        try:
+            player_this=data['player_this']
+        except:
+            player_this=False 
+        try:
+            room_this=data['room_this']
+        except:
+            room_this=False 
         print(inanimate )
         await self.save_info(noun,gnoun,animal,plants,countries,inanimate,username,the_letter,RoomCode)
-
+        if room_this != False:
+            await self.thisis(player_this=player_this,room_this=room_this)
         try:
             data['type']
             
@@ -630,3 +639,9 @@ class gameConsumer(AsyncWebsocketConsumer):
 
     def infit(self):
         print('infinity')
+
+    def thisis(self,player_this,room_this):
+        from accounts.models import played
+        played.objects.create(user=player_this,room_played=room_this).save()
+
+        

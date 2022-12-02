@@ -5,5 +5,8 @@ urlpatterns = [
     path('login',views.login),
     path('logout',views.logout , name="logout"),
     path('myaccount',views.mygames),
+    path('home',views.home),
+    path('played',views.played),
+
     path('myaccount/<int:room_code>/',views.myaccount)
 ]
