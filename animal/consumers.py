@@ -644,5 +644,6 @@ class gameConsumer(AsyncWebsocketConsumer):
     def thisis(self,player_this,room_this):
         from accounts.models import played
         played.objects.create(user=player_this,room_played=room_this).save()
+        print('romeinoedef',player_this,room_this)
 
         
