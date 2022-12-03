@@ -125,9 +125,11 @@ def played(request):
         for i in valie:
             z = i['room_played']
             break
+        valie2 = models.room_created.objects.all().filter(room_created=z).order_by('-pk').values()
+
     except:
         z=valie['room_played']
-    valie2 = models.room_created.objects.all().filter(room_created=z).order_by('-pk').values()
+        valie2 = models.room_created.objects.all().filter(room_created=z).order_by('-pk').values()
     try:
         for i in valie2:
             z2 = i['table']
