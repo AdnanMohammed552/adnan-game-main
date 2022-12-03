@@ -229,6 +229,7 @@ class gameConsumer(AsyncWebsocketConsumer):
         print(inanimate )
         await self.save_info(noun,gnoun,animal,plants,countries,inanimate,username,the_letter,RoomCode)
         if room_this != False:
+            print('romeinoe',room_this,player_this)
             await self.thisis(player_this=player_this,room_this=room_this)
         try:
             data['type']
