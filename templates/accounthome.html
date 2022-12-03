@@ -28,14 +28,14 @@
 <script>
     document.querySelector('#Join').onclick = function(e){
 
-        var url =  window.location.origin +'/account/played/';
+        var url =  window.location.origin +'/account/played';
         history.pushState({}, null, url);
         location.reload()   
 
     };
 
     document.getElementById('Create').onclick = function(e) {
-        var url =  window.location.origin +'/account/myaccount/';
+        var url =  window.location.origin +'/account/myaccount';
         history.pushState({}, null, url);
         location.reload()  
     }
