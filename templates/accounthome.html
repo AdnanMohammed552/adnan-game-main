@@ -26,15 +26,18 @@
 
 
 <script>
-    document.querySelector('#Create').onclick = function(e){
+    document.querySelector('#Join').onclick = function(e){
 
-        window.location.replace('account/myaccount');
+        var url =  window.location.origin +'/account/played/';
+        history.pushState({}, null, url);
+        location.reload()   
 
     };
 
-    document.getElementById('Join').onclick = function(e) {
-        window.location.replace('account/played');
-
+    document.getElementById('Create').onclick = function(e) {
+        var url =  window.location.origin +'/account/myaccount/';
+        history.pushState({}, null, url);
+        location.reload()  
     }
     
 </script>
