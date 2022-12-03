@@ -640,7 +640,7 @@ class gameConsumer(AsyncWebsocketConsumer):
 
     def infit(self):
         print('infinity')
-
+    @sync_to_async
     def thisis(self,player_this,room_this):
         from accounts.models import played
         played.objects.create(user=player_this,room_played=room_this).save()
