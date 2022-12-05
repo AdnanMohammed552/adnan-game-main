@@ -7,6 +7,7 @@ urlpatterns = [
     path('myaccount',views.mygames),
     path('home',views.home),
     path('played',views.played),
+    path('played/<int:room_code>/',views.playedacc),
 
     path('myaccount/<int:room_code>/',views.myaccount)
 ]

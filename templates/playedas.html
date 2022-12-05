@@ -1,0 +1,23 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% extends 'base.html' %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% block title %}
+<title>Create New room</title>
+{% endblock %}
+{% block content %}
+{% for i in z %}
+<button type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')">{{i}}</button>
+{% endfor %}
+<div id="dis"></div>
+<script>
+    function redirect(code){
+        console.log('mu code',code)
+        var url =  window.location.origin +'/account/played/' +code;
+          history.pushState({}, null, url);
+          location.reload()   
+    }
+</script>
+
+{% endblock %}
