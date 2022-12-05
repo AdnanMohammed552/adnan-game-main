@@ -120,7 +120,7 @@ def home(request):
 
 def played(request):
     from .models import played
-    valie = played.objects.all().values()
+    valie = played.objects.all().filter(user=request.user).order_by('-pk').values()
     #valie = played.objects.all().filter(user=request.user).values()
     
     return render (request , 'played.html',{'z':valie})
