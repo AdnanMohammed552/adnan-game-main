@@ -31,3 +31,9 @@ class array(models.Model):
 class players(models.Model):
     players= models.CharField(max_length=900000,null=True,blank=True)
     room = models.CharField(max_length=150)
+
+class room_created(models.Model):
+    user = models.CharField(max_length=100)
+    room_created = models.CharField(max_length=10,null=True,blank=True,unique=True)
+    players=models.CharField(max_length=1000,null=True,blank=True)
+    table=models.TextField(max_length=10000000000000000000,default='')

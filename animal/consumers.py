@@ -226,7 +226,12 @@ class gameConsumer(AsyncWebsocketConsumer):
             room_this=data['room_this']
         except:
             room_this=False 
+        try:
+            alltables2=data['alltables2']
+        except:
+            alltables2=False 
         print(inanimate )
+        self.glabaluser1=str(self.glabaluser)
         await self.save_info(noun,gnoun,animal,plants,countries,inanimate,username,the_letter,RoomCode)
         if room_this != False:
             print('romeinoe',room_this,player_this)
@@ -237,7 +242,7 @@ class gameConsumer(AsyncWebsocketConsumer):
         except:
             
             pass
-            
+        await self.alltabels2(self.glabaluser1,RoomCode, alltables2)
         if players != None:
             await self.channel_layer.group_send(
                 self.room_group_name,
@@ -645,5 +650,6 @@ class gameConsumer(AsyncWebsocketConsumer):
         from accounts.models import played
         played.objects.create(user=player_this,room_played=room_this).save()
         print('romeinoedef',player_this,room_this)
-
-        
+    def alltabels2(self,user,room,all):
+        from.models import room_created
+        room_created.objects.create(user=user,table=all,room_created=room).save()
