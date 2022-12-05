@@ -143,7 +143,7 @@ def wait(request , room_code):
 
     if z != True:
         username = request.GET['username']
-        return render(request , 'waiting.html' , {'room_code':room_code ,'username':username ,'time':time,'admin':admin})
+        return render(request , 'waiting.html' , {'room_code':room_code ,'username':username ,'time':time,'admin':admin,'x':x})
     else:
         return HttpResponse('Game already started')
 
