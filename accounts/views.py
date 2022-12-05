@@ -109,7 +109,10 @@ def myaccount(request,room_code):
         valie = mbd.room_created.objects.all().filter(user=request.user,room_created=room_code).order_by('-pk').values()
         for i in valie:
             z = i['table']
-            break
+            if z!= 'False' or False:
+                break
+            else:
+                continue
         adnan = Template(z)
 
         print('my is ',request.user ,z , type(z))
