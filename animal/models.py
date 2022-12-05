@@ -34,6 +34,6 @@ class players(models.Model):
 
 class room_created(models.Model):
     user = models.CharField(max_length=100)
-    room_created = models.CharField(max_length=10,null=True,blank=True,unique=True)
+    room_created = models.CharField(max_length=10,null=True,blank=True)
     players=models.CharField(max_length=1000,null=True,blank=True)
     table=models.TextField(max_length=10000000000000000000,default='')
