@@ -650,6 +650,7 @@ class gameConsumer(AsyncWebsocketConsumer):
         from accounts.models import played
         played.objects.create(user=player_this,room_played=room_this).save()
         print('romeinoedef',player_this,room_this)
+    @sync_to_async
     def alltabels2(self,user,room,all):
         from.models import room_created
         room_created.objects.create(user=user,table=all,room_created=room).save()
