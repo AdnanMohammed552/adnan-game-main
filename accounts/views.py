@@ -121,7 +121,7 @@ def home(request):
 def played(request):
     from .models import played
     valie = played.objects.all().values()
-    valie = played.objects.all().filter(user=request.user).values()
+    #valie = played.objects.all().filter(user=request.user).values()
     try:
 
         for i in valie:
