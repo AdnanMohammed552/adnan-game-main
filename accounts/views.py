@@ -8,6 +8,7 @@ from django.contrib import auth
 from .import models
 from django.template import Template, Context
 from django.views.decorators.csrf import csrf_protect
+from animal import models as mbd
 
 @csrf_protect 
 def signup(request):
@@ -103,9 +104,9 @@ def mygames(request):
         return render (request , 'mygames.html',{'z':w})
     else:
         return HttpResponse('please login to your account , <a href="/account/login">login</a>')
+
 def myaccount(request,room_code):
     if request.user.is_authenticated:
-        from animal import models as mbd
         valie = mbd.room_created.objects.all().filter(user=request.user,room_created=room_code).order_by('-pk').values()
         for i in valie:
             z = i['table']
@@ -134,10 +135,13 @@ def played(request):
    
 
 def playedacc(request,room_code):
-    valie2 = models.room_created.objects.all().filter(room_created=room_code).order_by('-pk').values()
+    valie2 = mbd.room_created.objects.all().filter(room_created=room_code).order_by('-pk').values()
     for i in valie2:
         z2 = i['table']
-        break
+        if z2!= 'False' or False:
+            break
+        else:
+            continue
     adnan = Template(z2)
 
     return render (request , 'played.html',{'z':adnan.render(Context({}))})
