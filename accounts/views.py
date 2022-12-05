@@ -123,4 +123,4 @@ def played(request):
     valie = played.objects.all().filter(user=request.user).order_by('-pk').values()
     #valie = played.objects.all().filter(user=request.user).values()
     
-    return render (request , 'played.html',{'z':valie})
+    return render (request , 'played.html',{'z':valie,'y':request.user})
