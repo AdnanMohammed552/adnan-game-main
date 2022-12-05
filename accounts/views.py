@@ -121,15 +121,19 @@ def home(request):
 def played(request):
     from .models import played
     valie = played.objects.all().filter(user=request.user).values()
-    for i in valie:
-        z = i['room_played']
-        valie2 = models.room_created.objects.all().filter(room_created=z).order_by('-pk').values()
+    try:
 
-        break
-    for i in valie2:
-        z2 = i['table']
-        break
-    adnan = Template(z2)
+        for i in valie:
+            z = i['room_played']
+            valie2 = models.room_created.objects.all().filter(room_created=z).order_by('-pk').values()
 
-    return render (request , 'played.html',{'z':adnan.render(Context({}))})
+            break
+        for i in valie2:
+            z2 = i['table']
+            break
+        adnan = Template(z2)
 
+        return render (request , 'played.html',{'z':adnan.render(Context({}))})
+
+    except:
+        return render (request , 'played.html',{'z':valie})
