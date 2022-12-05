@@ -113,7 +113,7 @@ def myaccount(request,room_code):
         adnan = Template(z)
 
         print('my is ',request.user ,z , type(z))
-        return render (request , 'myaccount.html',{'z':adnan.render(Context({}))})
+        return render (request , 'myaccount.html',{'y':valie,'z':adnan.render(Context({}))})
     else:
         return HttpResponse('please login to your account , <a href="/account/login">login</a>')
 def home(request):
