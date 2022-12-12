@@ -1021,7 +1021,7 @@
     
     document.getElementById('view').onclick=function(e){
       while(document.getElementsByClassName("adnan_option")){
-        document.getElementsByClassName("adnan_option").style.display='none'
+        document.getElementsByClassName("adnan_option").remove()
       }
 
       document.getElementById('safg').innerHTML=""
