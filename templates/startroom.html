@@ -1023,9 +1023,9 @@
       
       var lis = document.getElementsByTagName("select")
       console.log('liss is,',lis)
-      while(lis.length > 0)
+      for(i in lis)
       {
-      lis.removeChild(lis[lis.length - 1]);
+      i.remove();
       }
 
       document.getElementById('safg').innerHTML=""
