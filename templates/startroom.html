@@ -54,6 +54,23 @@
         </div>
       </div>
     </div>
+
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item" >
+       <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseOneu" aria-expanded="true" aria-controls="collapseOne">
+            u 
+          </button> 
+        </h2>
+        <div id="collapseOneu" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample">
+       
+      <div style="background-color:generateRandomColor()" class="accordion-body"   id="u">
+        <div id="letterrgenerator"></div>
+
+          
+        </div>
+      </div>
+    </div>
     
     </div>
   
@@ -426,6 +443,111 @@
                   'inanimate':inanimate,
                   'RoomCode':RoomCode
                 }))
+                document.getElementById('letterrgenerator').innerHTML += (
+              
+                   
+                    "<tr>"+ 
+                      '<th scope="row">⭐<button id="removeme" type="button" onclick="userremove(\'' + data.UserName + '\')" class="btn btn-primary btn-rounded" data-hover="CLICK ME" data-active="IM ACTIVE"><span>'+data.UserName+'</span></button> </th>'+
+                      "<td style='font-size:18px;' id = 'letter'>"+ admin_letter +"</td>"+
+                      "<td style='font-size:18px;' id = 'noun'>"+ noun.replace('N/A','') +"</td>"+
+                      "<td style='font-size:18px;' id = 'gnoun'>"+ gnoun +"</td>"+
+                      "<td style='font-size:18px;' id = 'animalNoun'>"+ animal +"</td>"+
+                      "<td style='font-size:18px;' id = 'plants'>"+plants +"</td>"+
+                      "<td style='font-size:18px;' id = 'inanimate'>"+ inanimate +"</td>"+
+                      "<td style='font-size:18px;' id = 'countries'>"+ countries +"</td>"+
+                      "<td style='font-size:18px;' id = 'sum2"+ UserName+admin_letter +"'>"+  +"</td>"+
+                      "<td style='font-size:18px;' id = 'room'>"+ RoomCode +"</td>"+
+
+                      
+                    "</tr>"+
+                    "<tr>"+
+                      '<td scope="row"></td>'+
+                      '<td scope="row"></td>'+
+                      
+                      '<td >'+
+                        '<h3 id="noun_resultxx'+UserName+admin_letter+'"></h3>'+
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + noun_result+'\',\'' + admin_letter +'\')" id="noun_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="noun_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                          
+                      '</td>'+
+                      '<td>'+
+                        
+                        '<h3 id="gnoun_resultxx'+UserName+admin_letter+'"></h3>'+
+
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + gnoun_result+'\',\'' + admin_letter +'\' )"  id="gnoun_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="gnoun_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '</td>'+
+                      '<td>'+
+                       
+                        '<h3 id="animal_resultxx'+UserName+admin_letter+'"></h3>'+
+
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + animal_result+'\',\'' + admin_letter +'\')"  id="animal_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="animal_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '</td>'+
+                      '<td>'+
+                       
+                        '<h3 id="plants_resultxx'+UserName+admin_letter+'"></h3>'+
+
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + plants_result +'\',\'' + admin_letter +'\')"  id="plants_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="plants_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '</td>'+
+                      '<td>'+
+                       
+                        '<h3 id="countries_resultxx'+UserName+admin_letter+'"></h3>'+
+
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + countries_result +'\',\'' + admin_letter +'\')"  id="countries_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="countries_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '</td>'+
+                      '<td>'+
+                       
+                        '<h3 id="inanimate_resultxx'+UserName+admin_letter+'"></h3>'+
+
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + inanimate_result +'\',\'' + admin_letter +'\')"  id="inanimate_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="inanimate_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '<td class="success" id="sum'+UserName+admin_letter+'"></td>'+
+                      '</td>'+
+                      '<div id="bare">'+
+                      '<button type="submit" class="calcc btn btn-primary" id="calc'+UserName+admin_letter+'" onclick="calc(\'' + admin_letter + '\' ,\'' + UserName + '\' , \'' + admin_letter + '\' , \'' + noun + '\' ,\'' + gnoun + '\',\'' + animal + '\',\'' + plants + '\',\'' + inanimate + '\',\'' + countries + '\',\'' + RoomCode + '\')">Calculate</button>'+
+                        '</div>'
+    
+                  
+            )
                 if (data.star === true){
                   var noun_result = 'noun_result'
                   var gnoun_result = "gnoun_result"
