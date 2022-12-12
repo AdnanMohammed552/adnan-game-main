@@ -957,28 +957,32 @@
                   'private':true
                   
                 }))
-              
+              while(document.querySelector('#noun_resultxx'+x+re)){
                 document.querySelector('#noun_resultxx'+x+re).innerHTML = noun_result;
                 document.querySelector('#gnoun_resultxx'+x+re).innerHTML = gnoun_result;
                 document.querySelector('#animal_resultxx'+x+re).innerHTML = animal_result;
                 document.querySelector('#plants_resultxx'+x+re).innerHTML = plants_result;
                 document.querySelector('#countries_resultxx'+x+re).innerHTML = countries_result;
                 document.querySelector('#inanimate_resultxx'+x+re).innerHTML = inanimate_result;
-
+              }
+              while(document.querySelector('#noun_result4'+x+re)){
                 document.querySelector('#noun_result4'+x+re).style.display = 'none';
                 document.querySelector('#gnoun_result4'+x+re).style.display = 'none';
                 document.querySelector('#animal_result4'+x+re).style.display = 'none';
                 document.querySelector('#plants_result4'+x+re).style.display = 'none';
                 document.querySelector('#countries_result4'+x+re).style.display = 'none';
                 document.querySelector('#inanimate_result4'+x+re).style.display = 'none';
-
+                }
+              while(document.querySelector('#noun_result3'+x+re)){
                 document.querySelector('#noun_result3'+x+re).style.display = 'none';
+              
                 document.querySelector('#gnoun_result3'+x+re).style.display = 'none';
                 document.querySelector('#animal_result3'+x+re).style.display = 'none';
                 document.querySelector('#plants_result3'+x+re).style.display = 'none';
                 document.querySelector('#countries_result3'+x+re).style.display = 'none';
                 document.querySelector('#inanimate_result3'+x+re).style.display = 'none';
 
+              }
                 try{
                 document.querySelector('#noun_result5'+x+'noun_result').style.display = 'none';
               }
@@ -1021,12 +1025,7 @@
     
     document.getElementById('view').onclick=function(e){
       
-      var lis = document.getElementsByTagName("select")
-      console.log('liss is,',lis)
-      for(i in lis)
-      {
-      i.remove();
-      }
+     
 
       document.getElementById('safg').innerHTML=""
 
