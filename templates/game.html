@@ -550,9 +550,7 @@
     gameSocket.onclose = function (e) {
         console.log('fall ');
       }
-      document.getElementById('closemodal').onclick=function(e){
-    document.getElementById('exampleModal').style.display="none"
-  }
+      
       document.querySelector('#done').onclick = function(e){
         gameSocket.onclose=function(e){
           gameSocket=null
