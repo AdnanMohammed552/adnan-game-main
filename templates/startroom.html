@@ -1020,8 +1020,11 @@
                
     
     document.getElementById('view').onclick=function(e){
-      while(document.getElementsByTagName("select")){
-        document.getElementsByTagName("select").remove()
+      
+      var lis = document.getElementsByTagName("select")
+      while(lis.length > 0)
+      {
+      lis.removeChild(lis[lis.length - 1]);
       }
 
       document.getElementById('safg').innerHTML=""
