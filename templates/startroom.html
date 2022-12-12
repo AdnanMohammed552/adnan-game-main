@@ -446,6 +446,7 @@
                   'inanimate':inanimate,
                   'RoomCode':RoomCode
                 }))
+                if (data.admin_letter!==null){
                 document.getElementById('safg').innerHTML += (
               
                    
@@ -545,7 +546,9 @@
     
                   
             )
-                if (data.star === true){
+          }    
+            
+            if (data.star === true){
                   var noun_result = 'noun_result'
                   var gnoun_result = "gnoun_result"
                   var animal_result = "animal_result"
