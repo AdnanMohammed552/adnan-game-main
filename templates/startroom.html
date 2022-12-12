@@ -462,6 +462,7 @@
                   'RoomCode':RoomCode
                 }))
                 if (data.admin_letter!==null){
+                  if(data.star===true){
                 document.getElementById('safg').innerHTML += (
               
                    
@@ -560,6 +561,107 @@
     
                   
             )
+          }
+          else{
+            document.getElementById('safg').innerHTML += (
+              
+                   
+                    "<tr>"+ 
+                      '<th scope="row"><button id="removeme" type="button" onclick="userremove(\'' + data.UserName + '\')" class="btn btn-primary btn-rounded" data-hover="CLICK ME" data-active="IM ACTIVE"><span>'+data.UserName+'</span></button> </th>'+
+                      "<td style='font-size:18px;' id = 'letter'>"+ admin_letter +"</td>"+
+                      "<td style='font-size:18px;' id = 'noun'>"+ noun.replace('N/A','') +"</td>"+
+                      "<td style='font-size:18px;' id = 'gnoun'>"+ gnoun +"</td>"+
+                      "<td style='font-size:18px;' id = 'animalNoun'>"+ animal +"</td>"+
+                      "<td style='font-size:18px;' id = 'plants'>"+plants +"</td>"+
+                      "<td style='font-size:18px;' id = 'inanimate'>"+ inanimate +"</td>"+
+                      "<td style='font-size:18px;' id = 'countries'>"+ countries +"</td>"+
+                      
+
+                      
+                    "</tr>"+
+                    "<tr>"+
+                      '<td scope="row"></td>'+
+                      '<td scope="row"></td>'+
+                      
+                      '<td >'+
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + noun_result+'\',\'' + admin_letter +'\')" id="noun_result'+UserName+admin_letter+'" class="adnan_option">'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="noun_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                          
+                      '</td>'+
+                      '<td>'+
+                        
+
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + gnoun_result+'\',\'' + admin_letter +'\' )"  id="gnoun_result'+UserName+admin_letter+'" class="adnan_option">'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="gnoun_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '</td>'+
+                      '<td>'+
+                       
+
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + animal_result+'\',\'' + admin_letter +'\')"  id="animal_result'+UserName+admin_letter+'" class="adnan_option">'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="animal_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '</td>'+
+                      '<td>'+
+                       
+
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + plants_result +'\',\'' + admin_letter +'\')"  id="plants_result'+UserName+admin_letter+'" class="adnan_option">'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="plants_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '</td>'+
+                      '<td>'+
+                       
+
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + countries_result +'\',\'' + admin_letter +'\')"  id="countries_result'+UserName+admin_letter+'" class="adnan_option">'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="countries_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '</td>'+
+                      '<td>'+
+                       
+
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + inanimate_result +'\',\'' + admin_letter +'\')"  id="inanimate_result'+UserName+admin_letter+'" class="adnan_option">'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="inanimate_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '<td class="success" id="sum'+UserName+admin_letter+'"></td>'+
+                      '</td>'+
+                      '<div id="bare">'+
+                      '<button type="submit" class="calcc btn btn-primary" id="calc'+UserName+admin_letter+'" onclick="calc(\'' + admin_letter + '\' ,\'' + UserName + '\' , \'' + admin_letter + '\' , \'' + noun + '\' ,\'' + gnoun + '\',\'' + animal + '\',\'' + plants + '\',\'' + inanimate + '\',\'' + countries + '\',\'' + RoomCode + '\')">Calculate</button>'+
+                        '</div>'
+    
+                  
+            )
+          }
           }    
             
             if (data.star === true){
