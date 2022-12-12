@@ -332,7 +332,7 @@
           document.getElementById('countries_result'+data.UserName+data.admin_letter).innerHTML = data.countries_result;
           document.getElementById('inanimate_result'+data.UserName+data.admin_letter).innerHTML = data.inanimate_result;
          // alert(data.UserName +' points is '+data.sum)
-         document.getElementById("points").innerHTML += (parseInt(document.getElementById("points").innerHTML) + parseInt(data.sum));
+         document.getElementById("points").innerHTML += (parseInt(this) + parseInt(data.sum));
          document.getElementById(data.UserName+data.admin_letter+"sum").innerHTML = data.sum;
              alert(data.UserName +' points is '+data.sum)
 
@@ -640,7 +640,7 @@
             document.getElementById('plants_result'+data.UserName+data.admin_letter).innerHTML = data.plants_result;
             document.getElementById('countries_result'+data.UserName+data.admin_letter).innerHTML = data.countries_result;
             document.getElementById('inanimate_result'+data.UserName+data.admin_letter).innerHTML = data.inanimate_result;
-            document.getElementById("points").innerHTML += (parseInt(document.getElementById("points").innerHTML) + parseInt(data.sum));
+            document.getElementById("points").innerHTML += (parseInt(this) + parseInt(data.sum));
 
             document.getElementById(data.UserName+data.admin_letter+"sum").innerHTML = data.sum;
              alert(data.UserName +' points is '+data.sum)
