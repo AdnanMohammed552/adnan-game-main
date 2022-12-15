@@ -32,9 +32,14 @@
                     alert('Error, pleasr enter numbers')
                 }
                 else{
+                    if (roomCode.toString().length <9){
                     var url =  window.location.origin + '/' +roomCode + '/admin';
                 history.pushState({}, null, url);
-                location.reload()    
+                location.reload()  
+            }
+            else{
+                alert('Error, It should be less than 9 digits')
+            }  
                 }
                
 
