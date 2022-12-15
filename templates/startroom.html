@@ -91,7 +91,7 @@
     </div>
     
     </div>
-  
+  <h3 id="endingEle"></h3>
 </div>
  <style>
 
@@ -159,7 +159,20 @@
 {{ request.user.username|json_script:"user_id" }}
 
 <script>
-  
+  window.onbeforeunload = function (e) {
+        
+        if ((document.getElementById('endingEle').innerHTML)!=='Game had been ended'){
+        e = e || window.event;
+    
+        // For IE and Firefox prior to version 4
+        if (e) {
+            e.returnValue = 'Sure?';
+        }
+    
+        // For Safari
+        return 'Sure?';
+      }
+    };
   document.getElementById('end').style.display='none'
 
   document.getElementById('done').style.display='none'
@@ -906,6 +919,7 @@
 
     
     document.getElementById('end').onclick = function(e){
+      document.getElementById('endingEle').innerHTML="Game had been ended"
       console.log('totalsarray is:',totalsarray)
      
       var alltables = document.getElementById('pdfgenerator').innerHTML;
