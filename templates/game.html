@@ -508,7 +508,7 @@
           // Code to run before sleep
           
           // Sleep for 3 seconds
-          await new Promise(r => setTimeout(r, 3000));
+          await new Promise(r => setTimeout(r, 500));
             document.getElementById('endingEle').innerHTML="Game had been ended"
             setTimeout(() => {  console.log("World!"); }, 5000);
             gameSocket.send(JSON.stringify({
