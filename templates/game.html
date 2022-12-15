@@ -89,6 +89,8 @@
         document.getElementById('timing').style.display='none'
       
       window.onbeforeunload = function (e) {
+        var end = end
+        if (end !== true){
         e = e || window.event;
     
         // For IE and Firefox prior to version 4
@@ -98,6 +100,7 @@
     
         // For Safari
         return 'Sure?';
+      }
     };
       const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
       const username = JSON.parse(document.getElementById('json-username').textContent);
@@ -498,6 +501,7 @@
           }
           console.log('data ir ' , data.end)
           if(data.end == true){
+            var end = data.end
             doStuff()
           async function doStuff(){
           // Code to run before sleep
