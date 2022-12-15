@@ -514,7 +514,7 @@
             }))
             var url =  window.location.origin +'/end/' +roomCode + '?username=' + username;
             history.pushState({}, null, url);
-            location.reload() 
+            window.location.href=url
           }
           }
         }
