@@ -329,7 +329,9 @@
       }
       document.querySelector('#done').onclick = function(e){
         console.log('last of last',array)
-        
+        if(document.getElementById('div_id')){
+          document.getElementById('div_id').remove()
+        }
         document.getElementById('done').remove()
         
         //const gameSocket2 = new WebSocket(
