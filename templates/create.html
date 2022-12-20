@@ -14,7 +14,7 @@
                     {% endfor %}
         <div  dir="ltr">
         <label style="color: white" for="exampleInputEmail1">ENTER ROOM CODE</label>
-        <input type="number" class="form-control" name="roomname" value="{{roomcode}}" id="code" placeholder="ROOM CODE"  value="{{room}}" disabled>  
+        <input type="number" class="form-control" name="roomname" id="code" placeholder="ROOM CODE" value="{{room}}" disabled>  
         <label style="color: white" for="exampleInputPassword1">ADMIN NAME</label>
         <input type="text" maxlength="15" name="username" class="form-control" value="{{request.user.username}}" id="username" placeholder="ADMIN NAME" disabled>
       
