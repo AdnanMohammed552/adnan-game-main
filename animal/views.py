@@ -33,9 +33,10 @@ def create(request):
     from gameadmin.models import startingroom
     x=startingroom.objects.all().filter(room=room_code).values()
     print('startingroomrrr',x)
-    roome='52'
-    return render(request , 'create.html' ,{'users':users,'room':roome})
+    if str(x) == '<QuerySet []>':
+        return render(request , 'create.html' ,{'users':users,'room':room_code})
 
+    
 def room(request,room_code):
     
     
