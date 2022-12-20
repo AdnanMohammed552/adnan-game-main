@@ -29,7 +29,7 @@ def roomentering(request):
 
 def create(request):
     users = User.objects.all()
-    room_code=random.randint(10001,99999)
+    room_code=38424
     from gameadmin.models import startingroom
     x=startingroom.objects.all().filter(room=room_code).values()
     print('startingroomrrr',x)
