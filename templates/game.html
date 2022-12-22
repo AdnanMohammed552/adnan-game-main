@@ -318,7 +318,6 @@ ga('send', 'pageview');
           document.getElementById('plants').disabled=false
           document.getElementById('countries').disabled=false
           document.getElementById('inanimate').disabled=false
-          document.getElementById('sum').disabled=false
           document.getElementById('done').disabled=false
 
           console.log('foirhguipgbiergpr')
@@ -360,8 +359,7 @@ ga('send', 'pageview');
             const countries = wordcountries.value;
             const wordinanimate = document.querySelector('#inanimate');
             const inanimate = wordinanimate.value;
-            const wordsum = document.querySelector('#sum');
-            const sum = wordsum.value;
+            
             const admin_letterr =document.getElementById('leetter');
             const admin_letter = admin_letterr.textContent;
             console.log('leeter usa',noun,
@@ -379,7 +377,6 @@ ga('send', 'pageview');
                 'plants':plants,
                 'countries':countries,
                 'inanimate':inanimate,
-                'sum':sum,
                 'UserName' : username,
                 'RoomCode' : roomCode,
                 'preg':false,
@@ -402,7 +399,6 @@ ga('send', 'pageview');
                 'plants':plants,
                 'countries':countries,
                 'inanimate':inanimate,
-                'sum':sum,
                 'UserName' : username,
                 'RoomCode' : roomCode,
                 'preg':false,
@@ -424,7 +420,6 @@ ga('send', 'pageview');
             document.getElementById('plants').disabled=true
             document.getElementById('countries').disabled=true
             document.getElementById('inanimate').disabled=true
-            document.getElementById('sum').disabled=true
             document.getElementById('done').disabled=true
             console.log('true 204')
 
@@ -434,7 +429,6 @@ ga('send', 'pageview');
             document.getElementById('plants').value = ""
             document.getElementById('countries').value = ""
             document.getElementById('inanimate').value = ""
-            document.getElementById('sum').value = ""
             //document.getElementById('noun').disabled=true
             //document.getElementById('gnoun').disabled=true
             //document.getElementById('animal').disabled=true
@@ -461,8 +455,7 @@ ga('send', 'pageview');
             const countries = wordcountries.value;
             const wordinanimate = document.querySelector('#inanimate');
             const inanimate = wordinanimate.value;
-            const wordsum = document.querySelector('#sum');
-            const sum = wordsum.value;
+            
             const admin_letterr =document.getElementById('leetter');
             const admin_letter = admin_letterr.textContent;
             console.log('leeter usa',admin_letter)
@@ -478,7 +471,6 @@ ga('send', 'pageview');
               'plants':plants,
               'countries':countries,
               'inanimate':inanimate,
-              'sum':sum,
               'UserName' : username,
               'RoomCode' : roomCode,
               'preg':false,
@@ -496,7 +488,6 @@ ga('send', 'pageview');
             document.getElementById('plants').value = ""
             document.getElementById('countries').value = ""
             document.getElementById('inanimate').value = ""
-            document.getElementById('sum').value = ""
            
           }
           
@@ -670,8 +661,7 @@ ga('send', 'pageview');
             const countries = wordcountries.value;
             const wordinanimate = document.querySelector('#inanimate');
             const inanimate = wordinanimate.value;
-            const wordsum = document.querySelector('#sum');
-            const sum = wordsum.value;
+            
             const admin_letterr =document.getElementById('leetter');
             const admin_letter = admin_letterr.textContent;
             
@@ -742,8 +732,7 @@ ga('send', 'pageview');
         const countries = wordcountries.value;
         const wordinanimate = document.querySelector('#inanimate');
         const inanimate = wordinanimate.value;
-        const wordsum = document.querySelector('#sum');
-        const sum = wordsum.value;
+        
         const admin_letterr =document.getElementById('leetter');
         const admin_letter = admin_letterr.textContent;
        if (noun==='' || gnoun==='' ||animal==='' ||plants==='' ||countries==='' ||inanimate === ''){
@@ -767,7 +756,6 @@ ga('send', 'pageview');
           'plants':plants,
           'countries':countries,
           'inanimate':inanimate,
-          'sum':sum,
           'UserName' : username,
           'RoomCode' : roomCode,
           'preg':false,
@@ -783,7 +771,6 @@ ga('send', 'pageview');
         document.getElementById('plants').disabled=true
         document.getElementById('countries').disabled=true
         document.getElementById('inanimate').disabled=true
-        document.getElementById('sum').disabled=true
         document.getElementById('done').disabled=true
 
         console.log('true 530')
@@ -794,7 +781,6 @@ ga('send', 'pageview');
         document.getElementById('plants').value = ""
         document.getElementById('countries').value = ""
         document.getElementById('inanimate').value = ""
-        document.getElementById('sum').value = ""
       
         gameSocket.onmessage = function(e){
           const data = JSON.parse(e.data)
@@ -822,7 +808,6 @@ ga('send', 'pageview');
             document.getElementById('plants').disabled=false
             document.getElementById('countries').disabled=false
             document.getElementById('inanimate').disabled=false
-            document.getElementById('sum').disabled=false
             document.getElementById('done').disabled=false
 
             
