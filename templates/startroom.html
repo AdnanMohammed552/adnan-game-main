@@ -171,6 +171,7 @@ body{
 {{ request.user.username|json_script:"user_id" }}
 
 <script>
+  document.getElementById('view').style.display="none"
   window.onbeforeunload = function (e) {
         
         if ((document.getElementById('endingEle').innerHTML)!=='Game had been ended'){
@@ -312,6 +313,8 @@ body{
       }
      
       document.querySelector('#send').onclick = function(e){
+        document.getElementById('view').style.display="block"
+
         
         document.getElementById('send').style.display='none'
         document.getElementById('end').style.display='block'
