@@ -506,6 +506,14 @@ ga('send', 'pageview');
          if(data.UserName === username){
          document.getElementById("points").innerHTML =((parseInt(document.getElementById("points").innerHTML) + parseInt(data.sum)));
          startConfetti()
+         doStuff()
+     async function doStuff(){
+      // Code to run before sleep
+     
+      // Sleep for 3 seconds
+      await new Promise(r => setTimeout(r, 4000));
+      stopConfetti()
+     }
          
         }
          document.getElementById(data.UserName+data.admin_letter+"sum").innerHTML = data.sum;
