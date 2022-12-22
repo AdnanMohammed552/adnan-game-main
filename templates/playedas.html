@@ -8,7 +8,9 @@
 {% endblock %}
 {% block content %}
 {% for i in z %}
+<center>
 <button type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')" style="background-color: green;">{{i}}</button>
+</center>
 {% endfor %}
 <div id="dis"></div>
 <script>
