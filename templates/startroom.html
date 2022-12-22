@@ -171,7 +171,7 @@ body{
 {{ request.user.username|json_script:"user_id" }}
 
 <script>
-    document.getElementByI('accordionExample').style.display="none"
+    document.getElementById('accordionExample').style.display="none"
 
   document.getElementById('view').style.display="none"
   document.getElementById('end').style.display='none'
@@ -317,7 +317,7 @@ document.getElementById('flep').style.display ="none"
       }
      
       document.querySelector('#send').onclick = function(e){
-        document.getElementByI('accordionExample').style.display="block"
+        document.getElementById('accordionExample').style.display="block"
         document.getElementById('view').style.display="block"
 
         
