@@ -274,9 +274,7 @@
       
       console.log(gameSocket)
       gameSocket.onopen = function(e){
-        gameSocket.send(JSON.stringify({
-          'ready':true
-        }))
+        
       gameSocket.onmessage = function (e) {
         gameSocket.onclose=function(e){
           gameSocket=null
