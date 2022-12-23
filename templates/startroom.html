@@ -207,6 +207,7 @@ body{
 {{ request.user.username|json_script:"user_id" }}
 
 <script>
+  document.getElementById('send').disabled=true
   let text = document.querySelector('.hovertext').innerHTML;
     console.log('ad',text)
   const copyContent = async () => {
@@ -326,6 +327,7 @@ document.getElementById('flep').style.display ="none"
             document.getElementById('users').innerHTML += (
              ' <button class="btn btn-tag btn-rounded text-center" id="'+ username +'" onclick="userremove(\'' + username + '\')"><span>'+ username +'</span></button>'
             )
+            document.getElementById('send').disabled=false
             //const h1Element = document.createElement("h1");
             //h1Element.textContent = username;
             //document.body.append(h1Element);
