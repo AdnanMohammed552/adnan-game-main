@@ -21,7 +21,7 @@
   {{ svg|safe }}
 </div>
     <h3 id="gjro" ></h3>
-  <h3 id="huhhd" style="text-align: center;">{{room_code}}</h3>
+  <h3 id="huhhd" class="hovertext" onclick="copyContent()" data-hover="Click to copy the code" style="text-align: center;">{{room_code}}</h3>
      <h3 id="flep">الحرف القادم هو<span class="badge badge-primary" id="leetter"></span></h5>   
      
       <h3 id="leettered"></h3>
@@ -169,12 +169,51 @@ body{
 #view {
     margin-right: 5px;
 }
+    
+.hovertext {
+  position: relative;
+  border-bottom: 1px dotted black;
+}
+
+.hovertext:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 140px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  transition: opacity 1s ease-in-out;
+
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 110%;
+}
+
+.hovertext:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
  </style>
 
 {{ room_code|json_script:'json-roomcode' }}
 {{ request.user.username|json_script:"user_id" }}
 
 <script>
+  let text = document.querySelector('.hovertext').innerHTML;
+    console.log('ad',text)
+  const copyContent = async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+      
+      console.log('Content copied to clipboard');
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+    }
+  }
     document.getElementById('accordionExample').style.display="none"
 
   document.getElementById('view').style.display="none"
