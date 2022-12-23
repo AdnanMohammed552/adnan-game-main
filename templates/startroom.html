@@ -321,6 +321,7 @@ document.getElementById('flep').style.display ="none"
         if (data){
           const username = data.userName;
           console.log(username)
+          if(fruits.includes(username) === false){
           array.push(username)
           if (username !==""){
             
@@ -333,7 +334,7 @@ document.getElementById('flep').style.display ="none"
             //document.body.append(h1Element);
           }
           }
-        
+        }
 
     }
       function userremove(x){
