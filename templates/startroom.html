@@ -316,6 +316,7 @@ document.getElementById('flep').style.display ="none"
     
       gameSocket.onmessage = function (e) {
         console.log('done');
+        
         const data = JSON.parse(e.data);
         console.log(data)
         if (data){
@@ -336,7 +337,7 @@ document.getElementById('flep').style.display ="none"
           }
           else{
             console.log('my random',data.random)
-            if(data.finish !== true){
+            if(data.finish !== true || data.random!== false){
             gameSocket.send(JSON.stringify({
               'Usere':username,
               'random':data.random,
