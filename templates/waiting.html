@@ -71,7 +71,7 @@
             }
             if(data.Usere === username && data.random === random){
 
-              var url =  window.location.origin +'/join/' +roomCode + '?username=' + userName;
+              var url =  window.location.origin +'/join/';
                       history.pushState({}, null, url);
                       location.reload()
              }
