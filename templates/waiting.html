@@ -61,7 +61,7 @@
             if (data){
                 const start = data.started;
                 console.log(start)
-                if (start == true) {
+                if (start === true) {
                     var url =  window.location.origin +'/join/' +roomCode + '?username=' + userName;
                     history.pushState({}, null, url);
                     location.reload()
@@ -71,7 +71,7 @@
             }
             if(data.Usere === username && data.random === random){
 
-              var url =  window.location.origin +'/join/';
+              var url =  window.location.origin +'/join';
                       history.pushState({}, null, url);
                       location.reload()
              }
