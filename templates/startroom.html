@@ -207,6 +207,8 @@ body{
 {{ request.user.username|json_script:"user_id" }}
 
 <script>
+all()
+  function all(e){
   document.getElementById('send').disabled=true
   let text = document.querySelector('.hovertext').innerHTML;
     console.log('ad',text)
@@ -340,6 +342,8 @@ document.getElementById('flep').style.display ="none"
               'Usere':username,
               'random':data.random
             }))
+            all()
+            
           }
         }
 
@@ -1193,7 +1197,7 @@ document.getElementById('flep').style.display ="none"
         }
       }
     }
-    
+  }
   
 </script>
 {% endblock %}
