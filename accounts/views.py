@@ -47,7 +47,11 @@ def signup(request):
                             user = User.objects.create_user(username = name,email=email,password=password)
                             user.save()
                             messages.info(request, 'Done', extra_tags='safe')
-                            return redirect('/account/login' , kwargs={'email':email,'password':password})
+                            user = auth.authenticate(username = name , password= password)
+                            auth.login(request,user)
+              
+                            return render(request , 'room.html')
+                            
                         else:
                             messages.error(request, 'Password not match', extra_tags='safe')
                     else:
