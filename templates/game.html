@@ -295,7 +295,6 @@ ga('send', 'pageview');
         'wss://' + window.location.host + '/ws/' + roomCode + '/'
       )
       gameSocket.onclose=function(e){
-        gameSocket=null
         const gameSocket = new WebSocket(
         'wss://' + window.location.host + '/ws/' + roomCode + '/'
       )
@@ -307,7 +306,6 @@ ga('send', 'pageview');
         
       gameSocket.onmessage = function (e) {
         gameSocket.onclose=function(e){
-          gameSocket=null
           const gameSocket = new WebSocket(
           'wss://' + window.location.host + '/ws/' + roomCode + '/'
         )}
