@@ -207,8 +207,6 @@ body{
 {{ request.user.username|json_script:"user_id" }}
 
 <script>
-all()
-  function all(e){
   document.getElementById('send').disabled=true
   let text = document.querySelector('.hovertext').innerHTML;
     console.log('ad',text)
@@ -338,12 +336,13 @@ document.getElementById('flep').style.display ="none"
           }
           else{
             console.log('my random',data.random)
+            if(data.finish !== true){
             gameSocket.send(JSON.stringify({
               'Usere':username,
-              'random':data.random
+              'random':data.random,
+              'finish':true
             }))
-            all()
-            
+          }
           }
         }
 
@@ -1197,7 +1196,7 @@ document.getElementById('flep').style.display ="none"
         }
       }
     }
-  }
+    
   
 </script>
 {% endblock %}
