@@ -327,7 +327,7 @@ while(document.getElementById('bare')){
 
 var data=document.getElementById('pdfgenerator').innerHTML;
         var myWindow = window.open('', roomCode);
-        myWindow.document.write('<html><head><title>Game</title>');
+        myWindow.document.write('<html><head><title>'+roomCode+'</title>');
         /*optional stylesheet*/ //myWindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
         myWindow.document.write('</head><body dir="rtl">');
         myWindow.document.write(data);
