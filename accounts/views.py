@@ -76,7 +76,7 @@ def login(request):
         if user is not None:
             auth.login(request,user)
             messages.success(request,'Done login')  
-            return render(request,'room.html')
+            return redirect('room')
         else:
             messages.error(request,'Wrong')   
             return render(request , 'login.html' , {
