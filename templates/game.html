@@ -677,25 +677,7 @@ ga('send', 'pageview');
            // alert('Message is empty');
           }
           console.log('data ir ' , data.end)
-          if(data.end === true){
-            var end = data.end
-            doStuff()
-          async function doStuff(){
-          // Code to run before sleep
           
-          // Sleep for 3 seconds
-          await new Promise(r => setTimeout(r, 500));
-            document.getElementById('endingEle').innerHTML="Game had been ended"
-            setTimeout(() => {  console.log("World!"); }, 5000);
-            gameSocket.send(JSON.stringify({
-              'player_this':username,
-              'room_this':roomCode
-            }))
-            var url =  window.location.origin +'/end/' +roomCode + '?username=' + username;
-            history.pushState({}, null, url);
-            window.location.href=url
-          }
-          }
         }
       }
       else{
@@ -816,6 +798,25 @@ ga('send', 'pageview');
           }
           
         console.log('second messages are',data)
+        if(data.end === true){
+            var end = data.end
+            doStuff()
+          async function doStuff(){
+          // Code to run before sleep
+          
+          // Sleep for 3 seconds
+          await new Promise(r => setTimeout(r, 500));
+            document.getElementById('endingEle').innerHTML="Game had been ended"
+            setTimeout(() => {  console.log("World!"); }, 5000);
+            gameSocket.send(JSON.stringify({
+              'player_this':username,
+              'room_this':roomCode
+            }))
+            var url =  window.location.origin +'/end/' +roomCode + '?username=' + username;
+            history.pushState({}, null, url);
+            window.location.href=url
+          }
+          }
           if (data.noun_result !==null && data.gnoun_result!==null && data.countries_result!==null && data.result===true){
             document.getElementById('noun_result'+data.UserName+data.admin_letter).innerHTML = data.noun_result;
             document.getElementById('gnoun_result'+data.UserName+data.admin_letter).innerHTML = data.gnoun_result;
