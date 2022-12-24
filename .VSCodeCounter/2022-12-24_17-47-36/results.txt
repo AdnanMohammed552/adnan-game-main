@@ -1,0 +1,169 @@
+Date : 2022-12-24 17:47:36
+Directory : d:\Desktop new\deployment
+Total : 126 files,  6785 codes, 1093 comments, 1539 blanks, all 9417 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| Python           |        106 |      3,646 |        896 |        856 |      5,398 |
+| HTML             |         18 |      2,935 |        197 |        683 |      3,815 |
+| pip requirements |          1 |        201 |          0 |          0 |        201 |
+| Markdown         |          1 |          3 |          0 |          0 |          3 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                     | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                        |        126 |      6,785 |      1,093 |      1,539 |      9,417 |
+| accounts                                                                                                 |         11 |        218 |          5 |         54 |        277 |
+| accounts\migrations                                                                                      |          4 |         59 |          3 |         20 |         82 |
+| animal                                                                                                   |         68 |      2,959 |        820 |        665 |      4,444 |
+| animal\channels                                                                                          |         29 |      1,696 |        773 |        400 |      2,869 |
+| animal\channels\generic                                                                                  |          3 |        194 |        122 |         57 |        373 |
+| animal\channels\management                                                                               |          4 |        169 |         24 |         27 |        220 |
+| animal\channels\management\commands                                                                      |          3 |        169 |         24 |         26 |        219 |
+| animal\channels\security                                                                                 |          2 |         69 |         68 |         18 |        155 |
+| animal\channels\testing                                                                                  |          4 |        147 |         60 |         34 |        241 |
+| animal\migrations                                                                                        |         30 |        475 |         29 |        176 |        680 |
+| animals                                                                                                  |          5 |        126 |         51 |         43 |        220 |
+| gameadmin                                                                                                |         12 |        202 |          7 |         59 |        268 |
+| gameadmin\migrations                                                                                     |          4 |         48 |          3 |         20 |         71 |
+| letter                                                                                                   |          9 |        126 |         10 |         30 |        166 |
+| letter\migrations                                                                                        |          1 |          0 |          0 |          1 |          1 |
+| templates                                                                                                |         18 |      2,935 |        197 |        683 |      3,815 |
++----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                                                                 | language         | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| d:\Desktop new\deployment\README.md                                                                      | Markdown         |          3 |          0 |          0 |          3 |
+| d:\Desktop new\deployment\accounts\__init__.py                                                           | Python           |          0 |          0 |          1 |          1 |
+| d:\Desktop new\deployment\accounts\admin.py                                                              | Python           |          1 |          1 |          2 |          4 |
+| d:\Desktop new\deployment\accounts\apps.py                                                               | Python           |          4 |          0 |          3 |          7 |
+| d:\Desktop new\deployment\accounts\migrations\0001_initial.py                                            | Python           |         17 |          1 |          7 |         25 |
+| d:\Desktop new\deployment\accounts\migrations\0002_room_created_players_room_created_table_and_more.py   | Python           |         27 |          1 |          6 |         34 |
+| d:\Desktop new\deployment\accounts\migrations\0003_played.py                                             | Python           |         15 |          1 |          6 |         22 |
+| d:\Desktop new\deployment\accounts\migrations\__init__.py                                                | Python           |          0 |          0 |          1 |          1 |
+| d:\Desktop new\deployment\accounts\models.py                                                             | Python           |         12 |          0 |          6 |         18 |
+| d:\Desktop new\deployment\accounts\tests.py                                                              | Python           |          1 |          1 |          2 |          4 |
+| d:\Desktop new\deployment\accounts\urls.py                                                               | Python           |         12 |          0 |          1 |         13 |
+| d:\Desktop new\deployment\accounts\views.py                                                              | Python           |        129 |          0 |         19 |        148 |
+| d:\Desktop new\deployment\animal\__init__.py                                                             | Python           |          0 |          0 |          1 |          1 |
+| d:\Desktop new\deployment\animal\admin.py                                                                | Python           |          4 |          0 |          2 |          6 |
+| d:\Desktop new\deployment\animal\apps.py                                                                 | Python           |          4 |          0 |          3 |          7 |
+| d:\Desktop new\deployment\animal\channels\__init__.py                                                    | Python           |          8 |          0 |          4 |         12 |
+| d:\Desktop new\deployment\animal\channels\apps.py                                                        | Python           |          9 |          4 |          7 |         20 |
+| d:\Desktop new\deployment\animal\channels\auth.py                                                        | Python           |        128 |         40 |         23 |        191 |
+| d:\Desktop new\deployment\animal\channels\consumer.py                                                    | Python           |         66 |         47 |         21 |        134 |
+| d:\Desktop new\deployment\animal\channels\db.py                                                          | Python           |         10 |          4 |          6 |         20 |
+| d:\Desktop new\deployment\animal\channels\exceptions.py                                                  | Python           |         16 |         27 |         23 |         66 |
+| d:\Desktop new\deployment\animal\channels\generic\__init__.py                                            | Python           |          0 |          0 |          1 |          1 |
+| d:\Desktop new\deployment\animal\channels\generic\http.py                                                | Python           |         39 |         40 |         13 |         92 |
+| d:\Desktop new\deployment\animal\channels\generic\websocket.py                                           | Python           |        155 |         82 |         43 |        280 |
+| d:\Desktop new\deployment\animal\channels\hacks.py                                                       | Python           |          6 |          5 |          3 |         14 |
+| d:\Desktop new\deployment\animal\channels\http.py                                                        | Python           |        256 |         81 |         31 |        368 |
+| d:\Desktop new\deployment\animal\channels\layers.py                                                      | Python           |        212 |         98 |         56 |        366 |
+| d:\Desktop new\deployment\animal\channels\management\__init__.py                                         | Python           |          0 |          0 |          1 |          1 |
+| d:\Desktop new\deployment\animal\channels\management\commands\__init__.py                                | Python           |          0 |          0 |          1 |          1 |
+| d:\Desktop new\deployment\animal\channels\management\commands\runserver.py                               | Python           |        134 |         21 |         16 |        171 |
+| d:\Desktop new\deployment\animal\channels\management\commands\runworker.py                               | Python           |         35 |          3 |          9 |         47 |
+| d:\Desktop new\deployment\animal\channels\middleware.py                                                  | Python           |          6 |         18 |          3 |         27 |
+| d:\Desktop new\deployment\animal\channels\routing.py                                                     | Python           |        117 |         52 |         26 |        195 |
+| d:\Desktop new\deployment\animal\channels\security\__init__.py                                           | Python           |          0 |          0 |          1 |          1 |
+| d:\Desktop new\deployment\animal\channels\security\websocket.py                                          | Python           |         69 |         68 |         17 |        154 |
+| d:\Desktop new\deployment\animal\channels\sessions.py                                                    | Python           |        175 |         65 |         29 |        269 |
+| d:\Desktop new\deployment\animal\channels\signals.py                                                     | Python           |          5 |          1 |          3 |          9 |
+| d:\Desktop new\deployment\animal\channels\staticfiles.py                                                 | Python           |         39 |         27 |         17 |         83 |
+| d:\Desktop new\deployment\animal\channels\testing\__init__.py                                            | Python           |         10 |          0 |          3 |         13 |
+| d:\Desktop new\deployment\animal\channels\testing\http.py                                                | Python           |         34 |         17 |          6 |         57 |
+| d:\Desktop new\deployment\animal\channels\testing\live.py                                                | Python           |         45 |          9 |         14 |         68 |
+| d:\Desktop new\deployment\animal\channels\testing\websocket.py                                           | Python           |         58 |         34 |         11 |        103 |
+| d:\Desktop new\deployment\animal\channels\utils.py                                                       | Python           |         41 |         15 |          5 |         61 |
+| d:\Desktop new\deployment\animal\channels\worker.py                                                      | Python           |         23 |         15 |          7 |         45 |
+| d:\Desktop new\deployment\animal\consumers.py                                                            | Python           |        605 |         14 |         37 |        656 |
+| d:\Desktop new\deployment\animal\migrations\0001_initial.py                                              | Python           |         33 |          1 |          7 |         41 |
+| d:\Desktop new\deployment\animal\migrations\0002_alter_summeryofletter_time.py                           | Python           |         13 |          1 |          6 |         20 |
+| d:\Desktop new\deployment\animal\migrations\0003_alter_summeryofletter_all_letter_as_and_more.py         | Python           |         18 |          1 |          6 |         25 |
+| d:\Desktop new\deployment\animal\migrations\0004_alter_summeryofletter_time.py                           | Python           |         13 |          1 |          6 |         20 |
+| d:\Desktop new\deployment\animal\migrations\0005_startingroom_alter_summeryofletter_time.py              | Python           |         21 |          1 |          6 |         28 |
+| d:\Desktop new\deployment\animal\migrations\0006_alter_summeryofletter_time.py                           | Python           |         13 |          1 |          6 |         20 |
+| d:\Desktop new\deployment\animal\migrations\0007_alter_summeryofletter_time.py                           | Python           |         13 |          1 |          6 |         20 |
+| d:\Desktop new\deployment\animal\migrations\0008_delete_startingroom_alter_summeryofletter_time.py       | Python           |         16 |          1 |          6 |         23 |
+| d:\Desktop new\deployment\animal\migrations\0009_alter_summeryofletter_time.py                           | Python           |         13 |          1 |          6 |         20 |
+| d:\Desktop new\deployment\animal\migrations\0010_alter_summeryofletter_time.py                           | Python           |         13 |          1 |          6 |         20 |
+| d:\Desktop new\deployment\animal\migrations\0011_alter_summeryofletter_time.py                           | Python           |         13 |          1 |          6 |         20 |
+| d:\Desktop new\deployment\animal\migrations\0012_array_alter_summeryofletter_time.py                     | Python           |         21 |          1 |          6 |         28 |
+| d:\Desktop new\deployment\animal\migrations\0013_alter_array_status_alter_summeryofletter_time.py        | Python           |         18 |          1 |          6 |         25 |
+| d:\Desktop new\deployment\animal\migrations\0014_alter_array_status_alter_summeryofletter_time.py        | Python           |         18 |          1 |          6 |         25 |
+| d:\Desktop new\deployment\animal\migrations\0015_players_alter_summeryofletter_time.py                   | Python           |         21 |          1 |          6 |         28 |
+| d:\Desktop new\deployment\animal\migrations\0016_alter_players_players_alter_summeryofletter_time.py     | Python           |         18 |          1 |          6 |         25 |
+| d:\Desktop new\deployment\animal\migrations\0017_alter_adnan_test11_letter_alter_summeryofletter_time.py | Python           |         18 |          1 |          6 |         25 |
+| d:\Desktop new\deployment\animal\migrations\0018_alter_summeryofletter_time.py                           | Python           |         13 |          1 |          6 |         20 |
+| d:\Desktop new\deployment\animal\migrations\0019_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\Desktop new\deployment\animal\migrations\0020_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\Desktop new\deployment\animal\migrations\0021_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\Desktop new\deployment\animal\migrations\0022_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\Desktop new\deployment\animal\migrations\0023_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\Desktop new\deployment\animal\migrations\0024_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\Desktop new\deployment\animal\migrations\0025_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\Desktop new\deployment\animal\migrations\0026_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\Desktop new\deployment\animal\migrations\0027_room_created_alter_summeryofletter_time.py              | Python           |         24 |          1 |          6 |         31 |
+| d:\Desktop new\deployment\animal\migrations\0028_alter_room_created_room_created_and_more.py             | Python           |         19 |          1 |          6 |         26 |
+| d:\Desktop new\deployment\animal\migrations\0029_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\Desktop new\deployment\animal\migrations\__init__.py                                                  | Python           |          0 |          0 |          1 |          1 |
+| d:\Desktop new\deployment\animal\models.py                                                               | Python           |         34 |          0 |          6 |         40 |
+| d:\Desktop new\deployment\animal\routing.py                                                              | Python           |          5 |          0 |          2 |          7 |
+| d:\Desktop new\deployment\animal\tests.py                                                                | Python           |          1 |          1 |          2 |          4 |
+| d:\Desktop new\deployment\animal\urls.py                                                                 | Python           |         14 |          0 |          3 |         17 |
+| d:\Desktop new\deployment\animal\views.py                                                                | Python           |        121 |          3 |         33 |        157 |
+| d:\Desktop new\deployment\animals\__init__.py                                                            | Python           |          0 |          0 |          1 |          1 |
+| d:\Desktop new\deployment\animals\asgi.py                                                                | Python           |         19 |          1 |          3 |         23 |
+| d:\Desktop new\deployment\animals\settings.py                                                            | Python           |         96 |         27 |         32 |        155 |
+| d:\Desktop new\deployment\animals\urls.py                                                                | Python           |          7 |         15 |          2 |         24 |
+| d:\Desktop new\deployment\animals\wsgi.py                                                                | Python           |          4 |          8 |          5 |         17 |
+| d:\Desktop new\deployment\gameadmin\__init__.py                                                          | Python           |          0 |          0 |          1 |          1 |
+| d:\Desktop new\deployment\gameadmin\admin.py                                                             | Python           |          1 |          1 |          2 |          4 |
+| d:\Desktop new\deployment\gameadmin\apps.py                                                              | Python           |          4 |          0 |          3 |          7 |
+| d:\Desktop new\deployment\gameadmin\consumers.py                                                         | Python           |        130 |          1 |         23 |        154 |
+| d:\Desktop new\deployment\gameadmin\migrations\0001_initial.py                                           | Python           |         16 |          1 |          7 |         24 |
+| d:\Desktop new\deployment\gameadmin\migrations\0002_room.py                                              | Python           |         14 |          1 |          6 |         21 |
+| d:\Desktop new\deployment\gameadmin\migrations\0003_startingroom_admin_startingroom_time.py              | Python           |         18 |          1 |          6 |         25 |
+| d:\Desktop new\deployment\gameadmin\migrations\__init__.py                                               | Python           |          0 |          0 |          1 |          1 |
+| d:\Desktop new\deployment\gameadmin\models.py                                                            | Python           |         12 |          0 |          4 |         16 |
+| d:\Desktop new\deployment\gameadmin\routing.py                                                           | Python           |          5 |          0 |          2 |          7 |
+| d:\Desktop new\deployment\gameadmin\tests.py                                                             | Python           |          1 |          1 |          2 |          4 |
+| d:\Desktop new\deployment\gameadmin\views.py                                                             | Python           |          1 |          1 |          2 |          4 |
+| d:\Desktop new\deployment\letter\__init__.py                                                             | Python           |          0 |          0 |          1 |          1 |
+| d:\Desktop new\deployment\letter\admin.py                                                                | Python           |          1 |          1 |          2 |          4 |
+| d:\Desktop new\deployment\letter\apps.py                                                                 | Python           |          4 |          0 |          3 |          7 |
+| d:\Desktop new\deployment\letter\consumers.py                                                            | Python           |        113 |          6 |         15 |        134 |
+| d:\Desktop new\deployment\letter\migrations\__init__.py                                                  | Python           |          0 |          0 |          1 |          1 |
+| d:\Desktop new\deployment\letter\models.py                                                               | Python           |          1 |          1 |          2 |          4 |
+| d:\Desktop new\deployment\letter\routing.py                                                              | Python           |          5 |          0 |          2 |          7 |
+| d:\Desktop new\deployment\letter\tests.py                                                                | Python           |          1 |          1 |          2 |          4 |
+| d:\Desktop new\deployment\letter\views.py                                                                | Python           |          1 |          1 |          2 |          4 |
+| d:\Desktop new\deployment\manage.py                                                                      | Python           |         15 |          3 |          5 |         23 |
+| d:\Desktop new\deployment\requirements.txt                                                               | pip requirements |        201 |          0 |          0 |        201 |
+| d:\Desktop new\deployment\templates\accounthome.html                                                     | HTML             |         35 |          0 |         13 |         48 |
+| d:\Desktop new\deployment\templates\base.html                                                            | HTML             |        130 |         21 |         15 |        166 |
+| d:\Desktop new\deployment\templates\create.html                                                          | HTML             |         58 |          0 |          8 |         66 |
+| d:\Desktop new\deployment\templates\end.html                                                             | HTML             |         47 |          0 |         14 |         61 |
+| d:\Desktop new\deployment\templates\endAdmin.html                                                        | HTML             |        329 |          0 |         42 |        371 |
+| d:\Desktop new\deployment\templates\game.html                                                            | HTML             |        796 |          0 |        164 |        960 |
+| d:\Desktop new\deployment\templates\join.html                                                            | HTML             |         40 |          9 |         22 |         71 |
+| d:\Desktop new\deployment\templates\joinqr.html                                                          | HTML             |         33 |          8 |         20 |         61 |
+| d:\Desktop new\deployment\templates\login.html                                                           | HTML             |        177 |         85 |         18 |        280 |
+| d:\Desktop new\deployment\templates\myaccount.html                                                       | HTML             |         20 |         74 |          5 |         99 |
+| d:\Desktop new\deployment\templates\mygames.html                                                         | HTML             |         22 |          0 |          5 |         27 |
+| d:\Desktop new\deployment\templates\played.html                                                          | HTML             |         10 |          0 |          5 |         15 |
+| d:\Desktop new\deployment\templates\playedas.html                                                        | HTML             |         22 |          0 |          5 |         27 |
+| d:\Desktop new\deployment\templates\room.html                                                            | HTML             |         46 |          0 |         18 |         64 |
+| d:\Desktop new\deployment\templates\roomAdmin.html                                                       | HTML             |         99 |          0 |         18 |        117 |
+| d:\Desktop new\deployment\templates\signup.html                                                          | HTML             |         71 |          0 |         19 |         90 |
+| d:\Desktop new\deployment\templates\startroom.html                                                       | HTML             |        930 |          0 |        275 |      1,205 |
+| d:\Desktop new\deployment\templates\waiting.html                                                         | HTML             |         70 |          0 |         17 |         87 |
+| Total                                                                                                    |                  |      6,785 |      1,093 |      1,539 |      9,417 |
++----------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
