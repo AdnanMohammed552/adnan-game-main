@@ -18,7 +18,7 @@
 
         const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
         const userName = JSON.parse(document.getElementById('json-username').textContent);
-        const random = Math.random() * 100
+        const random = Math.random() * 1000
         console.log("it is " , roomCode,userName)
         const gameSocket = new WebSocket(
               
