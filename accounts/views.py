@@ -78,7 +78,7 @@ def login(request):
             messages.success(request,'Done login')  
             return render(request,'room.html')
         else:
-            messages.error(request,'Wrong3')   
+            messages.error(request,'Wrong')   
             return render(request , 'login.html' , {
                                 'email' :email,
                                 'password' : password
