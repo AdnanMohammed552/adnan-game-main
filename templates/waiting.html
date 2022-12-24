@@ -50,6 +50,7 @@
               document.getElementById('div_id'+data.user).remove()
             }
            }
+           
         }
         gameSocket.onmessage = function (e) {
             console.log('done');
@@ -66,6 +67,11 @@
             }else{
                 alert('Message is empty');
             }
+            if(data.Usere === username){
+              var url =  window.location.origin +'/join/' +roomCode + '?username=' + userName;
+                      history.pushState({}, null, url);
+                      location.reload()
+             }
 
 
         }

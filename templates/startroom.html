@@ -334,6 +334,11 @@ document.getElementById('flep').style.display ="none"
             //document.body.append(h1Element);
           }
           }
+          else{
+            gameSocket.send(JSON.stringify({
+              'Usere':username
+            }))
+          }
         }
 
     }
