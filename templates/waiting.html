@@ -18,6 +18,7 @@
 
         const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
         const userName = JSON.parse(document.getElementById('json-username').textContent);
+        const random = Math.random() * 100
         console.log("it is " , roomCode,userName)
         const gameSocket = new WebSocket(
               
@@ -26,6 +27,7 @@
       gameSocket.onopen = function(e){
         gameSocket.send(JSON.stringify({
           'userName':userName,
+          'random':random
         }))
         
          
@@ -67,7 +69,8 @@
             }else{
                 alert('Message is empty');
             }
-            if(data.Usere === username){
+            if(data.Usere === username && data.random === random){
+
               var url =  window.location.origin +'/join/' +roomCode + '?username=' + userName;
                       history.pushState({}, null, url);
                       location.reload()

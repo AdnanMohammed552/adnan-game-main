@@ -336,7 +336,8 @@ document.getElementById('flep').style.display ="none"
           }
           else{
             gameSocket.send(JSON.stringify({
-              'Usere':username
+              'Usere':username,
+              'random':data.random
             }))
           }
         }

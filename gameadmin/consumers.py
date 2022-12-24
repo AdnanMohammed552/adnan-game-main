@@ -61,6 +61,10 @@ class gameConsumer(AsyncWebsocketConsumer):
             Usere = data['Usere']
         except:
             Usere=False
+        try:
+            random = data['random']
+        except:
+            random=False
         await self.save(roomCode,started,end)
         
         await self.channel_layer.group_send(
@@ -73,7 +77,8 @@ class gameConsumer(AsyncWebsocketConsumer):
                 'nogame':nogame,
                 'room':room,
                 'admin':admin,
-                'Usere':Usere
+                'Usere':Usere,
+                'random':random
             }
             
         )
@@ -107,6 +112,10 @@ class gameConsumer(AsyncWebsocketConsumer):
             Usere = event['Usere']
         except:
             Usere=False
+        try:
+            random = event['random']
+        except:
+            random=False
         print('costheta',nogame,room)
         if nogame == 'no' and room != False:
             print('fjkwlegbkwenfoe99')
@@ -117,7 +126,8 @@ class gameConsumer(AsyncWebsocketConsumer):
             'started':started,
             'userName':userName,
             'end':end,
-            'Usere':Usere
+            'Usere':Usere,
+            'random':random
             
             
         }))
