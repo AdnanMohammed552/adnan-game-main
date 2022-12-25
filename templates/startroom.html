@@ -398,6 +398,11 @@ document.getElementById('flep').style.display ="none"
         document.getElementById('send').style.display = "none"
         gameSocket2.onmessage = function(e){
           const data = JSON.parse(e.data)
+          if(data.kickme === true){
+            document.getElementById(data.userf).remove()
+            document.getElementById(('div_id'+data.userf)).remove()
+
+          }
           if (data.letterconsumer!==null&&typeof data.letterconsumer!=="undefined"&&data.letterconsumer!=="" &&data.letterconsumer!==false){
           console.log('yeeesa')
           document.querySelector('#leettered').innerHTML =(data.letterconsumer);

@@ -294,6 +294,12 @@ ga('send', 'pageview');
       const gameSocket = new WebSocket(
         'wss://' + window.location.host + '/ws/' + roomCode + '/'
       )
+      gameSocket.onclose= function(e){
+        gameSocket.send(JSON.stringify({
+          'kickme':true,
+          'userf':username
+        }))
+      }
       gameSocket.onclose=function(e){
         const gameSocket = new WebSocket(
         'wss://' + window.location.host + '/ws/' + roomCode + '/'

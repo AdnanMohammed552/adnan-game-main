@@ -230,6 +230,15 @@ class gameConsumer(AsyncWebsocketConsumer):
             alltables2=data['alltables2']
         except:
             alltables2=False 
+
+        try:
+            kickme=data['kickme']
+        except:
+            kickme=False 
+        try:
+            userf=data['userf']
+        except:
+            userf=False 
         print(inanimate )
         self.glabaluser1=str(self.glabaluser)
         await self.save_info(noun,gnoun,animal,plants,countries,inanimate,username,the_letter,RoomCode)
@@ -303,7 +312,9 @@ class gameConsumer(AsyncWebsocketConsumer):
                         'alltables':alltables,
                         'adnan':adnan,
                         'alltables2':alltables2,
-                        'disabled':disabled
+                        'disabled':disabled,
+                        'kickme':kickme,
+                        'userf':userf
 
                     
                     }
@@ -499,6 +510,15 @@ class gameConsumer(AsyncWebsocketConsumer):
                 disabled=event['disabled']
             except:
                 disabled=False   
+
+            try:
+                kickme=event['kickme']
+            except:
+                kickme=False 
+            try:
+                userf=event['userf']
+            except:
+                userf=False 
             the_letter_choosen = ''
             #print('alllll',alltables)
             if alltables != False:
@@ -569,7 +589,10 @@ class gameConsumer(AsyncWebsocketConsumer):
                 'kick':kick,
                 'user':user,
                 'star':star,
-                'disabled':disabled
+                'disabled':disabled,
+                'kickme':kickme,
+                'userf':userf
+
                 
 
 
