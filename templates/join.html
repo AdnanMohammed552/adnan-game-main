@@ -57,13 +57,18 @@
       
       const roomCode = document.querySelector('#code').value;
       
-      const userName = document.querySelector('#username').value;           
+      const userName = document.querySelector('#username').value;    
+      if(roomCode===''){
+
+      } 
+      else{    
+          
       console.log('Ima here' , roomCode,userName)
       
 
       
       window.location.replace('/wait/'+roomCode+'?username=' + userName)
-
+    }
         
 
     };
