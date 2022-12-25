@@ -9,7 +9,7 @@
 {% endblock %}
 {% block content %}
     <center>
-    <h1 style="margin-top: auto;">Waiting to start the game...</h1>
+    <h1 dir="ltr" style="margin-top: auto;">Waiting to start the game...</h1>
   </center>
     {{ room_code|json_script:'json-roomcode' }}
     {{ username|json_script:'json-username'  }}
