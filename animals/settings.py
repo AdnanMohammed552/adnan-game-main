@@ -82,7 +82,7 @@ ssl_context = ssl.SSLContext()
 ssl_context.check_hostname = False
 
 heroku_redis_ssl_host = {
-    'address': 'redis://:p437ccdd6e48e2b85b03f58b9be8e9cd5c2c0af5775a985eb5da6194c61c7415e@ec2-107-20-220-72.compute-1.amazonaws.com:7600' ,
+    'address': 'rediss://:p437ccdd6e48e2b85b03f58b9be8e9cd5c2c0af5775a985eb5da6194c61c7415e@ec2-44-214-184-90.compute-1.amazonaws.com:7960' ,
     'ssl': ssl_context
 }
 CHANNEL_LAYERS = {
@@ -101,10 +101,10 @@ CHANNEL_LAYERS = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd1rree2j0dr73d',
-        'USER': 'iqdqbgigzyikrv',
-        'PASSWORD': 'dde08b1b680362b5a20171d7d8dc33917494acd4ac6d2a6da47c31bc4626af8a',
-        'HOST': 'ec2-3-219-135-162.compute-1.amazonaws.com',
+        'NAME': 'db9cb65aopdm8c',
+        'USER': 'jilheewrgoffyx',
+        'PASSWORD': 'de888849061c9d9e3fbf9a669b61f2bcec2bd63857e2e0d13e476f8105476613',
+        'HOST': 'ec2-54-165-184-219.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
