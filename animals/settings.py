@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '6577Fd65D17144C781787Cb1E90Ba7866F540Ecec4Ae0C74'
 
 # SECURITY WARNING: don't run with debug turned on in production
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['https://adnan-game-animal.herokuapp.com/']
 
