@@ -604,7 +604,7 @@ class gameConsumer(AsyncWebsocketConsumer):
         print('here we reethbjeibvdee11')
         models.adnan_test11.get(room=RoomCode).delete()
         models.summeryOfLetter.get(room=RoomCode).delete()
-        models.array.objects.all().delete()
+        models.array.get(room=RoomCode).delete()
         models.players.get(room=RoomCode).delete()
 
     @sync_to_async
@@ -678,4 +678,4 @@ class gameConsumer(AsyncWebsocketConsumer):
     def alltabels2(self,user,room,all):
         from.models import room_created
         room_created.objects.create(user=user,table=all,room_created=room).save()
-        models.array.objects.all().delete()
+        models.array.get(room=room).delete()
