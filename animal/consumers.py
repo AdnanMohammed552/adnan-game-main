@@ -604,7 +604,7 @@ class gameConsumer(AsyncWebsocketConsumer):
         print('here we reethbjeibvdee11')
         models.adnan_test11.get(room=RoomCode).delete()
         models.summeryOfLetter.get(room=RoomCode).delete()
-        models.array.get(room=RoomCode).delete()
+        models.array.objects.all().delete()
         models.players.get(room=RoomCode).delete()
 
     @sync_to_async
