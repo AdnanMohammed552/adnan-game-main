@@ -100,7 +100,9 @@ def mygames(request):
         w=[]
         for i in valie:
             z = i['room_created']
+            v = i['date']
             w.append(z)
+            w.append(v)
 
         return render (request , 'mygames.html',{'z':w})
     else:

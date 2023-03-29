@@ -9,6 +9,7 @@ class room_created(models.Model):
     room_created = models.CharField(max_length=10,null=True,blank=True,unique=True)
     players=models.CharField(max_length=1000,null=True,blank=True)
     table=models.TextField(max_length=10000000000000000000,default='')
+    date = models.DateTimeField(auto_now_add=True, blank=True)
 
 
 
