@@ -8,9 +8,17 @@
 {% endblock %}
 {% block content %}
 <center>
+    
 {% for i in z %}
 
+{% if isnumeric(i) %}
 <button type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')" style="background-color: green;">{{i}}</button>
+{% else %}
+<h3 type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')" style="background-color: green;">{{i}}</h3>
+
+{% endif %}
+
+
 
 {% endfor %}
 </center>
