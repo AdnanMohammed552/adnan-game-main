@@ -33,6 +33,7 @@
       <button type="button" class="btn btn-primary btn-rounded" id="send" style="font-size: 20px;">Start game</button>   
       <button type="button" class="btn btn-danger btn-rounded" id="end"  style="font-size: 20px;">End game</button>
       <button id="view">Next letter</button>
+      <h3 id="number_lett">1</h3>
     </div>
   </div>
   </div>
@@ -1181,6 +1182,7 @@ document.getElementById('flep').style.display ="none"
                
     
     document.getElementById('view').onclick=function(e){
+      document.getElementById('number_lett').innerHTML = (document.getElementById('number_lett').innerHTML)+1
       
      
 
