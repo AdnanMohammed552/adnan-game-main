@@ -14,7 +14,7 @@
     
 {% for i in z %}
 
-{% if i|is_numeric %}
+{% if i|is_numberic %}
 <button type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')" style="background-color: green;">{{i}}</button>
 {% else %}
 <h3 type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')" style="background-color: green;">{{i}}</h3>
