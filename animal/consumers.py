@@ -678,6 +678,4 @@ class gameConsumer(AsyncWebsocketConsumer):
     def alltabels2(self,user,room,all):
         from.models import room_created
         room_created.objects.create(user=user,table=all,room_created=room).save()
-        models.array.objects.all().delete()
-        models.adnan_test11.objects.all().delete()
-        
+      
