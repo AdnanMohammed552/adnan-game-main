@@ -680,4 +680,4 @@ class gameConsumer(AsyncWebsocketConsumer):
         room_created.objects.create(user=user,table=all,room_created=room).save()
         models.array.objects.all().delete()
         models.adnan_test11.objects.all().delete()
-        models.room_created.objects.all().delete()
+        
