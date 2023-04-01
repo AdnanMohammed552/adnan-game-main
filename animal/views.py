@@ -155,3 +155,7 @@ def wait(request , room_code):
 def end(request , room_code):
     username = request.GET['username']
     return render(request , 'end.html',{'user':username,'room':room_code,'z':adnan.render(Context({}))})
+
+
+def type(request):
+    return render(request,'type.html')

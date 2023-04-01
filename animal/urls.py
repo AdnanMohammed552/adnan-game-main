@@ -4,6 +4,7 @@ from.import views
 urlpatterns = [
     path('',views.roomentering , name='room'),
     path('create',views.create),
+    path('create/type',views.type),
     path('<int:room_code>/' , views.room ),
     path('join/<int:room_code>/' , views.joinnow ),
     path('wait/<int:room_code>/' , views.wait),
