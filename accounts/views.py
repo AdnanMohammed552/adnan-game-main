@@ -117,6 +117,7 @@ def myaccount(request,room_code):
                 break
             else:
                 continue
+        print('herer er hueu is z',z)
         adnan = Template(z)
 
         print('my is ',request.user ,z , type(z))
