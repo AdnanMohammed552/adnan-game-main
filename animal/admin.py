@@ -5,4 +5,5 @@ admin.site.register(adnan_test11)
 
 admin.site.register(summeryOfLetter)
 admin.site.register(players)
+
 admin.site.register(room_created)

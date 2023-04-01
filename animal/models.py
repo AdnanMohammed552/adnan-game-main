@@ -37,3 +37,5 @@ class room_created(models.Model):
     room_created = models.CharField(max_length=10,null=True,blank=True)
     players=models.CharField(max_length=1000,null=True,blank=True)
     table=models.TextField(max_length=10000000000000000000,default='')
+    def __str__(self):
+         return self.table
