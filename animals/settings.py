@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'animal',
     'channels',
     'accounts',
-    'gameadmin'
+    'gameadmin',
+    'quiz'
 
 ]
 

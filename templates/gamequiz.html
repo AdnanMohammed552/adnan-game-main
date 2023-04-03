@@ -1,0 +1,283 @@
+<div id="data"></div>
+
+<style>
+    /* center the question bar */
+    .question-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 500px;
+    }
+
+    /* center the question text */
+    .question {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    /* create two lines of choices */
+    .choices {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    /* style the buttons */
+    .btn-choice {
+      margin: 10px;
+      padding: 50px;
+      font-size: 24px;
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      border: none;
+      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+      transition: all 0.3s ease-in-out;
+      background-color: #f7f7f7;
+      color: #2f2f2f;
+    }
+
+    .btn-choice:hover {
+      transform: scale(1.1);
+    }
+
+    /* style the button labels */
+    .btn-label {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* style the selected button */
+    .btn-choice.selected {
+      background-color: #2f2f2f;
+      color: #f7f7f7;
+    }
+
+    /* style the selected button label */
+    .btn-choice.selected .btn-label {
+      color: #f7f7f7;
+    }
+    
+  </style>
+  <style>
+    .countdown-timer {
+      width: 100%;
+      height: 20px;
+      background-color: #eee;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 100%;
+      background-color: #3cb371;
+      transition: width 1s linear;
+    }
+    
+  </style>
+  <style>
+    .points {
+      display: inline-block;
+      background-color: #f2f2f2;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    
+    .points-icon {
+      font-size: 1.5rem;
+      margin-right: 5px;
+      color: #ff9800;
+    }
+    
+    .points-text {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    
+  </style>
+  
+  
+  
+  
+  
+<body>
+  <div class="countdown-timer">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+  <div class="points">
+    <span class="points-icon">&#x2605;</span>
+    <span class="points-text" id="points-text">0</span>
+  </div>
+  
+  <div class="container">
+    <div class="question-bar">
+      <div class="question">
+        <h3 id="ques"></h3>
+      </div>
+      <div class="choices">
+        <div class="d-flex justify-content-between">
+          <button id="answer1" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
+          <button id="answer2" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
+        </div>
+        <div class="d-flex justify-content-between mt-4">
+          <button id="answer3" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
+          <button id="answer4" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div id="timerrr"></div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script>
+    $(function() {
+      // select buttons
+      var buttons = $('.btn-choice');
+
+      // add click handler
+      buttons.on('click', function() {
+        // remove selected class from all buttons
+        buttons.removeClass('selected');
+        // add selected class to clicked button
+        $(this).addClass('selected');
+      });
+    });
+  </script>
+</body>
+
+{{ room_code|json_script:'json-roomcode' }}
+<script>
+  const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
+
+    const data = '{{data}}'
+    z = data.replaceAll("&#x27;",'').replaceAll("[","").replaceAll("]","")
+    let arr = z.split(",");
+    let quotedArr = arr.map(item => `"${item}"`);
+    let quotedStr = quotedArr.join(",");
+    console.log('here ',quotedStr);
+    d = "["+quotedStr+"]"
+    let arrw = JSON.parse(d);
+    console.log(arrw)
+
+
+    const question=[]
+    
+        len = arrw.length
+        questionnumber = (len-1)/7
+        console.log('question num is',questionnumber)
+        for (let i=1; i<= questionnumber ;i++){
+            questionlocation = (7 * i) -6
+            console.log('here rrr',arrw[questionlocation-1]) 
+            question.push({question:arrw[questionlocation-1],answer:arrw.slice(questionlocation,questionlocation+4),correctans:arrw[questionlocation+4],timer:arrw[questionlocation+5]})
+
+
+        }
+        function correcting(ad){
+          const quess = document.getElementById('ques').innerHTML;
+          correct_answer_location = arrw[arrw.indexOf(quess)+5]
+          correct_answer = arrw[arrw.indexOf(quess)+parseInt(correct_answer_location)] 
+          console.log('eeew22',ad,correct_answer)
+
+          if (correct_answer === ad){
+            alert('correct answer')
+            newscore = (parseInt(document.getElementById('points-text').textContent))+500
+            document.getElementById('points-text').innerHTML = (newscore)
+          } 
+          else{
+            alert('incorecct')
+          }
+
+          const gameSocket = new WebSocket(
+        
+          'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
+        )
+
+          gameSocket.send(JSON.stringify({
+            'question':quess,
+            'answer':ad,
+            'correctans':correct_answer
+
+          }))
+          document.getElementById('answer1').disabled = true;
+          document.getElementById('answer2').disabled = true;
+          document.getElementById('answer3').disabled = true;
+          document.getElementById('answer4').disabled = true;   
+          document.getElementById('progress-bar').style.display ='none'
+
+        }
+        
+        async function delayedLoop() {
+            for(i of question){
+              document.getElementById('answer1').disabled = false;
+              document.getElementById('answer2').disabled = false;
+              document.getElementById('answer3').disabled = false;
+              document.getElementById('answer4').disabled = false;
+              
+              document.getElementById('answer1').classList.remove('selected');
+              document.getElementById('answer2').classList.remove('selected');
+              document.getElementById('answer3').classList.remove('selected');
+              document.getElementById('answer4').classList.remove('selected');
+              
+            
+                document.getElementById('ques').innerHTML=(i.question)
+
+                for (x of i.answer){
+                    console.log(typeof (i.answer).indexOf(x))
+                    o=i.answer.indexOf(x)+1
+                    i.answer[i.answer.indexOf(x)]='vwjhgoiwjh444vjbnjqojgbeowiqgnqlk'
+
+                    document.getElementById('answer'+o).innerHTML=(x)
+
+                    
+                }
+                document.getElementById('timerrr').innerHTML=(i.timer)
+            
+                  await wait((i.timer)); // wait for 1 second before continuing to the next iteration
+
+                  document.getElementById('answer1').disabled = true;
+              document.getElementById('answer2').disabled = true;
+              document.getElementById('answer3').disabled = true;
+              document.getElementById('answer4').disabled = true;
+            
+          }}
+          function wait(ms) {
+            return new Promise(resolve => {
+              let countdownInterval;
+              const progressBar = document.querySelector('.progress-bar');
+          
+              const countdownTime = ms
+              let remainingTime = countdownTime;
+          
+              clearInterval(countdownInterval);
+              progressBar.style.width = '100%';
+          
+              countdownInterval = setInterval(() => {
+                remainingTime--;
+                const progressPercent = (remainingTime / countdownTime) * 100;
+                progressBar.style.width = `${progressPercent}%`;
+          
+                if (remainingTime <= 0) {
+                  clearInterval(countdownInterval);
+                  resolve(); // resolve the Promise after the countdown timer completes
+                }
+              }, 1000);
+              
+               
+            }
+            
+            );
+
+           
+          }
+          
+          delayedLoop();
+          
+        console.log('weer',question)
+        
+      
+    
+</script>

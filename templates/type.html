@@ -14,8 +14,8 @@
     <div class="d-grid gap-2">
         
         <a class="nav-link text-center display-6" href="/account/home">Hello, {{request.user.username}}</a>
-        <button class="btn btn-primary" type="submit" id="Create"><img src="https://www.almrsal.com/wp-content/uploads/2020/06/887.jpg" alt="buttonpng" border="0" />  </button>
-        <button class="btn btn-primary" type="submit" id="Join"><img src="https://dz8fbjd9gwp2s.cloudfront.net/courses/60408b740cf27f88f14f9423/60408b740cf27f88f14f9423_scaled_cover.jpg?v=1" alt="buttonpng" border="0" /></button>
+        <button class="btn " type="submit" id="Create"><img src="https://www.almrsal.com/wp-content/uploads/2020/06/887.jpg" style='width:800px;height: 400px; ' alt="buttonpng" border="0" />  </button>
+        <button class="btn " type="submit" id="Join"><img src="https://dz8fbjd9gwp2s.cloudfront.net/courses/60408b740cf27f88f14f9423/60408b740cf27f88f14f9423_scaled_cover.jpg?v=1" style='width: 800px;;height: 400px; ' alt="buttonpng" border="0" /></button>
         
 
     </div>
@@ -51,7 +51,7 @@
     
     document.querySelector('#Create').onclick = function(e){
 
-        window.location.replace('create');
+        window.location.replace('/create');
 
     };
 

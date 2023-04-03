@@ -159,3 +159,35 @@ def end(request , room_code):
 
 def type(request):
     return render(request,'type.html')
+
+def quiz(rewquest):
+    return render(rewquest,'quiz.html')
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
+def req(rewquest):
+
+    if rewquest.method == 'POST':
+        import json
+        data = (rewquest.body).decode('utf-8')
+        array = json.loads(data)
+        print(array )
+        
+        code = array[-1]
+        from quiz import models
+        models.MyModel.objects.create(data=array,code=code).save
+        print('my array tt',array)
+        # process the incoming data
+        return JsonResponse({'success': True})
+    else:
+        return JsonResponse({'success': False, 'error': 'Invalid request method'})
+def joinquiz(request,room_code):
+    from quiz import models
+    x= models.MyModel.objects.all().filter(code=room_code).values()
+    array = []
+    for i in x:
+        e = i['data']
+        array.append(e)
+
+
+    return render(request,'gamequiz.html',{'data':array,'room_code':room_code})
