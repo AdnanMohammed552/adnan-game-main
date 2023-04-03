@@ -26,6 +26,8 @@ class gameConsumer(AsyncWebsocketConsumer):
         
 
     async def receive(self, text_data):
+        print('addadww32',question,answer,correctans)
+
 
 
         data= json.loads(text_data)
