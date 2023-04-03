@@ -10,14 +10,14 @@ import ast
 
 
 class gameConsumer(AsyncWebsocketConsumer):
-    print('addadww32')
+    print('addadww321')
     async def connect(self):
-        print('addadww32')
+        print('addadww322')
         self.room_name = self.scope['url_route']['kwargs']['room_code']
         self.room_group_name = 'game_%s' % self.room_name
 
         await self.channel_layer.group_add(self.room_group_name,self.channel_name)
-        print('addadww32')
+        print('addadww323')
         
 
         await self.accept()
@@ -29,7 +29,7 @@ class gameConsumer(AsyncWebsocketConsumer):
         
 
     async def receive(self, text_data):
-        print('addadww32')
+        print('addadww324')
 
 
 
