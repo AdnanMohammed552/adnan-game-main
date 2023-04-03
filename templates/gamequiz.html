@@ -195,13 +195,13 @@
         
           'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
         )
-
+          gameSocket.onopen = function(){
           gameSocket.send(JSON.stringify({
             'question':quess,
             'answer':ad,
             'correctans':correct_answer
 
-          }))
+          }))}
           document.getElementById('answer1').disabled = true;
           document.getElementById('answer2').disabled = true;
           document.getElementById('answer3').disabled = true;
