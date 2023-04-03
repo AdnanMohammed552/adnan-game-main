@@ -6,7 +6,7 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 from . import models
 import random
 import ast
-from .models import startingroom
+
 
 
 class gameConsumer(AsyncWebsocketConsumer):
