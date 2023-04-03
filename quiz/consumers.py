@@ -17,7 +17,7 @@ class gameConsumer(AsyncWebsocketConsumer):
         self.room_group_name = 'game_%s' % self.room_name
 
         await self.channel_layer.group_add(self.room_group_name,self.channel_name)
-        print('addadww323')
+        print('addadww323',self.room_group_name)
         
 
         await self.accept()
