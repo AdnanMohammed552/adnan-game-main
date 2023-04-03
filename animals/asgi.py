@@ -9,6 +9,7 @@ from django.core.asgi import get_asgi_application
 import animal.routing
 import gameadmin.routing
 import letter.routing
+import quiz.routing
 #
 
 application = ProtocolTypeRouter({
@@ -17,7 +18,9 @@ application = ProtocolTypeRouter({
         URLRouter(
             animal.routing.websocket_urlpatterns+
             gameadmin.routing.websocket_urlpatterns+
-            letter.routing.websocket_urlpatterns
+            letter.routing.websocket_urlpatterns+
+            quiz.routing.websocket_urlpatterns
+
         )
     )
 })
