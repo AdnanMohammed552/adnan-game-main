@@ -8,7 +8,11 @@ urlpatterns = [
     path('<int:room_code>/' , views.room ),
     path('join/<int:room_code>/' , views.joinnow ),
     path('joinquiz/<int:room_code>/' , views.joinquiz ),
+    path('joinquiz' , views.join_quiz ),
+
     path('wait/<int:room_code>/' , views.wait),
+    path('waitquiz/<int:room_code>/' , views.wait_quiz),
+
     path('end/<int:room_code>/' , views.end),
     path('<int:room_code>/admin' , views.room_admin ),
     path('<int:room_code>/quizadmin' , views.room_admin_quiz ),

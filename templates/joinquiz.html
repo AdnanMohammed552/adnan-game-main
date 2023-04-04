@@ -1,0 +1,92 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% extends 'base.html' %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% block title %}
+<title>Join room</title>
+{% endblock %}
+
+
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<section dir="ltr">
+  <!-- Horizontal material form -->
+  <!-- Grid row -->
+  <div class="form-group row">
+    <!-- Material input -->
+    <label style="color: white" for="inputEmail3MD" class="col-sm-2 col-form-label">ENTER ROOM CODE</label>
+    <div class="col-sm-10">
+      <div class="md-form mt-0">
+        <input class="form-control" type="text" name="code" id="code" placeholder="ROOM CODE">
+      </div>
+    </div>
+  </div>
+  <!-- Grid row -->
+
+  <!-- Grid row -->
+  <div class="form-group row">
+    <!-- Material input -->
+    <label style="color: white" for="inputPassword3MD" class="col-sm-2 col-form-label">ENTER YOUR NAME</label>
+    <div class="col-sm-10">
+      <div class="md-form mt-0">
+        <input  class="form-control" type="text" name="username" id="username" placeholder="YOUR NAME" value="{{request.user.username}}" disabled>
+      </div>
+    </div>
+  </div>
+  <!-- Grid row -->
+
+  <!-- Grid row -->
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="button" id="submintt" class="btn btn-primary btn-md">Join room</button>
+    </div>
+  </div>
+  <!-- Grid row -->
+
+</section>
+
+
+  <script>
+    document.querySelector('#submintt').onclick = function(e) {
+
+      
+     
+      
+      const roomCode = document.querySelector('#code').value;
+      
+      const userName = document.querySelector('#username').value;    
+      if(roomCode===''){
+        alert('Room code can not be empty')
+
+      } 
+      else{    
+          
+      console.log('Ima here' , roomCode,userName)
+      
+
+      
+      
+      sessionStorage.setItem("pageState", "redirected");
+
+// Redirect to the new URL using window.location
+window.location.href = window.location.origin +'/waitquiz/'+roomCode+'?username=' + userName
+
+// Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
+window.addEventListener("pageshow", function(event) {
+  // Check if the page state is set to "redirected"
+  if (sessionStorage.getItem("pageState") === "redirected") {
+    // Reload the page to update its content
+    window.location.reload();
+    // Reset the page state to avoid an infinite loop
+    sessionStorage.setItem("pageState", "reloaded");
+  }
+});
+    }
+        
+
+    };
+  </script>
+{% endblock %}

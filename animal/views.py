@@ -185,6 +185,9 @@ def req(rewquest):
         return JsonResponse({'success': True})
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method'})
+    
+def join_quiz(request):
+    return render(request,'joinquiz.html')
 def joinquiz(request,room_code):
     from quiz import models
     x= models.MyModel.objects.all().filter(code=room_code).values()
@@ -202,3 +205,7 @@ def joinquiz(request,room_code):
 def room_admin_quiz(request,room_code):
 
     return render(request,'startquiz.html',{'room_code':room_code})
+
+
+def wait_quiz(request,room_code):
+    return render(request,'waitingquiz.html')
