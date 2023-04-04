@@ -152,7 +152,10 @@
 {{ room_code|json_script:'json-roomcode' }}
 <script>
   const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
-
+  const gameSocket = new WebSocket(
+        
+  'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
+)
     const data = '{{data}}'
     z = data.replaceAll("&#x27;",'').replaceAll("[","").replaceAll("]","")
     let arr = z.split(",");
@@ -241,13 +244,11 @@
           }
 
 
-          const gameSocket = new WebSocket(
-        
-        'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
-      )
+         
           gameSocket.onmessage = function(e){
             const data = JSON.parse(e.data)
-            document.getElementById('ques').innerHTML += data.exam
+            console.log('data is r',data)
+            document.getElementById('data').innerHTML += data.exam
           }
           
           
