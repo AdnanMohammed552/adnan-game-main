@@ -1,0 +1,124 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% extends 'base.html' %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% block title %}
+<title>Room Admin</title>
+
+{% endblock %}
+{% block content %}
+    <center>
+    <h1 dir="ltr" style="margin-top: auto; color: black;">Waiting to start the game...</h1>
+  </center>
+    {{ room_code|json_script:'json-roomcode' }}
+    {{ username|json_script:'json-username'  }}
+    <script>
+        const username = JSON.parse(document.getElementById('json-username').textContent);
+
+        const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
+        const userName = JSON.parse(document.getElementById('json-username').textContent);
+        const random = Math.random() * 1000
+        console.log("it is " , roomCode,userName)
+        const gameSocket = new WebSocket(
+              
+        'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
+      )
+      gameSocket.onopen = function(e){
+        gameSocket.send(JSON.stringify({
+          'userName':userName,
+          'random':random
+        }))
+        
+         
+  
+      }
+        
+        const gameSocketkick = new WebSocket(
+        'wss://' + window.location.host + '/ws/' + roomCode + '/'
+        )
+        gameSocketkick.onmessage = function(e){
+        const data = JSON.parse(e.data)
+
+        if (data.kick === true ){
+            if (data.user === username){
+              gameSocket.close()
+
+              sessionStorage.setItem("pageState", "redirected");
+
+              // Redirect to the new URL using window.location
+              window.location.href = window.location.origin +'/join';
+              
+              // Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
+              window.addEventListener("pageshow", function(event) {
+                // Check if the page state is set to "redirected"
+                if (sessionStorage.getItem("pageState") === "redirected") {
+                  // Reload the page to update its content
+                  window.location.reload();
+                  // Reset the page state to avoid an infinite loop
+                  sessionStorage.setItem("pageState", "reloaded");
+                }
+              });
+              console.log('I have been kicked')
+            }
+            if (data.user !== username){
+              document.getElementById('div_id'+data.user).remove()
+            }
+           }
+           
+        }
+        gameSocket.onmessage = function (e) {
+            console.log('done');
+            const data = JSON.parse(e.data);
+            console.log(data)
+            if (data){
+                const start = data.started;
+                console.log(start)
+                if (start === true) {
+                    sessionStorage.setItem("pageState", "redirected");
+
+                    // Redirect to the new URL using window.location
+                    window.location.href = window.location.origin +'/join/' +roomCode + '?username=' + userName;
+                    
+                    // Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
+                    window.addEventListener("pageshow", function(event) {
+                      // Check if the page state is set to "redirected"
+                      if (sessionStorage.getItem("pageState") === "redirected") {
+                        // Reload the page to update its content
+                        window.location.reload();
+                        // Reset the page state to avoid an infinite loop
+                        sessionStorage.setItem("pageState", "reloaded");
+                      }
+                    });
+                }
+            }else{
+                alert('Message is empty');
+            }
+            if(data.Usere === username && data.random === random){
+              alert('You are already joined from another device or browser!')
+              sessionStorage.setItem("pageState", "redirected");
+
+              // Redirect to the new URL using window.location
+              window.location.href = window.location.origin +'/join';
+              
+              // Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
+              window.addEventListener("pageshow", function(event) {
+                // Check if the page state is set to "redirected"
+                if (sessionStorage.getItem("pageState") === "redirected") {
+                  // Reload the page to update its content
+                  window.location.reload();
+                  // Reset the page state to avoid an infinite loop
+                  sessionStorage.setItem("pageState", "reloaded");
+                }
+              });
+             }
+
+
+        }
+
+        gameSocket.onclose = function (e) {
+            console.log('fall ');
+        }
+
+    </script>
+{% endblock %}
