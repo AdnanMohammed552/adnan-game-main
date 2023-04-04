@@ -208,4 +208,5 @@ def room_admin_quiz(request,room_code):
 
 
 def wait_quiz(request,room_code):
-    return render(request,'waitingquiz.html')
+    username = request.GET['username']
+    return render(request,'waitingquiz.html',{'room_code':room_code ,'username':username})
