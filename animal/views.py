@@ -171,6 +171,8 @@ def req(rewquest):
         import json
         data = (rewquest.body).decode('utf-8')
         array = json.loads(data)
+        x = array[-1]
+        array.pop()
         print(array )
         
         code = array[-1]
@@ -178,6 +180,8 @@ def req(rewquest):
         models.MyModel.objects.create(data=array,code=code).save
         print('my array tt',array)
         # process the incoming data
+
+        models.title.objects.create(user=rewquest.user,title=x,code=code).save
         return JsonResponse({'success': True})
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method'})
@@ -189,5 +193,12 @@ def joinquiz(request,room_code):
         e = i['data']
         array.append(e)
 
+    
+
 
     return render(request,'gamequiz.html',{'data':array,'room_code':room_code})
+
+
+def room_admin_quiz(request,room_code):
+
+    return render(request,'startquiz.html')

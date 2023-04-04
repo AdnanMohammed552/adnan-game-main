@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+
+<div id="data"></div>
+
+<script>
+
+    const gameSocket = new WebSocket(
+        
+          'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
+        )
+
+    gameSocket.onmessage = function(e){
+        const data = JSON.parse(e.data) 
+        
+        document.getElementById('data').innerHTML=data
+
+
+    }
+
+
+</script>
+
+
+{% endblock %}

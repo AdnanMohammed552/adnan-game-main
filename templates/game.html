@@ -819,9 +819,21 @@ ga('send', 'pageview');
               'player_this':username,
               'room_this':roomCode
             }))
-            var url =  window.location.origin +'/end/' +roomCode + '?username=' + username;
-            history.pushState({}, null, url);
-            window.location.href=url
+            sessionStorage.setItem("pageState", "redirected");
+
+// Redirect to the new URL using window.location
+window.location.href = window.location.origin +'/end/' +roomCode + '?username=' + username;
+
+// Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
+window.addEventListener("pageshow", function(event) {
+  // Check if the page state is set to "redirected"
+  if (sessionStorage.getItem("pageState") === "redirected") {
+    // Reload the page to update its content
+    window.location.reload();
+    // Reset the page state to avoid an infinite loop
+    sessionStorage.setItem("pageState", "reloaded");
+  }
+});
           }
           }
           if (data.noun_result !==null && data.gnoun_result!==null && data.countries_result!==null && data.result===true){

@@ -151,4 +151,25 @@ def playedacc(request,room_code):
     adnan = Template(z2)
 
     return render (request , 'played.html',{'z':adnan.render(Context({}))})
+
+def created(request):
+    return render(request,'created.html')
+
+def quiz(request):
+    from quiz import models
+    data = models.title.objects.all().filter(user=request.user).values()
+    w=[]
+    for i in data:
+        z = i['title']
+        v = i['code']
+        w.append(z)
+        w.append(v)
+
+    return render(request,'quizlist.html',{'z':w})
+
+
+def quiz_data(request,room_code):
+    from quiz import models
+    data = models.title.objects.all().filter(user=request.user,code=room_code).values()
     
+    return render(request,'quiz_data.html',{'w':data})

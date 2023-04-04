@@ -17,6 +17,8 @@
 
 {% if i|is_numberic %}
 <button type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')" style="background-color: green;">{{i}}</button>
+<br>
+<hr>
 {% else %}
 <h3 >{{i}}</h3>
 
@@ -29,13 +31,12 @@
 <div id="dis"></div>
 <script>
     function redirect(code){
-        console.log('mu code',code)
-        
+       
   // Store the current page state in a session storage variable
 sessionStorage.setItem("pageState", "redirected");
 
 // Redirect to the new URL using window.location
-window.location.href =  window.location.origin +'/account/myaccount/' +code
+window.location.href = window.location.origin +'/account/game/quiz/' +code
 
 // Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
 window.addEventListener("pageshow", function(event) {
@@ -48,6 +49,9 @@ window.addEventListener("pageshow", function(event) {
   }
 });
     }
+
+
+
 </script>
 
 {% endblock %}

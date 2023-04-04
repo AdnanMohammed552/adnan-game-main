@@ -140,6 +140,8 @@
     
   </style>
 <div id="div">
+  <input type="text" id="name">
+
     <input type="text" id="code">
     <button id="add">add new question</button>
     <div id="quiz"></div>
@@ -204,14 +206,15 @@
             }
 
           const code = document.getElementById('code').value
+          const name = document.getElementById('name').value
           data.push(code)
+          data.push(name)
           fetch('/api/endpoint/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
-          })
+            body: JSON.stringify(data)})
           .then(response => response.json())
           .then(data => console.log(data))
           .catch(error => console.error(error));

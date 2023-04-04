@@ -33,9 +33,21 @@
                 }
                 else{
                     if (roomCode.toString().length <9){
-                    var url =  window.location.origin + '/' +roomCode + '/admin';
-                history.pushState({}, null, url);
-                location.reload()  
+                    sessionStorage.setItem("pageState", "redirected");
+
+                    // Redirect to the new URL using window.location
+                    window.location.href =  window.location.origin + '/' +roomCode + '/admin';
+                    
+                    // Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
+                    window.addEventListener("pageshow", function(event) {
+                      // Check if the page state is set to "redirected"
+                      if (sessionStorage.getItem("pageState") === "redirected") {
+                        // Reload the page to update its content
+                        window.location.reload();
+                        // Reset the page state to avoid an infinite loop
+                        sessionStorage.setItem("pageState", "reloaded");
+                      }
+                    });
             }
             else{
                 alert('Error, It should be less than 9 digits')
@@ -54,12 +66,39 @@
 
         <script>
             document.getElementById('SignUp').onclick = function(e) {
-                window.location.replace('account/signup');
+                sessionStorage.setItem("pageState", "redirected");
+
+// Redirect to the new URL using window.location
+window.location.href = window.location.origin +'/account/signup'
+
+// Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
+window.addEventListener("pageshow", function(event) {
+  // Check if the page state is set to "redirected"
+  if (sessionStorage.getItem("pageState") === "redirected") {
+    // Reload the page to update its content
+    window.location.reload();
+    // Reset the page state to avoid an infinite loop
+    sessionStorage.setItem("pageState", "reloaded");
+  }
+});
             }
 
             document.getElementById('Login').onclick = function(e) {
-                window.location.replace('account/login');
-            }
+                sessionStorage.setItem("pageState", "redirected");
+
+                // Redirect to the new URL using window.location
+                window.location.href = window.location.origin +'/account/login'
+                
+                // Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
+                window.addEventListener("pageshow", function(event) {
+                  // Check if the page state is set to "redirected"
+                  if (sessionStorage.getItem("pageState") === "redirected") {
+                    // Reload the page to update its content
+                    window.location.reload();
+                    // Reset the page state to avoid an infinite loop
+                    sessionStorage.setItem("pageState", "reloaded");
+                  }
+                });            }
         </script>
 
 {% endif %}
