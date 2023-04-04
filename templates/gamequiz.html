@@ -152,13 +152,13 @@
 {{ room_code|json_script:'json-roomcode' }}
 <script>
   const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
-  const gameSocket = new WebSocket(
+  const gameSocket1 = new WebSocket(
         
   'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
 )
 
 
-        gameSocket.onmessage = function(e){
+        gameSocket1.onmessage = function(e){
           const data = JSON.parse(e.data)
           console.log('data is r',data)
           document.getElementById('data').innerHTML += data.exam
