@@ -333,18 +333,7 @@ document.getElementById('flep').style.display ="none"
         console.log('fall ');
       }
 
-    const gameSocket = new WebSocket(
-        
-          'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
-        )
-
-    gameSocket.onmessage = function(e){
-        const data = JSON.parse(e.data) 
-        
-        document.getElementById('data').innerHTML=data
-
-
-    }
+    
 
 
 </script>
