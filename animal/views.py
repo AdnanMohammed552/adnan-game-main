@@ -201,4 +201,4 @@ def joinquiz(request,room_code):
 
 def room_admin_quiz(request,room_code):
 
-    return render(request,'startquiz.html')
+    return render(request,'startquiz.html',{'room_code':room_code})

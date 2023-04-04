@@ -7,7 +7,12 @@
 
 <div id="data"></div>
 
+
+{{ room_code|json_script:'json-roomcode' }}
+
+
 <script>
+    const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
 
     const gameSocket = new WebSocket(
         
