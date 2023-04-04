@@ -156,29 +156,15 @@
         
   'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
 )
-    const data = '{{data}}'
-    z = data.replaceAll("&#x27;",'').replaceAll("[","").replaceAll("]","")
-    let arr = z.split(",");
-    let quotedArr = arr.map(item => `"${item}"`);
-    let quotedStr = quotedArr.join(",");
-    console.log('here ',quotedStr);
-    d = "["+quotedStr+"]"
-    let arrw = JSON.parse(d);
-    console.log(arrw)
 
 
-    const question=[]
-    
-        len = arrw.length
-        questionnumber = (len-1)/7
-        console.log('question num is',questionnumber)
-        for (let i=1; i<= questionnumber ;i++){
-            questionlocation = (7 * i) -6
-            console.log('here rrr',arrw[questionlocation-1]) 
-            question.push({question:arrw[questionlocation-1],answer:arrw.slice(questionlocation,questionlocation+4),correctans:arrw[questionlocation+4],timer:arrw[questionlocation+5]})
-
-
+        gameSocket.onmessage = function(e){
+          const data = JSON.parse(e.data)
+          console.log('data is r',data)
+          document.getElementById('data').innerHTML += data.exam
         }
+
+
         function correcting(ad){
           const quess = document.getElementById('ques').innerHTML;
           correct_answer_location = arrw[arrw.indexOf(quess)+5]
@@ -245,11 +231,6 @@
 
 
          
-          gameSocket.onmessage = function(e){
-            const data = JSON.parse(e.data)
-            console.log('data is r',data)
-            document.getElementById('data').innerHTML += data.exam
-          }
           
           
         console.log('weer',question)
