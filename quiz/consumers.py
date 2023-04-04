@@ -51,14 +51,19 @@ class gameConsumer(AsyncWebsocketConsumer):
         except:
             correctans = False
        #
-        
+        try:
+            exam = data['exam']
+        except:
+            exam = False
+       #
         await self.channel_layer.group_send(
             self.room_group_name,
             {
                 'type':'word',
                 'question':question,
                 'answer':answer,
-                'correctans':correctans
+                'correctans':correctans,
+                'exam':exam
             }
             
         )
@@ -76,12 +81,17 @@ class gameConsumer(AsyncWebsocketConsumer):
             correctans = event['correctans']
         except:
             correctans = False
+        try:
+            exam = event['exam']
+        except:
+            exam = False
 
         await self.send(text_data=json.dumps({
 
             'question':question,
             'answer':answer,
-            'correctans':correctans
+            'correctans':correctans,
+            'exam':exam
     
             
             

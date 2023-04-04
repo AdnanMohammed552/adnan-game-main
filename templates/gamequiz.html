@@ -156,9 +156,14 @@
         
   'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
 )
+const gameSocketquiz = new WebSocket(
+        
+  'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
+)
 
 
-        gameSocket1.onmessage = function(e){
+
+        gameSocketquiz.onmessage = function(e){
           const data = JSON.parse(e.data)
           console.log('data is r',data)
           document.getElementById('data').innerHTML += data.exam

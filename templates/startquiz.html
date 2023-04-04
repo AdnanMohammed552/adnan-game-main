@@ -367,8 +367,11 @@ document.getElementById('done').style.display='none'
 
 
       }
-     
-
+      const gameSocketquiz = new WebSocket(
+        
+      'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
+    )
+      
       document.getElementById('done').onclick = function(){
         const data = '{{data}}'
         z = data.replaceAll("&#x27;",'').replaceAll("[","").replaceAll("]","")
@@ -396,7 +399,7 @@ document.getElementById('done').style.display='none'
 
             for(i of question){
                 console.log(i)
-                gameSocket.send(JSON.stringify({
+                gameSocketquiz.send(JSON.stringify({
                     'exam':i
                 }))
                 
