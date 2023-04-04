@@ -333,7 +333,39 @@ document.getElementById('done').style.display='none'
       }
 
       document.getElementById('send').onclick = function(){
+        const data = '{{data}}'
+        z = data.replaceAll("&#x27;",'').replaceAll("[","").replaceAll("]","")
+        let arr = z.split(",");
+        let quotedArr = arr.map(item => `"${item}"`);
+        let quotedStr = quotedArr.join(",");
+        console.log('here ',quotedStr);
+        d = "["+quotedStr+"]"
+        let arrw = JSON.parse(d);
+        console.log(arrw)
+    
+    
+        let question=[]
         
+            len = arrw.length
+            questionnumber = (len-1)/7
+            console.log('question num is',questionnumber)
+            for (let i=1; i<= questionnumber ;i++){
+                questionlocation = (7 * i) -6
+                console.log('here rrr',arrw[questionlocation-1]) 
+                question.push({question:arrw[questionlocation-1],answer:arrw.slice(questionlocation,questionlocation+4),correctans:arrw[questionlocation+4],timer:arrw[questionlocation+5]})
+    
+    
+            }
+
+            for(i of question){
+                console.log(i)
+                gameSocket.send(JSON.stringify({
+                    'exam':i
+                }))
+                
+                break
+            
+            }
       }
 
     

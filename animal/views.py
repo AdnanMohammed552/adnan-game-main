@@ -203,8 +203,15 @@ def joinquiz(request,room_code):
 
 
 def room_admin_quiz(request,room_code):
+    from quiz import models
+    x= models.MyModel.objects.all().filter(code=room_code).values()
+    array = []
+    for i in x:
+        e = i['data']
+        array.append(e)
 
-    return render(request,'startquiz.html',{'room_code':room_code})
+    
+    return render(request,'startquiz.html',{'room_code':room_code,'data':array})
 
 
 def wait_quiz(request,room_code):

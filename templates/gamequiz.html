@@ -273,6 +273,16 @@
 
            
           }
+
+
+          const gameSocket = new WebSocket(
+        
+        'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
+      )
+          gameSocket.onmessage = function(e){
+            const data = JSON.parse(e.data)
+            document.getElementById('ques').innerHTML += data.exam
+          }
           
           delayedLoop();
           

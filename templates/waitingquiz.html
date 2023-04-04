@@ -33,6 +33,11 @@
          
   
       }
+
+
+      gameSocket.onmessage = function(e){
+        
+      }
         
         const gameSocketkick = new WebSocket(
         'wss://' + window.location.host + '/ws/' + roomCode + '/'
