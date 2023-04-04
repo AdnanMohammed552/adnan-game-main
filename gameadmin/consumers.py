@@ -159,6 +159,8 @@ class gameConsumer(AsyncWebsocketConsumer):
             
         }))
 
+        print('I am exam',exam)
+
     @sync_to_async
     def save(self,room,started,end):
         startingroom.objects.create(room=room,started=started,end=end)
