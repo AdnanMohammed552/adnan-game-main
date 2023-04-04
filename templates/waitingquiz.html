@@ -47,7 +47,7 @@
               sessionStorage.setItem("pageState", "redirected");
 
               // Redirect to the new URL using window.location
-              window.location.href = window.location.origin +'/join';
+              window.location.href = window.location.origin +'/joinquiz';
               
               // Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
               window.addEventListener("pageshow", function(event) {
@@ -78,7 +78,7 @@
                     sessionStorage.setItem("pageState", "redirected");
 
                     // Redirect to the new URL using window.location
-                    window.location.href = window.location.origin +'/join/' +roomCode + '?username=' + userName;
+                    window.location.href = window.location.origin +'/joinquiz/' +roomCode + '?username=' + userName;
                     
                     // Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
                     window.addEventListener("pageshow", function(event) {
@@ -99,7 +99,7 @@
               sessionStorage.setItem("pageState", "redirected");
 
               // Redirect to the new URL using window.location
-              window.location.href = window.location.origin +'/join';
+              window.location.href = window.location.origin +'/joinquiz';
               
               // Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
               window.addEventListener("pageshow", function(event) {

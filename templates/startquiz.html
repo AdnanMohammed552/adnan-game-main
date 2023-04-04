@@ -160,7 +160,7 @@ body{
 {{ request.user.username|json_script:"user_id" }}
 
 <script>
-  document.getElementById('send').disabled=true
+  //document.getElementById('send').disabled=true
   let text = document.querySelector('.hovertext').innerHTML;
     console.log('ad',text)
   const copyContent = async () => {
@@ -271,6 +271,7 @@ document.getElementById('done').style.display='none'
         console.log('done');
         
         const data = JSON.parse(e.data);
+
         if (data.finish !== true){
         console.log(data)
         if (data){
@@ -329,6 +330,10 @@ document.getElementById('done').style.display='none'
       }
       gameSocket.onclose = function (e) {
         console.log('fall ');
+      }
+
+      document.getElementById('send').onclick = function(){
+        
       }
 
     
