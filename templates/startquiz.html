@@ -29,7 +29,10 @@
 
    <div class="text-center">
     <div class="btn-group text-center" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-primary btn-rounded" id="send" style="font-size: 20px;">Start game</button>   
+        <button type="button" class="btn btn-primary btn-rounded" id="done">Start game</button>
+
+        <button type="button" class="btn btn-primary btn-rounded" id="send" style="font-size: 20px;">Start game 1</button>   
+  
       <button type="button" class="btn btn-danger btn-rounded" id="end"  style="font-size: 20px;">End game</button>
       <button id="view">Next question</button>
     </div>
@@ -331,8 +334,43 @@ document.getElementById('done').style.display='none'
       gameSocket.onclose = function (e) {
         console.log('fall ');
       }
+      document.querySelector('#send').onclick = function(e){
+        
+        const started = false
+        console.log(started)
+        const user_id = JSON.parse(document.getElementById('user_id').textContent);
+        gameSocket.send(JSON.stringify({
+          'started' : true,
+          'room' : roomCode,
+          'admin':user_id
+        
+        }))  
+        gameSocket2.onmessage = function(e){
+          const data = JSON.parse(e.data)
+          if(data.kickme === true){
+            document.getElementById(data.userf).remove()
+            document.getElementById(('div_id'+data.userf)).remove()
 
-      document.getElementById('send').onclick = function(){
+          }
+          if (data.letterconsumer!==null&&typeof data.letterconsumer!=="undefined"&&data.letterconsumer!=="" &&data.letterconsumer!==false){
+          console.log('yeeesa')
+          document.querySelector('#leettered').innerHTML =(data.letterconsumer);
+        
+        
+        }
+          if (data.ready){
+
+          }
+        }
+
+
+        document.getElementById('done').click()
+
+
+      }
+     
+
+      document.getElementById('done').onclick = function(){
         const data = '{{data}}'
         z = data.replaceAll("&#x27;",'').replaceAll("[","").replaceAll("]","")
         let arr = z.split(",");
