@@ -29,6 +29,7 @@
         const code = jsQR(imageData.data, imageData.width, imageData.height);
         if (code) {
           console.log('QR code detected:', code.data);
+          alert('QR code detected:', code.data)
         }
         requestAnimationFrame(scanQRCode);
       }
