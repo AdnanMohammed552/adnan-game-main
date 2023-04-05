@@ -1,28 +1,47 @@
-<!-- Include the Instascan library -->
-<script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+<!-- Include the jsQR library -->
+<script src="https://cdn.jsdelivr.net/npm/jsqr@2.1.0/dist/jsQR.min.js"></script>
 
 <!-- Create a video element to display the camera feed -->
 <video id="qr-video"></video>
 
 <script>
-// Get a reference to the video element and Instascan library
+// Get a reference to the video element
 const video = document.getElementById('qr-video');
-const scanner = new Instascan.Scanner({ video });
-
-// When a QR code is detected, send the WebSocket message
-scanner.addListener('scan', result => {
-  const data = { 'message': result };
-  alert('here we goo')
-});
 
 // Start the scanner when the video feed is ready
-Instascan.Camera.getCameras().then(cameras => {
-  if (cameras.length > 0) {
-    scanner.start(cameras[0]);
-  } else {
-    console.error('No cameras found.');
+navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+  .then(stream => {
+    video.srcObject = stream;
+    video.setAttribute('playsinline', true);
+    video.play();
+    requestAnimationFrame(tick);
+  });
+
+function tick() {
+  // Get a reference to the canvas element and its context
+  const canvas = document.getElementById('qr-canvas');
+  const canvasContext = canvas.getContext('2d');
+
+  // Set the canvas dimensions to match the video feed
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+
+  // Draw the video frame on the canvas
+  canvasContext.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+  // Get the image data from the canvas and pass it to the jsQR library to decode any QR codes
+  const imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
+  const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+  // If a QR code is detected, alert its content and stop scanning
+  if (code) {
+    alert(code.data);
   }
-}).catch(error => {
-  console.error(error);
-});
+
+  // Continue scanning by requesting another animation frame
+  requestAnimationFrame(tick);
+}
 </script>
+
+<!-- Create a hidden canvas element for drawing the video frame -->
+<canvas id="qr-canvas" style="display: none;"></canvas>
