@@ -10,9 +10,13 @@ const video = document.getElementById('qr-video');
 const scanner = new QrScanner(video, result => {
   // When a QR code is detected, send the WebSocket message
   const data = { 'message': result };
-  const socket = new WebSocket('ws://localhost:8000/ws/');
-  socket.addEventListener('open', event => {
-    socket.send(JSON.stringify(data));
+  const gameSocketquiz = new WebSocket(
+        
+      'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
+    )
+    gameSocketquiz.addEventListener('open', event => {
+        done = 'donee'
+        gameSocketquiz.send(JSON.stringify({'exam':done}));
   });
 });
 

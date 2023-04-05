@@ -371,7 +371,9 @@ document.getElementById('done').style.display='none'
         
       'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
     )
-      
+      gameSocketquiz.onmessage=function(e){
+        alert('qr scanned')
+      }
       document.getElementById('done').onclick = function(){
         const data = '{{data}}'
         z = data.replaceAll("&#x27;",'').replaceAll("[","").replaceAll("]","")
