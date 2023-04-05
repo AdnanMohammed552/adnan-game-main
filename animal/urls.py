@@ -20,6 +20,8 @@ urlpatterns = [
     path('quiz',views.quiz),
     path('api/endpoint/', views.req, name='my-endpoint'),
     path('join',views.join),
-    path('joinqr/<int:room_code>',views.joinqr)
+    path('joinqr/<int:room_code>',views.joinqr),
+    path('camera',views.camera),
+    
 
 ]

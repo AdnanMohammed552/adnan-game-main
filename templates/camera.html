@@ -1,0 +1,21 @@
+<!-- Include the qr-scanner library -->
+<script src="https://unpkg.com/qr-scanner"></script>
+
+<!-- Create a video element to display the camera feed -->
+<video id="qr-video"></video>
+
+<script>
+// Get a reference to the video element and qr-scanner library
+const video = document.getElementById('qr-video');
+const scanner = new QrScanner(video, result => {
+  // When a QR code is detected, send the WebSocket message
+  const data = { 'message': result };
+  const socket = new WebSocket('ws://localhost:8000/ws/');
+  socket.addEventListener('open', event => {
+    socket.send(JSON.stringify(data));
+  });
+});
+
+// Start the scanner when the video feed is ready
+scanner.start();
+</script>

@@ -217,3 +217,7 @@ def room_admin_quiz(request,room_code):
 def wait_quiz(request,room_code):
     username = request.GET['username']
     return render(request,'waitingquiz.html',{'room_code':room_code ,'username':username})
+
+
+def camera(request):
+    return render(request,'camera.html')
