@@ -49,6 +49,7 @@ const scanner = new QrScanner(video, result => {
     gameSocketquiz.addEventListener('open', event => {
         done = 'donee'
         gameSocketquiz.send(JSON.stringify({'exam':done}));
+        alert('here we go')
   });
 });
 
