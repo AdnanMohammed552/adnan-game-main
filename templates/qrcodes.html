@@ -1,7 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div id="img">
+<img  src="data:image/png;base64,{{ encoded_string}}" alt="Image">
+</div>
+<button onclick="printContent()">Print</button>
+<script>
 
-<img src="data:image/png;base64,{{ encoded_string}}" alt="Image">
-
+    function printContent() {
+        var content = document.getElementById("img");
+        var pri = window.open('', '', 'height=600,width=800');
+        pri.document.write(content.innerHTML);
+        pri.document.close();
+        pri.focus();
+        pri.print();
+        pri.close();
+    }
+    
+</script>
 {% endblock %}
