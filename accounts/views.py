@@ -186,10 +186,10 @@ def qrcodes(request):
     from itertools import chain
 
     urls = [
-        "A",
-        "B",
-        "C",
-        "D",
+        f"{username}/A",
+        f"{username}/B",
+        f"{username}/C",
+        f"{username}/D",
     ]
 
     # Create a list to hold the QR code images
@@ -220,16 +220,17 @@ def qrcodes(request):
         final_image.paste(Image.fromarray(img), (x_offset, y_offset))
         y_offset += h
 
-    # Save the final image
-    from django.http import HttpResponse
-    from io import BytesIO
-
-    # Your PIL Image object
-    image = final_image
-
     # Convert the image to a byte stream
+    from io import BytesIO
     image_byte_array = BytesIO()
-    image.save(image_byte_array, format='PNG')
+    final_image.save(image_byte_array, format='PNG')
     image_byte_array = image_byte_array.getvalue()
 
-    return render(request,'qrcodes.html',{'user':username,'image_byte_array':image_byte_array})
+    # Encode the image as base64 string
+    import base64
+    encoded_string = base64.b64encode(image_byte_array).decode('utf-8')
+
+    # Pass the encoded string to the template
+    return render(request,'qrcodes.html',{'user':username,'encoded_string':encoded_string})
+
+
