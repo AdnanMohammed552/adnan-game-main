@@ -1,38 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>QR Code Scanner</title>
-  <script src="https://unpkg.com/@zxing/library@latest"></script>
-</head>
-<body>
-  <h1>QR Code Scanner</h1>
-  <video id="video" width="320" height="240"></video>
-  <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
-  <div id="result"></div>
-  <script>
-    const codeReader = new ZXing.BrowserMultiFormatReader();
-    const video = document.getElementById('video');
-    const canvas = document.getElementById('canvas');
-    const result = document.getElementById('result');
+  <head>
+    <meta charset="utf-8">
+    <title>QR Code Scanner</title>
+  </head>
+  <body>
+    <video id="video" width="320" height="240" autoplay></video>
+    <div id="result"></div>
+    <script src="https://unpkg.com/@zxing/library@latest"></script>
+    <script>
+      const codeReader = new ZXing.BrowserMultiFormatReader();
+      const video = document.getElementById('video');
+      const resultDiv = document.getElementById('result');
 
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then(function (stream) {
-        video.srcObject = stream;
-        video.play();
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
+      codeReader.decodeFromInputVideoDevice(undefined, 'video').then(result => {
+        console.log(result);
+        resultDiv.textContent = result.text;
+      }).catch(err => console.error(err));
 
-    codeReader.decodeFromVideoDevice(null, 'video', function (result) {
-      console.log(result);
-      canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-      codeReader.reset();
-      resultDiv.innerHTML = result.text;
-    }, function (err) {
-      console.log(err);
-      codeReader.reset();
-    });
-  </script>
-</body>
+      codeReader.listVideoInputDevices()
+        .then((videoInputDevices) => {
+          if (videoInputDevices.length > 0) {
+            codeReader.decodeFromInputVideoDevice(videoInputDevices[0].deviceId, 'video')
+              .then(result => console.log(result))
+              .catch(err => console.error(err));
+          }
+        })
+        .catch(err => console.error(err));
+    </script>
+  </body>
 </html>
