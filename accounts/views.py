@@ -225,7 +225,7 @@ def qrcodes(request):
     from io import BytesIO
 
     # Your PIL Image object
-    image = Image.open(final_image)
+    image = final_image
 
     # Convert the image to a byte stream
     image_byte_array = BytesIO()
