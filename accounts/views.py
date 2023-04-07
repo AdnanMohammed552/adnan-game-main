@@ -221,6 +221,15 @@ def qrcodes(request):
         y_offset += h
 
     # Save the final image
-    final_image.save("merged_qr_code.png")
+    from django.http import HttpResponse
+    from io import BytesIO
 
-    return render(request,'qrcodes.html',{'user':username,'code':final_image})
+    # Your PIL Image object
+    image = Image.open(final_image)
+
+    # Convert the image to a byte stream
+    image_byte_array = BytesIO()
+    image.save(image_byte_array, format='PNG')
+    image_byte_array = image_byte_array.getvalue()
+
+    return render(request,'qrcodes.html',{'user':username,'image_byte_array':image_byte_array})

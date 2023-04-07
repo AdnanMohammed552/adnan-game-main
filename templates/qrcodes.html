@@ -2,7 +2,6 @@
 
 {% block content %}
 
-{{code}}
-
+<img src="data:image/png;base64,{{ image_byte_array|b64encode }}" alt="Image">
 
 {% endblock %}
