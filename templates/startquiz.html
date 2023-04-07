@@ -380,14 +380,14 @@ document.getElementById('done').style.display='none'
 
 
 
-      }
+      
       
       gameSocketquiz.onmessage=function(e){
         const data = JSON.parse(e.data)
         if(data.exam !== false){
         alert('qr scanned')
       }
-      }
+      }}
       document.getElementById('done').onclick = function(){
         const data = '{{data}}'
         z = data.replaceAll("&#x27;",'').replaceAll("[","").replaceAll("]","")
