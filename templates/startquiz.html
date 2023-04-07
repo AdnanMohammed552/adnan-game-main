@@ -222,6 +222,10 @@ document.getElementById('done').style.display='none'
     
   //}
   const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
+  const gameSocketquiz = new WebSocket(
+        
+      'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
+    )
   const gameSocketlettr = new WebSocket(
         'wss://' + window.location.host + '/ws/' + roomCode + '/letter/'
         )
@@ -267,10 +271,7 @@ document.getElementById('done').style.display='none'
         
         'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
       )
-      const gameSocketquiz = new WebSocket(
-        
-      'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
-    )
+      
       gameSocketquiz.onmessage=function(e){
         const data = JSON.parse(e.data)
         if(data.exam !== false){
