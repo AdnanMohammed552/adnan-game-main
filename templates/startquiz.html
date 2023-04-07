@@ -380,10 +380,7 @@ document.getElementById('done').style.display='none'
 
 
       }
-      const gameSocketquiz = new WebSocket(
-        
-      'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
-    )
+      
       gameSocketquiz.onmessage=function(e){
         const data = JSON.parse(e.data)
         if(data.exam !== false){
