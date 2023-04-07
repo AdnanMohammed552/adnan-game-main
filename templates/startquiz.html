@@ -267,6 +267,19 @@ document.getElementById('done').style.display='none'
         
         'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
       )
+      const gameSocketquiz = new WebSocket(
+        
+      'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
+    )
+      gameSocketquiz.onmessage=function(e){
+        const data = JSON.parse(e.data)
+        if(data.exam !== false){
+
+          document.getElementById('users').innerHTML += (
+            ' <button class="btn btn-tag btn-rounded text-center" id="'+ data.exam +'" onclick="userremove(\'' + data.exam + '\')"><span>'+ data.exam +'</span></button>'
+           )
+      }
+      }
   
     
       gameSocket.onmessage = function (e) {
