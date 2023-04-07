@@ -9,6 +9,11 @@
     <div id="result"></div>
     <script src="https://unpkg.com/@zxing/library@latest"></script>
     <script>
+      const gameSocketquiz = new WebSocket(
+        
+      'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
+    )
+            
       const codeReader = new ZXing.BrowserMultiFormatReader();
       const video = document.getElementById('video');
       const resultDiv = document.getElementById('result');
@@ -22,8 +27,10 @@
         .then((videoInputDevices) => {
           if (videoInputDevices.length > 0) {
             codeReader.decodeFromInputVideoDevice(videoInputDevices[0].deviceId, 'video')
-              .then(result => console.log(result))
+            
+              .then(result => gameSocketquiz.send(JSON.stringify({exam:'done'})))
               .catch(err => console.error(err));
+            
           }
         })
         .catch(err => console.error(err));
