@@ -1,44 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>QR Code Scanner</title>
-  </head>
-  <body>
-    <h1>QR Code Scanner</h1>
-    <video id="video" width="320" height="240" autoplay></video>
-    <canvas id="canvas" width="320" height="240"></canvas>
-    <script src="jsqr.min.js"></script>
-    <script>
-      const video = document.getElementById('video');
-      const canvas = document.getElementById('canvas');
-      const ctx = canvas.getContext('2d');
+<head>
+  <title>QR Code Scanner</title>
+  <script src="https://unpkg.com/@zxing/library@0.22.0@zxing.min.js"></script>
+</head>
+<body>
+  <h1>QR Code Scanner</h1>
+  <video id="video" width="320" height="240"></video>
+  <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
+  <div id="result"></div>
+  <script>
+    const codeReader = new ZXing.BrowserMultiFormatReader();
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const result = document.getElementById('result');
 
-      navigator.mediaDevices.getUserMedia({ video: true })
-        .then(stream => {
-          video.srcObject = stream;
-          video.play();
-        })
-        .catch(error => {
-          console.error('Error accessing camera:', error);
-        });
-
-      function scanQRCode() {
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const code = jsQR(imageData.data, imageData.width, imageData.height);
-        if (code) {
-          console.log('QR code detected:', code.data);
-          alert('QR code detected:', code.data)
-        }
-        requestAnimationFrame(scanQRCode);
-      }
-
-      video.addEventListener('loadedmetadata', () => {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        scanQRCode();
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function (stream) {
+        video.srcObject = stream;
+        video.play();
+      })
+      .catch(function (err) {
+        console.log(err);
       });
-    </script>
-  </body>
+
+    codeReader.decodeFromVideoDevice(null, 'video', function (result) {
+      console.log(result);
+      canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+      codeReader.reset();
+      resultDiv.innerHTML = result.text;
+    }, function (err) {
+      console.log(err);
+      codeReader.reset();
+    });
+  </script>
+</body>
 </html>
