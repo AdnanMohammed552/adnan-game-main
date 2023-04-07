@@ -21,7 +21,7 @@ urlpatterns = [
     path('api/endpoint/', views.req, name='my-endpoint'),
     path('join',views.join),
     path('joinqr/<int:room_code>',views.joinqr),
-    path('camera',views.camera),
+    path('camera/<int:room_code>',views.camera),
     
 
 ]

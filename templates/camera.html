@@ -8,7 +8,11 @@
     <video id="video" width="640" height="480" autoplay></video>
     <div id="result"></div>
     <script src="https://unpkg.com/@zxing/library@latest"></script>
+    {{ room_code|json_script:'json-roomcode' }}
+
     <script>
+      const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
+
       const gameSocketquiz = new WebSocket(
         
       'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'

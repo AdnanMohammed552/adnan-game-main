@@ -219,5 +219,5 @@ def wait_quiz(request,room_code):
     return render(request,'waitingquiz.html',{'room_code':room_code ,'username':username})
 
 
-def camera(request):
-    return render(request,'camera.html')
+def camera(request,room_code):
+    return render(request,'camera.html',{'room_code':room_code})
