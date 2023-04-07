@@ -173,3 +173,54 @@ def quiz_data(request,room_code):
     data = models.title.objects.all().filter(user=request.user,code=room_code).values()
     
     return render(request,'quiz_data.html',{'w':data})
+
+
+def qrcodes(request):
+    if request.user.is_authenticated:
+        username = request.user.username
+
+
+    import qrcode
+    import numpy as np
+    from PIL import Image, ImageDraw, ImageOps
+    from itertools import chain
+
+    urls = [
+        "A",
+        "B",
+        "C",
+        "D",
+    ]
+
+    # Create a list to hold the QR code images
+    qr_codes = []
+
+    # Generate QR codes for each URL
+    for url in urls:
+        qr = qrcode.QRCode(version=1, box_size=10, border=4)
+        qr.add_data(url)
+        qr.make(fit=True)
+        img = qr.make_image(fill_color="black", back_color="white")
+        qr_codes.append(np.array(img.convert('RGB')))
+
+    # Determine the size of the final image
+    max_width = max([code.shape[1] for code in qr_codes])
+    total_height = sum([code.shape[0] for code in qr_codes])
+
+    # Create a new image to hold the final QR code
+    final_image = Image.new("RGB", (max_width, total_height), "white")
+
+    # Loop through the QR code images and paste them into the final image
+    y_offset = 0
+    for i, img in enumerate(qr_codes):
+        angle = i * 90
+        img = np.rot90(img, k=i)
+        h, w, _ = img.shape
+        x_offset = (max_width - w) // 2
+        final_image.paste(Image.fromarray(img), (x_offset, y_offset))
+        y_offset += h
+
+    # Save the final image
+    final_image.save("merged_qr_code.png")
+
+    return render(request,'qrcodes.html',{'user':username,'code':final_image})

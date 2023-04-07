@@ -15,5 +15,7 @@ urlpatterns = [
     path('played',views.played),
     path('played/<int:room_code>/',views.playedacc),
 
-    path('myaccount/<int:room_code>/',views.myaccount)
+    path('myaccount/<int:room_code>/',views.myaccount),
+    path('qrcodes',views.qrcodes)
+
 ]
