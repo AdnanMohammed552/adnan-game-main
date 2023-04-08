@@ -594,6 +594,7 @@ body{
                   resolve(); // resolve the Promise after the countdown timer completes
                 }
                 gameSocketquiz.onmessage = function(e){
+                    console.log('here we go really ')
                     const data = JSON.parse(e.data)
                     if(data.exam!= false){
                         var ans = (data.exam).slice('/')[1]
