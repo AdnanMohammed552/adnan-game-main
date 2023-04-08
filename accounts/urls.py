@@ -10,6 +10,7 @@ urlpatterns = [
     path('game/quiz',views.quiz),
     path('game/quiz/<int:room_code>/',views.quiz_data),
     path('game/quiz/<int:room_code>/start',v.room_admin_quiz),
+    path('game/quiz/<int:room_code>/startqr',v.room_admin_quiz_qr),
     
     path('home',views.home),
     path('played',views.played),
