@@ -24,7 +24,7 @@
   <center><span id="huhhd" class="hovertext" onclick="copyContent()" data-hover="Click to copy the code" style="text-align: center;">{{room_code}}</span></center>
      
       <h3 id="leettered"></h3>
-    <button type="button" class="btn btn-primary btn-rounded" id="done">Start game</button>
+    <button type="button" class="btn btn-primary btn-rounded" id="done" onclick="done()">Start game</button>
     
 
    <div class="text-center">
@@ -514,7 +514,7 @@ document.getElementById('done').style.display='none'
         alert('qr scanned')
       }
       }}
-      document.getElementById('done').onclick = function(){
+      function done(){
         console.log('afagaeg')
         const data = '{{data}}'
         z = data.replaceAll("&#x27;",'').replaceAll("[","").replaceAll("]","")
