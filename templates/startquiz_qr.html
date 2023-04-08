@@ -1,0 +1,622 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% extends 'base.html' %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% block title %}
+<title>Room Admin</title>
+{% endblock %}
+
+{% block content %}
+<div id="questions"></div>
+
+</div>
+</div>
+<div id="anann">
+</div>
+</div>
+</div>
+<div class="container-xxl">
+  <div id="qrcode"style="text-align: center;">
+  {{ svg|safe }}
+</div>
+    <h3 id="gjro" ></h3>
+  <center><span id="huhhd" class="hovertext" onclick="copyContent()" data-hover="Click to copy the code" style="text-align: center;">{{room_code}}</span></center>
+     
+      <h3 id="leettered"></h3>
+    <button type="button" class="btn btn-primary btn-rounded" id="done">Start game</button>
+    
+
+   <div class="text-center">
+    <div class="btn-group text-center" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary btn-rounded" id="done">Start game</button>
+
+        <button type="button" class="btn btn-primary btn-rounded" id="send" style="font-size: 20px;">Start game 1</button>   
+  
+      <button type="button" class="btn btn-danger btn-rounded" id="end"  style="font-size: 20px;">End game</button>
+      <button id="view">Next question</button>
+    </div>
+  </div>
+  </div>
+  <div id="users" class="text-center">
+    </div>
+   
+
+   
+      </div>
+    </div>
+
+
+    <div class="countdown-timer">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <div class="points">
+        <span class="points-icon">&#x2605;</span>
+        <span class="points-text" id="points-text">0</span>
+      </div>
+      
+      <div class="container">
+        <div class="question-bar">
+          <div class="question">
+            <h3 id="ques"></h3>
+          </div>
+          <div class="choices">
+            <div class="d-flex justify-content-between">
+              <button id="answer1" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
+              <button id="answer2" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+              <button id="answer3" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
+              <button id="answer4" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div id="timerrr"></div>
+    <div id="data"></div>
+
+    <style>
+      #users button {
+  MARGIN-TOP: 8px;
+    margin-bottom: 8px;
+}
+body{
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+
+    </style>
+    
+    </div>
+  <h3 id="endingEle"></h3>
+</div>
+ <style>
+
+  #bare button{
+    background-color: black;
+    color: #ffffff;
+  }
+  #users button {
+    width: 200px; /* set a width so it doesnt change upon hover */
+     border: 0px solid #004B84;
+     background: green;
+     padding: 3px 21px;
+     -webkit-border-radius: 16px;
+     -moz-border-radius: 16px;
+     border-radius: 16px;
+     color: #ffffff;
+     font-size: 12px;
+     font-family: Questrial;
+     text-decoration: none;
+     vertical-align: middle;
+     letter-spacing: 2px;
+  }
+  
+  #users button:hover span {
+    display:none
+  }
+  
+  #users button:hover:before {
+    content:"Remove Player!";
+  }
+  
+  #users button:hover {
+    background-color: red;
+  }
+  #removeme {
+    width: 200px; /* set a width so it doesnt change upon hover */
+     border: 0px solid #004B84;
+     background: green;
+     padding: 3px 21px;
+     -webkit-border-radius: 16px;
+     -moz-border-radius: 16px;
+     border-radius: 16px;
+     color: #ffffff;
+     font-size: 12px;
+     font-family: Questrial;
+     text-decoration: none;
+     vertical-align: middle;
+     letter-spacing: 2px;
+  }
+  
+  #removeme:hover span {
+    display:none
+  }
+  
+  #removeme:hover:before {
+    content:"Remove Player!";
+  }
+  
+  #removeme:hover {
+    background-color: red;
+  }
+  
+#view {
+    margin-right: 5px;
+}
+    
+.hovertext {
+  position: relative;
+  border-bottom: 1px dotted black;
+  font-size: 24px;
+}
+
+.hovertext:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 140px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  transition: opacity 1s ease-in-out;
+
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  font-size: 15px;
+
+  top: 110%;
+  
+}
+
+.hovertext:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+ </style>
+ <style>
+    /* center the question bar */
+    .question-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 500px;
+    }
+
+    /* center the question text */
+    .question {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    /* create two lines of choices */
+    .choices {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    /* style the buttons */
+    .btn-choice {
+      margin: 10px;
+      padding: 50px;
+      font-size: 24px;
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      border: none;
+      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+      transition: all 0.3s ease-in-out;
+      background-color: #f7f7f7;
+      color: #2f2f2f;
+    }
+
+    .btn-choice:hover {
+      transform: scale(1.1);
+    }
+
+    /* style the button labels */
+    .btn-label {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* style the selected button */
+    .btn-choice.selected {
+      background-color: #2f2f2f;
+      color: #f7f7f7;
+    }
+
+    /* style the selected button label */
+    .btn-choice.selected .btn-label {
+      color: #f7f7f7;
+    }
+    
+  </style>
+  <style>
+    .countdown-timer {
+      width: 100%;
+      height: 20px;
+      background-color: #eee;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 100%;
+      background-color: #3cb371;
+      transition: width 1s linear;
+    }
+    
+  </style>
+  <style>
+    .points {
+      display: inline-block;
+      background-color: #f2f2f2;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    
+    .points-icon {
+      font-size: 1.5rem;
+      margin-right: 5px;
+      color: #ff9800;
+    }
+    
+    .points-text {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    
+  </style>
+  
+{{ room_code|json_script:'json-roomcode' }}
+{{ request.user.username|json_script:"user_id" }}
+
+<script>
+  //document.getElementById('send').disabled=true
+  let text = document.querySelector('.hovertext').innerHTML;
+    console.log('ad',text)
+  const copyContent = async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+      
+      console.log('Content copied to clipboard');
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+    }
+  }
+
+  document.getElementById('view').style.display="none"
+  document.getElementById('end').style.display='none'
+
+document.getElementById('done').style.display='none'
+  window.onbeforeunload = function (e) {
+        
+        if ((document.getElementById('endingEle').innerHTML)!=='Game had been ended'){
+        e = e || window.event;
+    
+        // For IE and Firefox prior to version 4
+        if (e) {
+            e.returnValue = 'Sure?';
+            
+        }
+    
+        // For Safari
+        return 'Sure?';
+      }
+    };
+
+
+  var totalarray=[]
+  const fetchedarray = []
+  const totalsarray=[]
+
+  
+  
+  function generateRandomColor(){
+    
+      let color = "#";
+      for (let i = 0; i < 3; i++)
+        color += ("0" + Math.floor(((1 + Math.random()) * Math.pow(16, 2)) / 2).toString(16)).slice(-2);
+      return color;
+    }
+
+  //document.getElementById("visable").onclick =function(e){
+    //if ((window.getComputedStyle(document.getElementById('leetter')).display) === 'block'){
+     // document.getElementById('leetter').style.display="none"
+   // }
+   // else{
+     // document.getElementById('leetter').style.display="block"
+
+    //}
+    
+  //}
+  const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
+  const gameSocketquiz = new WebSocket(
+        
+      'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
+    )
+  const gameSocketlettr = new WebSocket(
+        'wss://' + window.location.host + '/ws/' + roomCode + '/letter/'
+        )
+        const gameSocket2 = new WebSocket(
+                'wss://' + window.location.host + '/ws/' + roomCode + '/'
+                )
+                gameSocket2.onclose=function(e){
+                  const gameSocket2 = new WebSocket(
+                'wss://' + window.location.host + '/ws/' + roomCode + '/'
+                )
+                }
+                gameSocketlettr.onclose=function(e){
+                  const gameSocketlettr = new WebSocket(
+                    'wss://' + window.location.host + '/ws/' + roomCode + '/letter/'
+                    )
+                }
+  document.querySelector('#view').disabled = true;
+  
+  const array2 =[]
+  
+
+    const waitForOpenConnection = (socket) => {
+        return new Promise((resolve, reject) => {
+            const maxNumberOfAttempts = 10
+            const intervalTime = 200 //ms
+    
+            let currentAttempt = 0
+            const interval = setInterval(() => {
+                if (currentAttempt > maxNumberOfAttempts - 1) {
+                    clearInterval(interval)
+                    reject(new Error('Maximum number of attempts exceeded'))
+                } else if (socket.readyState === socket.OPEN) {
+                    clearInterval(interval)
+                    resolve()
+                }
+                currentAttempt++
+            }, intervalTime)
+        })
+    }
+    console.log("it is " , roomCode)
+    const array = []
+    const gameSocket = new WebSocket(
+        
+        'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
+      )
+      
+      gameSocketquiz.onmessage=function(e){
+        const data = JSON.parse(e.data)
+        if(data.exam !== false){
+          const str = data.exam;
+          const strBeforeSlash = str.split('/')[0];
+          console.log(strBeforeSlash,data.exam); // output: "hello"
+
+          document.getElementById('users').innerHTML += (
+            ' <button class="btn btn-tag btn-rounded text-center" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span>'+ strBeforeSlash +'</span></button>'
+           )
+      }
+      }
+  
+    
+      gameSocket.onmessage = function (e) {
+        
+        console.log('done');
+        
+        const data = JSON.parse(e.data);
+
+        if (data.finish !== true){
+        console.log(data)
+        if (data){
+          const username = data.userName;
+          console.log(username)
+          if(array.includes(username) === false){
+          array.push(username)
+          if (username !==""){
+            
+            document.getElementById('users').innerHTML += (
+             ' <button class="btn btn-tag btn-rounded text-center" id="'+ username +'" onclick="userremove(\'' + username + '\')"><span>'+ username +'</span></button>'
+            )
+            document.getElementById('send').disabled=false
+            //const h1Element = document.createElement("h1");
+            //h1Element.textContent = username;
+            //document.body.append(h1Element);
+          }
+          }
+          else{
+            console.log('my random',data.random)
+            if(data.finish !== true && data.random!== false){
+            gameSocket.send(JSON.stringify({
+              'Usere':username,
+              'random':data.random,
+              'finish':true
+            }))
+          }
+          }
+        }}
+
+    }
+      function userremove(x){
+        const index = array.indexOf(x);
+        for (var i = 0; i < array.length; i++) {
+          if (array[i] === x) {
+              var spliced = array.splice(i, 1);
+              
+          }
+      }
+        //if (index > -1) { // only splice array when item is found
+        //  array.splice(index, 1); // 2nd parameter means remove one item only
+        //}
+        const gameSocketkick = new WebSocket(
+        'wss://' + window.location.host + '/ws/' + roomCode + '/'
+        )
+        gameSocketkick.onopen = function(e){
+        gameSocketkick.send(JSON.stringify({
+          'kick':true,
+          'user':x
+        }))
+        document.getElementById(x).remove()
+        document.getElementById(('div_id'+x)).remove()
+
+      }
+
+      }
+      gameSocket.onclose = function (e) {
+        console.log('fall ');
+      }
+      document.querySelector('#send').onclick = function(e){
+        
+        const started = false
+        console.log(started)
+        const user_id = JSON.parse(document.getElementById('user_id').textContent);
+        gameSocket.send(JSON.stringify({
+          'started' : true,
+          'room' : roomCode,
+          'admin':user_id
+        
+        }))  
+        gameSocket2.onmessage = function(e){
+          const data = JSON.parse(e.data)
+          if(data.kickme === true){
+            document.getElementById(data.userf).remove()
+            document.getElementById(('div_id'+data.userf)).remove()
+
+          }
+          if (data.letterconsumer!==null&&typeof data.letterconsumer!=="undefined"&&data.letterconsumer!=="" &&data.letterconsumer!==false){
+          console.log('yeeesa')
+          document.querySelector('#leettered').innerHTML =(data.letterconsumer);
+        
+        
+        }
+          if (data.ready){
+
+          }
+        }
+
+
+
+
+      
+      
+      gameSocketquiz.onmessage=function(e){
+        const data = JSON.parse(e.data)
+        if(data.exam !== false){
+        alert('qr scanned')
+      }
+      }}
+      document.getElementById('done').onclick = function(){
+        const data = '{{data}}'
+        z = data.replaceAll("&#x27;",'').replaceAll("[","").replaceAll("]","")
+        let arr = z.split(",");
+        let quotedArr = arr.map(item => `"${item}"`);
+        let quotedStr = quotedArr.join(",");
+        console.log('here ',quotedStr);
+        d = "["+quotedStr+"]"
+        let arrw = JSON.parse(d);
+        console.log(arrw)
+    
+    
+        let question=[]
+        
+            len = arrw.length
+            questionnumber = (len-1)/7
+            console.log('question num is',questionnumber)
+            for (let i=1; i<= questionnumber ;i++){
+                questionlocation = (7 * i) -6
+                console.log('here rrr',arrw[questionlocation-1]) 
+                question.push({question:arrw[questionlocation-1],answer:arrw.slice(questionlocation,questionlocation+4),correctans:arrw[questionlocation+4],timer:arrw[questionlocation+5]})
+    
+    
+            }
+
+            
+        async function delayedLoop() {
+            for(i of question){
+              document.getElementById('answer1').disabled = false;
+              document.getElementById('answer2').disabled = false;
+              document.getElementById('answer3').disabled = false;
+              document.getElementById('answer4').disabled = false;
+              
+              document.getElementById('answer1').classList.remove('selected');
+              document.getElementById('answer2').classList.remove('selected');
+              document.getElementById('answer3').classList.remove('selected');
+              document.getElementById('answer4').classList.remove('selected');
+              
+            
+                document.getElementById('ques').innerHTML=(i.question)
+
+                for (x of i.answer){
+                    console.log(typeof (i.answer).indexOf(x))
+                    o=i.answer.indexOf(x)+1
+                    i.answer[i.answer.indexOf(x)]='vwjhgoiwjh444vjbnjqojgbeowiqgnqlk'
+
+                    document.getElementById('answer'+o).innerHTML=(x)
+
+                    
+                }
+                document.getElementById('timerrr').innerHTML=(i.timer)
+            
+                  await wait((i.timer)); // wait for 1 second before continuing to the next iteration
+
+                  document.getElementById('answer1').disabled = true;
+              document.getElementById('answer2').disabled = true;
+              document.getElementById('answer3').disabled = true;
+              document.getElementById('answer4').disabled = true;
+            
+          }}
+          function wait(ms) {
+            return new Promise(resolve => {
+              let countdownInterval;
+              const progressBar = document.querySelector('.progress-bar');
+          
+              const countdownTime = ms
+              let remainingTime = countdownTime;
+          
+              clearInterval(countdownInterval);
+              progressBar.style.width = '100%';
+          
+              countdownInterval = setInterval(() => {
+                remainingTime--;
+                const progressPercent = (remainingTime / countdownTime) * 100;
+                progressBar.style.width = `${progressPercent}%`;
+          
+                if (remainingTime <= 0) {
+                  clearInterval(countdownInterval);
+                  resolve(); // resolve the Promise after the countdown timer completes
+                }
+              }, 1000);
+              
+               
+            }
+            
+            );
+
+           
+          }
+
+
+      }
+
+    
+
+
+</script>
+
+
+{% endblock %}
