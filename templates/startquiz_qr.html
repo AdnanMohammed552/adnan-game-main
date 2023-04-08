@@ -596,9 +596,9 @@ body{
                 gameSocketquiz.onmessage = function(e){
                     const data = JSON.parse(e.data)
                     if(data.exam!= false){
-                       user= (data.exam).slice('/')[0]
-                       ans = (data.exam).slice('/')[1]
-                    alert(user,'answer is',ans)
+                        var ans = (data.exam).slice('/')[1]
+                        var user= (data.exam).slice('/')[0]
+                    alert(user+'answer is'+ans)
                 }
                 }
               }, 1000);
