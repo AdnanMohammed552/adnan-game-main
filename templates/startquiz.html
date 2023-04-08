@@ -277,7 +277,7 @@ document.getElementById('done').style.display='none'
         if(data.exam !== false){
           const str = data.exam;
           const strBeforeSlash = str.split('/')[0];
-          console.log(strBeforeSlash); // output: "hello"
+          console.log(strBeforeSlash,data.exam); // output: "hello"
 
           document.getElementById('users').innerHTML += (
             ' <button class="btn btn-tag btn-rounded text-center" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span>'+ strBeforeSlash +'</span></button>'
