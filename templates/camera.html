@@ -37,7 +37,7 @@
         .then((videoInputDevices) => {
           if (videoInputDevices.length > 0) {
             codeReader.decodeFromInputVideoDevice(videoInputDevices[0].deviceId, 'video')
-              .then(result => gameSocketquiz.send(JSON.stringify({exam:result})))
+              .then(result => gameSocketquiz.send(JSON.stringify({exam:result.innerHTML})))
               .catch(err => console.error(err));
           }
         })
