@@ -24,7 +24,6 @@
   <center><span id="huhhd" class="hovertext" onclick="copyContent()" data-hover="Click to copy the code" style="text-align: center;">{{room_code}}</span></center>
      
       <h3 id="leettered"></h3>
-    <button type="button" class="btn btn-primary btn-rounded" id="done" onclick="done()">Start game</button>
     
 
    <div class="text-center">
@@ -308,7 +307,6 @@ body{
   document.getElementById('view').style.display="none"
   document.getElementById('end').style.display='none'
 
-document.getElementById('done').style.display='none'
   window.onbeforeunload = function (e) {
         
         if ((document.getElementById('endingEle').innerHTML)!=='Game had been ended'){
@@ -514,7 +512,7 @@ document.getElementById('done').style.display='none'
         alert('qr scanned')
       }
       }}
-      function done(){
+      document.getElementById('done').onclick = function(){
         console.log('afagaeg')
         const data = '{{data}}'
         z = data.replaceAll("&#x27;",'').replaceAll("[","").replaceAll("]","")
