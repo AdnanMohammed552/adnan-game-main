@@ -353,7 +353,19 @@ body{
         
       'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
     )
+gameSocketquiz.onmessage=function(e){
+        const data = JSON.parse(e.data)
+        if(data.exam !== false){
+          const str = data.exam;
+          const strBeforeSlash = str.split('/')[0];
+          console.log('here we go',strBeforeSlash,data.exam); // output: "hello"
 
+          document.getElementById('users').innerHTML += (
+            ' <button class="btn btn-tag btn-rounded text-center" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span>'+ strBeforeSlash +'</span></button>'
+           )
+      }
+      }
+  
         const gameSocket2 = new WebSocket(
                 'wss://' + window.location.host + '/ws/' + roomCode + '/'
                 )
@@ -366,6 +378,18 @@ body{
   document.querySelector('#view').disabled = true;
   
   const array2 =[]
+  gameSocketquiz.onmessage=function(e){
+        const data = JSON.parse(e.data)
+        if(data.exam !== false){
+          const str = data.exam;
+          const strBeforeSlash = str.split('/')[0];
+          console.log('here we go',strBeforeSlash,data.exam); // output: "hello"
+
+          document.getElementById('users').innerHTML += (
+            ' <button class="btn btn-tag btn-rounded text-center" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span>'+ strBeforeSlash +'</span></button>'
+           )
+      }
+      }
   
 
     const waitForOpenConnection = (socket) => {
