@@ -13,36 +13,37 @@
     <script>
       const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
 
-      const gameSocketquiz = new WebSocket(
-        
-      'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
-    )
-            
-      const codeReader = new ZXing.BrowserMultiFormatReader();
-      const video = document.getElementById('video');
-      const resultDiv = document.getElementById('result');
+      const gameSocketquiz = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
 
-      function decodeOnce() {
-        codeReader.decodeFromInputVideoDevice(undefined, 'video').then(result => {
-          console.log(result);
-          resultDiv.textContent = result.text;
-        }).catch(err => console.error(err)).then(() => {
-          decodeOnce(); // Call the function again to scan for the next QR code
-        });
-      }
+      gameSocketquiz.onopen = function(e) {
+        const codeReader = new ZXing.BrowserMultiFormatReader();
+        const video = document.getElementById('video');
+        const resultDiv = document.getElementById('result');
 
-      decodeOnce();
+        function decodeOnce() {
+          codeReader.decodeFromInputVideoDevice(undefined, 'video').then(result => {
+            console.log(result);
+            resultDiv.textContent = result.text;
+          }).catch(err => console.error(err)).then(() => {
+            decodeOnce(); // Call the function again to scan for the next QR code
+          });
+        }
 
-      codeReader.listVideoInputDevices()
-        .then((videoInputDevices) => {
-          if (videoInputDevices.length > 0) {
-            codeReader.decodeFromInputVideoDevice(videoInputDevices[0].deviceId, 'video')
-              .then(result => gameSocketquiz.send(JSON.stringify({'exam':result.text})))
-              console.log('my result is res',resultDiv.innerHTML,result.innerHTML,result)
-              .catch(err => console.error(err));
-          }
-        })
-        .catch(err => console.error(err));
+        decodeOnce();
+
+        codeReader.listVideoInputDevices()
+          .then((videoInputDevices) => {
+            if (videoInputDevices.length > 0) {
+              codeReader.decodeFromInputVideoDevice(videoInputDevices[0].deviceId, 'video')
+                .then(result => {
+                  gameSocketquiz.send(JSON.stringify({'exam': result.text}));
+                  console.log('my result is res', resultDiv.innerHTML, result.innerHTML, result);
+                })
+                .catch(err => console.error(err));
+            }
+          })
+          .catch(err => console.error(err));
+      };
     </script>
   </body>
 </html>
