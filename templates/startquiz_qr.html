@@ -574,6 +574,16 @@ body{
             
           }}
           function wait(ms) {
+            gameSocketquiz.onmessage = function(e){
+              console.log('here we go really ')
+              const data = JSON.parse(e.data)
+              if(data.exam!= false){
+                  var ans = (data.exam).slice('/')[1]
+                  var user= (data.exam).slice('/')[0]
+              alert(user+'answer is'+ans)
+          }
+          }
+      
             return new Promise(resolve => {
               let countdownInterval;
               const progressBar = document.querySelector('.progress-bar');
