@@ -36,7 +36,9 @@
               codeReader.decodeFromInputVideoDevice(videoInputDevices[0].deviceId, 'video')
                 .then(result => {
                   gameSocketquiz.onopen=function(e){
-                  gameSocketquiz.send(JSON.stringify({'exam': result.text}))};
+                  gameSocketquiz.send(JSON.stringify({'exam': result.text}))
+                    console.log('done khara')
+                };
                   console.log('my result is res', resultDiv.innerHTML, result.innerHTML, result);
                 })
                 .catch(err => console.error(err));
