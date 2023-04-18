@@ -1,51 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>QR Code Scanner</title>
-  </head>
-  <body>
-    <video id="video" width="640" height="480" autoplay></video>
-    <div id="result"></div>
-    <script src="https://unpkg.com/@zxing/library@latest"></script>
-    {{ room_code|json_script:'json-roomcode' }}
+<head>
+	<title>QR Code Scanner</title>
+	<script src="https://raw.githubusercontent.com/zxing-js/library/master/browser/zxing.js"></script>
+  {{ room_code|json_script:'json-roomcode' }}
 
-    <script>
+	<script>
+		const codeReader = new ZXing.BrowserQRCodeReader();
+		codeReader.decodeFromInputVideoDevice(undefined, 'video').then((result) => {
+			// Send WebSocket message with scanned code
+      
       const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
 
-      const gameSocketquiz = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
-
-        const codeReader = new ZXing.BrowserMultiFormatReader();
-        const video = document.getElementById('video');
-        const resultDiv = document.getElementById('result');
-
-        function decodeOnce() {
-          codeReader.decodeFromInputVideoDevice(undefined, 'video').then(result => {
-            console.log(result);
-            resultDiv.textContent = result.text;
-          }).catch(err => console.error(err)).then(() => {
-            decodeOnce(); // Call the function again to scan for the next QR code
-          });
-        }
-
-        decodeOnce();
-
-        codeReader.listVideoInputDevices()
-          .then((videoInputDevices) => {
-            if (videoInputDevices.length > 0) {
-              codeReader.decodeFromInputVideoDevice(videoInputDevices[0].deviceId, 'video')
-                .then(result => {
-                  gameSocketquiz.onopen=function(e){
-                  gameSocketquiz.send(JSON.stringify({'exam': result.text}))
-                    console.log('done khara')
-                };
-                  console.log('my result is res', resultDiv.innerHTML, result.innerHTML, result);
-                })
-                .catch(err => console.error(err));
-            }
-          })
-          .catch(err => console.error(err));
-      
-    </script>
-  </body>
+      const ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
+			ws.onopen = function(event) {
+				ws.send(JSON.stringify({'exam':result.text}));
+        console.log('khara')
+			};
+		}).catch((err) => {
+			console.error(err);
+		});
+	</script>
+</head>
+<body>
+	<video id="video" width="300" height="200" autoplay="autoplay"></video>
+</body>
 </html>
