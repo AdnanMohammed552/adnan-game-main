@@ -15,7 +15,6 @@
 
       const gameSocketquiz = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
 
-      gameSocketquiz.onopen = function(e) {
         const codeReader = new ZXing.BrowserMultiFormatReader();
         const video = document.getElementById('video');
         const resultDiv = document.getElementById('result');
@@ -36,14 +35,15 @@
             if (videoInputDevices.length > 0) {
               codeReader.decodeFromInputVideoDevice(videoInputDevices[0].deviceId, 'video')
                 .then(result => {
-                  gameSocketquiz.send(JSON.stringify({'exam': result.text}));
+                  gameSocketquiz.onopen=function(e){
+                  gameSocketquiz.send(JSON.stringify({'exam': result.text}))};
                   console.log('my result is res', resultDiv.innerHTML, result.innerHTML, result);
                 })
                 .catch(err => console.error(err));
             }
           })
           .catch(err => console.error(err));
-      };
+      
     </script>
   </body>
 </html>
