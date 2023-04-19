@@ -573,6 +573,7 @@ body{
               document.getElementById('answer4').disabled = true;
             
           }}
+          let playerwhoanswered = []
           function wait(ms) {
            
             return new Promise(resolve => {
@@ -599,10 +600,15 @@ body{
                     console.log('here we go really ')
                     const data = JSON.parse(r.data)
                     if(data.exam!= false){
+                      
                         var ans = (data.exam).split('/')[1]
                         var user= (data.exam).split('/')[0];
                         console.log('khara is',data)
-                    alert(user+' answer is '+ans)
+                        if (!playerwhoanswered.includes(user)){
+                          alert(user+' answer is '+ans)
+                          playerwhoanswered.push(user)
+
+                        }
                 }
                 }
               }, 1000);
