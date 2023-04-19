@@ -595,13 +595,13 @@ body{
                   clearInterval(countdownInterval);
                   resolve(); // resolve the Promise after the countdown timer completes
                 }
-                gameSocketquiz.onmessage = function(e){
+                gameSocketquiz.onmessage = function(r){
                     console.log('here we go really ')
-                    const data = JSON.parse(e.data)
+                    const data = JSON.parse(r.data)
                     if(data.exam!= false){
                         var ans = (data.exam).slice('/')[1]
                         var user= (data.exam).slice('/')[0]
-                    alert(user+'answer 3 is '+ans)
+                    alert(user+'answer is '+ans)
                 }
                 }
               }, 1000);
