@@ -6,20 +6,29 @@
       {{ room_code|json_script:'json-roomcode' }}
 
 	<script>
-		const codeReader = new ZXing.BrowserQRCodeReader();
-		codeReader.decodeFromInputVideoDevice(undefined, 'video').then((result) => {
-			// Send WebSocket message with scanned code
-      
-      const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
+    const codeReader = new ZXing.BrowserQRCodeReader();
+    
+    const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
 
-      const ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
-			ws.onopen = function(event) {
+    const ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
+
+		function scan() {
+			codeReader.decodeFromInputVideoDevice(undefined, 'video').then((result) => {
+				// Send WebSocket message with scanned code
 				ws.send(JSON.stringify({'exam':result.text}));
-        console.log('khara')
-			};
-		}).catch((err) => {
-			console.error(err);
-		});
+				// Scan again
+				scan();
+			}).catch((err) => {
+				console.error(err);
+				// Scan again
+				scan();
+			});
+		}
+
+		ws.onopen = function(event) {
+			// Start scanning for QR codes
+			scan();
+		};
 	</script>
 </head>
 <body>
