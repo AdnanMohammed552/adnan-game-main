@@ -565,7 +565,9 @@ body{
                 }
                 document.getElementById('timerrr').innerHTML=(i.timer)
             
-                  await wait((i.timer)); // wait for 1 second before continuing to the next iteration
+                  await wait((i.timer)); 
+                  playerwhoanswered.length = 0;
+                  // wait for 1 second before continuing to the next iteration
 
                   document.getElementById('answer1').disabled = true;
               document.getElementById('answer2').disabled = true;
