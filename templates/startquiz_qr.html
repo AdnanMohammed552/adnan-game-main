@@ -566,7 +566,7 @@ body{
                 document.getElementById('timerrr').innerHTML=(i.timer)
                 var correctlastasnwer = i.correctans
             
-                  await wait((i.timer)); 
+                  await wait((i.timer),correctlastasnwer); 
                   playerwhoanswered.length = 0;
                   // wait for 1 second before continuing to the next iteration
 
@@ -577,7 +577,7 @@ body{
             
           }}
           let playerwhoanswered = []
-          function wait(ms) {
+          function wait(ms,corrr) {
            
             return new Promise(resolve => {
               let countdownInterval;
@@ -608,7 +608,7 @@ body{
                         let user= (data.exam).split('/')[0];
                         console.log('khara is',data)
                         if (!playerwhoanswered.includes(user)){
-                          alert(user+' answer is '+ans+correctlastasnwer)
+                          alert(user+' answer is '+ans+corrr)
                           playerwhoanswered.push(user)
                           document.getElementById(user).style.backgroundColor = 'blue'
                           if (ans === 'A'){
@@ -623,7 +623,7 @@ body{
                           if (ans === 'D'){
                             ans = 4
                           }
-                          if(ans==correctlastasnwer){
+                          if(ans==corrr){
                             document.getElementById(user).innerHTML += '50'
                             
                           }
