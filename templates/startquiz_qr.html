@@ -564,6 +564,7 @@ body{
                     
                 }
                 document.getElementById('timerrr').innerHTML=(i.timer)
+                const correctlastasnwer = i.correctans
             
                   await wait((i.timer)); 
                   playerwhoanswered.length = 0;
@@ -607,9 +608,16 @@ body{
                         var user= (data.exam).split('/')[0];
                         console.log('khara is',data)
                         if (!playerwhoanswered.includes(user)){
-                          alert(user+' answer is '+ans)
+                          alert(user+' answer is '+ans+correctlastasnwer)
                           playerwhoanswered.push(user)
                           document.getElementById(user).style.backgroundColor = 'blue'
+                          
+                          if(ans==correctlastasnwer){
+                            document.getElementById(user).innerHTML += '50'
+                            
+                          }
+                          
+                          
 
 
                         }
