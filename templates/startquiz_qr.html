@@ -602,32 +602,43 @@ body{
           let playerwhoanswered = []
           let playerScores = {};
 
-          // Define a function to update the player scores
-          function updateScores(playerName, score) {
-            // Check if the player already has a score
-            if (playerScores[playerName]) {
-              // If so, update their score
-              playerScores[playerName] = score;
-            } else {
-              // If the player is not already in the list, add them with their score
-              playerScores[playerName] = score;
-            }
-            // Sort the player scores by descending score
-            const sortedScores = Object.entries(playerScores).sort((a, b) => b[1] - a[1]);
-            // Clear the existing table rows
-            const tableBody = document.getElementById("ranking-table-body");
-            tableBody.innerHTML = "";
-            // Add the updated scores to the table
-            sortedScores.forEach((entry, index) => {
-              const row = tableBody.insertRow();
-              const nameCell = row.insertCell(0);
-              const scoreCell = row.insertCell(1);
-              nameCell.innerText = entry[0];
-              scoreCell.innerText = entry[1];
-            });
+                  // Define a function to update the player scores
+          
+
+        // Define a function to update the player scores
+        function updateScores(playerName, score) {
+          // Check if the player already has a score
+          if (playerScores[playerName]) {
+            // If so, update their score
+            playerScores[playerName] = score;
+          } else {
+            // If the player is not already in the list, add them with their score
+            playerScores[playerName] = score;
           }
+          // Sort the player scores by descending score
+          const sortedScores = Object.entries(playerScores).sort((a, b) => b[1] - a[1]);
+          // Clear the existing table rows
+          const tableBody = document.getElementById("ranking-table-body");
+          tableBody.innerHTML = "";
+          // Add the updated scores to the table
+          sortedScores.forEach((entry, index) => {
+            const row = tableBody.insertRow();
+            const nameCell = row.insertCell(0);
+            const scoreCell = row.insertCell(1);
+            nameCell.innerText = entry[0];
+            scoreCell.innerText = entry[1];
+          });
+        }
 
-
+        // Define a function to increment player scores
+        function incrementScore(playerName, amount = 1) {
+          // Get the current score for the player
+          const currentScore = playerScores[playerName] || 0;
+          // Calculate the new score by adding the increment amount
+          const newScore = currentScore + amount;
+          // Update the player scores with the new score
+          updateScores(playerName, newScore);
+        }
           function wait(ms,corrr) {
            
             return new Promise(resolve => {
@@ -676,13 +687,13 @@ body{
                           }
                           if(ans==corrr){
 
-                            updateScores(user, 50);
+                            incrementScore(user, 50);
                             document.getElementById(user).innerHTML += '50'
 
                             
                           }
                           else if (ans != corrr){
-                            updateScores(user, 0);
+                            incrementScore(user, 0);
 
                           }
                           
