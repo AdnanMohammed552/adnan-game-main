@@ -740,8 +740,9 @@ body{
                             ans = 4
                           }
                           if(ans==corrr){
-                            score = (Math.floor(remainingTime/(parseInt(document.getElementById('timerrr').innerHTML))) * 20 ) + 50
-                            incrementScore(user, score);
+                            score = (remainingTime/(parseInt(document.getElementById('timerrr').innerHTML)) * 20 )
+                            scoretotal = Math.floor(score+50)
+                            incrementScore(user, scoretotal);
                             document.getElementById(user).innerHTML += '50'
 
                             
