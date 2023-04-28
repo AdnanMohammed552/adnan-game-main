@@ -31,7 +31,6 @@
         <button type="button" class="btn btn-primary btn-rounded" id="done">Start game</button>
         <button type="button" class="btn btn-primary btn-rounded" id="nextttt">next question</button>
 
-        <button type="button" class="btn btn-primary btn-rounded" id="send" style="font-size: 20px;">Start game 1</button>   
   
       <button type="button" class="btn btn-danger btn-rounded" id="end"  style="font-size: 20px;">End game</button>
       <button id="view">Next question</button>
@@ -601,6 +600,10 @@ body{
       }
       }}
       document.getElementById('done').onclick = function(){
+        document.getElementById('done').style.display = 'none'
+        document.getElementById('end').style.display='block'
+
+
         console.log('afagaeg')
         const data = '{{data}}'
         z = data.replaceAll("&#x27;",'').replaceAll("[","").replaceAll("]","")
