@@ -69,6 +69,19 @@
               <button id="answer3" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
               <button id="answer4" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
             </div>
+            <div id="ranktable">
+              <h1>Ranking Table</h1>
+              <table id="ranking-table">
+                <thead>
+                  <tr>
+                    <td>Player</td>
+                    <td>Score</td>  
+                  </tr>
+                </thead>
+                <tbody id="ranking-table-body">
+                </tbody>
+              </table>
+            
           </div>
         </div>
       </div>
@@ -362,19 +375,7 @@ body{
     }
     
   </style>
-  <div id="ranktable">
-  <h1>Ranking Table</h1>
-  <table id="ranking-table">
-    <thead>
-      <tr>
-        <td>Player</td>
-        <td>Score</td>  
-      </tr>
-    </thead>
-    <tbody id="ranking-table-body">
-    </tbody>
-  </table>
-</div>
+  </div>
 {{ room_code|json_script:'json-roomcode' }}
 {{ request.user.username|json_script:"user_id" }}
 
