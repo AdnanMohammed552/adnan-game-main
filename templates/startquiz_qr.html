@@ -348,13 +348,27 @@ body{
   </style>
 </head>
 <body>
+  <style>
+    #ranktable {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 300px;
+      margin-right: 80px;
+    }
+    
+  </style>
   <div id="ranktable">
   <h1>Ranking Table</h1>
   <table id="ranking-table">
     <thead>
       <tr>
         <td>Player</td>
-        <td>Score</td>
+        <td>Score</td>  
       </tr>
     </thead>
     <tbody id="ranking-table-body">
