@@ -489,7 +489,7 @@ body{
           console.log('here we go',strBeforeSlash,data.exam); // output: "hello"
 
           document.getElementById('users').innerHTML += (
-            ' <button class="btn btn-tag btn-rounded text-center" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span>'+ strBeforeSlash +'</span></button>'
+            ' <button class="btn btn-tag btn-rounded text-center userbutton" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span>'+ strBeforeSlash +'</span></button>'
            )
       }
       }
@@ -657,6 +657,7 @@ body{
                   await wait((i.timer),correctlastasnwer); 
                   await new Promise((resolve) => {
                     document.getElementById('nextttt').onclick = function() {
+                      document.getElementsByClassName('userbutton').style.backgroundColor = 'green'
                       resolve();
                     }
                   }); 
@@ -740,7 +741,6 @@ body{
                       
                         let ans = (data.exam).split('/')[1]
                         let user= (data.exam).split('/')[0];
-                        console.log('khara is',data)
                         if (!playerwhoanswered.includes(user)){
                           alert(user+' answer is '+ans+corrr)
                           playerwhoanswered.push(user)
@@ -761,7 +761,6 @@ body{
                             score = (remainingTime/(parseInt(document.getElementById('timerrr').innerHTML)) * 20 )
                             scoretotal = Math.floor(score+50)
                             incrementScore(user, scoretotal);
-                            document.getElementById(user).innerHTML += '50'
 
                             
                           }
