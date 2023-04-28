@@ -296,6 +296,54 @@ body{
     #ranking-table td {
       padding: 0.5em;
     }
+    /* Style the table header */
+#ranking-table thead {
+  font-weight: bold;
+}
+
+/* Style the table cells */
+#ranking-table td {
+  padding: 0.5em;
+}
+
+/* Style the table rows */
+#ranking-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Style the table cells for player names */
+#ranking-table tbody td:first-child {
+  font-weight: bold;
+}
+
+/* Style the table cells for player scores */
+#ranking-table tbody td:last-child {
+  text-align: right;
+}
+
+/* Style the first three rows with gold, silver, and bronze colors */
+#ranking-table tbody tr:nth-child(1) td:first-child {
+  background-color: gold;
+}
+#ranking-table tbody tr:nth-child(1) td:last-child {
+  color: white;
+  background-color: gold;
+}
+#ranking-table tbody tr:nth-child(2) td:first-child {
+  background-color: silver;
+}
+#ranking-table tbody tr:nth-child(2) td:last-child {
+  color: white;
+  background-color: silver;
+}
+#ranking-table tbody tr:nth-child(3) td:first-child {
+  background-color: #cd7f32;
+}
+#ranking-table tbody tr:nth-child(3) td:last-child {
+  color: white;
+  background-color: #cd7f32;
+}
+
   </style>
 </head>
 <body>
