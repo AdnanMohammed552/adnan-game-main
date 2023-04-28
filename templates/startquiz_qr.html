@@ -286,7 +286,30 @@ body{
     }
     
   </style>
-  
+  <style>
+    /* Style the table header */
+    #ranking-table thead {
+      font-weight: bold;
+    }
+
+    /* Style the table cells */
+    #ranking-table td {
+      padding: 0.5em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ranking Table</h1>
+  <table id="ranking-table">
+    <thead>
+      <tr>
+        <td>Player</td>
+        <td>Score</td>
+      </tr>
+    </thead>
+    <tbody id="ranking-table-body">
+    </tbody>
+  </table>
 {{ room_code|json_script:'json-roomcode' }}
 {{ request.user.username|json_script:"user_id" }}
 
@@ -577,6 +600,34 @@ body{
             
           }}
           let playerwhoanswered = []
+          let playerScores = {};
+
+          // Define a function to update the player scores
+          function updateScores(playerName, score) {
+            // Check if the player already has a score
+            if (playerScores[playerName]) {
+              // If so, update their score
+              playerScores[playerName] = score;
+            } else {
+              // If the player is not already in the list, add them with their score
+              playerScores[playerName] = score;
+            }
+            // Sort the player scores by descending score
+            const sortedScores = Object.entries(playerScores).sort((a, b) => b[1] - a[1]);
+            // Clear the existing table rows
+            const tableBody = document.getElementById("ranking-table-body");
+            tableBody.innerHTML = "";
+            // Add the updated scores to the table
+            sortedScores.forEach((entry, index) => {
+              const row = tableBody.insertRow();
+              const nameCell = row.insertCell(0);
+              const scoreCell = row.insertCell(1);
+              nameCell.innerText = entry[0];
+              scoreCell.innerText = entry[1];
+            });
+          }
+
+
           function wait(ms,corrr) {
            
             return new Promise(resolve => {
@@ -624,7 +675,10 @@ body{
                             ans = 4
                           }
                           if(ans==corrr){
+
+                            updateScores(user, ans);
                             document.getElementById(user).innerHTML += '50'
+
                             
                           }
                           
