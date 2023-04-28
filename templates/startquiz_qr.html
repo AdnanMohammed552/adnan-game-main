@@ -512,7 +512,6 @@ body{
             document.getElementById('users').innerHTML += (
              ' <button class="btn btn-tag btn-rounded text-center" id="'+ username +'" onclick="userremove(\'' + username + '\')"><span>'+ username +'</span></button>'
             )
-            document.getElementById('send').disabled=false
             //const h1Element = document.createElement("h1");
             //h1Element.textContent = username;
             //document.body.append(h1Element);
@@ -559,46 +558,6 @@ body{
       gameSocket.onclose = function (e) {
         console.log('fall ');
       }
-      document.querySelector('#send').onclick = function(e){
-        
-        const started = false
-        console.log(started)
-        const user_id = JSON.parse(document.getElementById('user_id').textContent);
-        gameSocket.send(JSON.stringify({
-          'started' : true,
-          'room' : roomCode,
-          'admin':user_id
-        
-        }))  
-        gameSocket2.onmessage = function(e){
-          const data = JSON.parse(e.data)
-          if(data.kickme === true){
-            document.getElementById(data.userf).remove()
-            document.getElementById(('div_id'+data.userf)).remove()
-
-          }
-          if (data.letterconsumer!==null&&typeof data.letterconsumer!=="undefined"&&data.letterconsumer!=="" &&data.letterconsumer!==false){
-          console.log('yeeesa')
-          document.querySelector('#leettered').innerHTML =(data.letterconsumer);
-        
-        
-        }
-          if (data.ready){
-
-          }
-        }
-
-
-
-
-      
-      
-      gameSocketquiz.onmessage=function(e){
-        const data = JSON.parse(e.data)
-        if(data.exam !== false){
-        alert('qr scanned')
-      }
-      }}
       document.getElementById('done').onclick = function(){
         document.getElementById('done').style.display = 'none'
         document.getElementById('end').style.display='block'
