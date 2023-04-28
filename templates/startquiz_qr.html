@@ -676,10 +676,14 @@ body{
                           }
                           if(ans==corrr){
 
-                            updateScores(user, ans);
+                            updateScores(user, 50);
                             document.getElementById(user).innerHTML += '50'
 
                             
+                          }
+                          else if (ans != corrr){
+                            updateScores(user, 0);
+
                           }
                           
                           
