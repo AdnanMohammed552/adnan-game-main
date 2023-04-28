@@ -348,6 +348,7 @@ body{
   </style>
 </head>
 <body>
+  <div id="ranktable">
   <h1>Ranking Table</h1>
   <table id="ranking-table">
     <thead>
@@ -359,6 +360,7 @@ body{
     <tbody id="ranking-table-body">
     </tbody>
   </table>
+</div>
 {{ room_code|json_script:'json-roomcode' }}
 {{ request.user.username|json_script:"user_id" }}
 
