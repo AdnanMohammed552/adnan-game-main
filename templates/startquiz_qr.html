@@ -657,7 +657,11 @@ body{
                   await wait((i.timer),correctlastasnwer); 
                   await new Promise((resolve) => {
                     document.getElementById('nextttt').onclick = function() {
-                      document.getElementsByClassName('userbutton').style.backgroundColor = 'green'
+                      const buttons = document.querySelectorAll('.userbutton');
+
+                      buttons.forEach(button => {
+                        button.style.backgroundColor = 'green'; // replace with your desired color
+                      });
                       resolve();
                     }
                   }); 
