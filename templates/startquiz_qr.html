@@ -651,11 +651,11 @@ body{
                     console.log('cos',(i.answer).indexOf(x) , i.correctans)
                     if(((i.answer).indexOf(x))+1 == i.correctans)
                     document.getElementById('add'+i.question).innerHTML +=(
-                      '<th style="font-size:20px;background-color:green;" scope="col">'+ x +'</th>'
+                      '<th style="font-size:20px;background-color:green;text-align: center;" scope="col">'+ x +'</th>'
                     )
                     else{
                       document.getElementById('add'+i.question).innerHTML +=(
-                      '<th style="font-size:20px" scope="col">'+ x +'</th>'
+                      '<th style="font-size:20px;text-align: center;" scope="col">'+ x +'</th>'
                     )
                     }
 
@@ -787,13 +787,13 @@ body{
                               document.getElementById('tr'+question+user).innerHTML+=(
 
                                   
-                              '<th style="font-size:20px;" scope="col">'+ user +'</th>'
+                              '<th style="font-size:20px;text-align: center;" scope="col">'+ user +'</th>'
                               )
                             }
                             else{
                               document.getElementById('tr'+question+user).innerHTML+=(
 
-                              '<th style="font-size:20px;" scope="col"></th>'
+                              '<th style="font-size:20px;text-align: center;" scope="col"></th>'
                               )
                             }
 
