@@ -844,10 +844,10 @@ body{
       }
       document.getElementById('end').onclick = function(){
 
-        var alltables = document.getElementById('pdfgenerator').innerHTML;
+        var alltables = document.getElementById('accordionExample').innerHTML;
         var score = document.getElementById('ranktable').innerHTML;
         gameSocketquiz.send(JSON.stringify({
-          'result':alltables+score,
+          'result':score+alltables,
           'room':roomCode,
         }))        
 
