@@ -785,12 +785,12 @@ body{
                           for(let i = 1; i<4;i++){
                             if(i==ans){
                               console.log('cot',question,user)
+                              var element = document.getElementById('tr'+question+user);
+                              if (element) {
+                                element.innerHTML += '<th style="font-size:20px;" scope="col">'+ user +'</th>';
+                              }
 
-                              document.getElementById('tr'+question+user).innerHTML+=(
-
-                                  
-                              '<th style="font-size:20px;" scope="col">'+ user +'</th>'
-                              )
+                              
                             }
                             else{
                               document.getElementById('tr'+question+user).innerHTML+=(
