@@ -73,8 +73,8 @@
               <table id="ranking-table" class="table">
                 <thead>
                   <tr>
-                    <td>Player</td>
-                    <td>Score</td>  
+                    <td>اللاعب</td>
+                    <td>النقاط</td>  
                   </tr>
                 </thead>
                 <tbody id="ranking-table-body">
@@ -843,7 +843,13 @@ body{
 
       }
       document.getElementById('end').onclick = function(){
+        const newTab = window.open()
 
+        var alltables = document.getElementById('pdfgenerator').outerHTML;
+        var score = document.getElementById('ranktable').outerHTML;
+        newTab.document.write(alltables)
+                
+              
 
       }
     
