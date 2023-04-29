@@ -373,6 +373,24 @@ body{
     
   </style>
   </div>
+
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item" >
+     <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseOneuu" aria-expanded="true" aria-controls="collapseOne">
+          اوراق اللاعبين
+        </button> 
+      </h2>
+      <div id="collapseOneuu" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample">
+     
+    <div style="background-color:generateRandomColor()" class="accordion-body"   id="u">
+      <div id="pdfgenerator"></div>
+
+        
+      </div>
+    </div>
+  </div>
+
 {{ room_code|json_script:'json-roomcode' }}
 {{ request.user.username|json_script:"user_id" }}
 
@@ -710,6 +728,48 @@ body{
                           alert(user+' answer is '+ans+corrr)
                           playerwhoanswered.push(user)
                           document.getElementById(user).style.backgroundColor = 'blue'
+                          document.getElementById('pdfgenerator').innerHTML += (
+                 
+                          '<div class="accordion" id="'+ 
+                          'accordionExample'+ user +
+                          '">'+
+                            '<div class="accordion-item" >'+
+                            ' <h2 class="accordion-header" id="headingOne">'+
+                                '<button class="accordion-button" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseOne'+user+'" aria-expanded="true" aria-controls="collapseOne">'+
+                                  user +
+                                '</button>' +
+                              '</h2>'+
+                              '<div id="collapseOne'+user+'" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample'+ fetchedarray.indexOf(user) +'">'+
+                             
+                            '<div style="background-color:'+generateRandomColor()+'" class="accordion-body" ' + 'id="' + user + '">'+
+                              
+                                '<table class="table table-bordered border-primary" id="table'+ user +'">'+
+                                  '<thead>'+
+                                    '<tr>'+
+                                      '<th style="font-size:20px;" scope="col">اللاعب</th>'+
+                                      '<th style="font-size:20px;" scope="col">الحرف </th>'+
+                                    ' <th style="font-size:20px;" scope="col">إسم </th>'+
+                                      '<th style="font-size:20px;" scope="col">إسم بنت</th>'+
+                                      '<th style="font-size:20px;" scope="col">حيوان </th>'+
+                                      '<th style="font-size:20px;" scope="col">نبات </th>'+
+                                      '<th style="font-size:20px;" scope="col">جماد </th>'+
+                                      '<th style="font-size:20px;" scope="col">بلاد </th>'+
+                                      '<th style="font-size:20px;" scope="col">مجموع </th>'+
+                                    '</tr>'+
+                                  '</thead>'+
+                                  '<tbody id="divv'+user+'">'+
+                                
+                                  '</tbody>'+
+                                  
+                              '</table>'+
+                              '</div>'+
+                            '</div>'+
+                          '</div>'+
+                        
+                          '</div>'
+                        
+                          )
+                    
                           if (ans === 'A'){
                             ans = 1
                           }
@@ -755,6 +815,7 @@ body{
 
       }
       document.getElementById('end').onclick = function(){
+
 
       }
     
