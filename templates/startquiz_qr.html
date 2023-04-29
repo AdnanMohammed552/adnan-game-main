@@ -758,7 +758,7 @@ body{
                       
                         let ans = (data.exam).split('/')[1]
                         let user= (data.exam).split('/')[0];
-                        console.log('tan',question)
+                        console.log('tan',question,user)
                         document.getElementById('divve'+question).innerHTML += (
                           '<tr id="tr'+question+user+'">'+
                             '</tr>'
@@ -785,8 +785,10 @@ body{
                           
                           for(let i = 1; i<4;i++){
                             if(i==ans){
+                              console.log('cot',question,user)
 
                               document.getElementById('tr'+question+user).innerHTML+=(
+
                                   
                               '<th style="font-size:20px;" scope="col">'+ user +'</th>'
                               )
