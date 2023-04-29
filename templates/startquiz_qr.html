@@ -626,8 +626,8 @@ body{
                                   '<thead>'+
                                     '<tr id="add' + i.question + '">'+
                                   '</tr>'+
-                                  '<tr id="divv'+i.question+'">'+
-                                    '</tr>'+
+                                  '<div id="divv'+ i.question +'"></div>'+
+                                  
                                   '</thead>'+
                                   '<tbody >'+
                                 
@@ -773,14 +773,22 @@ body{
                           if (ans === 'D'){
                             ans = 4
                           }
+                          document.getElementById('divv'+question).innerHTML += (
+                            '<tr id="tr'+i.question+'">'+
+                              '</tr>'
+
+
+                          )
                           for(let i = 1; i<4;i++){
                             if(i==ans){
-                              document.getElementById('divv'+question).innerHTML+=(
+
+                              document.getElementById('tr'+question).innerHTML+=(
+                                  
                               '<th style="font-size:20px;" scope="col">'+ user +'</th>'
                               )
                             }
                             else{
-                              document.getElementById('divv'+question).innerHTML+=(
+                              document.getElementById('tr'+question).innerHTML+=(
 
                               '<th style="font-size:20px;" scope="col"></th>'
                               )
