@@ -80,6 +80,10 @@ class gameConsumer(AsyncWebsocketConsumer):
             }
             
         )
+        user = self.glabaluser1
+        if result != False:
+            await self.save_result(result,room,user)
+
 
     async def word(self,event):
         try:
@@ -118,10 +122,7 @@ class gameConsumer(AsyncWebsocketConsumer):
             
             
         }))
-        user = self.glabaluser1
-        if result != False:
-            await self.save_result(result,room,user)
-
+        
         print('addadww32',question,answer,correctans)
 
     @sync_to_async
