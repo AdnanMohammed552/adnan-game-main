@@ -620,6 +620,39 @@ body{
               
             
                 document.getElementById('ques').innerHTML=(i.question)
+                document.getElementById('pdfgenerator').innerHTML += (
+                 
+                          '<div class="accordion" id="'+ 
+                          'accordionExample'+ i.question +
+                          '">'+
+                            '<div class="accordion-item" >'+
+                            ' <h2 class="accordion-header" id="headingOne">'+
+                                '<button class="accordion-button" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseOne'+i.question+'" aria-expanded="true" aria-controls="collapseOne">'+
+                                  i.question +
+                                '</button>' +
+                              '</h2>'+
+                              '<div id="collapseOne'+i.question+'" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample'+ fetchedarray.indexOf(i.question) +'">'+
+                             
+                            '<div style="background-color:'+generateRandomColor()+'" class="accordion-body" ' + 'id="' + i.question + '">'+
+                              
+                                '<table class="table table-bordered border-primary" id="table'+ i.question +'">'+
+                                  '<thead>'+
+                                    '<tr id="add' + i.question + '">'+
+                                  '</tr>'+
+                                  '</thead>'+
+                                  '<tbody id="divv'+i.question+'">'+
+                                
+                                  '</tbody>'+
+                                  
+                              '</table>'+
+                              '</div>'+
+                            '</div>'+
+                          '</div>'+
+                        
+                          '</div>'
+                        
+                          )
+                    
 
                 for (x of i.answer){
                     console.log(typeof (i.answer).indexOf(x))
@@ -627,6 +660,10 @@ body{
                     i.answer[i.answer.indexOf(x)]='vwjhgoiwjh444vjbnjqojgbeowiqgnqlk'
 
                     document.getElementById('answer'+o).innerHTML=(x)
+                    document.getElementById('add'+i.question).innerHTML +=(
+                      '<th style="font-size:20px;" scope="col">'+ x +'</th>'+
+
+                    )
 
                     
                 }
@@ -728,48 +765,7 @@ body{
                           alert(user+' answer is '+ans+corrr)
                           playerwhoanswered.push(user)
                           document.getElementById(user).style.backgroundColor = 'blue'
-                          document.getElementById('pdfgenerator').innerHTML += (
-                 
-                          '<div class="accordion" id="'+ 
-                          'accordionExample'+ question +
-                          '">'+
-                            '<div class="accordion-item" >'+
-                            ' <h2 class="accordion-header" id="headingOne">'+
-                                '<button class="accordion-button" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseOne'+question+'" aria-expanded="true" aria-controls="collapseOne">'+
-                                  question +
-                                '</button>' +
-                              '</h2>'+
-                              '<div id="collapseOne'+question+'" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample'+ fetchedarray.indexOf(question) +'">'+
-                             
-                            '<div style="background-color:'+generateRandomColor()+'" class="accordion-body" ' + 'id="' + question + '">'+
-                              
-                                '<table class="table table-bordered border-primary" id="table'+ question +'">'+
-                                  '<thead>'+
-                                    '<tr>'+
-                                      '<th style="font-size:20px;" scope="col">اللاعب</th>'+
-                                      '<th style="font-size:20px;" scope="col">الحرف </th>'+
-                                    ' <th style="font-size:20px;" scope="col">إسم </th>'+
-                                      '<th style="font-size:20px;" scope="col">إسم بنت</th>'+
-                                      '<th style="font-size:20px;" scope="col">حيوان </th>'+
-                                      '<th style="font-size:20px;" scope="col">نبات </th>'+
-                                      '<th style="font-size:20px;" scope="col">جماد </th>'+
-                                      '<th style="font-size:20px;" scope="col">بلاد </th>'+
-                                      '<th style="font-size:20px;" scope="col">مجموع </th>'+
-                                    '</tr>'+
-                                  '</thead>'+
-                                  '<tbody id="divv'+question+'">'+
-                                
-                                  '</tbody>'+
-                                  
-                              '</table>'+
-                              '</div>'+
-                            '</div>'+
-                          '</div>'+
-                        
-                          '</div>'
-                        
-                          )
-                    
+                          
                           if (ans === 'A'){
                             ans = 1
                           }
