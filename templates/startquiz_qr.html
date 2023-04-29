@@ -442,16 +442,6 @@ body{
       return color;
     }
 
-  //document.getElementById("visable").onclick =function(e){
-    //if ((window.getComputedStyle(document.getElementById('leetter')).display) === 'block'){
-     // document.getElementById('leetter').style.display="none"
-   // }
-   // else{
-     // document.getElementById('leetter').style.display="block"
-
-    //}
-    
-  //}
   const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
   const gameSocketquiz = new WebSocket(
         
@@ -475,7 +465,7 @@ body{
     const waitForOpenConnection = (socket) => {
         return new Promise((resolve, reject) => {
             const maxNumberOfAttempts = 10
-            const intervalTime = 200 //ms
+            const intervalTime = 200 
     
             let currentAttempt = 0
             const interval = setInterval(() => {
@@ -502,7 +492,7 @@ body{
         if(data.exam !== false){
           const str = data.exam;
           const strBeforeSlash = str.split('/')[0];
-          console.log('here we go',strBeforeSlash,data.exam); // output: "hello"
+          console.log('here we go',strBeforeSlash,data.exam); 
 
           document.getElementById('users').innerHTML += (
             ' <button class="btn btn-tag btn-rounded text-center userbutton" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span>'+ strBeforeSlash +'</span></button>'
@@ -529,9 +519,7 @@ body{
             document.getElementById('users').innerHTML += (
              ' <button class="btn btn-tag btn-rounded text-center" id="'+ username +'" onclick="userremove(\'' + username + '\')"><span>'+ username +'</span></button>'
             )
-            //const h1Element = document.createElement("h1");
-            //h1Element.textContent = username;
-            //document.body.append(h1Element);
+            
           }
           }
           else{
@@ -555,9 +543,7 @@ body{
               
           }
       }
-        //if (index > -1) { // only splice array when item is found
-        //  array.splice(index, 1); // 2nd parameter means remove one item only
-        //}
+        
         const gameSocketkick = new WebSocket(
         'wss://' + window.location.host + '/ws/' + roomCode + '/'
         )
@@ -684,13 +670,12 @@ body{
                       const buttons = document.querySelectorAll('.userbutton');
 
                       buttons.forEach(button => {
-                        button.style.backgroundColor = 'green'; // replace with your desired color
+                        button.style.backgroundColor = 'green'; 
                       });
                       resolve();
                     }
                   }); 
                   playerwhoanswered.length = 0;
-                  // wait for 1 second before continuing to the next iteration
 
                   document.getElementById('answer1').disabled = true;
               document.getElementById('answer2').disabled = true;
