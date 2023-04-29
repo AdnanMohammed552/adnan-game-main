@@ -759,11 +759,10 @@ body{
                         let ans = (data.exam).split('/')[1]
                         let user= (data.exam).split('/')[0];
                         console.log('tan',question,user)
-                        document.getElementById('divve'+question).innerHTML += (
-                          '<tr id="tr'+question+user+'"></tr>'
+                        var tableRow = document.createElement('tr');
+                        tableRow.setAttribute('id', 'tr' + question + user);
+                        document.getElementById('divve'+question).appendChild(tableRow);
 
-
-                        )
                         if (!playerwhoanswered.includes(user)){
                           alert(user+' answer is '+ans+corrr)
                           playerwhoanswered.push(user)
@@ -785,12 +784,12 @@ body{
                           for(let i = 1; i<4;i++){
                             if(i==ans){
                               console.log('cot',question,user)
-                              var element = document.getElementById('tr'+question+user);
-                              if (element) {
-                                element.innerHTML += '<th style="font-size:20px;" scope="col">'+ user +'</th>';
-                              }
 
-                              
+                              document.getElementById('tr'+question+user).innerHTML+=(
+
+                                  
+                              '<th style="font-size:20px;" scope="col">'+ user +'</th>'
+                              )
                             }
                             else{
                               document.getElementById('tr'+question+user).innerHTML+=(
