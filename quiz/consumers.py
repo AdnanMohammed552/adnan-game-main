@@ -119,7 +119,8 @@ class gameConsumer(AsyncWebsocketConsumer):
             
         }))
         user = self.glabaluser1
-        await self.save_result(result,room,user)
+        if result != False:
+            await self.save_result(result,room,user)
 
         print('addadww32',question,answer,correctans)
 
