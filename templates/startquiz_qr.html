@@ -758,12 +758,13 @@ body{
                       
                         let ans = (data.exam).split('/')[1]
                         let user= (data.exam).split('/')[0];
+                        console.log('tan',question)
                         document.getElementById('divve'+question).innerHTML += (
-                            '<tr id="tr'+question+user+'">'+
-                              '</tr>'
+                          '<tr id="tr'+question+user+'">'+
+                            '</tr>'
 
 
-                          )
+                        )
                         if (!playerwhoanswered.includes(user)){
                           alert(user+' answer is '+ans+corrr)
                           playerwhoanswered.push(user)
