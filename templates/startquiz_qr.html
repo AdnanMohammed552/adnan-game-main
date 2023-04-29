@@ -633,7 +633,7 @@ body{
                 document.getElementById('timerrr').innerHTML=(i.timer)
                 var correctlastasnwer = i.correctans
             
-                  await wait((i.timer),correctlastasnwer); 
+                  await wait((i.timer),correctlastasnwer,i.question); 
                   await new Promise((resolve) => {
                     document.getElementById('nextttt').onclick = function() {
                       const buttons = document.querySelectorAll('.userbutton');
@@ -695,7 +695,7 @@ body{
 
           
           
-          function wait(ms,corrr) {
+          function wait(ms,corrr,question) {
            
             return new Promise(resolve => {
               let countdownInterval;
@@ -731,19 +731,19 @@ body{
                           document.getElementById('pdfgenerator').innerHTML += (
                  
                           '<div class="accordion" id="'+ 
-                          'accordionExample'+ user +
+                          'accordionExample'+ question +
                           '">'+
                             '<div class="accordion-item" >'+
                             ' <h2 class="accordion-header" id="headingOne">'+
-                                '<button class="accordion-button" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseOne'+user+'" aria-expanded="true" aria-controls="collapseOne">'+
-                                  user +
+                                '<button class="accordion-button" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseOne'+question+'" aria-expanded="true" aria-controls="collapseOne">'+
+                                  question +
                                 '</button>' +
                               '</h2>'+
-                              '<div id="collapseOne'+user+'" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample'+ fetchedarray.indexOf(user) +'">'+
+                              '<div id="collapseOne'+question+'" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample'+ fetchedarray.indexOf(question) +'">'+
                              
-                            '<div style="background-color:'+generateRandomColor()+'" class="accordion-body" ' + 'id="' + user + '">'+
+                            '<div style="background-color:'+generateRandomColor()+'" class="accordion-body" ' + 'id="' + question + '">'+
                               
-                                '<table class="table table-bordered border-primary" id="table'+ user +'">'+
+                                '<table class="table table-bordered border-primary" id="table'+ question +'">'+
                                   '<thead>'+
                                     '<tr>'+
                                       '<th style="font-size:20px;" scope="col">اللاعب</th>'+
@@ -757,7 +757,7 @@ body{
                                       '<th style="font-size:20px;" scope="col">مجموع </th>'+
                                     '</tr>'+
                                   '</thead>'+
-                                  '<tbody id="divv'+user+'">'+
+                                  '<tbody id="divv'+question+'">'+
                                 
                                   '</tbody>'+
                                   
