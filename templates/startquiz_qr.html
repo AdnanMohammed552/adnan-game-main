@@ -758,6 +758,12 @@ body{
                       
                         let ans = (data.exam).split('/')[1]
                         let user= (data.exam).split('/')[0];
+                        document.getElementById('divve'+question).innerHTML += (
+                            '<tr id="tr'+question+user+'">'+
+                              '</tr>'
+
+
+                          )
                         if (!playerwhoanswered.includes(user)){
                           alert(user+' answer is '+ans+corrr)
                           playerwhoanswered.push(user)
@@ -775,12 +781,7 @@ body{
                           if (ans === 'D'){
                             ans = 4
                           }
-                          document.getElementById('divve'+question).innerHTML += (
-                            '<tr id="tr'+question+user+'">'+
-                              '</tr>'
-
-
-                          )
+                          
                           for(let i = 1; i<4;i++){
                             if(i==ans){
 
