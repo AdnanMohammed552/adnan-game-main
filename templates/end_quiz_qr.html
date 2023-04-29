@@ -1,1 +1,289 @@
+<style>
+    #users button {
+MARGIN-TOP: 8px;
+  margin-bottom: 8px;
+}
+body{
+margin-left: 4px;
+margin-right: 4px;
+}
+
+
+  </style>
+  <style>
+
+    #bare button{
+      background-color: black;
+      color: #ffffff;
+    }
+    #users button {
+      width: 200px; /* set a width so it doesnt change upon hover */
+       border: 0px solid #004B84;
+       background: green;
+       padding: 3px 21px;
+       -webkit-border-radius: 16px;
+       -moz-border-radius: 16px;
+       border-radius: 16px;
+       color: #ffffff;
+       font-size: 12px;
+       font-family: Questrial;
+       text-decoration: none;
+       vertical-align: middle;
+       letter-spacing: 2px;
+    }
+    
+    #users button:hover span {
+      display:none
+    }
+    
+    #users button:hover:before {
+      content:"Remove Player!";
+    }
+    
+    #users button:hover {
+      background-color: red;
+    }
+    #removeme {
+      width: 200px; /* set a width so it doesnt change upon hover */
+       border: 0px solid #004B84;
+       background: green;
+       padding: 3px 21px;
+       -webkit-border-radius: 16px;
+       -moz-border-radius: 16px;
+       border-radius: 16px;
+       color: #ffffff;
+       font-size: 12px;
+       font-family: Questrial;
+       text-decoration: none;
+       vertical-align: middle;
+       letter-spacing: 2px;
+    }
+    
+    #removeme:hover span {
+      display:none
+    }
+    
+    #removeme:hover:before {
+      content:"Remove Player!";
+    }
+    
+    #removeme:hover {
+      background-color: red;
+    }
+    
+  #view {
+      margin-right: 5px;
+  }
+      
+  .hovertext {
+    position: relative;
+    border-bottom: 1px dotted black;
+    font-size: 24px;
+  }
+  
+  .hovertext:before {
+    content: attr(data-hover);
+    visibility: hidden;
+    opacity: 0;
+    width: 140px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    transition: opacity 1s ease-in-out;
+  
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    font-size: 15px;
+  
+    top: 110%;
+    
+  }
+  
+  .hovertext:hover:before {
+    opacity: 1;
+    visibility: visible;
+  }
+   </style>
+   <style>
+      /* center the question bar */
+      .question-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 500px;
+      }
+  
+      /* center the question text */
+      .question {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+  
+      /* create two lines of choices */
+      .choices {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        width: 100%;
+      }
+  
+      /* style the buttons */
+      .btn-choice {
+        margin: 10px;
+        padding: 50px;
+        font-size: 24px;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        border: none;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+        transition: all 0.3s ease-in-out;
+        background-color: #f7f7f7;
+        color: #2f2f2f;
+      }
+  
+      .btn-choice:hover {
+        transform: scale(1.1);
+      }
+  
+      /* style the button labels */
+      .btn-label {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+      }
+  
+      /* style the selected button */
+      .btn-choice.selected {
+        background-color: #2f2f2f;
+        color: #f7f7f7;
+      }
+  
+      /* style the selected button label */
+      .btn-choice.selected .btn-label {
+        color: #f7f7f7;
+      }
+      
+    </style>
+    <style>
+      .countdown-timer {
+        width: 100%;
+        height: 20px;
+        background-color: #eee;
+      }
+      
+      .progress-bar {
+        width: 100%;
+        height: 100%;
+        background-color: #3cb371;
+        transition: width 1s linear;
+      }
+      
+    </style>
+    <style>
+      .points {
+        display: inline-block;
+        background-color: #f2f2f2;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+      
+      .points-icon {
+        font-size: 1.5rem;
+        margin-right: 5px;
+        color: #ff9800;
+      }
+      
+      .points-text {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+      
+    </style>
+    <style>
+      /* Style the table header */
+      #ranking-table thead {
+        font-weight: bold;
+      }
+  
+      /* Style the table cells */
+      #ranking-table td {
+        padding: 0.5em;
+      }
+      /* Style the table header */
+  #ranking-table thead {
+    font-weight: bold;
+  }
+  
+  /* Style the table cells */
+  #ranking-table td {
+    padding: 0.5em;
+  }
+  
+  /* Style the table rows */
+  #ranking-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Style the table cells for player names */
+  #ranking-table tbody td:first-child {
+    font-weight: bold;
+  }
+  
+  /* Style the table cells for player scores */
+  #ranking-table tbody td:last-child {
+    text-align: right;
+  }
+  
+  /* Style the first three rows with gold, silver, and bronze colors */
+  #ranking-table tbody tr:nth-child(1) td:first-child {
+    background-color: gold;
+  }
+  #ranking-table tbody tr:nth-child(1) td:last-child {
+    color: white;
+    background-color: gold;
+  }
+  #ranking-table tbody tr:nth-child(2) td:first-child {
+    background-color: silver;
+  }
+  #ranking-table tbody tr:nth-child(2) td:last-child {
+    color: white;
+    background-color: silver;
+  }
+  #ranking-table tbody tr:nth-child(3) td:first-child {
+    background-color: #cd7f32;
+  }
+  #ranking-table tbody tr:nth-child(3) td:last-child {
+    color: white;
+    background-color: #cd7f32;
+  }
+  
+    </style>
+
+
+    <style>
+        #ranktable {
+          position: absolute;
+          top: 0;
+          right: 0;
+          padding: 10px;
+          margin-top: 300px;
+          margin-right: 80px;
+        }
+        
+      </style>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+
+<!-- Bootstrap JavaScript files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+
+
+
 {{z}}
