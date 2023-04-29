@@ -231,3 +231,21 @@ def room_admin_quiz_qr(request,room_code):
         array.append(e)
 
     return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array})
+
+
+
+
+def room_admin_quiz_qr_end(request,room_code):
+    from quiz import models
+    valie2=models.room_created.objects.all().filter(room_created=room_code).values()
+    for i in valie2:
+        z2 = i['table']
+        if z2!= 'False' or False:
+            break
+        else:
+            continue
+
+    adnan = Template(z2)
+
+
+    return render(request,'end_quiz_qr.html',{'room_code':room_code,'z':adnan.render(Context({}))})

@@ -34,6 +34,10 @@ class gameConsumer(AsyncWebsocketConsumer):
 
 
         data= json.loads(text_data)
+        username1=self.scope['user']
+        self.glabaluser=username1
+        self.glabaluser1=str(self.glabaluser)
+
         try:
             started = data['started']
         except:
@@ -55,7 +59,14 @@ class gameConsumer(AsyncWebsocketConsumer):
             exam = data['exam']
         except:
             exam = False
-       #
+        try:
+            result = data['result']
+        except:
+            result = False
+        try:
+            room = data['room']
+        except:
+            room = False
         await self.channel_layer.group_send(
             self.room_group_name,
             {
@@ -63,7 +74,9 @@ class gameConsumer(AsyncWebsocketConsumer):
                 'question':question,
                 'answer':answer,
                 'correctans':correctans,
-                'exam':exam
+                'exam':exam,
+                'result':result,
+                'room':room
             }
             
         )
@@ -85,22 +98,38 @@ class gameConsumer(AsyncWebsocketConsumer):
             exam = event['exam']
         except:
             exam = False
-
+        try:
+            result = event['result']
+        except:
+            result = False
+        try:
+            room = event['room']
+        except:
+            room = False
         await self.send(text_data=json.dumps({
 
             'question':question,
             'answer':answer,
             'correctans':correctans,
-            'exam':exam
+            'exam':exam,
+            'result':result,
+            'room':room
     
             
             
         }))
+        await self.save_result(result,room,self.glabaluser1)
 
         print('addadww32',question,answer,correctans)
 
     @sync_to_async
     def save(self,room,started,end):
         startingroom.objects.create(room=room,started=started,end=end)
+
+
+    def save_result(self,result,room,glabaluser1):
+        from.models import room_created
+        room_created.objects.create(user=glabaluser1,table=result,room_created=room).save()
+
 
  

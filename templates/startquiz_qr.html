@@ -843,12 +843,14 @@ body{
 
       }
       document.getElementById('end').onclick = function(){
-        const newTab = window.open()
 
-        var alltables = document.getElementById('pdfgenerator').outerHTML;
-        var score = document.getElementById('ranktable').outerHTML;
-        newTab.document.write(alltables)
-                
+        var alltables = document.getElementById('pdfgenerator').innerHTML;
+        var score = document.getElementById('ranktable').innerHTML;
+        gameSocketquiz.send(JSON.stringify({
+          'result':alltables+score,
+          'room':roomCode,
+        }))        
+        
               
 
       }
