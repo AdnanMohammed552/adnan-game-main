@@ -658,8 +658,6 @@ body{
                 for (x of i.answer){
                     console.log(typeof (i.answer).indexOf(x))
                     o=i.answer.indexOf(x)+1
-                    i.answer[i.answer.indexOf(x)]='vwjhgoiwjh444vjbnjqojgbeowiqgnqlk'
-
                     document.getElementById('answer'+o).innerHTML=(x)
                     console.log('cos',(i.answer).indexOf(x) , i.correctans)
                     if((i.answer).indexOf(x) == i.correctans)
@@ -667,6 +665,9 @@ body{
                       '<th style="font-size:20px;" scope="col">'+ x +'</th>'
                     )
 
+                    i.answer[i.answer.indexOf(x)]='vwjhgoiwjh444vjbnjqojgbeowiqgnqlk'
+
+                    
                     
                 }
                 document.getElementById('timerrr').innerHTML=(i.timer)
