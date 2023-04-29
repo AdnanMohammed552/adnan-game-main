@@ -660,10 +660,15 @@ body{
                     o=i.answer.indexOf(x)+1
                     document.getElementById('answer'+o).innerHTML=(x)
                     console.log('cos',(i.answer).indexOf(x) , i.correctans)
-                    if((i.answer).indexOf(x) == i.correctans)
+                    if(((i.answer).indexOf(x))+1 == i.correctans)
                     document.getElementById('add'+i.question).innerHTML +=(
-                      '<th style="font-size:20px;" scope="col">'+ x +'</th>'
+                      '<th style="font-size:20px;background-color:green;" scope="col">'+ x +'</th>'
                     )
+                    else{
+                      document.getElementById('add'+i.question).innerHTML +=(
+                      '<th style="font-size:20px" scope="col">'+ x +'</th>'
+                    )
+                    }
 
                     i.answer[i.answer.indexOf(x)]='vwjhgoiwjh444vjbnjqojgbeowiqgnqlk'
 
