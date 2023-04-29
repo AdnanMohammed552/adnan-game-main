@@ -771,6 +771,22 @@ body{
                           if (ans === 'D'){
                             ans = 4
                           }
+                          for(let i = 0; i<4;i++){
+                            if(i==ans){
+                              '<th style="font-size:20px;background-color:green;" scope="col">'+ user +'</th>'
+
+                            }
+                            else{
+                              '<th style="font-size:20px;background-color:green;" scope="col">test</th>'
+
+                            }
+
+
+                          }
+                          document.getElementById('add'+question).innerHTML +=(
+                            '<th style="font-size:20px;background-color:green;" scope="col">'+ x +'</th>'
+                          )
+                             
                           if(ans==corrr){
                             score = (remainingTime/(parseInt(document.getElementById('timerrr').innerHTML)) * 20 )
                             scoretotal = Math.floor(score+50)
