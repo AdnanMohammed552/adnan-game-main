@@ -73,8 +73,8 @@
               <table id="ranking-table" class="table">
                 <thead>
                   <tr>
-                    <td>اللاعب</td>
-                    <td>النقاط</td>  
+                    <td style="text-align: center;">اللاعب</td>
+                    <td style="text-align: center;">النقاط</td>  
                   </tr>
                 </thead>
                 <tbody id="ranking-table-body">
@@ -722,6 +722,8 @@ body{
               scoreCell.innerText = entry[1];
               nameCell.style.fontSize = '16px'
               scoreCell.style.fontSize = '16px'
+              nameCell.style.textAlign = 'center';
+              scoreCell.style.textAlign = 'center';
             });
           }
 
