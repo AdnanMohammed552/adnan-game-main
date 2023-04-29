@@ -129,7 +129,7 @@ class gameConsumer(AsyncWebsocketConsumer):
     def save(self,room,started,end):
         startingroom.objects.create(room=room,started=started,end=end)
 
-
+    @sync_to_async
     def save_result(self,result,room,glabaluser1):
         from.models import room_created
         room_created.objects.create(user=glabaluser1,table=result,room_created=room).save()
