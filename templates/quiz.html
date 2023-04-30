@@ -2,7 +2,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <div class="container">
   <h1>Quiz Creation Template with Bootstrap</h1>
-  <form id="quiz-form">
     <div class="form-group">
       <label for="quiz-name">Quiz Name:</label>
       <input type="text" class="form-control" id="name" name="quiz-name">
@@ -61,10 +60,9 @@
             </div>
             <button id="add" type="button" class="btn btn-primary">Add Another Question</button>
             <button type="button" id="sub" class="btn btn-success">Create Quiz</button>
-            </form>
 
 <script>
-let questionCount = 2;
+let questionCount = 3;
 
   document.getElementById('add').onclick = function(e){
     questionCount++
