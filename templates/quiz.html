@@ -17,9 +17,11 @@
             <label for="question-1">Question 1:</label>
             <input type="text" class="form-control" id="question1" name="question1">
           </div>
+
+
           <div class="form-group">
-            <label for="quiz-timer">Timer:</label>
-            <input type="time" class="form-control" id="seconds-input1" name="quiz-timer">
+            <label for="quiz-timer">Timer Duration (in seconds):</label>
+            <input type="number" class="form-control" id="seconds-input1" name="quiz-timer" value="120">
           </div>
           
           <div class="form-group">
@@ -74,10 +76,12 @@
               <label for="question-${questionCount}">Question ${questionCount}:</label>
               <input type="text" class="form-control" id="question${questionCount}" name="question${questionCount}">
             </div>
+            
             <div class="form-group">
-              <label for="quiz-timer">Timer:</label>
-              <input type="time" class="form-control" id="seconds-input${questionCount}" name="quiz-timer">
+              <label for="quiz-timer">Timer Duration (in seconds):</label>
+              <input type="number" class="form-control" id="seconds-input${questionCount}"  name="quiz-timer" value="120">
             </div>
+            
             <div class="form-group">
               <label for="option-${questionCount}-1">Option 1:</label>
               <div class="form-check">
