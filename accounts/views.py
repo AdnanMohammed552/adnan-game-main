@@ -236,5 +236,7 @@ def qrcodes(request):
 
 def quiz_data_last(request,room_code):
     from quiz import models as md
-    z=md.room_created.objects.all().filter(room_created=room_code).values()
-    return render(request,'last_quiz.html',{'z':z})
+    s=md.room_created.objects.all().filter(room_created=room_code).values()
+    adnan=Template(s)
+
+    return render(request,'last_quiz.html',{'z':adnan.render(Context({}))})
