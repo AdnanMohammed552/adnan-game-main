@@ -509,7 +509,8 @@ body{
       }
       }
   
-    
+      let playerScores = {};
+
       gameSocket.onmessage = function (e) {
         
         console.log('done');
@@ -696,7 +697,6 @@ body{
             
           }}
           let playerwhoanswered = []
-          let playerScores = {};
           console.log('herree',playerScores)
           // Define a function to update the player scores
           function updateScores(playerName, score) {
