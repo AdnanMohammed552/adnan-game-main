@@ -234,3 +234,7 @@ def qrcodes(request):
     return render(request,'qrcodes.html',{'user':username,'encoded_string':encoded_string})
 
 
+def quiz_data_last(request,room_code):
+    from quiz import models as md
+    z=md.room_created.objects.all().filter(room_created=room_code).values()
+    return render(request,'last_quiz.html',{'z':z})
