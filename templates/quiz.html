@@ -27,13 +27,17 @@ function add() {
   question.classList.add("question"+questionCount);
 
   question.innerHTML = `
+
   <div class="form-group">
-    <label for="question-${questionCount}">
-      <button class="btn btn-danger" type="button" onclick="deleteQuestion(${questionCount})">
-        <i class="fa fa-trash"></i>
-      </button>  
-    </label>
-    <input type="text" class="form-control" id="question${questionCount}" name="question">
+    <label for="question-${questionCount}">Question ${questionCount}:</label>
+    <div class="input-group">
+      <input type="text" class="form-control" id="question${questionCount}" name="question">
+      <div class="input-group-append">
+        <span class="input-group-text" onclick="deleteQuestion(${questionCount})">
+          <i class="fas fa-trash"></i>
+        </span>
+      </div>
+    </div>
   </div>
   
     <div class="form-group">
