@@ -23,7 +23,7 @@
 sessionStorage.setItem("pageState", "redirected");
 
 // Redirect to the new URL using window.location
-window.location.href =  window.location.origin +'/account/game/quiz/' +roomCode+'/last'+code
+window.location.href =  window.location.origin +'/account/game/quiz/' +roomCode+'/last/'+code
 
 // Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
 window.addEventListener("pageshow", function(event) {
