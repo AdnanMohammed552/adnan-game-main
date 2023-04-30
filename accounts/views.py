@@ -242,7 +242,7 @@ def quiz_data_last(request,room_code):
     for i in s:
         array.append(i['date'])
     #adnan.render(Context({}))
-    return render(request,'last_quiz.html',{'z':s})
+    return render(request,'last_quiz.html',{'z':s,'room_code':room_code})
 
 
 def quiz_data_last_preview(request,id,room_code):
