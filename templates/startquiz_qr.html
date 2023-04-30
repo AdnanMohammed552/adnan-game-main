@@ -846,6 +846,10 @@ body{
       }
       document.getElementById('end').onclick = function(){
         console.log('end data is',playerScores)
+        let i = ''
+        for(x in playerScores){
+          i+= x
+        }
         const min = 1000000000; // smallest 10-digit number (10^9)
         const max = 9999999999; // largest 10-digit number (10^10 - 1)
 
@@ -858,7 +862,8 @@ body{
         gameSocketquiz.send(JSON.stringify({
           'result':score+alltables,
           'room':roomCode,
-          'id':randomNum
+          'id':randomNum,
+          'players':i
         }))        
         sessionStorage.setItem("pageState", "redirected");
 
