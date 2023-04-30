@@ -243,3 +243,14 @@ def quiz_data_last(request,room_code):
         array.append(i['date'])
     #adnan.render(Context({}))
     return render(request,'last_quiz.html',{'z':s})
+
+
+def quiz_data_last_preview(request,id,room_code):
+    from quiz import models as md
+    s=md.room_created.objects.all().filter(room_created=room_code,id=id).values()
+    for i in s:
+        z2 = i['table']
+    adnan=Template(z2)
+
+    return render(request,'last_quiz_preview.html',{'z':adnan.render(Context({}))})
+    
