@@ -19,59 +19,62 @@
 <script>
 let questionCount = 1;
 
-  function add(){
-    questionCount++
+function add() {
+  questionCount++;
 
-      document.getElementById('quiz').innerHTML += (
-        `
-        <div class="question">
-          <div class="form-group">
-            <label for="question-${questionCount}">Question ${questionCount}:</label>
-            <input type="text" class="form-control" id="question${questionCount}" name="question">
-          </div>
-          
-          <div class="form-group">
-            <label for="quiz-timer">Timer Duration (in seconds):</label>
-            <input type="number" class="form-control" id="seconds-input${questionCount}"  name="quiz-timer" value="120">
-          </div>
-          
-          <div class="form-group">
-            <label for="option-${questionCount}-1">Option 1:</label>
-            <div class="form-check">
-              <input type="radio" class="form-check-input" name="correct${questionCount}" id="correct${questionCount}" value="1">
-              <label class="form-check-label" for="option-${questionCount}-1">Option 1</label>
-            </div>
-            <input type="text" class="form-control" id="answer1${questionCount}" name="optionanswerquestionCount}">
-          </div>
-          <div class="form-group">
-            <label for="option-${questionCount}-2">Option 2:</label>
-            <div class="form-check">
-              <input type="radio" class="form-check-input" name="correct${questionCount}" id="correct${questionCount}" value="2">
-              <label class="form-check-label" for="option-${questionCount}-2">Option 2</label>
-            </div>
-            <input type="text" class="form-control" id="answer2${questionCount}" name="optionanswerquestionCount}">
-          </div>
-          <div class="form-group">
-            <label for="option-${questionCount}-3">Option 3:</label>
-            <div class="form-check">
-            <input type="radio" class="form-check-input" name="correct${questionCount}" id="="correct${questionCount}" value="3">
-            <label class="form-check-label" for="option-${questionCount}-3">Option 3</label>
-            </div>
-            <input type="text" class="form-control" id="answer3${questionCount}" name="answer${questionCount}">
-            </div>
-            <div class="form-group">
-            <label for="option-${questionCount}-4">Option 4:</label>
-            <div class="form-check">
-            <input type="radio" class="form-check-input" name="correct${questionCount}" id="="correct${questionCount}" value="4">
-            <label class="form-check-label" for="option-${questionCount}-4">Option 4</label>
-            </div>
-            <input type="text" class="form-control" id="answer4${questionCount}" name="answer${questionCount}">
-            </div>
-            </div>
-            `
-            )
-      console.log(questionCount)
-          }
+  const question = document.createElement("div");
+  question.classList.add("question");
+
+  question.innerHTML = `
+    <div class="form-group">
+      <label for="question-${questionCount}">Question ${questionCount}:</label>
+      <input type="text" class="form-control" id="question${questionCount}" name="question">
+    </div>
+
+    <div class="form-group">
+      <label for="quiz-timer">Timer Duration (in seconds):</label>
+      <input type="number" class="form-control" id="seconds-input${questionCount}" name="quiz-timer" value="120">
+    </div>
+
+    <div class="form-group">
+      <label for="option-${questionCount}-1">Option 1:</label>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="correct${questionCount}" id="correct${questionCount}" value="1">
+        <label class="form-check-label" for="option-${questionCount}-1">Option 1</label>
+      </div>
+      <input type="text" class="form-control" id="answer1${questionCount}" name="optionanswerquestionCount}">
+    </div>
+
+    <div class="form-group">
+      <label for="option-${questionCount}-2">Option 2:</label>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="correct${questionCount}" id="correct${questionCount}" value="2">
+        <label class="form-check-label" for="option-${questionCount}-2">Option 2</label>
+      </div>
+      <input type="text" class="form-control" id="answer2${questionCount}" name="optionanswerquestionCount}">
+    </div>
+
+    <div class="form-group">
+      <label for="option-${questionCount}-3">Option 3:</label>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="correct${questionCount}" id="="correct${questionCount}" value="3">
+        <label class="form-check-label" for="option-${questionCount}-3">Option 3</label>
+      </div>
+      <input type="text" class="form-control" id="answer3${questionCount}" name="answer${questionCount}">
+    </div>
+
+    <div class="form-group">
+      <label for="option-${questionCount}-4">Option 4:</label>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="correct${questionCount}" id="="correct${questionCount}" value="4">
+        <label class="form-check-label" for="option-${questionCount}-4">Option 4</label>
+      </div>
+      <input type="text" class="form-control" id="answer4${questionCount}" name="answer${questionCount}">
+    </div>
+  `;
+
+  document.getElementById("quiz").appendChild(question);
+}
       document.getElementById('sub').onclick=function(e){
         console.log('tt')
         let data = []
