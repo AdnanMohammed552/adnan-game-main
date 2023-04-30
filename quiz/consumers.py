@@ -67,6 +67,10 @@ class gameConsumer(AsyncWebsocketConsumer):
             room = data['room']
         except:
             room = False
+        try:
+            id = data['id']
+        except:
+            id = False
         await self.channel_layer.group_send(
             self.room_group_name,
             {
@@ -76,13 +80,14 @@ class gameConsumer(AsyncWebsocketConsumer):
                 'correctans':correctans,
                 'exam':exam,
                 'result':result,
-                'room':room
+                'room':room,
+                'id':id
             }
             
         )
         user = self.glabaluser1
         if result != False:
-            await self.save_result(result,room,user)
+            await self.save_result(result,room,user,id)
 
 
     async def word(self,event):
@@ -130,9 +135,9 @@ class gameConsumer(AsyncWebsocketConsumer):
         startingroom.objects.create(room=room,started=started,end=end)
 
     @sync_to_async
-    def save_result(self,result,room,glabaluser1):
+    def save_result(self,result,room,glabaluser1,id):
         from.models import room_created
-        room_created.objects.create(user=glabaluser1,table=result,room_created=room).save()
+        room_created.objects.create(user=glabaluser1,table=result,room_created=room,id=id).save()
 
 
  

@@ -235,9 +235,9 @@ def room_admin_quiz_qr(request,room_code):
 
 
 
-def room_admin_quiz_qr_end(request,room_code):
+def room_admin_quiz_qr_end(request,room_code,id):
     from quiz import models
-    valie2=models.room_created.objects.all().filter(room_created=room_code).values()
+    valie2=models.room_created.objects.all().filter(room_created=room_code,id=id).values()
     for i in valie2:
         z2 = i['table']
         if z2!= 'False' or False:

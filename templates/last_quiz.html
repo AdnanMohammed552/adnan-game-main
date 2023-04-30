@@ -3,10 +3,12 @@
 
 {% block content %}
 {% for i in z %}
+
+<center>
 <button type="submit" class="btn btn-primary" id="{{i.id}}" onclick="redirect('{{i.id}}')" style="background-color: green;">{{i.id}}</button>
 
 <h3>{{i.date}}</h3>
-
+</center>
 {% endfor %}
 
 

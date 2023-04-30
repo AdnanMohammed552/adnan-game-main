@@ -845,13 +845,37 @@ body{
 
       }
       document.getElementById('end').onclick = function(){
+        const min = 1000000000; // smallest 10-digit number (10^9)
+        const max = 9999999999; // largest 10-digit number (10^10 - 1)
+
+        const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+        console.log(randomNum);
+
 
         var alltables = document.getElementById('accordionExample').innerHTML;
         var score = document.getElementById('ranktable').innerHTML;
         gameSocketquiz.send(JSON.stringify({
           'result':score+alltables,
           'room':roomCode,
+          'id':randomNum
         }))        
+        sessionStorage.setItem("pageState", "redirected");
+
+        // Redirect to the new URL using window.location
+        window.location.href = window.location.origin +window.location.pathname+'/end/'+randomNum
+
+        // Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
+        window.addEventListener("pageshow", function(event) {
+          // Check if the page state is set to "redirected"
+          if (sessionStorage.getItem("pageState") === "redirected") {
+            // Reload the page to update its content
+            window.location.reload();
+            // Reset the page state to avoid an infinite loop
+            sessionStorage.setItem("pageState", "reloaded");
+          }
+        });
+
+              
 
               
 
