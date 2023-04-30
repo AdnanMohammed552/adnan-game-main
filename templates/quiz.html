@@ -15,7 +15,7 @@
       <div class="question">
         <div class="form-group">
           <label for="question-1">Question 1:</label>
-          <input type="text" class="form-control" id="question1" name="question1">
+          <input type="text" class="form-control" id="question2" name="question1">
         </div>
 
 
@@ -64,7 +64,7 @@
             </form>
 
 <script>
-let questionCount = 1;
+let questionCount = 2;
 
   document.getElementById('add').onclick = function(e){
     questionCount++
@@ -119,6 +119,7 @@ let questionCount = 1;
             )
       console.log(questionCount)
       document.getElementById('sub').onclick=function(e){
+        console.log('tt')
         let data = []
           for (let i = 0; i <= questionCount; i++){
             try{
