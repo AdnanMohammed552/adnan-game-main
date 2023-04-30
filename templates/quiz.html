@@ -29,7 +29,9 @@ function add() {
   question.innerHTML = `
   <div class="form-group">
     <label for="question-${questionCount}">
-      <i class="fas fa-trash-alt"></i> Question ${questionCount}:
+      <button class="btn btn-danger" type="button" onclick="deleteQuestion(${questionCount})">
+        <i class="fa fa-trash"></i>
+      </button>  
     </label>
     <input type="text" class="form-control" id="question${questionCount}" name="question">
   </div>
@@ -78,6 +80,16 @@ function add() {
 
   document.getElementById("quiz").appendChild(question);
 }
+
+    function deleteQuestion(q){
+      const elements = document.getElementsByClassName('question'+q);
+
+        while(elements.length > 0) {
+          elements[0].parentNode.removeChild(elements[0]);
+        }
+
+
+    }
       document.getElementById('sub').onclick=function(e){
         console.log('tt')
         let data = []
