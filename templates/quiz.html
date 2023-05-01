@@ -33,7 +33,7 @@ function add() {
 
   question.innerHTML = `
   <div class="form-group">
-    <label for="question-${questionCount}">Question ${questionCount}:</label>
+    <label id="qqq${questionCount}" for="question-${questionCount}">Question ${questionCount}:</label>
     <div class="input-group">
       <input type="text" class="form-control" id="question${questionCount}" name="question">
       <div class="input-group-append">
@@ -102,6 +102,17 @@ function add() {
 
         while(elements.length > 0) {
           elements[0].parentNode.removeChild(elements[0]);
+        }
+
+        if (q=questionCount){
+          questionCount = questionCount-1
+          
+        }
+        if(q<questionCount){
+          for(let i=q;i<= questionCount;i++){
+            document.getElementById('qqq'+i).innerHTML='question'+i-1
+
+          }
         }
 
 
