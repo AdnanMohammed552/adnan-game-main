@@ -23,7 +23,7 @@
 <button type="button" id="sub" class="btn btn-success">Create Quiz</button>
 </div>
 <script>
-let questionCount = 1;
+let questionCount = 0;
 
 function add() {
   questionCount++;
@@ -116,7 +116,7 @@ function add() {
             document.getElementById('question'+i).id=('qestion'+(i-1))
             document.getElementById('span'+i).setAttribute("onclick", "deleteQuestion(" + (i-1) + ")");
             document.getElementById('seconds-input'+i).id=('seconds-input'+(i-1))
-            
+
             document.getElementById('for1'+i).setAttribute('for','option-'+(i-1)+'-1')
             document.getElementById('for2'+i).setAttribute('for','option-'+(i-1)+'-2')
             document.getElementById('for3'+i).setAttribute('for','option-'+(i-1)+'-3')
