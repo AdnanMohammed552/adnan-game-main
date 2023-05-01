@@ -111,7 +111,12 @@ function add() {
           console.log('aaaas')
           for(let i=q;i<= questionCount;i++){
             console.log('i is',i)
+            try{
             document.getElementById('qqq'+i).innerHTML=('question'+i)
+          }
+          catch{
+            
+          }
 
           }
         }
