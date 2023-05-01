@@ -105,17 +105,18 @@ function add() {
           elements[0].parentNode.removeChild(elements[0]);
         }
 
-        if (q=questionCount){
-          questionCount = questionCount-1
-          
-        }
+        
         console.log('q is',q,'count is',questionCount)
-        if((parseInt(q))>questionCount){
+        if((parseInt(q))<questionCount){
           console.log('aaaas')
           for(let i=q;i<= questionCount;i++){
             document.getElementById('qqq'+i).innerHTML=('question'+i)
 
           }
+        }
+        if (q=questionCount){
+          questionCount = questionCount-1
+          
         }
 
 
