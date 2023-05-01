@@ -114,34 +114,6 @@ function add() {
             try{
             document.getElementById('qqq'+i).innerHTML=('question'+(i-1))
               // Change the question count variable
-              questionCount = i;
-            
-              // Update the HTML with the new question count
-              const labels = document.querySelectorAll(`label[id^="qqq"]`);
-              labels.forEach((label) => {
-                label.setAttribute("id", `qqq${questionCount}`);
-                label.setAttribute("for", `question-${questionCount}`);
-                label.textContent = `Question ${questionCount}:`;
-              });
-            
-              const inputs = document.querySelectorAll(`input[id^="question"], input[id^="seconds-input"], input[name^="correct"], input[name^="answer"], label[for^="option"]`);
-              inputs.forEach((input) => {
-                const oldId = input.getAttribute("id");
-                if (oldId) {
-                  const newId = oldId.replace(/\d+/, questionCount);
-                  input.setAttribute("id", newId);
-                }
-                const oldName = input.getAttribute("name");
-                if (oldName) {
-                  const newName = oldName.replace(/\d+/, questionCount);
-                  input.setAttribute("name", newName);
-                }
-                const oldFor = input.getAttribute("for");
-                if (oldFor) {
-                  const newFor = oldFor.replace(/\d+/, questionCount);
-                  input.setAttribute("for", newFor);
-                }
-              });
             }
           
           
