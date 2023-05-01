@@ -110,7 +110,7 @@ function add() {
           
         }
         console.log('q is',q,'count is',questionCount)
-        if((parseInt(q))<questionCount){
+        if((parseInt(q))>questionCount){
           console.log('aaaas')
           for(let i=q-1;i<= questionCount;i++){
             document.getElementById('qqq'+i).innerHTML='question'+i-1
