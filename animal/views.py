@@ -175,12 +175,14 @@ def req(rewquest):
         print(array )
         
         code = array[-1]
+        edit = array[-2]
+        array.pop(-2)
         from quiz import models
         models.MyModel.objects.create(data=array,code=code).save
         print('my array tt',array)
         # process the incoming data
 
-        models.title.objects.create(user=rewquest.user,title=x,code=code).save
+        models.title.objects.create(user=rewquest.user,title=x,code=code,edit=edit).save
         return JsonResponse({'success': True})
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method'})
@@ -249,3 +251,21 @@ def room_admin_quiz_qr_end(request,room_code,id):
 
 
     return render(request,'end_quiz_qr.html',{'room_code':room_code,'z':adnan.render(Context({}))})
+
+
+
+def edit(request,room_code):
+
+    from quiz import models
+    v=models.title.objects.all().filter(code=room_code).values()
+    for i in v:
+        z2 = i['edit']
+        if z2!= 'False' or False:
+            break
+        else:
+            continue
+        
+    adnan = Template(z2)
+
+
+    return render(request,'edit.html',{'z':adnan.render(Context({}))})

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<body dir="ltr">
+<body dir="ltr" id="body">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -168,6 +168,8 @@ function add() {
 
     }
       document.getElementById('sub').onclick=function(e){
+        quiz_data = document.getElementById('quiz').innerHTML
+
         console.log('tt')
         let data = []
           for (let i = 0; i <= questionCount; i++){
@@ -193,9 +195,10 @@ function add() {
 
         }
           }
-
+        const data1 = document.getElementById('body').innerHTML
         const code = document.getElementById('code').value
         const name = document.getElementById('name').value
+        data.push(data1)
         data.push(code)
         data.push(name)
         fetch('/api/endpoint/', {
