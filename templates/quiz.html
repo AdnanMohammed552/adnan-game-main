@@ -208,7 +208,7 @@ function add() {
           },
           body: JSON.stringify(data)})
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from Your profile >> created games >> quiz >> and select your quiz..'))
         .catch(error => console.error(error));
           console.log('data is ',data)
 
