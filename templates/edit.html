@@ -1,4 +1,10 @@
+{% extends 'base.html' %}
 
+{% block content %}
+<body dir="ltr" id="body">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <div class="container" id="quiz">
     <div class="form-group">
       <label for="quiz-name">Quiz Name:</label>
@@ -70,7 +76,6 @@
                 for (x of i.answer){
                     console.log(typeof (i.answer).indexOf(x))
                     o=i.answer.indexOf(x)+1
-                    document.getElementById('answer'+o).innerHTML=(x)
                     console.log('cos',(i.answer).indexOf(x) , i.correctans)
                     document.getElementById('qu').innerHTML += `
                     <div class="form-group">
@@ -95,3 +100,5 @@
             }
 
 </script>
+
+{% endblock %}
