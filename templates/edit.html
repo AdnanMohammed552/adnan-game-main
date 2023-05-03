@@ -18,6 +18,10 @@
 
 </div>
 
+<div class="container">
+    <button id="add" type="button" class="btn btn-primary" onclick="add()">Add Another Question</button>
+    <button type="button" id="sub" class="btn btn-success">Create Quiz</button>
+    </div>
 <script>
     const data = '{{data}}'
         z = data.replaceAll("&#x27;",'').replaceAll("[","").replaceAll("]","")
@@ -72,20 +76,20 @@
                 `;
                 document.getElementById("quiz").appendChild(question);
 
-
+                let ans =1
                 for (x of i.answer){
                     console.log(typeof (i.answer).indexOf(x))
                     o=i.answer.indexOf(x)+1
                     console.log('cos',(i.answer).indexOf(x) , i.correctans)
                     document.getElementById('qu'+questionCount).innerHTML += `
                     <div class="form-group">
-                        <label id="for1${questionCount}" for="option-${questionCount}-1"></label>
+                        <label id="for${ans}${questionCount}" for="option-${questionCount}-${ans}"></label>
                         <div class="input-group">
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="correct${questionCount}" id="correct${questionCount}-1" value="1">
-                            <label class="form-check-label" for="option-${questionCount}-1"></label>
+                            <input type="radio" class="form-check-input" name="correct${questionCount}" id="correct${questionCount}-${ans}" value="${ans}">
+                            <label class="form-check-label" for="option-${questionCount}-${ans}"></label>
                         </div>
-                        <input type="text" class="form-control" id="answer1${questionCount}" name="optionanswerquestionCount}" value='${x}'>
+                        <input type="text" class="form-control" id="answer${ans}${questionCount}" name="optionanswerquestionCount}" value='${x}'>
                         </div>
                     </div>
     
@@ -95,10 +99,157 @@
 
                     
                 }
+                ans = 1
                 questionCount ++
 
           
             }
+
+
+            function add() {
+                questionCount++;
+              
+                const question = document.createElement("div");
+                question.classList.add("question"+questionCount);
+              
+                question.innerHTML = `
+                <div class="form-group">
+                  <label id="qqq${questionCount}" for="question-${questionCount}">Question ${questionCount}:</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="question${questionCount}" name="question">
+                    <div class="input-group-append">
+                      <span style="cursor: pointer;" id="span${questionCount}" class="input-group-text" onclick="deleteQuestion(${questionCount})">
+                        <i style="color:red;" class="fas fa-trash"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="form-group">
+                  <label for="quiz-timer">Timer Duration (in seconds):</label>
+                  <input type="number" class="form-control" id="seconds-input${questionCount}" name="quiz-timer" value="120">
+                </div>
+              
+                <div class="form-group">
+                  <label id="for1${questionCount}" for="option-${questionCount}-1"></label>
+                  <div class="input-group">
+                    <div class="form-check">
+                      <input type="radio" class="form-check-input" name="correct${questionCount}" id="correct${questionCount}-1" value="1">
+                      <label class="form-check-label" for="option-${questionCount}-1"></label>
+                    </div>
+                    <input type="text" class="form-control" id="answer1${questionCount}" name="optionanswerquestionCount}">
+                  </div>
+                </div>
+              
+                <div class="form-group">
+                  <label id="for2${questionCount}" for="option-${questionCount}-2"></label>
+                  <div class="input-group">
+                    <div class="form-check">
+                      <input type="radio" class="form-check-input" name="correct${questionCount}" id="correct${questionCount}-2" value="2">
+                      <label class="form-check-label" for="option-${questionCount}-2"></label>
+                    </div>
+                    <input type="text" class="form-control" id="answer2${questionCount}" name="optionanswerquestionCount}">
+                  </div>
+                </div>
+              
+                <div class="form-group">
+                  <label id="for3${questionCount}" for="option-${questionCount}-3"></label>
+                  <div class="input-group">
+                    <div class="form-check">
+                      <input type="radio" class="form-check-input" name="correct${questionCount}" id="correct${questionCount}-3" value="3">
+                      <label class="form-check-label" for="option-${questionCount}-3"></label>
+                    </div>
+                    <input type="text" class="form-control" id="answer3${questionCount}" name="answer${questionCount}">
+                  </div>
+                </div>
+              
+                <div class="form-group">
+                  <label id="for4${questionCount}" for="option-${questionCount}-4"></label>
+                  <div class="input-group">
+                    <div class="form-check">
+                      <input type="radio" class="form-check-input" name="correct${questionCount}" id="correct${questionCount}-4" value="4">
+                      <label class="form-check-label" for="option-${questionCount}-4"></label>
+                    </div>
+                    <input type="text" class="form-control" id="answer4${questionCount}" name="answer${questionCount}">
+                  </div>
+                </div>
+                <hr>
+              `;
+              
+                document.getElementById("quiz").appendChild(question);
+              }
+              
+              function deleteQuestion(q){
+                const elements = document.getElementsByClassName('question'+q);
+          
+                  while(elements.length > 0) {
+                    elements[0].parentNode.removeChild(elements[0]);
+                  }
+          
+                  
+                  console.log('q is',q,'count is',questionCount)
+                  if((parseInt(q))<questionCount){
+                    console.log('aaaas')
+                    for(let i=q;i<= questionCount;i++){
+                      console.log('i is',i)
+                      try{
+                      document.getElementById('qqq'+i).innerHTML=('question'+(i-1))
+                      document.getElementById('question'+i).id=('qestion'+(i-1))
+                      document.getElementById('span'+i).setAttribute("onclick", "deleteQuestion(" + (i-1) + ")");
+                      document.getElementById('seconds-input'+i).id=('seconds-input'+(i-1))
+          
+                      document.getElementById('for1'+i).setAttribute('for','option-'+(i-1)+'-1')
+                      document.getElementById('for2'+i).setAttribute('for','option-'+(i-1)+'-2')
+                      document.getElementById('for3'+i).setAttribute('for','option-'+(i-1)+'-3')
+                      document.getElementById('for4'+i).setAttribute('for','option-'+(i-1)+'-4')
+                      
+                      document.getElementById('for1'+i).id=('for1'+(i-1))
+                      document.getElementById('for2'+i).id=('for2'+(i-1))
+                      document.getElementById('for3'+i).id=('for3'+(i-1))
+                      document.getElementById('for4'+i).id=('for4'+(i-1))
+                      
+                      document.getElementById('correct'+i+'-1').setAttribute('name','correct'+(i-1))
+                      document.getElementById('correct'+i+'-2').setAttribute('name','correct'+(i-1))
+                      document.getElementById('correct'+i+'-3').setAttribute('name','correct'+(i-1))
+                      document.getElementById('correct'+i+'-4').setAttribute('name','correct'+(i-1)) 
+          
+                      document.getElementById('correct'+i+'-1').id=('correct'+(i-1)+'-1')
+                      document.getElementById('correct'+i+'-2').id=('correct'+(i-1)+'-2')
+                      document.getElementById('correct'+i+'-3').id=('correct'+(i-1)+'-3')
+                      document.getElementById('correct'+i+'-4').id=('correct'+(i-1)+'-4')
+          
+                      document.getElementById('answer1'+i).id=('answer1'+(i-1))
+                      document.getElementById('answer2'+i).id=('answer2'+(i-1))
+                      document.getElementById('answer3'+i).id=('answer3'+(i-1))
+                      document.getElementById('answer4'+i).id=('answer4'+(i-1))
+          
+                      var elements2= document.getElementsByClassName("question"+i);
+          
+                      // Loop through each element and change the class name
+                      for (var x = 0; x < elements2.length; x++) {
+                      elements2[x].className = "question"+(i-1);
+                      }
+                        // Change the question count variable
+                      }
+                    
+                    
+                    catch(err){
+                      console.log(err.message)
+          
+                    }
+          
+                    }
+                  }
+                  if (q=questionCount){
+                    questionCount = questionCount-1
+                    
+                    
+                    
+                  }
+          
+          
+              }
+           
 
 </script>
 
