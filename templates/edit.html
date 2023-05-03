@@ -107,7 +107,6 @@
 
 
             function add() {
-                questionCount++;
               
                 const question = document.createElement("div");
                 question.classList.add("question"+questionCount);
@@ -175,6 +174,8 @@
                 </div>
                 <hr>
               `;
+              questionCount++;
+
               
                 document.getElementById("quiz").appendChild(question);
               }
