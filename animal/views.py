@@ -221,6 +221,20 @@ def wait_quiz(request,room_code):
 
 
 def camera(request,room_code):
+    
+
+    return render(request,'camera.html',{'room_code':room_code})
+
+
+def room_admin_quiz_qr(request,room_code):
+    from quiz import models
+    x= models.MyModel.objects.all().filter(code=room_code).values()
+    array = []
+    for i in x:
+        e = i['data']
+        array.append(e)
+
+
     import io   
     import qrcode.image.svg 
     import qrcode
@@ -232,18 +246,7 @@ def camera(request,room_code):
     
     svg = bufstore.getvalue().decode() 
 
-    return render(request,'camera.html',{'room_code':room_code,'svg':svg})
-
-
-def room_admin_quiz_qr(request,room_code):
-    from quiz import models
-    x= models.MyModel.objects.all().filter(code=room_code).values()
-    array = []
-    for i in x:
-        e = i['data']
-        array.append(e)
-
-    return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array})
+    return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg})
 
 
 
