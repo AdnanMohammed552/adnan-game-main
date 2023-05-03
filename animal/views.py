@@ -269,17 +269,15 @@ def room_admin_quiz_qr_end(request,room_code,id):
 
 
 def edit(request,room_code):
-
     from quiz import models
-    v=models.title.objects.all().filter(code=room_code).values()
-    for i in v:
-        z2 = i['edit']
-        if z2!= 'False' or False:
-            break
-        else:
-            continue
-        
-    adnan = Template(z2)
+    x= models.MyModel.objects.all().filter(code=room_code).values()
+    array = []
+    for i in x:
+        e = i['data']
+        array.append(e)
 
 
-    return render(request,'edit.html',{'z':adnan.render(Context({}))})
+
+
+
+    return render(request,'edit.html',{'data':array})
