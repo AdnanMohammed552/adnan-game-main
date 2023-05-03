@@ -221,7 +221,18 @@ def wait_quiz(request,room_code):
 
 
 def camera(request,room_code):
-    return render(request,'camera.html',{'room_code':room_code})
+    import io   
+    import qrcode.image.svg 
+    import qrcode
+    context ={}
+    factory = qrcode.image.svg.SvgImage
+    qr_image = qrcode.make(f'https://adnan-game-animal.herokuapp.com/camera/{room_code}',image_factory=factory, box_size=10)    
+    bufstore = io.BytesIO()
+    qr_image.save(bufstore)    
+    
+    svg = bufstore.getvalue().decode() 
+
+    return render(request,'camera.html',{'room_code':room_code,'svg':svg})
 
 
 def room_admin_quiz_qr(request,room_code):
