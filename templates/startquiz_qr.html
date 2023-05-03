@@ -762,6 +762,11 @@ body{
                   clearInterval(countdownInterval);
                   resolve(); // resolve the Promise after the countdown timer completes
                 }
+
+                document.getElementById('nextttt').onclick=function(){
+                  remainingTime = 0
+                }
+
                 gameSocketquiz.onmessage = function(r){
                     console.log('here we go really ')
                     const data = JSON.parse(r.data)
