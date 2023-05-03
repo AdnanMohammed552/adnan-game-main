@@ -29,7 +29,7 @@
    <div class="text-center">
     <div class="btn-group text-center" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-primary btn-rounded" id="done">Start game</button>
-        <button type="button" class="btn btn-primary btn-rounded" id="nextttt">next question</button>
+        <button type="button" class="btn btn-primary btn-rounded" id="nextttt">End question</button>
 
   
       <button type="button" class="btn btn-danger btn-rounded" id="end"  style="font-size: 20px;">End game</button>
@@ -680,6 +680,8 @@ body{
                   await wait((i.timer),correctlastasnwer,i.question); 
                   await new Promise((resolve) => {
                     document.getElementById('nextttt').onclick = function() {
+                      document.getElementById('nextttt').innerHTML = 'End question'
+
                       remainingTime=0
                       const buttons = document.querySelectorAll('.userbutton');
 
@@ -697,6 +699,7 @@ body{
               document.getElementById('answer4').disabled = true;
             
           }}
+            console.log('enddddd')
           let playerwhoanswered = []
           console.log('herree',playerScores)
           // Define a function to update the player scores
@@ -764,6 +767,7 @@ body{
                 }
 
                 document.getElementById('nextttt').onclick=function(){
+                  document.getElementById('nextttt').innerHTML = 'Next question'
                   remainingTime = 0
                 }
 
