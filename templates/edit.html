@@ -48,7 +48,7 @@
                 
                 const question = document.createElement("div");
                 question.classList.add("question");
-                question.id='qu'
+                question.id='qu'+questionCount
 
                 question.innerHTML = `
                 <div class="form-group">
@@ -77,7 +77,7 @@
                     console.log(typeof (i.answer).indexOf(x))
                     o=i.answer.indexOf(x)+1
                     console.log('cos',(i.answer).indexOf(x) , i.correctans)
-                    document.getElementById('qu').innerHTML += `
+                    document.getElementById('qu'+questionCount).innerHTML += `
                     <div class="form-group">
                         <label id="for1${questionCount}" for="option-${questionCount}-1"></label>
                         <div class="input-group">
