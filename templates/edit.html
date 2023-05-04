@@ -286,6 +286,7 @@
                 const name = document.getElementById('name').value
                 data1.push(code)
                 data1.push(name)
+                console.log('datt',data1)
                 const gameSocketquiz = new WebSocket(
         
                 'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
