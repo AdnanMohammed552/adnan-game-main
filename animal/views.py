@@ -175,7 +175,7 @@ def req(rewquest):
         print(array )
         
         code = array[-1]
-        #array.pop(-2)
+        array.pop(-2)
         from quiz import models
         models.MyModel.objects.create(data=array,code=code).save
         print('my array tt',array)
@@ -295,7 +295,6 @@ def req1(rewquest):
         print(array )
         
         code = array[-1]
-        array.pop(-2)
         from quiz import models
         new = models.MyModel.objects.get(code=code)
         new.data = data
