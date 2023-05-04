@@ -262,8 +262,9 @@
                   for (let z = 0; z <= questionCount;z++){
                     try{
                       console.log('this is ',z)
+                      document.addEventListener('DOMContentLoaded', function() {
                   const question= document.getElementById('question'+z).value
-        
+                });
                   const answer1= document.getElementById('answer1'+z).value
                   const answer2= document.getElementById('answer2'+z).value
                   const answer3= document.getElementById('answer3'+z).value
