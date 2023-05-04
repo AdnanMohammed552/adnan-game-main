@@ -254,7 +254,7 @@
                 quiz_data = document.getElementById('quiz').innerHTML
         
                 console.log('tt')
-                let data = []
+                let data1 = []
                   for (let i = 0; i <= questionCount; i++){
                     try{
                       console.log('this is ',i)
@@ -268,7 +268,7 @@
                   console.log(question,answer1,answer2,answer3,answer4,time)
         
                   const corr = document.querySelector('input[name="correct'+i+'"]:checked').value
-                  data.push(question,answer1,answer2,answer3,answer4,corr,time)
+                  data1.push(question,answer1,answer2,answer3,answer4,corr,time)
         
         
                 }
@@ -280,18 +280,18 @@
                   }
                 const code = document.getElementById('code').value
                 const name = document.getElementById('name').value
-                data.push(code)
-                data.push(name)
+                data1.push(code)
+                data1.push(name)
                 fetch('/api/endpoint1/', {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json'
                   },
-                  body: JSON.stringify(data)})
+                  body: JSON.stringify(data1)})
                 .then(response => response.json())
                 .then(data => alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from Your profile >> created games >> quiz >> and select your quiz..'))
                 .catch(error => console.error(error));
-                  console.log('data is ',data)
+                  console.log('data is ',data1)
         
         
               }
