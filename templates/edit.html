@@ -50,13 +50,7 @@
     
     
             }
-            for (let t = 0; t < question.length; t++) {
-              console.log(question[t])
-              for(r of question[t].answer){
-                question[t].answer = r.trimLeft()
-
-              }
-            }
+           
             let questionCount = 1
             for(i of question){
                 
@@ -79,7 +73,7 @@
 
                 <div class="form-group">
                     <label for="quiz-timer">Timer Duration (in seconds):</label>
-                    <input type="number" class="form-control" id="seconds-input${questionCount}" name="quiz-timer" value="${i.timer}">
+                    <input type="text" class="form-control" id="seconds-input${questionCount}" name="quiz-timer" value="${i.timer}">
                 </div>
 
                 
