@@ -175,14 +175,13 @@ def req(rewquest):
         print(array )
         
         code = array[-1]
-        edit = array[-2]
         array.pop(-2)
         from quiz import models
         models.MyModel.objects.create(data=array,code=code).save
         print('my array tt',array)
         # process the incoming data
 
-        models.title.objects.create(user=rewquest.user,title=x,code=code,edit=edit).save
+        models.title.objects.create(user=rewquest.user,title=x,code=code).save
         return JsonResponse({'success': True})
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method'})
@@ -296,7 +295,6 @@ def req1(rewquest):
         print(array )
         
         code = array[-1]
-        edit = array[-2]
         array.pop(-2)
         from quiz import models
         new = models.MyModel.objects.get(code=code)
@@ -307,7 +305,7 @@ def req1(rewquest):
         print('my array tt',array)
         # process the incoming data
 
-        models.title.objects.create(user=rewquest.user,title=x,code=code,edit=edit).save
+        #models.title.objects.create(user=rewquest.user,title=x,code=code,edit=edit).save
         return JsonResponse({'success': True})
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method'})
