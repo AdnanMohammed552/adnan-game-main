@@ -288,6 +288,7 @@ def req1(rewquest):
     if rewquest.method == 'POST':
         import json
         data = (rewquest.body).decode('utf-8')
+        print('bodyy',rewquest.body)
         array = json.loads(data)
         x = array[-1]
         array.pop()
