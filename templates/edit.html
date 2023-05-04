@@ -50,8 +50,9 @@
     
     
             }
-            question.map(s => s.replace(/\s+/g, ''));
-
+            for (let t = 0; t < question.length; t++) {
+              myArray[t] = myArray[t].replace(/\s+/g, '');
+            }
             let questionCount = 1
             for(i of question){
                 
