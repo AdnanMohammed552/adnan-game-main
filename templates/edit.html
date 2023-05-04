@@ -85,7 +85,7 @@
                     console.log(typeof (i.answer).indexOf(x))
                     o=i.answer.indexOf(x)+1
                     console.log('cos',(i.answer).indexOf(x) , i.correctans)
-                    if (ans === i.correctans){
+                    if (parseInt(ans) == parseInt(i.correctans)){
                     document.getElementById('qu'+questionCount).innerHTML += `
                     <div class="form-group">
                         <label id="for${ans}${questionCount}" for="option-${questionCount}-${ans}"></label>
@@ -106,7 +106,7 @@
                         <label id="for${ans}${questionCount}" for="option-${questionCount}-${ans}"></label>
                         <div class="input-group">
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="correct${questionCount}" id="correct${questionCount}-${ans}" value="${ans}" checked>
+                            <input type="radio" class="form-check-input" name="correct${questionCount}" id="correct${questionCount}-${ans}" value="${ans}">
                             <label class="form-check-label" for="option-${questionCount}-${ans}"></label>
                         </div>
                         <input type="text" class="form-control" id="answer${ans}${questionCount}" name="optionanswerquestionCount}" value='${x}'>
