@@ -259,21 +259,24 @@
         
                 console.log('tt')
                 let data1 = []
-                  for (let i = 0; i <= questionCount; i++){
-                    
-                      console.log('this is ',i)
-                  const question= document.getElementById('question'+i).value
+                  for (let z = 0; z <= questionCount;z++){
+                    try{
+                      console.log('this is ',z)
+                  const question= document.getElementById('question'+z).value
         
-                  const answer1= document.getElementById('answer1'+i).value
-                  const answer2= document.getElementById('answer2'+i).value
-                  const answer3= document.getElementById('answer3'+i).value
-                  const answer4= document.getElementById('answer4'+i).value
-                  const time= document.getElementById('seconds-input'+i).value
+                  const answer1= document.getElementById('answer1'+z).value
+                  const answer2= document.getElementById('answer2'+z).value
+                  const answer3= document.getElementById('answer3'+z).value
+                  const answer4= document.getElementById('answer4'+z).value
+                  const time= document.getElementById('seconds-input'+z).value
                   console.log(question,answer1,answer2,answer3,answer4,time)
         
-                  const corr = document.querySelector('input[name="correct'+i+'"]:checked').value
+                  const corr = document.querySelector('input[name="correct'+z+'"]:checked').value
                   data1.push(question,answer1,answer2,answer3,answer4,corr,time)
-        
+                }
+                catch{
+                  continue
+                }
         
                 
                   }
