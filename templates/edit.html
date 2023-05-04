@@ -287,7 +287,7 @@
                 'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
               )
               gameSocketquiz.onopen=function(e){
-                gameSocketquiz.send(JSON.stringify({''}))
+                gameSocketquiz.send(JSON.stringify({'data':data1}))
               }
         
               }
