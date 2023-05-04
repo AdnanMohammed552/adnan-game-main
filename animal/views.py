@@ -296,6 +296,7 @@ def req1(rewquest):
         code = array[-1]
         from quiz import models
         new = models.MyModel.objects.get(code=code)
+        print('ghjeij',new,data)
         new.data = data
         new.save()
         new.delete()
