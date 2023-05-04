@@ -22,7 +22,11 @@
     <button id="add" type="button" class="btn btn-primary" onclick="add()">Add Another Question</button>
     <button type="button" id="sub" class="btn btn-success">Create Quiz</button>
     </div>
+    {{ room_code|json_script:'json-roomcode' }}
+
 <script>
+  const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
+
     const data = '{{data}}'
         z = data.replaceAll("&#x27;",'').replaceAll("[","").replaceAll("]","")
         let arr = z.split(",");

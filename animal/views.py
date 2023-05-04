@@ -278,7 +278,7 @@ def edit(request,room_code):
 
 
 
-    return render(request,'edit.html',{'data':array})
+    return render(request,'edit.html',{'data':array,'room_code':room_code})
 
 
 
