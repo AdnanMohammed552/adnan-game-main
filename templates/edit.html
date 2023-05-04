@@ -52,7 +52,10 @@
             }
             for (let t = 0; t < question.length; t++) {
               console.log(question[t])
-              question[t] = question[t].replace(/\s+/g, '');
+              for(r of question[t].answer){
+                question[t].answer = r.trimLeft()
+
+              }
             }
             let questionCount = 1
             for(i of question){
