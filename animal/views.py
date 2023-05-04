@@ -294,7 +294,6 @@ def req1(rewquest):
         print(array )
         
         code = array[-1]
-        array.pop()
         from quiz import models
         new = models.MyModel.objects.get(code=code)
         new.data = data
