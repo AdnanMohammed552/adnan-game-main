@@ -264,7 +264,6 @@
                       console.log('this is ',z)
                       document.addEventListener('DOMContentLoaded', function() {
                   const question= document.getElementById('question'+z).value
-                });
                   const answer1= document.getElementById('answer1'+z).value
                   const answer2= document.getElementById('answer2'+z).value
                   const answer3= document.getElementById('answer3'+z).value
@@ -274,6 +273,8 @@
         
                   const corr = document.querySelector('input[name="correct'+z+'"]:checked').value
                   data1.push(question,answer1,answer2,answer3,answer4,corr,time)
+                });
+
                 }
                 catch(err){
                   console.log(err)
