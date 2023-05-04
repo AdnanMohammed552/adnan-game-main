@@ -156,6 +156,7 @@ class gameConsumer(AsyncWebsocketConsumer):
     @sync_to_async
     def data(self,data):
         data = str (data)
+        print('dafqw',data)
         data1 = json.loads(data)
         x = data1[-1]
         data1.pop()
