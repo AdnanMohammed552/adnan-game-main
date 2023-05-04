@@ -281,3 +281,34 @@ def edit(request,room_code):
 
 
     return render(request,'edit.html',{'data':array})
+
+
+
+@csrf_exempt
+def req1(rewquest):
+
+    if rewquest.method == 'POST':
+        import json
+        data = (rewquest.body).decode('utf-8')
+        array = json.loads(data)
+        x = array[-1]
+        array.pop()
+        print(array )
+        
+        code = array[-1]
+        edit = array[-2]
+        array.pop(-2)
+        from quiz import models
+        new = models.MyModel.objects.get(code=code)
+        new.data = data
+        new.save()
+        new.delete()
+        #models.MyModel.objects.create(data=array,code=code).save
+        print('my array tt',array)
+        # process the incoming data
+
+        models.title.objects.create(user=rewquest.user,title=x,code=code,edit=edit).save
+        return JsonResponse({'success': True})
+    else:
+        return JsonResponse({'success': False, 'error': 'Invalid request method'})
+    

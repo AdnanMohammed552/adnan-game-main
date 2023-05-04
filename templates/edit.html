@@ -250,7 +250,55 @@
           
           
               }
-           
+              document.getElementById('sub').onclick=function(e){
+                quiz_data = document.getElementById('quiz').innerHTML
+        
+                console.log('tt')
+                let data = []
+                  for (let i = 0; i <= questionCount; i++){
+                    try{
+                      console.log('this is ',i)
+                  const question= document.getElementById('question'+i).value
+        
+                  const answer1= document.getElementById('answer1'+i).value
+                  const answer2= document.getElementById('answer2'+i).value
+                  const answer3= document.getElementById('answer3'+i).value
+                  const answer4= document.getElementById('answer4'+i).value
+                  const time= document.getElementById('seconds-input'+i).value
+                  console.log(question,answer1,answer2,answer3,answer4,time)
+        
+                  const corr = document.querySelector('input[name="correct'+i+'"]:checked').value
+                  data.push(question,answer1,answer2,answer3,answer4,corr,time)
+        
+        
+                }
+                catch(err){
+                  console.log(err)
+                  continue
+        
+                }
+                  }
+                const data1 = document.getElementById('body').innerHTML
+                const code = document.getElementById('code').value
+                const name = document.getElementById('name').value
+                data.push(data1)
+                data.push(code)
+                data.push(name)
+                fetch('/api/endpoint1/', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(data)})
+                .then(response => response.json())
+                .then(data => alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from Your profile >> created games >> quiz >> and select your quiz..'))
+                .catch(error => console.error(error));
+                  console.log('data is ',data)
+        
+        
+              }
+        
+        
 
 </script>
 
