@@ -73,7 +73,7 @@
 
                 <div class="form-group">
                     <label for="quiz-timer">Timer Duration (in seconds):</label>
-                    <input type="number" class="form-control" id="seconds-input${questionCount}" name="quiz-timer" value="120">
+                    <input type="number" class="form-control" id="seconds-input${questionCount}" name="quiz-timer" value="${i.timer}">
                 </div>
 
                 
@@ -85,7 +85,23 @@
                     console.log(typeof (i.answer).indexOf(x))
                     o=i.answer.indexOf(x)+1
                     console.log('cos',(i.answer).indexOf(x) , i.correctans)
+                    if (ans === i.correctans){
                     document.getElementById('qu'+questionCount).innerHTML += `
+                    <div class="form-group">
+                        <label id="for${ans}${questionCount}" for="option-${questionCount}-${ans}"></label>
+                        <div class="input-group">
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="correct${questionCount}" id="correct${questionCount}-${ans}" value="${ans}" checked>
+                            <label class="form-check-label" for="option-${questionCount}-${ans}"></label>
+                        </div>
+                        <input type="text" class="form-control" id="answer${ans}${questionCount}" name="optionanswerquestionCount}" value='${x}'>
+                        </div>
+                    </div>
+    
+                    
+                    `}
+                    else{
+                      document.getElementById('qu'+questionCount).innerHTML += `
                     <div class="form-group">
                         <label id="for${ans}${questionCount}" for="option-${questionCount}-${ans}"></label>
                         <div class="input-group">
@@ -99,6 +115,8 @@
     
                     
                     `
+
+                    }
                     ans++
 
                     
