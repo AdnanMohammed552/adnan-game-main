@@ -260,7 +260,7 @@
                 console.log('tt')
                 let data1 = []
                   for (let i = 0; i <= questionCount; i++){
-                    try{
+                    
                       console.log('this is ',i)
                   const question= document.getElementById('question'+i).value
         
@@ -275,12 +275,7 @@
                   data1.push(question,answer1,answer2,answer3,answer4,corr,time)
         
         
-                }
-                catch(err){
-                  console.log(err)
-                  continue
-        
-                }
+                
                   }
                 const code = document.getElementById('code').value
                 const name = document.getElementById('name').value
