@@ -296,15 +296,9 @@ def req1(rewquest):
         
         code = array[-1]
         from quiz import models
-        new = models.MyModel.objects.get(code=code)
-        print('ghjeij',new,array)
-        new.data = data
-        new.save()
-        new.delete()
-        #models.MyModel.objects.create(data=array,code=code).save
-        print('my array tt',array)
-        # process the incoming data
-
+        new = models.MyModel.objects.get(code=code).delete()
+        models.MyModel.objects.create(data=array,code=code).save
+        
         #models.title.objects.create(user=rewquest.user,title=x,code=code,edit=edit).save
         return JsonResponse({'success': True})
     else:
