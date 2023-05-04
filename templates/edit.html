@@ -286,13 +286,16 @@
                 data1.push(code)
                 data1.push(name)
                 console.log('datt',data1)
-                const gameSocketquiz = new WebSocket(
-        
-                'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
-              )
-              gameSocketquiz.onopen=function(e){
-                gameSocketquiz.send(JSON.stringify({'data':data1}))
-              }
+                fetch('/api/endpoint1/', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(data1)})
+                .then(response => response.json())
+                .then(data => alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from Your profile >> created games >> quiz >> and select your quiz..'))
+                .catch(error => console.error(error));
+                  console.log('data is ',data)
         
               }
         

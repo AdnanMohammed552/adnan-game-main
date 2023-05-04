@@ -153,24 +153,3 @@ class gameConsumer(AsyncWebsocketConsumer):
         room_created.objects.create(user=glabaluser1,table=result,room_created=room,id=id,players=players).save()
 
 
-    @sync_to_async
-    def data(self,data):
-        data = str (data)
-        print('dafqw',data)
-        data1 = json.loads(data)
-        x = data1[-1]
-        data1.pop()
-        print(data1 )
-        
-        code = data1[-1]
-        from quiz import models
-        new = models.MyModel.objects.get(code=code)
-        print('ghjeij',new,data1)
-        new.data = data
-        new.save()
-        new.delete()
-        #models.MyModel.objects.create(data=data1,code=code).save
-        print('my data1 tt',data1)
-        # process the incoming data
-
-        
