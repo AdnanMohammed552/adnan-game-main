@@ -12,12 +12,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<section dir="ltr">
+<section id="ke" dir="ltr">
   <!-- Horizontal material form -->
   <!-- Grid row -->
   <div class="form-group row">
     <!-- Material input -->
-    <label style="color: white" for="inputEmail3MD" class="col-sm-2 col-form-label">ENTER ROOM CODE</label>
+    <label style="color: white" id="grwg" for="inputEmail3MD" class="col-sm-2 col-form-label">ENTER ROOM CODE</label>
     <div class="col-sm-10">
       <div class="md-form mt-0">
         <input class="form-control" type="text" name="code" id="code" placeholder="ROOM CODE">
@@ -29,7 +29,7 @@
   <!-- Grid row -->
   <div class="form-group row">
     <!-- Material input -->
-    <label style="color: white" for="inputPassword3MD" class="col-sm-2 col-form-label">ENTER YOUR NAME</label>
+    <label style="color: white" id="vwqq" for="inputPassword3MD" class="col-sm-2 col-form-label">ENTER YOUR NAME</label>
     <div class="col-sm-10">
       <div class="md-form mt-0">
         <input  class="form-control" type="text" name="username" id="username" placeholder="YOUR NAME" value="{{request.user.username}}" disabled>
@@ -50,6 +50,14 @@
 
 
   <script>
+    const lang = '{{lang}}'
+  console.log('ff',lang)
+  if(lang=='arabic'){
+    document.getElementById('grwg').innerHTML = 'أدخل رمز الغرفة'
+    document.getElementById('vwqq').innerHTML = 'أدخل إسمك'
+    document.getElementById('ke').dir = 'rtl'
+
+  }
     document.querySelector('#submintt').onclick = function(e) {
 
       

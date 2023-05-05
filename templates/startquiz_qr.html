@@ -8,6 +8,8 @@
 {% endblock %}
 
 {% block content %}
+<body id="dewv" dir="ltr" lang="en">
+  
 <div id="questions"></div>
 
 </div>
@@ -73,8 +75,8 @@
               <table id="ranking-table" class="table">
                 <thead>
                   <tr>
-                    <td style="text-align: center;">اللاعب</td>
-                    <td style="text-align: center;">النقاط</td>  
+                    <td style="text-align: center;" id="plyr">Player</td>
+                    <td style="text-align: center;" id="scr">Score</td>  
                   </tr>
                 </thead>
                 <tbody id="ranking-table-body">
@@ -377,8 +379,8 @@ body{
   <div class="accordion" id="accordionExample">
     <div class="accordion-item" >
      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseOneuu" aria-expanded="true" aria-controls="collapseOne">
-          اوراق اللاعبين
+        <button class="accordion-button" type="button" id="player_ans" data-mdb-toggle="collapse" data-mdb-target="#collapseOneuu" aria-expanded="true" aria-controls="collapseOne">
+          Player answers
         </button> 
       </h2>
       <div id="collapseOneuu" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample">
@@ -393,6 +395,7 @@ body{
     </div>
   </div>
 </div>
+
 <!-- Required dependencies for Bootstrap components -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
@@ -403,7 +406,23 @@ body{
 {{ room_code|json_script:'json-roomcode' }}
 {{ request.user.username|json_script:"user_id" }}
 
+</body>
 <script>
+  const lang = '{{lang}}'
+
+  if(lang=='arabic'){
+    document.getElementById('done').innerHTML = 'بدء اللعبة'
+    document.getElementById('nextttt').innerHTML = 'إنهاء السؤال'
+    document.getElementById('end').innerHTML = 'إنهاء اللعبة'
+    document.getElementById('view').innerHTML = 'السؤال التالي'
+    document.getElementById('plyr').innerHTML = 'اللاعب'
+    document.getElementById('scr').innerHTML = 'النقاط'
+    document.getElementById('dewv').dir = 'rtl'
+    document.getElementById('dewv').lang = 'ar'
+
+
+
+  }
   //document.getElementById('send').disabled=true
   let text = document.querySelector('.hovertext').innerHTML;
     console.log('ad',text)

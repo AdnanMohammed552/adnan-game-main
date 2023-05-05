@@ -10,9 +10,9 @@
 <table class="table table-bordered border-primary" id="table'+ u +'">
     <thead>
       <tr>
-        <th style="font-size:20px;" scope="col">الترتيب</th>
-        <th style="font-size:20px;" scope="col">اللاعب </th>
-        <th style="font-size:20px;" scope="col">مجموع </th>
+        <th style="font-size:20px;" id="rnk" scope="col">Rank</th>
+        <th style="font-size:20px;" id="plyr" scope="col">Player </th>
+        <th style="font-size:20px;" id="tp" scope="col">Total Points </th>
       </tr>
     </thead>
     <tbody id="divv">
@@ -26,6 +26,15 @@
 {{ user|json_script:'json-user' }}
 
 <script>
+  const lang = '{{lang}}'
+  console.log('ff',lang)
+  if(lang=='arabic'){
+    document.getElementById('rnk').innerHTML = 'الترتيب'
+    document.getElementById('plyr').innerHTML = 'اللاعب'
+    document.getElementById('tp').innerHTML = 'إجمالي النقاط'
+
+
+  }
     const roomCode = JSON.parse(document.getElementById('json-rr').textContent);
 
     const usernamee = JSON.parse(document.getElementById('json-user').textContent);

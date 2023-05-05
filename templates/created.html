@@ -64,6 +64,13 @@
 	</div>
 </body>
 <script>
+	const lang = '{{lang}}'
+  console.log('ff',lang)
+  if(lang=='arabic'){
+	document.getElementById('Join').innerHTML = 'لعبة حيوان وجماد'
+	document.getElementById('quiz').innerHTML = 'لعبة الإختبارات'
+
+  }
 	document.querySelector('#Join').onclick = function(e){
 
   // Store the current page state in a session storage variable

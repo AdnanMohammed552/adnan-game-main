@@ -7,11 +7,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <div class="container" id="quiz">
     <div class="form-group">
-      <label for="quiz-name">Quiz Name:</label>
+      <label id="fee" for="quiz-name">Quiz Name:</label>
       <input type="text" class="form-control" id="name" name="quiz-name">
     </div>
     <div class="form-group">
-      <label for="quiz-code">Quiz Code:</label>
+      <label id="vewv" for="quiz-code">Quiz Code:</label>
       <input type="text" class="form-control" id="code" name="quiz-code">
     </div>
     
@@ -22,6 +22,214 @@
 <button type="button" id="sub" class="btn btn-success">Create Quiz</button>
 </div>
 <script>
+  const lang = '{{lang}}'
+
+  if(lang=='arabic'){
+    document.getElementById('body').dir = 'rtl'
+    document.getElementById('fee').innerHTML = 'إسم الإختبار'
+    document.getElementById('vewv').innerHTML = 'رمز الإختبار'
+    document.getElementById('add').innerHTML = 'إضافة سؤال آخر'
+    document.getElementById('sub').innerHTML = 'إنشاء الإختبار'
+
+
+    let questionCount = 0;
+
+    function add() {
+      questionCount++;
+    
+      const question = document.createElement("div");
+      question.classList.add("question"+questionCount);
+    
+      question.innerHTML = `
+      <div class="form-group">
+        <label id="qqq${questionCount}" for="question-${questionCount}">السؤال ${questionCount}:</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="question${questionCount}" name="question">
+          <div class="input-group-append">
+            <span style="cursor: pointer;" id="span${questionCount}" class="input-group-text" onclick="deleteQuestion(${questionCount})">
+              <i style="color:red;" class="fas fa-trash"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <label for="quiz-timer">زمن السؤال(بالثواني)</label>
+        <input type="number" class="form-control" id="seconds-input${questionCount}" name="quiz-timer" value="120">
+      </div>
+    
+      <div class="form-group">
+        <label id="for1${questionCount}" for="option-${questionCount}-1"></label>
+        <div class="input-group">
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="correct${questionCount}" id="correct${questionCount}-1" value="1">
+            <label class="form-check-label" for="option-${questionCount}-1"></label>
+          </div>
+          <input type="text" class="form-control" id="answer1${questionCount}" name="optionanswerquestionCount}">
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <label id="for2${questionCount}" for="option-${questionCount}-2"></label>
+        <div class="input-group">
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="correct${questionCount}" id="correct${questionCount}-2" value="2">
+            <label class="form-check-label" for="option-${questionCount}-2"></label>
+          </div>
+          <input type="text" class="form-control" id="answer2${questionCount}" name="optionanswerquestionCount}">
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <label id="for3${questionCount}" for="option-${questionCount}-3"></label>
+        <div class="input-group">
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="correct${questionCount}" id="correct${questionCount}-3" value="3">
+            <label class="form-check-label" for="option-${questionCount}-3"></label>
+          </div>
+          <input type="text" class="form-control" id="answer3${questionCount}" name="answer${questionCount}">
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <label id="for4${questionCount}" for="option-${questionCount}-4"></label>
+        <div class="input-group">
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="correct${questionCount}" id="correct${questionCount}-4" value="4">
+            <label class="form-check-label" for="option-${questionCount}-4"></label>
+          </div>
+          <input type="text" class="form-control" id="answer4${questionCount}" name="answer${questionCount}">
+        </div>
+      </div>
+      <hr>
+    `;
+    
+      document.getElementById("quiz").appendChild(question);
+    }
+    
+        function deleteQuestion(q){
+          const elements = document.getElementsByClassName('question'+q);
+    
+            while(elements.length > 0) {
+              elements[0].parentNode.removeChild(elements[0]);
+            }
+    
+            
+            console.log('q is',q,'count is',questionCount)
+            if((parseInt(q))<questionCount){
+              console.log('aaaas')
+              for(let i=q;i<= questionCount;i++){
+                console.log('i is',i)
+                try{
+                document.getElementById('qqq'+i).innerHTML=('question'+(i-1))
+                document.getElementById('question'+i).id=('qestion'+(i-1))
+                document.getElementById('span'+i).setAttribute("onclick", "deleteQuestion(" + (i-1) + ")");
+                document.getElementById('seconds-input'+i).id=('seconds-input'+(i-1))
+    
+                document.getElementById('for1'+i).setAttribute('for','option-'+(i-1)+'-1')
+                document.getElementById('for2'+i).setAttribute('for','option-'+(i-1)+'-2')
+                document.getElementById('for3'+i).setAttribute('for','option-'+(i-1)+'-3')
+                document.getElementById('for4'+i).setAttribute('for','option-'+(i-1)+'-4')
+                
+                document.getElementById('for1'+i).id=('for1'+(i-1))
+                document.getElementById('for2'+i).id=('for2'+(i-1))
+                document.getElementById('for3'+i).id=('for3'+(i-1))
+                document.getElementById('for4'+i).id=('for4'+(i-1))
+                
+                document.getElementById('correct'+i+'-1').setAttribute('name','correct'+(i-1))
+                document.getElementById('correct'+i+'-2').setAttribute('name','correct'+(i-1))
+                document.getElementById('correct'+i+'-3').setAttribute('name','correct'+(i-1))
+                document.getElementById('correct'+i+'-4').setAttribute('name','correct'+(i-1)) 
+    
+                document.getElementById('correct'+i+'-1').id=('correct'+(i-1)+'-1')
+                document.getElementById('correct'+i+'-2').id=('correct'+(i-1)+'-2')
+                document.getElementById('correct'+i+'-3').id=('correct'+(i-1)+'-3')
+                document.getElementById('correct'+i+'-4').id=('correct'+(i-1)+'-4')
+    
+                document.getElementById('answer1'+i).id=('answer1'+(i-1))
+                document.getElementById('answer2'+i).id=('answer2'+(i-1))
+                document.getElementById('answer3'+i).id=('answer3'+(i-1))
+                document.getElementById('answer4'+i).id=('answer4'+(i-1))
+    
+                var elements2= document.getElementsByClassName("question"+i);
+    
+                // Loop through each element and change the class name
+                for (var x = 0; x < elements2.length; x++) {
+                elements2[x].className = "question"+(i-1);
+                }
+                  // Change the question count variable
+                }
+              
+              
+              catch(err){
+                console.log(err.message)
+    
+              }
+    
+              }
+            }
+            if (q=questionCount){
+              questionCount = questionCount-1
+              
+              
+              
+            }
+    
+    
+        }
+          document.getElementById('sub').onclick=function(e){
+            quiz_data = document.getElementById('quiz').innerHTML
+    
+            console.log('tt')
+            let data = []
+              for (let i = 0; i <= questionCount; i++){
+                try{
+                  console.log('this is ',i)
+              const question= document.getElementById('question'+i).value
+    
+              const answer1= document.getElementById('answer1'+i).value
+              const answer2= document.getElementById('answer2'+i).value
+              const answer3= document.getElementById('answer3'+i).value
+              const answer4= document.getElementById('answer4'+i).value
+              const time= document.getElementById('seconds-input'+i).value
+              console.log(question,answer1,answer2,answer3,answer4,time)
+    
+              const corr = document.querySelector('input[name="correct'+i+'"]:checked').value
+              data.push(question,answer1,answer2,answer3,answer4,corr,time)
+    
+    
+            }
+            catch(err){
+              console.log(err)
+              continue
+    
+            }
+              }
+            const code = document.getElementById('code').value
+            const name = document.getElementById('name').value
+            data.push(code)
+            data.push(name)
+            fetch('/api/endpoint/', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)})
+            .then(response => response.json())
+            .then(data => alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from Your profile >> created games >> quiz >> and select your quiz..'))
+            .catch(error => console.error(error));
+              console.log('data is ',data)
+    
+    
+          }
+    
+    
+          
+    
+      
+    
+  }
+  else{
 let questionCount = 0;
 
 function add() {
@@ -218,7 +426,7 @@ function add() {
 
   
 
-
+    }
 </script>
 
 </body>

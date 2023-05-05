@@ -13,8 +13,8 @@
 <section>
     <div class="d-grid gap-2">
         
-        <a class="nav-link text-center display-6" href="/account/home">Hello, {{request.user.username}}</a>
-        <button class="btn " type="submit" id="Create"><img src="https://www.almrsal.com/wp-content/uploads/2020/06/887.jpg" style='width:800px;height: 400px; ' alt="buttonpng" border="0" />  </button>
+        <a class="nav-link text-center display-6" href="/account/home"><span id="feqwv"> Hello, </span>{{request.user.username}}</a>
+        <button class="btn " type="submit" id="Create"><img src="https://mqaall.com/wp-content/uploads/2018/10/%D9%85%D8%A7-%D8%AA%D9%81%D8%B3%D9%8A%D8%B1-%D8%A7%D9%84%D8%A3%D8%AD%D9%84%D8%A7%D9%85-%D8%A8%D8%A7%D9%84%D8%AD%D8%B1%D9%88%D9%81-%D8%A7%D9%84.jpg" style='width:800px;height: 400px; ' alt="buttonpng" border="0" />  </button>
         <button class="btn " type="submit" id="Join"><img src="https://dz8fbjd9gwp2s.cloudfront.net/courses/60408b740cf27f88f14f9423/60408b740cf27f88f14f9423_scaled_cover.jpg?v=1" style='width: 800px;;height: 400px; ' alt="buttonpng" border="0" /></button>
         
 
@@ -27,7 +27,12 @@
 
 <script>
     
+  const lang = '{{lang}}'
 
+  if(lang=='arabic'){
+    document.getElementById('feqwv').innerHTML = 'مرحبا '
+    
+  }
         function toggleFullScreen() {
             if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
              (!document.mozFullScreen && !document.webkitIsFullScreen)) {
