@@ -29,6 +29,10 @@
     document.getElementById('vewv').innerHTML = 'رمز الإختبار'
     document.getElementById('add').innerHTML = 'إضافة سؤال آخر'
     document.getElementById('sub').innerHTML = 'إنشاء الإختبار'
+    const labels = document.querySelectorAll('label');
+    labels.forEach(label => {
+      label.style.float = 'right'
+    });
 
 
     let questionCount = 0;
