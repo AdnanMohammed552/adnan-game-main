@@ -33,9 +33,9 @@
         <div class="card-body">
           <center>
             <h5 class="card-title">{{ i.title }}</h5>
-            <p class="card-text">{{ i.num }} <span class="span">سؤال</span></p>
-            <p class="card-text"><small class="text-muted">تم إنشاؤه في {{ i.date }}</small></p>
-            <a href="#" class="btn btn-primary">إذهب</a>
+            <p class="card-text"> <span class="span">Question</span> {{ i.num }}</p>
+            <p class="card-text"><small class="text-muted"><span class="jnvwj"> Created on: </span>{{ i.date }}</small></p>
+            <a href="#" class="btn btn-primary vevv">Go to details</a>
           </center>
         </div>
       </div>
@@ -55,12 +55,21 @@
     document.getElementById('gwg').innerHTML = 'لعبة جديدة'
     document.getElementById('fwgr').innerHTML = 'الإنضمام إلى لعبة'
     document.getElementById('vwjnj').innerHTML = 'آخر الاختبارات التي تم إنشاؤها'
+    document.
 
     document.querySelectorAll('.span').forEach(span=>{
-      span.innerHTML = 'Question'
+      span.innerHTML = 'سؤال'
     })
 
+    document.querySelectorAll('.jnvwj').forEach(span1=>{
+      span1.innerHTML = 'تم إنشاؤه في: '
+    })
 
+    document.querySelectorAll('.vevv').forEach(span1=>{
+      span1.innerHTML = 'التفاصيل'
+    })
+
+    
 
     
   }
