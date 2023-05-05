@@ -9,12 +9,9 @@ from .import models
 from django.template import Template, Context
 from django.views.decorators.csrf import csrf_protect
 from animal import models as mbd
-def ss():
-    from animal.models import lang
-    x = lang.objects.all().values()
-    for i in x:
-        global language
-        language = i['lang']
+from animal.models import lang
+
+
 @csrf_protect 
 def signup(request):
     if request.POST and 'signupbtn' in request.POST:

@@ -11,13 +11,8 @@ from accounts import models as md
 x= ["أ","ت","ث","ج","ح","خ","د","ذ","ر","ز","س","ش","ص","ض","ط","ع","غ","ف","ق","ك","ل","م","ن","ه","و","ي"]
 the_letter = 'ب'
 print('this is letterc from views',the_letter)
-def ss():
-    from animal.models import lang
-    kfken = lang.objects.all().values()
-    for www in kfken:
-        global language
-        language =www['lang']
 
+from animal.models import lang
 def room_end(request,room_code):
     req=request.GET['anan']
     valie = md.room_created.objects.all().filter(user=request.user,room_created=room_code).values()
