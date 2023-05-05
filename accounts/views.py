@@ -54,6 +54,11 @@ def signup(request):
                             messages.info(request, 'Done', extra_tags='safe')
                             user = auth.authenticate(username = name , password= password)
                             auth.login(request,user)
+                            from animal.models import lang
+                            kfken = lang.objects.all().values()
+                            for www in kfken:
+                                global language
+                                language =www['lang']
               
                             return render(request , 'room.html',{'lang':language})
                             
@@ -62,7 +67,11 @@ def signup(request):
                     else:
                         messages.error(request, 'Email is incorrect', extra_tags='safe')
         
-              
+        from animal.models import lang
+        kfken = lang.objects.all().values()
+        for www in kfken:
+            global language
+            language =www['lang']
         return render(request , 'signup.html',{
             'name' : name ,
             'email':email,
@@ -71,6 +80,11 @@ def signup(request):
         })
     
     else:
+        from animal.models import lang
+        kfken = lang.objects.all().values()
+        for www in kfken:
+            global language
+            language =www['lang']
         return render(request , 'signup.html',{'lang':language})
 
 def login(request):
@@ -84,12 +98,22 @@ def login(request):
             return redirect('room')
         else:
             messages.error(request,'Wrong, Enter username not email!')   
+            from animal.models import lang
+            kfken = lang.objects.all().values()
+            for www in kfken:
+                global language
+                language =www['lang']
             return render(request , 'login.html' , {
                                 'email' :email,
                                 'password' : password,'lang':language
                             })
 
     else:
+        from animal.models import lang
+        kfken = lang.objects.all().values()
+        for www in kfken:
+            global language
+            language =www['lang']
         return render(request , 'login.html' ,{'lang':language})
 def logout(request):
     if request.user.is_authenticated:
@@ -108,7 +132,11 @@ def mygames(request):
             v = i['date']
             w.append(z)
             w.append(v)
-
+        from animal.models import lang
+        kfken = lang.objects.all().values()
+        for www in kfken:
+            global language
+            language =www['lang']
         return render (request , 'mygames.html',{'z':w,'lang':language})
     else:
         return HttpResponse('please login to your account , <a href="/account/login">login</a>')
@@ -127,6 +155,11 @@ def myaccount(request,room_code):
         adnan = Template(z)
 
         print('my is ',request.user ,z , type(z))
+        from animal.models import lang
+        kfken = lang.objects.all().values()
+        for www in kfken:
+            global language
+            language =www['lang']
         return render (request , 'myaccount.html',{'y':valie,'lang':language,'z':adnan.render(Context({}))})
     else:
         return HttpResponse('please login to your account , <a href="/account/login">login</a>')
@@ -135,9 +168,10 @@ def home(request):
 
     data = models.title.objects.all().filter(user=request.user).values()
     from animal.models import lang
-    x = lang.objects.all().values()
-    for i in x:
-        language = i['lang']
+    kfken = lang.objects.all().values()
+    for www in kfken:
+        global language
+        language =www['lang']
 
     return render (request , 'accounthome.html',{'lang':language})
 
@@ -149,6 +183,11 @@ def played(request):
     for i in valie:
         z = i['room_played']
         w.append(z)
+    from animal.models import lang
+    kfken = lang.objects.all().values()
+    for www in kfken:
+        global language
+        language =www['lang']
     return render (request , 'playedas.html',{'z':w,'lang':language})
         
    
@@ -162,10 +201,20 @@ def playedacc(request,room_code):
         else:
             continue
     adnan = Template(z2)
+    from animal.models import lang
+    kfken = lang.objects.all().values()
+    for www in kfken:
+        global language
+        language =www['lang']
 
     return render (request , 'played.html',{'lang':language,'z':adnan.render(Context({}))})
 
 def created(request):
+    from animal.models import lang
+    kfken = lang.objects.all().values()
+    for www in kfken:
+        global language
+        language =www['lang']
     return render(request,'created.html',{'lang':language})
 
 def quiz(request):
@@ -177,6 +226,11 @@ def quiz(request):
         v = i['code']
         w.append(z)
         w.append(v)
+    from animal.models import lang
+    kfken = lang.objects.all().values()
+    for www in kfken:
+        global language
+        language =www['lang']
 
     return render(request,'quizlist.html',{'z':w,'lang':language})
 
@@ -184,7 +238,11 @@ def quiz(request):
 def quiz_data(request,room_code):
     from quiz import models
     data = models.title.objects.all().filter(user=request.user,code=room_code).values()
-    
+    from animal.models import lang
+    kfken = lang.objects.all().values()
+    for www in kfken:
+        global language
+        language =www['lang']
     return render(request,'quiz_data.html',{'w':data,'lang':language})
 
 
@@ -242,6 +300,11 @@ def qrcodes(request):
     # Encode the image as base64 string
     import base64
     encoded_string = base64.b64encode(image_byte_array).decode('utf-8')
+    from animal.models import lang
+    kfken = lang.objects.all().values()
+    for www in kfken:
+        global language
+        language =www['lang']
 
     # Pass the encoded string to the template
     return render(request,'qrcodes.html',{'user':username,'encoded_string':encoded_string,'lang':language})
@@ -255,6 +318,11 @@ def quiz_data_last(request,room_code):
     for i in s:
         array.append(i['date'])
     #adnan.render(Context({}))
+    from animal.models import lang
+    kfken = lang.objects.all().values()
+    for www in kfken:
+        global language
+        language =www['lang']
     return render(request,'last_quiz.html',{'z':s,'room_code':room_code,'lang':language})
 
 
@@ -264,6 +332,11 @@ def quiz_data_last_preview(request,id,room_code):
     for i in s:
         z2 = i['table']
     adnan=Template(z2)
+    from animal.models import lang
+    kfken = lang.objects.all().values()
+    for www in kfken:
+        global language
+        language =www['lang']
 
     return render(request,'last_quiz_preview.html',{'lang':language,'z':adnan.render(Context({}))})
     
