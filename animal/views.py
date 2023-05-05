@@ -314,3 +314,20 @@ def req1(rewquest):
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method'})
     
+def arabic(request):
+    if request.method == 'POST':
+        import json
+        data = (request.body).decode('utf-8')
+        if data == 'arabic':
+            from .models import lang
+            lang.objects.all().delete()
+            lang.objects.create(lang='arabic')
+
+        elif data == 'english':
+            from .models import lang
+            lang.objects.all().delete()
+
+            lang.objects.create(lang='english')
+
+        #models.title.objects.create(user=rewquest.user,title=x,code=code,edit=edit).save
+        return JsonResponse({'success': True})

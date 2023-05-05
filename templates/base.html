@@ -93,6 +93,16 @@ rel="stylesheet"
         >
           
       </div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          Select language
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+          <li><a class="dropdown-item" id="arabic" >Arabic</a></li>
+          <li><a class="dropdown-item" id="eng" >English</a></li>
+        </ul>
+      </div>
+      
       <!-- Avatar -->
       <div class="dropdown">
         <a
@@ -161,6 +171,19 @@ rel="stylesheet"
        
       }
 </style>
+<script>
+  document.getElementById('arabic').onclick = function(){
+    fetch('/api/endpoint2/', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify('arabic')})
+    .then(response => response.json())
+    .then(data => alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from Your profile >> created games >> quiz >> and select your quiz..'))
+    .catch(error => console.error(error));
+  }
+</script>
   {% else %}
   <script>
     window.location.href = '/account/login';
