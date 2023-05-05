@@ -11,7 +11,10 @@ from accounts import models as md
 x= ["أ","ت","ث","ج","ح","خ","د","ذ","ر","ز","س","ش","ص","ض","ط","ع","غ","ف","ق","ك","ل","م","ن","ه","و","ي"]
 the_letter = 'ب'
 print('this is letterc from views',the_letter)
-
+from animal.models import lang
+x = lang.objects.all().values()
+for i in x:
+    language = i['lang']
 def room_end(request,room_code):
     req=request.GET['anan']
     valie = md.room_created.objects.all().filter(user=request.user,room_created=room_code).values()
@@ -21,14 +24,18 @@ def room_end(request,room_code):
     global adnan
     adnan = Template(z)
 
-    return render(request,'endAdmin.html',{'rr':room_code,'user':req,'z':adnan.render(Context({}))})
+    return render(request,'endAdmin.html',{'rr':room_code,'user':req,'lang':language,'z':adnan.render(Context({}))})
     #return render(request,'endAdmin.html',{'user':req})
 def roomentering(request):
     from quiz import models
 
     data = models.title.objects.all().filter(user=request.user).values()
+    from animal.models import lang
+    x = lang.objects.all().values()
+    for i in x:
+        language = i['lang']
 
-    return render(request,'room.html',{'w':data})
+    return render(request,'room.html',{'w':data,'lang':language})
 
 def create(request):
     users = User.objects.all()
@@ -37,7 +44,11 @@ def create(request):
     x=startingroom.objects.all().filter(room=room_code).values()
     print('startingroomrrr',x)
     if str(x) == '<QuerySet []>':
-        return render(request , 'create.html' ,{'users':users,'room':room_code})
+        from animal.models import lang
+        x = lang.objects.all().values()
+        for i in x:
+            language = i['lang']
+        return render(request , 'create.html' ,{'users':users,'room':room_code,'lang':language})
 
     
 def room(request,room_code):
@@ -70,13 +81,14 @@ def room(request,room_code):
         print('yse is none')
         models.summeryOfLetter.objects.create(all_letter_as="['أ', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي' ]",room=room_code)
         
-        return render(request,"game.html", {'username':username , 'room_code' : room_code ,'info':info , 'the_letter':the_letter ,})
+        return render(request,"game.html", {'username':username , 'room_code' : room_code ,'info':info , 'the_letter':the_letter ,'lang':language})
 
     else:
         print('no is none')
 
         messages.error(request , 'Error, room code allready used')
-        return render(request,"create.html" , {'roomcode':room_code , 'username':username ,'users':users })
+        
+        return render(request,"create.html" , {'roomcode':room_code , 'username':username ,'users':users ,'lang':language})
 
     
 def room_admin(request,room_code):
@@ -93,12 +105,12 @@ def room_admin(request,room_code):
     qr_image.save(bufstore)    
     
     svg = bufstore.getvalue().decode() 
-    return render(request, "startroom.html", {'info': info , 'room_code':room_code ,'the_letter':the_letter,'svg':svg})
+    return render(request, "startroom.html", {'info': info , 'room_code':room_code ,'the_letter':the_letter,'svg':svg,'lang':language})
 
 def join(request):
     return render(request,'join.html')
 def joinqr(request,room_code):
-    return render(request,'joinqr.html',{'room':room_code})
+    return render(request,'joinqr.html',{'room':room_code,'lang':language})
 
 def joinnow(request,room_code):
 
@@ -130,7 +142,7 @@ def joinnow(request,room_code):
         print('vies room codeis',room_code)
         models.summeryOfLetter.objects.create(all_letter_as="['أ', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي']",room=room_code)
         
-        return render(request,"game.html", {'username':username , 'room_code' : room_code ,'info':info , 'the_letter':the_letter ,})
+        return render(request,"game.html", {'username':username , 'room_code' : room_code ,'info':info , 'the_letter':the_letter ,'lang':language})
 
     
 
@@ -151,13 +163,13 @@ def wait(request , room_code):
 
     if z != True:
         username = request.GET['username']
-        return render(request , 'waiting.html' , {'room_code':room_code ,'username':username ,'time':time,'admin':admin,'x':x})
+        return render(request , 'waiting.html' , {'room_code':room_code ,'username':username ,'time':time,'admin':admin,'x':x,'lang':language})
     else:
         return HttpResponse('Game already started')
 
 def end(request , room_code):
     username = request.GET['username']
-    return render(request , 'end.html',{'user':username,'room':room_code,'z':adnan.render(Context({}))})
+    return render(request , 'end.html',{'user':username,'room':room_code,'lang':language,'z':adnan.render(Context({}))})
 
 
 def type(request):
@@ -208,7 +220,7 @@ def joinquiz(request,room_code):
     
 
 
-    return render(request,'gamequiz.html',{'data':array,'room_code':room_code})
+    return render(request,'gamequiz.html',{'data':array,'room_code':room_code,'lang':language})
 
 
 def room_admin_quiz(request,room_code):
@@ -220,18 +232,23 @@ def room_admin_quiz(request,room_code):
         array.append(e)
 
     
-    return render(request,'startquiz.html',{'room_code':room_code,'data':array})
+    return render(request,'startquiz.html',{'room_code':room_code,'data':array,'lang':language})
 
 
 def wait_quiz(request,room_code):
     username = request.GET['username']
-    return render(request,'waitingquiz.html',{'room_code':room_code ,'username':username})
+    return render(request,'waitingquiz.html',{'room_code':room_code ,'username':username,'lang':language})
 
 
 def camera(request,room_code):
+    from animal.models import lang
+    x = lang.objects.all().values()
+    for i in x:
+        language = i['lang']
+
     
 
-    return render(request,'camera.html',{'room_code':room_code})
+    return render(request,'camera.html',{'room_code':room_code,'lang':language})
 
 
 def room_admin_quiz_qr(request,room_code):
@@ -254,7 +271,7 @@ def room_admin_quiz_qr(request,room_code):
     
     svg = bufstore.getvalue().decode() 
 
-    return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg})
+    return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language})
 
 
 
@@ -272,7 +289,7 @@ def room_admin_quiz_qr_end(request,room_code,id):
     adnan = Template(z2)
 
 
-    return render(request,'end_quiz_qr.html',{'room_code':room_code,'z':adnan.render(Context({}))})
+    return render(request,'end_quiz_qr.html',{'room_code':room_code,'lang':language,'z':adnan.render(Context({}))})
 
 
 
@@ -288,7 +305,7 @@ def edit(request,room_code):
 
 
 
-    return render(request,'edit.html',{'data':array,'room_code':room_code})
+    return render(request,'edit.html',{'data':array,'room_code':room_code,'lang':language})
 
 
 
@@ -313,17 +330,23 @@ def req1(rewquest):
         return JsonResponse({'success': True})
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method'})
-    
+
+
+@csrf_exempt
 def arabic(request):
     if request.method == 'POST':
         import json
         data = (request.body).decode('utf-8')
-        if data == 'arabic':
+        print('fwef',data)
+
+        if data == '"arabic"':
+            print('ara')
             from .models import lang
             lang.objects.all().delete()
             lang.objects.create(lang='arabic')
 
-        elif data == 'english':
+        elif data == '"english"':
+            print('eng')
             from .models import lang
             lang.objects.all().delete()
 

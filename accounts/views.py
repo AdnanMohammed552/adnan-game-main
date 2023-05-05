@@ -9,7 +9,10 @@ from .import models
 from django.template import Template, Context
 from django.views.decorators.csrf import csrf_protect
 from animal import models as mbd
-
+from animal.models import lang
+x = lang.objects.all().values()
+for i in x:
+    language = i['lang']
 @csrf_protect 
 def signup(request):
     if request.POST and 'signupbtn' in request.POST:
@@ -62,7 +65,7 @@ def signup(request):
             'name' : name ,
             'email':email,
             'password':password,
-            'passwordv':passwordv
+            'passwordv':passwordv,'lang':language
         })
     
     else:
@@ -81,7 +84,7 @@ def login(request):
             messages.error(request,'Wrong, Enter username not email!')   
             return render(request , 'login.html' , {
                                 'email' :email,
-                                'password' : password
+                                'password' : password,'lang':language
                             })
 
     else:
@@ -104,7 +107,7 @@ def mygames(request):
             w.append(z)
             w.append(v)
 
-        return render (request , 'mygames.html',{'z':w})
+        return render (request , 'mygames.html',{'z':w,'lang':language})
     else:
         return HttpResponse('please login to your account , <a href="/account/login">login</a>')
 
@@ -122,11 +125,19 @@ def myaccount(request,room_code):
         adnan = Template(z)
 
         print('my is ',request.user ,z , type(z))
-        return render (request , 'myaccount.html',{'y':valie,'z':adnan.render(Context({}))})
+        return render (request , 'myaccount.html',{'y':valie,'lang':language,'z':adnan.render(Context({}))})
     else:
         return HttpResponse('please login to your account , <a href="/account/login">login</a>')
 def home(request):
-    return render (request , 'accounthome.html')
+    from quiz import models
+
+    data = models.title.objects.all().filter(user=request.user).values()
+    from animal.models import lang
+    x = lang.objects.all().values()
+    for i in x:
+        language = i['lang']
+
+    return render (request , 'accounthome.html',{'lang':language})
 
 def played(request):
     from .models import played
@@ -136,7 +147,7 @@ def played(request):
     for i in valie:
         z = i['room_played']
         w.append(z)
-    return render (request , 'playedas.html',{'z':w})
+    return render (request , 'playedas.html',{'z':w,'lang':language})
         
    
 
@@ -150,7 +161,7 @@ def playedacc(request,room_code):
             continue
     adnan = Template(z2)
 
-    return render (request , 'played.html',{'z':adnan.render(Context({}))})
+    return render (request , 'played.html',{'lang':language,'z':adnan.render(Context({}))})
 
 def created(request):
     return render(request,'created.html')
@@ -165,14 +176,14 @@ def quiz(request):
         w.append(z)
         w.append(v)
 
-    return render(request,'quizlist.html',{'z':w})
+    return render(request,'quizlist.html',{'z':w,'lang':language})
 
 
 def quiz_data(request,room_code):
     from quiz import models
     data = models.title.objects.all().filter(user=request.user,code=room_code).values()
     
-    return render(request,'quiz_data.html',{'w':data})
+    return render(request,'quiz_data.html',{'w':data,'lang':language})
 
 
 def qrcodes(request):
@@ -231,7 +242,7 @@ def qrcodes(request):
     encoded_string = base64.b64encode(image_byte_array).decode('utf-8')
 
     # Pass the encoded string to the template
-    return render(request,'qrcodes.html',{'user':username,'encoded_string':encoded_string})
+    return render(request,'qrcodes.html',{'user':username,'encoded_string':encoded_string,'lang':language})
 
 
 def quiz_data_last(request,room_code):
@@ -242,7 +253,7 @@ def quiz_data_last(request,room_code):
     for i in s:
         array.append(i['date'])
     #adnan.render(Context({}))
-    return render(request,'last_quiz.html',{'z':s,'room_code':room_code})
+    return render(request,'last_quiz.html',{'z':s,'room_code':room_code,'lang':language})
 
 
 def quiz_data_last_preview(request,id,room_code):
@@ -252,5 +263,5 @@ def quiz_data_last_preview(request,id,room_code):
         z2 = i['table']
     adnan=Template(z2)
 
-    return render(request,'last_quiz_preview.html',{'z':adnan.render(Context({}))})
+    return render(request,'last_quiz_preview.html',{'lang':language,'z':adnan.render(Context({}))})
     

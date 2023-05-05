@@ -1,9 +1,9 @@
-<!doctype html>
+<!doctype html dir="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Adnan game</title>
 
 {% if request.user.is_authenticated %}
-<html lang="ar" dir="rtl">
+<html id="aaa" lang="en" dir="ltr">
   <head>
     <!-- Font Awesome -->
 <link
@@ -66,10 +66,10 @@ rel="stylesheet"
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="/create">Create New game</a>
+          <a class="nav-link" id="create1" href="/create">Create New game</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/join">Join a room</a>
+          <a class="nav-link" id="join1" href="/join">Join a room</a>
         </li>
         
       </ul>
@@ -127,15 +127,15 @@ rel="stylesheet"
         >
         
           <li>
-            <a class="dropdown-item" href="/account/home">My profile</a>
+            <a class="dropdown-item" id="prof" href="/account/home">My profile</a>
           </li>
 
           <li>
-            <a class="dropdown-item" href="/account/qrcodes">generate your qr codes</a>
+            <a class="dropdown-item" id="qrr" href="/account/qrcodes">generate your qr codes</a>
           </li>
           
           <li>
-            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+            <a class="dropdown-item" id="out" href="{% url 'logout' %}">Logout</a>
           </li>
         </ul>
       </div>
@@ -172,6 +172,20 @@ rel="stylesheet"
       }
 </style>
 <script>
+  const lang = '{{lang}}'
+  console.log('ff',lang)
+  if(lang=='arabic'){
+    document.getElementById('create1').innerHTML = 'إنشاء لعبة'
+    document.getElementById('join1').innerHTML = 'الإنضمام إلى لعبة'
+    document.getElementById('aaa').dir='rtl'
+    document.getElementById('aaa').lang='ar'
+    document.getElementById('prof').innerHTML = 'الملف الشخصي'
+    document.getElementById('out').innerHTML = 'تسجيل خروج'
+    document.getElementById('qrr').innerHTML = 'إنشاء رموز qr الخاصة بي'
+    
+
+  }
+
   document.getElementById('arabic').onclick = function(){
     fetch('/api/endpoint2/', {
       method: 'POST',
@@ -183,6 +197,19 @@ rel="stylesheet"
     .then(data => alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from Your profile >> created games >> quiz >> and select your quiz..'))
     .catch(error => console.error(error));
   }
+  document.getElementById('eng').onclick = function(){
+    fetch('/api/endpoint2/', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify('english')})
+    .then(response => response.json())
+    .then(data => alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from Your profile >> created games >> quiz >> and select your quiz..'))
+    .catch(error => console.error(error));
+  }
+  
+
 </script>
   {% else %}
   <script>
@@ -197,3 +224,5 @@ rel="stylesheet"
 </script>
  {% block content %}
   {% endblock %}
+
+</html>
