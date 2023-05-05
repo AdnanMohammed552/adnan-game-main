@@ -178,6 +178,7 @@ def req(rewquest):
 
 
         questionnumber = ((len(array))-1)/7
+        questionnumber=int(questionnumber)
         print('qnum',questionnumber)
 
         from quiz import models

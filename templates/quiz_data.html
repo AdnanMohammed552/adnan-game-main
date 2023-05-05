@@ -16,17 +16,17 @@
 	<div class="container">
         {% for x in w %}
 		<h1 class="text-center mt-5 mb-3">{{x.title}}</h1>
-    <h3 class="text-center mt-5 mb-3">{{x.num}}</h3>
+		<p class="text-center">عدد الأسئلة: <strong>{{x.num}}</strong> </p>
 
-		<p class="text-center mb-5">Created by: {{x.user}}<br>Created on: {{x.date}}</p>
+		<p class="text-center mb-5">أنشأه: <strong>{{x.user}}</strong> في: <strong>{{x.date}}</strong></p>
 		
 		<!-- Quiz questions and answers go here -->
 		{% endfor %}
 	</div>
     <div class="text-center">
-		<a id="challenge" class="btn btn-primary">Challenge friends / start competition</a>
-    <a id="view" class="btn btn-primary">View last played quiz</a>
-    <a id="edit" class="btn btn-primary">Edit</a>
+		<a id="challenge" class="btn btn-primary">بدأ الاختبار!</a>
+    <a id="view" class="btn btn-primary">اخر ما تم لعبه</a>
+    <a id="edit" class="btn btn-primary">تعديل</a>
 
 
 	</div>
