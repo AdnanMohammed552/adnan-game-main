@@ -11,6 +11,9 @@ class title(models.Model):
     title = models.CharField(max_length=200)
     code = models.IntegerField(max_length=100)
     date = models.DateTimeField(default=timezone.now)
+    num = models.CharField(max_length=200,default='')
+
+
 
 
 class room_created(models.Model):

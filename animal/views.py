@@ -175,12 +175,17 @@ def req(rewquest):
         print(array )
         
         code = array[-1]
+
+
+        questionnumber = ((len(array))-1)/7
+        print('qnum',questionnumber)
+
         from quiz import models
         models.MyModel.objects.create(data=array,code=code).save
         print('my array tt',array)
         # process the incoming data
 
-        models.title.objects.create(user=rewquest.user,title=x,code=code).save
+        models.title.objects.create(user=rewquest.user,title=x,code=code,num=questionnumber).save
         return JsonResponse({'success': True})
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method'})
