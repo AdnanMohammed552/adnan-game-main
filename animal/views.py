@@ -11,10 +11,13 @@ from accounts import models as md
 x= ["أ","ت","ث","ج","ح","خ","د","ذ","ر","ز","س","ش","ص","ض","ط","ع","غ","ف","ق","ك","ل","م","ن","ه","و","ي"]
 the_letter = 'ب'
 print('this is letterc from views',the_letter)
-from animal.models import lang
-x = lang.objects.all().values()
-for i in x:
-    language = i['lang']
+def ss():
+    from animal.models import lang
+    x = lang.objects.all().values()
+    for i in x:
+        global language
+        language = i['lang']
+
 def room_end(request,room_code):
     req=request.GET['anan']
     valie = md.room_created.objects.all().filter(user=request.user,room_created=room_code).values()
@@ -108,7 +111,7 @@ def room_admin(request,room_code):
     return render(request, "startroom.html", {'info': info , 'room_code':room_code ,'the_letter':the_letter,'svg':svg,'lang':language})
 
 def join(request):
-    return render(request,'join.html')
+    return render(request,'join.html',{'lang':language})
 def joinqr(request,room_code):
     return render(request,'joinqr.html',{'room':room_code,'lang':language})
 
@@ -173,10 +176,10 @@ def end(request , room_code):
 
 
 def type(request):
-    return render(request,'type.html')
+    return render(request,'type.html',{'lang':language})
 
 def quiz(rewquest):
-    return render(rewquest,'quiz.html')
+    return render(rewquest,'quiz.html',{'lang':language})
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
@@ -208,7 +211,7 @@ def req(rewquest):
         return JsonResponse({'success': False, 'error': 'Invalid request method'})
     
 def join_quiz(request):
-    return render(request,'joinquiz.html')
+    return render(request,'joinquiz.html',{'lang':language})
 def joinquiz(request,room_code):
     from quiz import models
     x= models.MyModel.objects.all().filter(code=room_code).values()

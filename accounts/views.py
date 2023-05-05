@@ -53,7 +53,7 @@ def signup(request):
                             user = auth.authenticate(username = name , password= password)
                             auth.login(request,user)
               
-                            return render(request , 'room.html')
+                            return render(request , 'room.html',{'lang':language})
                             
                         else:
                             messages.error(request, 'Password not match', extra_tags='safe')
@@ -69,7 +69,7 @@ def signup(request):
         })
     
     else:
-        return render(request , 'signup.html')
+        return render(request , 'signup.html',{'lang':language})
 
 def login(request):
     if request.POST and 'loginbtn' in request.POST:
@@ -88,7 +88,7 @@ def login(request):
                             })
 
     else:
-        return render(request , 'login.html' )
+        return render(request , 'login.html' ,{'lang':language})
 def logout(request):
     if request.user.is_authenticated:
 
@@ -164,7 +164,7 @@ def playedacc(request,room_code):
     return render (request , 'played.html',{'lang':language,'z':adnan.render(Context({}))})
 
 def created(request):
-    return render(request,'created.html')
+    return render(request,'created.html',{'lang':language})
 
 def quiz(request):
     from quiz import models
