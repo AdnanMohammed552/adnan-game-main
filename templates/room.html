@@ -13,15 +13,39 @@
 <section>
     <div class="d-grid gap-2">
         
-        <a class="nav-link text-center display-6" href="/account/home">Hello, {{request.user.username}}</a>
-        <button class="btn btn-primary" type="submit" id="Create"><h1 class="display-6">Create a new game</h1>  </button>
-        <button class="btn btn-primary" type="submit" id="Join"><h1 class="display-6">Join a game </h1> </button>
+        <a class="nav-link text-center display-6" href="/account/home">مرحبا, {{request.user.username}}</a>
+        <button class="btn btn-primary" type="submit" id="Create"><h1 class="display-6">إنشاء لعبة جديد</h1>  </button>
+        <button class="btn btn-primary" type="submit" id="Join"><h1 class="display-6">إنضم إلى لعبة </h1> </button>
         
 
     </div>
  
   <h4 id="error"></h4>
 </section>
+
+<div class="card-container">
+<div class="container">
+  <h2>آخر الاختبارات التي تم إنشاؤها</h2>
+  <div class="row">
+    {% for i in w %}
+    <div class="col-md-2">
+      <div class="card mb-4">
+        <div class="card-body">
+          <center>
+            <h5 class="card-title">{{ i.title }}</h5>
+            <p class="card-text">{{ i.question_count }} سؤال</p>
+            <p class="card-text"><small class="text-muted">تم إنشاؤه في {{ i.date }}</small></p>
+            <a href="#" class="btn btn-primary">إذهب</a>
+          </center>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+</div>
+
+
 </div>
 
 

@@ -24,7 +24,11 @@ def room_end(request,room_code):
     return render(request,'endAdmin.html',{'rr':room_code,'user':req,'z':adnan.render(Context({}))})
     #return render(request,'endAdmin.html',{'user':req})
 def roomentering(request):
-    return render(request,'room.html')
+    from quiz import models
+
+    data = models.title.objects.all().filter(user=request.user).values()
+
+    return render(request,'room.html',{'w':data})
 
 def create(request):
     users = User.objects.all()
