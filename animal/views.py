@@ -440,3 +440,18 @@ def arabic(request):
 
         #models.title.objects.create(user=rewquest.user,title=x,code=code,edit=edit).save
         return JsonResponse({'success': True})
+@csrf_exempt
+def delete(request):
+    if request.method == 'POST':
+        import json
+        data = (request.body).decode('utf-8')
+        data1 = data.replace("'","").replace('"','')
+        from quiz import models
+        models.MyModel.objects.filter(code=data1).delete()
+        models.title.objects.filter(code=data1).delete()
+        return JsonResponse({'success': True})
+
+
+
+
+        

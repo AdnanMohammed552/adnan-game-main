@@ -11,16 +11,44 @@
 <title>Create New room</title>
 {% endblock %}
 {% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
 <center>
     
 {% for i in z %}
 
 {% if i|is_numberic %}
-<button type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')" style="background-color: green;">{{i}}</button>
+<center>
+  <div id="addw{{i}}">
+  <button type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')" style="background-color: green;">{{i}}</button>
+  <i type="button" class="fas fa-trash text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  </i>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete question ?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Modal Body Text Goes Here</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="deleteItem('{{i}}')">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</center>
 <br>
 <hr>
+</div>
+
 {% else %}
-<h3 >{{i}}</h3>
+<h3 id="dww{{i}}">{{i}}</h3>
 
 {% endif %}
 
@@ -29,7 +57,26 @@
 {% endfor %}
 </center>
 <div id="dis"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
 <script>
+  function deleteItem(code){
+    var myModal = document.getElementById('exampleModal');
+            var modal = bootstrap.Modal.getInstance(myModal);
+            modal.hide();
+    fetch('/api/endpoint5/', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(code)})
+    .then(response => response.json())
+    .then(data => {
+
+    document.getElementById('addw'+code).remove();
+  })
+    .catch(error => console.error(error));
+    
+  }
     function redirect(code){
        
   // Store the current page state in a session storage variable
