@@ -54,7 +54,7 @@ def signup(request):
                             from animal.models import lang
                             kfken = lang.objects.all().values()
                             for www in kfken:
-                                global language
+                                
                                 language =www['lang']
               
                             return render(request , 'room.html',{'lang':language})
@@ -67,7 +67,7 @@ def signup(request):
         from animal.models import lang
         kfken = lang.objects.all().values()
         for www in kfken:
-            global language
+            
             language =www['lang']
         return render(request , 'signup.html',{
             'name' : name ,
@@ -80,7 +80,7 @@ def signup(request):
         from animal.models import lang
         kfken = lang.objects.all().values()
         for www in kfken:
-            global language
+            
             language =www['lang']
         return render(request , 'signup.html',{'lang':language})
 
@@ -98,7 +98,7 @@ def login(request):
             from animal.models import lang
             kfken = lang.objects.all().values()
             for www in kfken:
-                global language
+                
                 language =www['lang']
             return render(request , 'login.html' , {
                                 'email' :email,
@@ -109,7 +109,7 @@ def login(request):
         from animal.models import lang
         kfken = lang.objects.all().values()
         for www in kfken:
-            global language
+            
             language =www['lang']
         return render(request , 'login.html' ,{'lang':language})
 def logout(request):
@@ -132,7 +132,7 @@ def mygames(request):
         from animal.models import lang
         kfken = lang.objects.all().values()
         for www in kfken:
-            global language
+            
             language =www['lang']
         return render (request , 'mygames.html',{'z':w,'lang':language})
     else:
@@ -155,7 +155,7 @@ def myaccount(request,room_code):
         from animal.models import lang
         kfken = lang.objects.all().values()
         for www in kfken:
-            global language
+            
             language =www['lang']
         return render (request , 'myaccount.html',{'y':valie,'lang':language,'z':adnan.render(Context({}))})
     else:
@@ -167,7 +167,7 @@ def home(request):
     from animal.models import lang
     kfken = lang.objects.all().values()
     for www in kfken:
-        global language
+        
         language =www['lang']
 
     return render (request , 'accounthome.html',{'lang':language})
@@ -183,7 +183,7 @@ def played(request):
     from animal.models import lang
     kfken = lang.objects.all().values()
     for www in kfken:
-        global language
+        
         language =www['lang']
     return render (request , 'playedas.html',{'z':w,'lang':language})
         
@@ -201,7 +201,7 @@ def playedacc(request,room_code):
     from animal.models import lang
     kfken = lang.objects.all().values()
     for www in kfken:
-        global language
+        
         language =www['lang']
 
     return render (request , 'played.html',{'lang':language,'z':adnan.render(Context({}))})
@@ -210,7 +210,7 @@ def created(request):
     from animal.models import lang
     kfken = lang.objects.all().values()
     for www in kfken:
-        global language
+        
         language =www['lang']
     return render(request,'created.html',{'lang':language})
 
@@ -226,7 +226,7 @@ def quiz(request):
     from animal.models import lang
     kfken = lang.objects.all().values()
     for www in kfken:
-        global language
+        
         language =www['lang']
 
     return render(request,'quizlist.html',{'z':w,'lang':language})
@@ -238,7 +238,7 @@ def quiz_data(request,room_code):
     from animal.models import lang
     kfken = lang.objects.all().values()
     for www in kfken:
-        global language
+        
         language =www['lang']
     return render(request,'quiz_data.html',{'w':data,'lang':language})
 
@@ -300,7 +300,7 @@ def qrcodes(request):
     from animal.models import lang
     kfken = lang.objects.all().values()
     for www in kfken:
-        global language
+        
         language =www['lang']
 
     # Pass the encoded string to the template
@@ -318,7 +318,7 @@ def quiz_data_last(request,room_code):
     from animal.models import lang
     kfken = lang.objects.all().values()
     for www in kfken:
-        global language
+        
         language =www['lang']
     return render(request,'last_quiz.html',{'z':s,'room_code':room_code,'lang':language})
 
@@ -332,7 +332,7 @@ def quiz_data_last_preview(request,id,room_code):
     from animal.models import lang
     kfken = lang.objects.all().values()
     for www in kfken:
-        global language
+        
         language =www['lang']
 
     return render(request,'last_quiz_preview.html',{'lang':language,'z':adnan.render(Context({}))})
