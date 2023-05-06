@@ -11,9 +11,13 @@ from django.views.decorators.csrf import csrf_protect
 from animal import models as mbd
 from animal.models import lang
 
+global language
+
+language = 'english'
 
 @csrf_protect 
 def signup(request):
+    
     if request.POST and 'signupbtn' in request.POST:
         name = None
         email = None
@@ -50,6 +54,10 @@ def signup(request):
                             user.save()
                             messages.info(request, 'Done', extra_tags='safe')
                             user = auth.authenticate(username = name , password= password)
+                            from animal.models import lang
+
+                            lang.objects.create(user=name,lang='english').save()
+
                             auth.login(request,user)
                             from animal.models import lang
                             kfken = lang.objects.all().values()

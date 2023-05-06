@@ -30,19 +30,17 @@ def room_end(request,room_code):
     return render(request,'endAdmin.html',{'rr':room_code,'user':req,'lang':language,'z':adnan.render(Context({}))})
     #return render(request,'endAdmin.html',{'user':req})
 def roomentering(request):
-
     from quiz import models
-
     data = models.title.objects.all().filter(user=request.user).values()
     from animal.models import lang
     kfken = lang.objects.all().filter(user=request.user.username).values()
+    language = 'english' # assign a default value
     try:
         for www in kfken:
-            
-            language =www['lang']
+            language = www['lang'] # update the value if a language is found
     except:
-        language = 'english'
-    return render(request,'room.html',{'w':data,'lang':language})
+        pass # do nothing if an exception is raised
+    return render(request, 'room.html', {'w': data, 'lang': language})
 
 def create(request):
     users = User.objects.all()
@@ -459,6 +457,19 @@ def delete(request):
         return JsonResponse({'success': True})
 
 
-
-
+def activity(request):
+    from quiz import models
+    data = models.title.objects.all().filter(user=request.user).values()
+    w=[]
+    for i in data:
+        z = i['title']
+        v = i['code']
+        w.append(z)
+        w.append(v)
+    from animal.models import lang
+    kfken = lang.objects.all().values()
+    for www in kfken:
         
+        language =www['lang']
+
+    return render(request,'myactivity.html',{'z':w,'lang':language})
