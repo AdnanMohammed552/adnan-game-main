@@ -811,7 +811,6 @@ body{
                         if (!playerwhoanswered.includes(user)){
                           alert(user+' answer is '+ans+corrr)
                           playerwhoanswered.push(user)
-                          document.getElementById(user).style.backgroundColor = 'blue'
                           
                           if (ans === 'A'){
                             ans = 1
@@ -828,6 +827,8 @@ body{
                           
                           for(let i = 1; i<5;i++){
                             if(i==ans){
+                              document.getElementById(user).style.backgroundColor = 'green'
+
                               console.log('cot',question,user)
 
                               document.getElementById('tr'+question+user).innerHTML+=(
@@ -837,6 +838,8 @@ body{
                               )
                             }
                             else{
+                              document.getElementById(user).style.backgroundColor = 'red'
+
                               document.getElementById('tr'+question+user).innerHTML+=(
 
                               '<th style="font-size:20px;text-align: center;" scope="col"></th>'
