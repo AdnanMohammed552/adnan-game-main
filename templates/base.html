@@ -196,7 +196,7 @@ rel="stylesheet"
       },
       body: JSON.stringify('arabic')})
     .then(response => response.json())
-    .then(data => alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from Your profile >> created games >> quiz >> and select your quiz..'))
+    .then(data => location.reload())
     .catch(error => console.error(error));
   }
   document.getElementById('eng').onclick = function(){
@@ -207,7 +207,7 @@ rel="stylesheet"
       },
       body: JSON.stringify('english')})
     .then(response => response.json())
-    .then(data => alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from Your profile >> created games >> quiz >> and select your quiz..'))
+    .then(data => location.reload())
     .catch(error => console.error(error));
   }
   
