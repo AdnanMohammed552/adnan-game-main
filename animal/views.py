@@ -390,8 +390,12 @@ def edit(request,room_code):
         
         language =www['lang']
 
+    name = models.title.objects.all().filter(code=room_code).values()
+    for zz in name:
+        e = zz['title']
 
-    return render(request,'edit.html',{'data':array,'room_code':room_code,'lang':language})
+
+    return render(request,'edit.html',{'data':array,'room_code':room_code,'lang':language,'name':e})
 
 
 

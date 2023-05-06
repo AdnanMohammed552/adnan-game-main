@@ -12,7 +12,7 @@
     </div>
     <div class="form-group">
       <label id="gqwgw" for="quiz-code">Quiz Code:</label>
-      <input type="text" class="form-control" id="code" name="quiz-code">
+      <input type="text" class="form-control" id="code" name="quiz-code" disabled>
     </div>
     
 
@@ -25,8 +25,13 @@
     {{ room_code|json_script:'json-roomcode' }}
 
 <script>
+  const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
+
   const lang1 = '{{lang}}'
   console.log('ff',lang)
+  document.getElementById('code').value = roomCode
+  const name='{{name}}'
+  document.getElementById('name').value = name
   if(lang1=='arabic'){
     document.getElementById('geqgr').innerHTML = 'إسم الإختبار'
     document.getElementById('gqwgw').innerHTML = 'رمز الإختبار'
@@ -34,9 +39,14 @@
     document.getElementById('sub').innerHTML = 'حفظ'    
   
 
-    const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
 
     const data = '{{data}}'
+        
+        const labels = document.querySelectorAll('label');
+        labels.forEach(label => {
+          label.style.float = 'right'
+        });
+    
         z = data.replaceAll("&#x27;",'').replaceAll("[","").replaceAll("]","")
         let arr = z.split(",");
         let quotedArr = arr.map(item => `"${item}"`);
@@ -69,7 +79,7 @@
 
                 question.innerHTML = `
                 <div class="form-group">
-                    <label id="qqq${questionCount}" for="question-${questionCount}">السؤال ${questionCount}:</label>
+                    <label style='float:right;' id="qqq${questionCount}" for="question-${questionCount}">السؤال ${questionCount}:</label>
                     <div class="input-group">
                     <input type="text" class="form-control" id="question${questionCount}" name="question" value='${(i.question).trim()}'>
                     <div class="input-group-append">
@@ -81,7 +91,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="quiz-timer">زمن السؤال(بالثواني)</label>
+                    <label style='float:right;' for="quiz-timer">زمن السؤال(بالثواني)</label>
                     <input type="number" class="form-control" id="seconds-input${questionCount}" name="quiz-timer" value="${(parseInt((i.timer).trim()))}">
                 </div>
 
@@ -144,7 +154,7 @@
               
                 question.innerHTML = `
                 <div class="form-group">
-                  <label id="qqq${questionCount}" for="question-${questionCount}">السؤال ${questionCount}:</label>
+                  <label style='float:right;' id="qqq${questionCount}" for="question-${questionCount}">السؤال ${questionCount}:</label>
                   <div class="input-group">
                     <input type="text" class="form-control" id="question${questionCount}" name="question">
                     <div class="input-group-append">
@@ -156,7 +166,7 @@
                 </div>
               
                 <div class="form-group">
-                  <label for="quiz-timer">زمن السؤال(بالثواني)</label>
+                  <label style='float:right;' for="quiz-timer">زمن السؤال(بالثواني)</label>
                   <input type="number" class="form-control" id="seconds-input${questionCount}" name="quiz-timer" value="120">
                 </div>
               
