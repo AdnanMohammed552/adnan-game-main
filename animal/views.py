@@ -229,7 +229,7 @@ def type(request):
 
 def quiz(rewquest):
     from animal.models import lang
-    kfken = lang.objects.all().filter(user=request.user).values()
+    kfken = lang.objects.all().filter(user=rewquest.user).values()
     for www in kfken:
         
         language =www['lang']
