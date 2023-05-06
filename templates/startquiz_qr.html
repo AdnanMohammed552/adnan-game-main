@@ -514,21 +514,24 @@ body{
         
         'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
       )
-      
+      let arra = []
+
       gameSocketquiz.onmessage=function(e){
         const data = JSON.parse(e.data)
         if(data.exam !== false){
           const str = data.exam;
           const strBeforeSlash = str.split('/')[0];
           console.log('here we go',strBeforeSlash,data.exam); 
-          let arra = []
 
-          if(!arra.includes(strBeforeSlash)){
+          if(arra.includes(strBeforeSlash)){
+           
+          }
+          else{
             arra.push(strBeforeSlash)
-            
-          document.getElementById('users').innerHTML += (
-            ' <button style="background:black" class="btn btn-tag btn-rounded text-center userbutton" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span>'+ strBeforeSlash +'</span></button>'
-           )
+
+            document.getElementById('users').innerHTML += (
+              ' <button style="background:black" class="btn btn-tag btn-rounded text-center userbutton" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span>'+ strBeforeSlash +'</span></button>'
+             )
           }
       }
       }
