@@ -4,6 +4,7 @@ from datetime import datetime
 from django.utils import timezone
 class lang(models.Model):
     lang=models.CharField(max_length=150)
+    user=models.CharField(max_length=150)
 class adnan_test11(models.Model):
     noun = models.CharField(max_length=150)
     gnoun = models.CharField(max_length=150)

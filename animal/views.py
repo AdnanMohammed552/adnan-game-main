@@ -22,7 +22,7 @@ def room_end(request,room_code):
     global adnan
     adnan = Template(z)
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -30,11 +30,13 @@ def room_end(request,room_code):
     return render(request,'endAdmin.html',{'rr':room_code,'user':req,'lang':language,'z':adnan.render(Context({}))})
     #return render(request,'endAdmin.html',{'user':req})
 def roomentering(request):
+    username = request.GET['username']
+
     from quiz import models
 
     data = models.title.objects.all().filter(user=request.user).values()
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=username).values()
     for www in kfken:
         
         language =www['lang']
@@ -49,7 +51,7 @@ def create(request):
     print('startingroomrrr',x)
     if str(x) == '<QuerySet []>':
         from animal.models import lang
-        kfken = lang.objects.all().values()
+        kfken = lang.objects.all().filter(user=request.user).values()
         for www in kfken:
             
             language =www['lang']
@@ -87,7 +89,7 @@ def room(request,room_code):
         print('yse is none')
         models.summeryOfLetter.objects.create(all_letter_as="['أ', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي' ]",room=room_code)
         from animal.models import lang
-        kfken = lang.objects.all().values()
+        kfken = lang.objects.all().filter(user=request.user).values()
         for www in kfken:
             
             language =www['lang']
@@ -99,7 +101,7 @@ def room(request,room_code):
 
         messages.error(request , 'Error, room code allready used')
         from animal.models import lang
-        kfken = lang.objects.all().values()
+        kfken = lang.objects.all().filter(user=request.user).values()
         for www in kfken:
             
             language =www['lang']
@@ -122,7 +124,7 @@ def room_admin(request,room_code):
     
     svg = bufstore.getvalue().decode() 
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -130,14 +132,14 @@ def room_admin(request,room_code):
 
 def join(request):
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
     return render(request,'join.html',{'lang':language})
 def joinqr(request,room_code):
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -173,7 +175,7 @@ def joinnow(request,room_code):
         print('vies room codeis',room_code)
         models.summeryOfLetter.objects.create(all_letter_as="['أ', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي']",room=room_code)
         from animal.models import lang
-        kfken = lang.objects.all().values()
+        kfken = lang.objects.all().filter(user=request.user).values()
         for www in kfken:
             
             language =www['lang']
@@ -199,7 +201,7 @@ def wait(request , room_code):
     if z != True:
         username = request.GET['username']
         from animal.models import lang
-        kfken = lang.objects.all().values()
+        kfken = lang.objects.all().filter(user=request.user).values()
         for www in kfken:
             
             language =www['lang']
@@ -210,7 +212,7 @@ def wait(request , room_code):
 def end(request , room_code):
     username = request.GET['username']
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -219,7 +221,7 @@ def end(request , room_code):
 
 def type(request):
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -227,7 +229,7 @@ def type(request):
 
 def quiz(rewquest):
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -264,7 +266,7 @@ def req(rewquest):
     
 def join_quiz(request):
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -277,7 +279,7 @@ def joinquiz(request,room_code):
         e = i['data']
         array.append(e)
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -297,7 +299,7 @@ def room_admin_quiz(request,room_code):
         array.append(e)
 
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -306,7 +308,7 @@ def room_admin_quiz(request,room_code):
 
 def wait_quiz(request,room_code):
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -316,7 +318,7 @@ def wait_quiz(request,room_code):
 
 def camera(request,room_code):
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -346,7 +348,7 @@ def room_admin_quiz_qr(request,room_code):
     
     svg = bufstore.getvalue().decode() 
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -369,7 +371,7 @@ def room_admin_quiz_qr_end(request,room_code,id):
     adnan = Template(z2)
 
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -385,7 +387,7 @@ def edit(request,room_code):
         e = i['data']
         array.append(e)
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -432,15 +434,15 @@ def arabic(request):
         if data == '"arabic"':
             print('ara')
             from .models import lang
-            lang.objects.all().delete()
-            lang.objects.create(lang='arabic')
+            lang.objects.all().filter(user=request.user).delete()
+            lang.objects.create(user=request.user,lang='arabic')
 
         elif data == '"english"':
             print('eng')
             from .models import lang
-            lang.objects.all().delete()
+            lang.objects.all().filter(user=request.user).delete()
 
-            lang.objects.create(lang='english')
+            lang.objects.create(user=request.user,lang='english')
 
         #models.title.objects.create(user=rewquest.user,title=x,code=code,edit=edit).save
         return JsonResponse({'success': True})
