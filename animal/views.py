@@ -541,8 +541,10 @@ def password(request):
 
 
         from quiz import models
-        models.title.objects.create(code=array[1],password=array[0]).save()
-
+        try:
+            models.password.objects.create(code=array[1],password=array[0]).save()
+        except:
+            return JsonResponse('Error!')
 
 
         #models.title.objects.create(user)
@@ -557,7 +559,7 @@ def endpointpassword(request):
         passs = array[1]
 
         from quiz import models
-        c=models.title.objects.all().filter(code=code).values()
+        c=models.password.objects.all().filter(code=code).values()
         for i in c:
             actual_password = i['password']
 
