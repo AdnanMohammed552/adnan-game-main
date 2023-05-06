@@ -358,10 +358,14 @@ def camera(request,room_code):
         
         language =www['lang']
 
-    
-
-    return render(request,'camera.html',{'room_code':room_code,'lang':language})
-
+    from quiz.models import title
+    ee = title.objects.all().filter(user=request.user).values
+    for x in ee:
+        user = x['user']
+    if request.user == user:
+        return render(request,'camera.html',{'room_code':room_code,'lang':language})
+    else:
+        return HttpResponse('Not Your created quiz!!')
 
 def room_admin_quiz_qr(request,room_code):
     language = 'english'
