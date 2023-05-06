@@ -365,7 +365,7 @@ def camera(request,room_code):
     if request.user == user:
         return render(request,'camera.html',{'room_code':room_code,'lang':language})
     else:
-        return HttpResponse('Not Your created quiz!!')
+        return HttpResponse('<h2>Not Your created quiz!!</h2>'+request.user,user)
 
 def room_admin_quiz_qr(request,room_code):
     language = 'english'
