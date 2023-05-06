@@ -827,7 +827,6 @@ body{
                           
                           for(let i = 1; i<5;i++){
                             if(i==ans){
-                              document.getElementById(user).style.backgroundColor = 'green'
 
                               console.log('cot',question,user)
 
@@ -838,7 +837,6 @@ body{
                               )
                             }
                             else{
-                              document.getElementById(user).style.backgroundColor = 'red'
 
                               document.getElementById('tr'+question+user).innerHTML+=(
 
@@ -851,6 +849,8 @@ body{
                           
                              
                           if(ans==corrr){
+                            document.getElementById(user).style.backgroundColor = 'green'
+
                             score = (remainingTime/(parseInt(document.getElementById('timerrr').innerHTML)) * 20 )
                             scoretotal = Math.floor(score+50)
                             incrementScore(user, scoretotal);
@@ -858,6 +858,8 @@ body{
                             
                           }
                           else if (ans != corrr){
+                            document.getElementById(user).style.backgroundColor = 'red'
+
                             incrementScore(user, 0);
 
                           }
