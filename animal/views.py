@@ -541,11 +541,7 @@ def password(request):
 
 
         from quiz import models
-        try:
-            models.title.objects.create(code=array[1],password=array[0]).save()
-
-        except:
-            pass
+        models.title.objects.create(code=array[1],password=array[0]).save()
 
 
 
