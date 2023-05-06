@@ -365,7 +365,7 @@ def camera(request,room_code):
     if str(request.user) == str(user):
         return render(request,'camera.html',{'room_code':room_code,'lang':language})
     else:
-        return HttpResponse(f'<h2>Not Your created quiz!!{request.user}{user}</h2>')
+        return render(request,'password_enter.html',{'room_code':room_code})
 
 def room_admin_quiz_qr(request,room_code):
     language = 'english'
@@ -527,3 +527,46 @@ def activity(request):
         language =www['lang']
 
     return render(request,'myactivity.html',{'z':w,'lang':language})
+
+
+
+@csrf_exempt
+def password(request):
+    language = 'english'
+
+    if request.method == 'POST':
+        import json
+        data = (request.body).decode('utf-8')
+        array = json.loads(data)
+
+
+        from quiz import models
+        try:
+            models.title.objects.create(code=array[1],password=array[0]).save()
+
+        except:
+            pass
+
+
+
+        #models.title.objects.create(user)
+def endpointpassword(request):
+    language = 'english'
+
+    if request.method == 'POST':
+        import json
+        data = (request.body).decode('utf-8')
+        array = json.loads(data)
+        code = array[0]
+        passs = array[1]
+
+        from quiz import models
+        c=models.title.objects.all().filter(code=code).values()
+        for i in c:
+            actual_password = i['password']
+
+        if actual_password == passs:
+            return render(request,'camera.html',{'room_code':code,'lang':language})
+        
+        else:
+            return HttpResponse('Error password!!')

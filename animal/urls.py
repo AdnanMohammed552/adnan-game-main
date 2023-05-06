@@ -24,8 +24,8 @@ urlpatterns = [
     path('api/endpoint1/', views.req1, name='my-endpoint'),
     path('api/endpoint2/', views.arabic, name='my-endpoint'),
     path('api/endpoint5/', views.delete, name='my-endpoint'),
-
-
+    path('api/endpointpass/', views.password, name='my-endpoint'),
+    path('api/endpointpassword/', views.endpointpassword, name='my-endpoint'),
 
     path('join',views.join),
     path('joinqr/<int:room_code>',views.joinqr),

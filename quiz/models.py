@@ -23,3 +23,6 @@ class room_created(models.Model):
     table=models.TextField(max_length=10000000000000000000,default='')
     date = models.DateTimeField(auto_now_add=True, blank=True)
 
+class password(models.Model):
+    code =models.CharField(max_length=100,unique=True)
+    password = models.CharField(max_length=200)

@@ -14,8 +14,18 @@
       <label id="vewv" for="quiz-code">Quiz Code:</label>
       <input type="text" class="form-control" id="code" name="quiz-code">
     </div>
+    <div class="form-group">
+      <label id="vewv" for="quiz-code">Quiz password: (You can use this to allow managing the quiz from another accont)</label>
+      <input type="password" class="form-control" id="pass" name="quiz-pass">
+    </div>
     
+<script>
+  const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})
 
+</script>
 </div>
 <div class="container">
 <button id="add" type="button" class="btn btn-primary" onclick="add()">Add Another Question</button>
@@ -379,6 +389,7 @@ function add() {
 
     }
       document.getElementById('sub').onclick=function(e){
+        const pass = document.getElementById('pass').value
         quiz_data = document.getElementById('quiz').innerHTML
 
         console.log('tt')
@@ -419,8 +430,21 @@ function add() {
         .then(response => response.json())
         .then(data => alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from Your profile >> created games >> quiz >> and select your quiz..'))
         .catch(error => console.error(error));
-          console.log('data is ',data)
 
+          let passw = []
+          passw.push(pass)
+          passw.push(code)
+
+        fetch('/api/endpointpass/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(passw)})
+          .then(response => response.json())
+          .then(data => alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from Your profile >> created games >> quiz >> and select your quiz..'))
+          .catch(error => console.error(error));
+  
 
       }
 
