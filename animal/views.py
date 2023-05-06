@@ -362,7 +362,7 @@ def camera(request,room_code):
     ee = title.objects.all().filter(user=request.user).values()
     for x in ee:
         user = x['user']
-    if request.user == user:
+    if str(request.user) == str(user):
         return render(request,'camera.html',{'room_code':room_code,'lang':language})
     else:
         return HttpResponse(f'<h2>Not Your created quiz!!{request.user}{user}</h2>')
