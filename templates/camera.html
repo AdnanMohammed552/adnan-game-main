@@ -50,10 +50,25 @@
 			object-fit: cover;
 		  }
 		  
+		  
 	</style>
 	<div class="video-container">
 	  
 	<video id="video" width="1000" height="1000" autoplay="autoplay"></video>
 	</div>
+
+	<script>
+		const videoContainer = document.querySelector('.video-container');
+
+function resizeVideoContainer() {
+  const screenHeight = window.innerHeight;
+  const videoContainerHeight = screenHeight - videoContainer.offsetTop;
+  videoContainer.style.height = `${videoContainerHeight}px`;
+}
+
+window.addEventListener('resize', resizeVideoContainer);
+resizeVideoContainer();
+
+	</script>
 </body>
 {% endblock %}
