@@ -36,10 +36,12 @@ def roomentering(request):
     data = models.title.objects.all().filter(user=request.user).values()
     from animal.models import lang
     kfken = lang.objects.all().filter(user=request.user.username).values()
-    for www in kfken:
-        
-        language =www['lang']
-
+    try:
+        for www in kfken:
+            
+            language =www['lang']
+    except:
+        language = 'english'
     return render(request,'room.html',{'w':data,'lang':language})
 
 def create(request):
