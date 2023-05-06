@@ -16,6 +16,7 @@
         <a class="nav-link text-center display-6" href="/account/home"><span id="fqweg"> Hello, </span>{{request.user.username}}</a>
         <button class="btn btn-primary" type="submit" id="Create"><h1 id="gwg" class="display-6">Create new game</h1>  </button>
         <button class="btn btn-primary" type="submit" id="Join"><h1 id="fwgr" class="display-6">  Join a game </h1> </button>
+        <hr>
         
 
     </div>
@@ -33,7 +34,7 @@
         <div class="card-body">
           <center>
             <h5 class="card-title">{{ i.title }}</h5>
-            <p class="card-text"> {{ i.num }}</p><span class="span22">Question</span> 
+            <p class="card-text"> {{ i.num }}  <span id="span22">Question</span> </p>
             <p class="card-text"><small class="text-muted"><span class="jnvwj"> Created on: </span>{{ i.date }}</small></p>
             <a href="#" class="btn btn-primary vevv">Go to details</a>
           </center>
@@ -55,7 +56,7 @@
     document.getElementById('gwg').innerHTML = 'لعبة جديدة'
     document.getElementById('fwgr').innerHTML = 'الإنضمام إلى لعبة'
     document.getElementById('vwjnj').innerHTML = 'آخر الاختبارات التي تم إنشاؤها'
-
+    document.getElementById('span22').innerHTML =
     
   }
 
