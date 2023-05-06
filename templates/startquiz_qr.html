@@ -521,10 +521,16 @@ body{
           const str = data.exam;
           const strBeforeSlash = str.split('/')[0];
           console.log('here we go',strBeforeSlash,data.exam); 
+          let arra = []
+
+          if(!arra.includes(strBeforeSlash)){
+
+          
 
           document.getElementById('users').innerHTML += (
             ' <button class="btn btn-tag btn-rounded text-center userbutton" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span>'+ strBeforeSlash +'</span></button>'
            )
+          }
       }
       }
   
