@@ -11,12 +11,13 @@ from django.views.decorators.csrf import csrf_protect
 from animal import models as mbd
 from animal.models import lang
 
-global language
 
 language = 'english'
 
 @csrf_protect 
 def signup(request):
+    language = 'english'
+
     
     if request.POST and 'signupbtn' in request.POST:
         name = None
@@ -93,6 +94,8 @@ def signup(request):
         return render(request , 'signup.html',{'lang':language})
 
 def login(request):
+    language = 'english'
+
     if request.POST and 'loginbtn' in request.POST:
         email = request.POST['email']
         password= request.POST['password']
@@ -121,12 +124,16 @@ def login(request):
             language =www['lang']
         return render(request , 'login.html' ,{'lang':language})
 def logout(request):
+    language = 'english'
+
     if request.user.is_authenticated:
 
         auth.logout(request)
 
         return redirect('room')
 def mygames(request):
+    language = 'english'
+
     if request.user.is_authenticated:
         username = request.user.username
 
@@ -147,6 +154,8 @@ def mygames(request):
         return HttpResponse('please login to your account , <a href="/account/login">login</a>')
 
 def myaccount(request,room_code):
+    language = 'english'
+
     if request.user.is_authenticated:
         valie = mbd.room_created.objects.all().filter(user=request.user,room_created=room_code).order_by('-pk').values()
         z= valie
@@ -169,6 +178,8 @@ def myaccount(request,room_code):
     else:
         return HttpResponse('please login to your account , <a href="/account/login">login</a>')
 def home(request):
+    language = 'english'
+
     from quiz import models
 
     data = models.title.objects.all().filter(user=request.user).values()
@@ -181,6 +192,8 @@ def home(request):
     return render (request , 'accounthome.html',{'lang':language})
 
 def played(request):
+    language = 'english'
+
     from .models import played
     
     valie = played.objects.all().filter(user=request.user).values()
@@ -198,6 +211,8 @@ def played(request):
    
 
 def playedacc(request,room_code):
+    language = 'english'
+
     valie2 = mbd.room_created.objects.all().filter(room_created=room_code).order_by('-pk').values()
     for i in valie2:
         z2 = i['table']
@@ -215,6 +230,8 @@ def playedacc(request,room_code):
     return render (request , 'played.html',{'lang':language,'z':adnan.render(Context({}))})
 
 def created(request):
+    language = 'english'
+
     from animal.models import lang
     kfken = lang.objects.all().values()
     for www in kfken:
@@ -223,6 +240,8 @@ def created(request):
     return render(request,'created.html',{'lang':language})
 
 def quiz(request):
+    language = 'english'
+
     from quiz import models
     data = models.title.objects.all().filter(user=request.user).values()
     w=[]
@@ -241,6 +260,8 @@ def quiz(request):
 
 
 def quiz_data(request,room_code):
+    language = 'english'
+
     from quiz import models
     data = models.title.objects.all().filter(user=request.user,code=room_code).values()
     from animal.models import lang
@@ -252,6 +273,8 @@ def quiz_data(request,room_code):
 
 
 def qrcodes(request):
+    language = 'english'
+
     if request.user.is_authenticated:
         username = request.user.username
 
@@ -316,6 +339,8 @@ def qrcodes(request):
 
 
 def quiz_data_last(request,room_code):
+    language = 'english'
+
     from quiz import models as md
     s=md.room_created.objects.all().filter(room_created=room_code).values()
     adnan=Template(s)
@@ -332,6 +357,8 @@ def quiz_data_last(request,room_code):
 
 
 def quiz_data_last_preview(request,id,room_code):
+    language = 'english'
+
     from quiz import models as md
     s=md.room_created.objects.all().filter(room_created=room_code,id=id).values()
     for i in s:

@@ -14,6 +14,8 @@ print('this is letterc from views',the_letter)
 
 from animal.models import lang
 def room_end(request,room_code):
+    language = 'english'
+
     req=request.GET['anan']
     valie = md.room_created.objects.all().filter(user=request.user,room_created=room_code).values()
     for i in valie:
@@ -30,6 +32,8 @@ def room_end(request,room_code):
     return render(request,'endAdmin.html',{'rr':room_code,'user':req,'lang':language,'z':adnan.render(Context({}))})
     #return render(request,'endAdmin.html',{'user':req})
 def roomentering(request):
+    language = 'english'
+
     from quiz import models
     data = models.title.objects.all().filter(user=request.user).values()
     from animal.models import lang
@@ -43,6 +47,8 @@ def roomentering(request):
     return render(request, 'room.html', {'w': data, 'lang': language})
 
 def create(request):
+    language = 'english'
+
     users = User.objects.all()
     room_code=random.randint(10001,99999)
     from gameadmin.models import startingroom
@@ -59,6 +65,8 @@ def create(request):
 
     
 def room(request,room_code):
+    language = 'english'
+
     
     
     users = User.objects.all()
@@ -109,6 +117,8 @@ def room(request,room_code):
 
     
 def room_admin(request,room_code):
+    language = 'english'
+
 
     info = adnan_test11.objects.filter(room=room_code)
     models.summeryOfLetter.objects.create(all_letter_as="['أ', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي' ]",room=room_code)
@@ -130,6 +140,8 @@ def room_admin(request,room_code):
     return render(request, "startroom.html", {'info': info , 'room_code':room_code ,'the_letter':the_letter,'svg':svg,'lang':language})
 
 def join(request):
+    language = 'english'
+
     from animal.models import lang
     kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
@@ -137,6 +149,8 @@ def join(request):
         language =www['lang']
     return render(request,'join.html',{'lang':language})
 def joinqr(request,room_code):
+    language = 'english'
+
     from animal.models import lang
     kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
@@ -145,6 +159,8 @@ def joinqr(request,room_code):
     return render(request,'joinqr.html',{'room':room_code,'lang':language})
 
 def joinnow(request,room_code):
+    language = 'english'
+
 
     users = User.objects.all()
     mydata = models.summeryOfLetter.objects.all().values()
@@ -185,6 +201,8 @@ def joinnow(request,room_code):
 
 
 def wait(request , room_code):
+    language = 'english'
+
     from gameadmin.models import startingroom
     x=startingroom.objects.all().filter(room=room_code).values()
     print('zzfegeg',x)
@@ -209,6 +227,8 @@ def wait(request , room_code):
         return HttpResponse('Game already started')
 
 def end(request , room_code):
+    language = 'english'
+
     username = request.GET['username']
     from animal.models import lang
     kfken = lang.objects.all().filter(user=request.user).values()
@@ -219,6 +239,8 @@ def end(request , room_code):
 
 
 def type(request):
+    language = 'english'
+
     from animal.models import lang
     kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
@@ -227,6 +249,8 @@ def type(request):
     return render(request,'type.html',{'lang':language})
 
 def quiz(rewquest):
+    language = 'english'
+
     from animal.models import lang
     kfken = lang.objects.all().filter(user=rewquest.user).values()
     for www in kfken:
@@ -237,6 +261,8 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def req(rewquest):
+    language = 'english'
+
 
     if rewquest.method == 'POST':
         import json
@@ -264,6 +290,8 @@ def req(rewquest):
         return JsonResponse({'success': False, 'error': 'Invalid request method'})
     
 def join_quiz(request):
+    language = 'english'
+
     from animal.models import lang
     kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
@@ -271,6 +299,8 @@ def join_quiz(request):
         language =www['lang']
     return render(request,'joinquiz.html',{'lang':language})
 def joinquiz(request,room_code):
+    language = 'english'
+
     from quiz import models
     x= models.MyModel.objects.all().filter(code=room_code).values()
     array = []
@@ -290,6 +320,8 @@ def joinquiz(request,room_code):
 
 
 def room_admin_quiz(request,room_code):
+    language = 'english'
+
     from quiz import models
     x= models.MyModel.objects.all().filter(code=room_code).values()
     array = []
@@ -306,6 +338,8 @@ def room_admin_quiz(request,room_code):
 
 
 def wait_quiz(request,room_code):
+    language = 'english'
+
     from animal.models import lang
     kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
@@ -316,6 +350,8 @@ def wait_quiz(request,room_code):
 
 
 def camera(request,room_code):
+    language = 'english'
+
     from animal.models import lang
     kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
@@ -328,6 +364,8 @@ def camera(request,room_code):
 
 
 def room_admin_quiz_qr(request,room_code):
+    language = 'english'
+
     from quiz import models
     x= models.MyModel.objects.all().filter(code=room_code).values()
     array = []
@@ -358,6 +396,8 @@ def room_admin_quiz_qr(request,room_code):
 
 
 def room_admin_quiz_qr_end(request,room_code,id):
+    language = 'english'
+
     from quiz import models
     valie2=models.room_created.objects.all().filter(room_created=room_code,id=id).values()
     for i in valie2:
@@ -379,6 +419,8 @@ def room_admin_quiz_qr_end(request,room_code,id):
 
 
 def edit(request,room_code):
+    language = 'english'
+
     from quiz import models
     x= models.MyModel.objects.all().filter(code=room_code).values()
     array = []
@@ -402,6 +444,8 @@ def edit(request,room_code):
 
 @csrf_exempt
 def req1(rewquest):
+    language = 'english'
+
 
     if rewquest.method == 'POST':
         import json
@@ -425,6 +469,8 @@ def req1(rewquest):
 
 @csrf_exempt
 def arabic(request):
+    language = 'english'
+
     if request.method == 'POST':
         import json
         data = (request.body).decode('utf-8')
@@ -447,6 +493,8 @@ def arabic(request):
         return JsonResponse({'success': True})
 @csrf_exempt
 def delete(request):
+    language = 'english'
+
     if request.method == 'POST':
         import json
         data = (request.body).decode('utf-8')
@@ -458,6 +506,8 @@ def delete(request):
 
 
 def activity(request):
+    language = 'english'
+
     from quiz import models
     data = models.title.objects.all().filter(user=request.user).values()
     w=[]
