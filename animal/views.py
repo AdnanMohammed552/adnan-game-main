@@ -359,7 +359,7 @@ def camera(request,room_code):
         language =www['lang']
 
     from quiz.models import title
-    ee = title.objects.all().filter(user=request.user).values
+    ee = title.objects.all().filter(user=request.user).values()
     for x in ee:
         user = x['user']
     if request.user == user:
