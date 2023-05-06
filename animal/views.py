@@ -30,13 +30,12 @@ def room_end(request,room_code):
     return render(request,'endAdmin.html',{'rr':room_code,'user':req,'lang':language,'z':adnan.render(Context({}))})
     #return render(request,'endAdmin.html',{'user':req})
 def roomentering(request):
-    username = request.GET['username']
 
     from quiz import models
 
     data = models.title.objects.all().filter(user=request.user).values()
     from animal.models import lang
-    kfken = lang.objects.all().filter(user=username).values()
+    kfken = lang.objects.all().filter(user=request.user.username).values()
     for www in kfken:
         
         language =www['lang']
