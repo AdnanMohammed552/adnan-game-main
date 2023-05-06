@@ -49,15 +49,20 @@
 			height: 100%;
 			object-fit: cover;
 		  }
+		  #video::-webkit-media-controls-stop-button {
+			display: none;
+		  }
+		  
 		  
 		  
 	</style>
 	<div class="video-container">
 	  
-	<video id="video" width="1000" height="1000" autoplay="autoplay"></video>
+	<video id="video" width="1000" height="1000" autoplay="autoplay" playsinline autoplay controls></video>
 	</div>
 
 	<script>
+		
 		const videoContainer = document.querySelector('.video-container');
 
 function resizeVideoContainer() {
