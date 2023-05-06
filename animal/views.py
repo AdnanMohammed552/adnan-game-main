@@ -360,6 +360,7 @@ def camera(request,room_code):
 
     from quiz.models import title
     ee = title.objects.all().filter(user=request.user).values()
+    user=''
     for x in ee:
         user = x['user']
     if str(request.user) == str(user):
