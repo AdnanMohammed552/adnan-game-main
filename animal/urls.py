@@ -30,6 +30,8 @@ urlpatterns = [
     path('join',views.join),
     path('joinqr/<int:room_code>',views.joinqr),
     path('camera/<int:room_code>',views.camera),
+    path('camera_manage/<int:room_code>',views.camera_manage,name='camera_manage'),
+
     
 
 ]

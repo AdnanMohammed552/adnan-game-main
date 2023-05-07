@@ -8,6 +8,8 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User 
 from django.template import Template, Context
 from accounts import models as md
+from django.shortcuts import render,redirect
+
 x= ["أ","ت","ث","ج","ح","خ","د","ذ","ر","ز","س","ش","ص","ض","ط","ع","غ","ف","ق","ك","ل","م","ن","ه","و","ي"]
 the_letter = 'ب'
 print('this is letterc from views',the_letter)
@@ -570,7 +572,10 @@ def endpointpassword(request):
         if actual_password == passs:
             print('yessswer')
             html = render_to_string('camera.html', {'room_code': code, 'lang': language})
-            return HttpResponse(html)
+            return redirect('camera_manage')
         else:
             print('vgwegwe224')
             return HttpResponse('Error password!!')
+
+def camera_manage(request):
+    return render(request,'camera.html')
