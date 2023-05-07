@@ -559,7 +559,8 @@ def endpointpassword(request):
         array = json.loads(data)
         code = array[0]
         passs = array[1]
-
+        print('code is',code)
+        print('passs is',passs)
         from quiz import models
         c=models.password.objects.all().filter(code=code).values()
         for i in c:
