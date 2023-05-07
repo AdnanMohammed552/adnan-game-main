@@ -554,6 +554,7 @@ def endpointpassword(request):
     language = 'english'
 
     if request.method == 'POST':
+        from django.template.loader import render_to_string
         import json
         data = (request.body).decode('utf-8')
         array = json.loads(data)
