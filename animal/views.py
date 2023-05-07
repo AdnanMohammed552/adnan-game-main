@@ -585,6 +585,7 @@ def process_form(request):
     if request.method == 'POST':
         passs = request.POST.get('password')
         code = request.POST.get('code')
+        print('kewgew',passs,code)
         from quiz import models
         c=models.password.objects.all().filter(code=code).values()
         for i in c:
