@@ -584,16 +584,15 @@ def process_form(request,room_code):
 
     if request.method == 'POST':
         passs = request.POST.get('password')
-        code = request.POST.get('code')
         print('kewgew',passs,code)
         from quiz import models
-        c=models.password.objects.all().filter(code=code).values()
+        c=models.password.objects.all().filter(code=room_code).values()
         for i in c:
             actual_password = i['password']
         print('actual iss ',actual_password)
         if actual_password == passs:
             print('yessswer')
-            return render(request,'camera.html',{'room_code':code,'lang':language})
+            return render(request,'camera.html',{'room_code':room_code,'lang':language})
         else:
             print('vgwegwe224')
             return HttpResponse('Error password!!')
