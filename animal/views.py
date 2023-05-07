@@ -542,10 +542,9 @@ def password(request):
 
 
         from quiz import models
-        try:
-            models.password.objects.create(code=array[1],password=array[0]).save()
-        except:
-            return JsonResponse('Error!')
+        print('vwgwg',array[1],array[0])
+        models.password.objects.create(code=array[1],password=array[0]).save()
+        return JsonResponse('Error!')
 
 
         #models.title.objects.create(user)
