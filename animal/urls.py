@@ -26,7 +26,7 @@ urlpatterns = [
     path('api/endpoint5/', views.delete, name='my-endpoint'),
     path('api/endpointpass/', views.password, name='my-endpoint'),
     path('api/endpointpassword/', views.endpointpassword, name='my-endpoint'),
-    path('process_form/<int:room_code>/', views.process_form, name='process_form'),
+    path('camera_manage/<int:room_code>/', views.process_form, name='process_form'),
     path('join',views.join),
     path('joinqr/<int:room_code>',views.joinqr),
     path('camera/<int:room_code>',views.camera),
