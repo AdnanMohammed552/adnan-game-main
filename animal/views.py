@@ -598,3 +598,5 @@ def process_form(request,room_code):
             return HttpResponse('Error password!!')
 
 
+    else:
+        return HttpResponse('Error!!')
