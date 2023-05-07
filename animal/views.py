@@ -548,6 +548,8 @@ def password(request):
 
 
         #models.title.objects.create(user)
+
+@csrf_exempt
 def endpointpassword(request):
     language = 'english'
 
