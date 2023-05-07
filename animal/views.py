@@ -571,8 +571,7 @@ def endpointpassword(request):
         print('actual iss ',actual_password)
         if actual_password == passs:
             print('yessswer')
-            html = render_to_string('camera.html', {'room_code': code, 'lang': language})
-            return redirect('camera_manage')
+            return render(request,'camera.html')
         else:
             print('vgwegwe224')
             return HttpResponse('Error password!!')
