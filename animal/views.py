@@ -579,7 +579,7 @@ def endpointpassword(request):
 def camera_manage(request):
     return render(request,'camera.html')
 
-def process_form(request):
+def process_form(request,room_code):
     language = 'english'
 
     if request.method == 'POST':
