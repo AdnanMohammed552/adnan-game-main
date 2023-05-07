@@ -571,4 +571,5 @@ def endpointpassword(request):
             return render(request,'camera.html',{'room_code':code,'lang':language})
         
         else:
+            print('vgwegwe224')
             return HttpResponse('Error password!!')
