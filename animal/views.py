@@ -565,8 +565,9 @@ def endpointpassword(request):
         c=models.password.objects.all().filter(code=code).values()
         for i in c:
             actual_password = i['password']
-
+        print('actual iss ',actual_password)
         if actual_password == passs:
+            print('yessswer')
             return render(request,'camera.html',{'room_code':code,'lang':language})
         
         else:
