@@ -568,8 +568,8 @@ def endpointpassword(request):
         print('actual iss ',actual_password)
         if actual_password == passs:
             print('yessswer')
-            return render(request,'camera.html',{'room_code':code,'lang':language})
-        
+            html = render_to_string('camera.html', {'room_code': code, 'lang': language})
+            return HttpResponse(html)
         else:
             print('vgwegwe224')
             return HttpResponse('Error password!!')
