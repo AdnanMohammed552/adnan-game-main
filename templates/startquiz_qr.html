@@ -707,13 +707,15 @@ body{
                   await wait((i.timer),correctlastasnwer,i.question); 
                   await new Promise((resolve) => {
                     document.getElementById('nextttt').onclick = function() {
+                      document.getElementById('answer'+corrr).style.color = '#f7f7f7'
+
                       document.getElementById('nextttt').innerHTML = 'End question'
 
                       remainingTime=0
                       const buttons = document.querySelectorAll('.userbutton');
 
                       buttons.forEach(button => {
-                        button.style.backgroundColor = 'green'; 
+                        button.style.backgroundColor = 'black'; 
                       });
                       resolve();
                     }
@@ -792,8 +794,8 @@ body{
                   clearInterval(countdownInterval);
                   resolve(); // resolve the Promise after the countdown timer completes
                 }
-
                 document.getElementById('nextttt').onclick=function(){
+                  document.getElementById('answer'+corrr).style.color = 'green'
                   document.getElementById('nextttt').innerHTML = 'Next question'
                   remainingTime = 0
                 }
