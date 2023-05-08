@@ -66,6 +66,7 @@
     <div class="countdown-timer">
       <div class="progress-bar" id="progress-bar">
         <div class="timer-wrapper" id="timer-wrapper">
+          <h3 id="fwegweg"></h3>
         </div>
       </div>
     </div>
@@ -90,6 +91,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        margin-left: -25px; /* adjust this to match the width of your timer */
       }
       
       #fwegweg {
@@ -748,9 +750,7 @@ body{
                     
                     
                 }
-                document.getElementById('timer-wrapper').innerHTML = (
-                  '<h3 id="fwegweg">'+ i.timer +'</h3>'
-                )
+                document.getElementById('fwegweg').innerHTML = i.timer
                 document.getElementById('timerrr').innerHTML=(i.timer)
                 var correctlastasnwer = i.correctans
             
