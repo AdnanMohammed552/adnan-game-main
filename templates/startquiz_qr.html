@@ -707,7 +707,7 @@ body{
                   await wait((i.timer),correctlastasnwer,i.question); 
                   await new Promise((resolve) => {
                     document.getElementById('nextttt').onclick = function() {
-                      document.getElementById('answer'+corrr).style.color = '#f7f7f7'
+                      document.getElementById('answer'+corrr.replaceAll(' ','')).style.color = '#f7f7f7'
 
                       document.getElementById('nextttt').innerHTML = 'End question'
 
