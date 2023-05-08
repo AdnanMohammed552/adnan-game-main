@@ -718,6 +718,9 @@ body{
                     
                     
                 }
+                document.getElementById('progress-bar').innerHTML = (
+                  '<h3 id="fwegweg">'+ i.timer +'</h3>'
+                )
                 document.getElementById('timerrr').innerHTML=(i.timer)
                 var correctlastasnwer = i.correctans
             
@@ -809,6 +812,10 @@ body{
                 remainingTime--;
                 const progressPercent = (remainingTime / countdownTime) * 100;
                 progressBar.style.width = `${progressPercent}%`;
+                value = document.getElementById('fwegweg').innerHTML
+                new_value = (parseInt(value))
+                document.getElementById('fwegweg').innerHTML = new_value--
+
                   
           
                 if (remainingTime <= 0) {
