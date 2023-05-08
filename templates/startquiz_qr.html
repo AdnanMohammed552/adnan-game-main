@@ -18,12 +18,27 @@
 </div>
 </div>
 </div>
-<div class="container-xxl">
+<center>
+<button id="toggle-button" class="btn btn-primary">
+  <i id="eye-icon" class="fas fa-eye"></i>
+  <i id="eye-slash-icon" class="fas fa-eye-slash d-none"></i>
+</button>
+</center>
+<div class="collapse" id="fwjohg" style="display: none;">
   <div id="qrcode"style="text-align: center;">
   {{ svg|safe }}
+  <center><span id="huhhd" class="hovertext" onclick="copyContent()" data-hover="Click to copy the code" style="text-align: center;">{{room_code}}</span></center>
+</div>
+<script>
+  $(document).ready(function() {
+    $("#toggle-button").click(function() {
+      $("#fwjohg").toggle();
+    });
+  });
+</script>
+
 </div>
     <h3 id="gjro" ></h3>
-  <center><span id="huhhd" class="hovertext" onclick="copyContent()" data-hover="Click to copy the code" style="text-align: center;">{{room_code}}</span></center>
      
       <h3 id="leettered"></h3>
     
@@ -56,37 +71,45 @@
         <span class="points-text" id="points-text">0</span>
       </div>
       
-      <div class="container">
-        <div class="question-bar">
-          <div class="question">
-            <h3 id="ques"></h3>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-9">
+            <div class="question-bar">
+              <div class="question">
+                <h3 style="font-size: 2rem;color:black" id="ques"></h3>
+              </div>
+              <div class="choices">
+                <div class="d-flex justify-content-between">
+                  <button style="color:black" id="answer1" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
+                  <button style="color:black" id="answer2" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
+                </div>
+                <div class="d-flex justify-content-between mt-4">
+                  <button style="color:black" id="answer3" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
+                  <button style="color:black" id="answer4" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="choices">
-            <div class="d-flex justify-content-between">
-              <button id="answer1" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
-              <button id="answer2" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
+          <div class="col-lg-3">
+            <div id="ranktable" class="position-fixed" style="top: 70px; width: 25%;">
+              <div class="table-responsive">
+                <table id="ranking-table" class="table table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th style="text-align: center;">Player</th>
+                      <th style="text-align: center;">Score</th>  
+                    </tr>
+                  </thead>
+                  <tbody id="ranking-table-body">
+                    <!-- table body content here -->
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <div class="d-flex justify-content-between mt-4">
-              <button id="answer3" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
-              <button id="answer4" class="btn btn-choice" onclick="correcting(this.textContent)"></button>
-            </div>
-            <div id="ranktable">
-              <div class="table-responsive"></div>
-              <table id="ranking-table" class="table">
-                <thead>
-                  <tr>
-                    <td style="text-align: center;" id="plyr">Player</td>
-                    <td style="text-align: center;" id="scr">Score</td>  
-                  </tr>
-                </thead>
-                <tbody id="ranking-table-body">
-                </tbody>
-              </table>
-            </div>
-
-          </div>
+          </div>`
         </div>
       </div>
+      
     <div id="timerrr"></div>
     <div id="data"></div>
 
@@ -189,12 +212,7 @@ body{
   padding: 5px 0;
   transition: opacity 1s ease-in-out;
 
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  font-size: 15px;
 
-  top: 110%;
   
 }
 
@@ -375,6 +393,7 @@ body{
     
   </style>
   </div>
+  
 
   <div class="accordion" id="accordionExample">
     <div class="accordion-item" >
@@ -688,7 +707,7 @@ body{
                     console.log('cos',(i.answer).indexOf(x) , i.correctans)
                     if(((i.answer).indexOf(x))+1 == i.correctans)
                     document.getElementById('add'+i.question).innerHTML +=(
-                      '<th style="font-size:20px;background-color:green;text-align: center;" scope="col">'+ x +'</th>'
+                      '<th style="font-size:20px;background-color:green;color:white;text-align: center;" scope="col">'+ x +'</th>'
                     )
                     else{
                       document.getElementById('add'+i.question).innerHTML +=(
