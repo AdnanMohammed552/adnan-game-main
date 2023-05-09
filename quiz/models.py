@@ -5,6 +5,7 @@ from django.utils import timezone
 class MyModel(models.Model):
     data = ArrayField(models.CharField(max_length=100), blank=True)
     code = models.IntegerField(max_length=100)
+    delete = models.BooleanField(default=False)
 
 class title(models.Model):
     user =models.CharField(max_length=100,null=True)
