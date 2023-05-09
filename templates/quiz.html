@@ -37,6 +37,16 @@ const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   const lang1 = '{{lang}}'
 
   if(lang1=='arabic'){
+    document.getElementById('fee').innerHTML = 'إسم الإختبار'
+    document.getElementById('vewv').innerHTML = 'رمز الإختبار'
+    document.getElementById('add').innerHTML = 'إضافة سؤال آخر'
+    document.getElementById('sub').innerHTML = 'إنشاء الإختبار'
+    const labels = document.querySelectorAll('label');
+    labels.forEach(label => {
+      label.style.float = 'right'
+    });
+
+
     let questionCount = 0;
 
     function add() {
