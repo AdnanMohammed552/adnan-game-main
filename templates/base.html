@@ -179,17 +179,6 @@ rel="stylesheet"
 <script>
   const lang = '{{lang}}'
   console.log('ff',lang)
-  if(lang=='arabic'){
-    document.getElementById('create1').innerHTML = 'إنشاء لعبة'
-    document.getElementById('join1').innerHTML = 'الإنضمام إلى لعبة'
-    document.getElementById('aaa').dir='rtl'
-    document.getElementById('aaa').lang='ar'
-    document.getElementById('prof').innerHTML = 'الملف الشخصي'
-    document.getElementById('out').innerHTML = 'تسجيل خروج'
-    document.getElementById('qrr').innerHTML = 'إنشاء رموز qr الخاصة بي'
-    document.getElementById('aae').dir='rtl'
-    document.getElementById('aae').lang='ar'
-  }
 
   document.getElementById('arabic').onclick = function(){
     fetch('/api/endpoint2/', {
