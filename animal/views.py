@@ -508,7 +508,7 @@ def delete(request):
         data1 = data.replace("'","").replace('"','')
         from quiz import models
         models.MyModel.objects.filter(code=data1).create(delete=True)
-        #models.title.objects.filter(code=data1).delete()
+        models.title.objects.filter(code=data1).create(delete=True)
         return JsonResponse({'success': True})
 
 
@@ -518,18 +518,26 @@ def activity(request):
     from quiz import models
     data = models.title.objects.all().filter(user=request.user).values()
     w=[]
+    x = []
     for i in data:
         z = i['title']
         v = i['code']
-        w.append(z)
-        w.append(v)
+        if i['delete'] == True:
+
+            x.append(z)
+            x.append(v)
+        else:
+            
+            w.append(z)
+            w.append(v)
+
     from animal.models import lang
     kfken = lang.objects.all().values()
     for www in kfken:
         
         language =www['lang']
 
-    return render(request,'myactivity.html',{'z':w,'lang':language})
+    return render(request,'myactivity.html',{'z':w,'lang':language,'e':x})
 
 
 

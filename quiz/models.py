@@ -13,6 +13,8 @@ class title(models.Model):
     code = models.IntegerField(max_length=100)
     date = models.DateTimeField(default=timezone.now)
     num = models.CharField(max_length=200,default='')
+    delete = models.BooleanField(default=False)
+
 
 
 
