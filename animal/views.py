@@ -507,8 +507,12 @@ def delete(request):
         data = (request.body).decode('utf-8')
         data1 = data.replace("'","").replace('"','')
         from quiz import models
-        models.MyModel.objects.filter(code=data1).create(delete=True)
-        models.title.objects.filter(code=data1).create(delete=True)
+        s=models.MyModel.objects.get(code=data1)
+        s.delete = True
+        s.save()
+        d=models.title.objects.get(code=data1)
+        d.delete=True
+        d.save()
         return JsonResponse({'success': True})
 
 
