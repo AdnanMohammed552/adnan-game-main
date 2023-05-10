@@ -23,24 +23,28 @@
 		<!-- Quiz questions and answers go here -->
 		{% endfor %}
 	</div>
-    <div class="text-center">
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Challenge friends
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" id="challenge" href="#">Normal Game</a>
-          <a class="dropdown-item" id="challengeqr" href="#">QR codes game</a>
-          <a class="dropdown-item" href="#">Option 3</a>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-4 text-center">
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Challenge friends
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" id="challenge" href="#">Normal Game</a>
+            <a class="dropdown-item" id="challengeqr" href="#">QR codes game</a>
+          </div>
         </div>
       </div>
-
-    <a id="view" class="btn btn-primary">Last played</a>
-    <a id="edit" class="btn btn-primary">edit</a>
-
-
-	</div>
-	
+      <div class="col-6 col-md-2 text-center">
+        <a id="view" class="btn btn-primary">Last played</a>
+      </div>
+      <div class="col-6 col-md-2 text-center">
+        <a id="edit" class="btn btn-primary">Edit</a>
+      </div>
+    </div>
+  </div>
+  
 	<!-- Bootstrap JS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
