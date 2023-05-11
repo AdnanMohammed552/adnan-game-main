@@ -24,10 +24,10 @@
         <center>
           <div id="addw{{i}}">
           <button type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')" style="background-color: green;">{{i}}</button>
-          <i type="button" class="fas fa-trash text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i type="button" class="fas fa-trash text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{i}}">
           </i>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal{{i}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -68,14 +68,14 @@
       <center>
         <div id="addw{{i}}">
         <button type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')" style="background-color: green;">{{i}}</button>
-        <i type="button" class="fas fa-trash text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i type="button" class="fas fa-trash text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{i}}">
         </i>
       <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="exampleModal{{i}}" tabindex="-1" aria-labelledby="exampleModalLabel{{i}}" aria-hidden="true">
           <div class="modal-dialog">
               <div class="modal-content">
                   <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Delete question ?</h5>
+                      <h5 class="modal-title" id="exampleModalLabel{{i}}">Delete question ?</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
@@ -112,8 +112,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
 
   <script>
-    function deleteItem(code){
-      var myModal = document.getElementById('exampleModal');
+    function deleteItem(code1){
+      console.log('gweg',code1)
+      var myModal = document.getElementById('exampleModal'+code1);
               var modal = bootstrap.Modal.getInstance(myModal);
               modal.hide();
       fetch('/api/endpoint5/', {
@@ -121,11 +122,11 @@
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(code)})
+        body: JSON.stringify(code1)})
       .then(response => response.json())
       .then(data => {
   
-      document.getElementById('addw'+code).remove();
+      document.getElementById('addw'+code1).remove();
       location.reload()
     })
       .catch(error => console.error(error));
