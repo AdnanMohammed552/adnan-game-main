@@ -259,7 +259,7 @@ def quiz(rewquest):
         
         language =www['lang']
     from quiz import models as me
-    s=me.MyModel.objects.all()
+    s=me.MyModel.objects.all().values()
     arr = []
     for i in s:
         code = i['code']
