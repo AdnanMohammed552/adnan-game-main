@@ -518,6 +518,7 @@ def delete(request):
         import json
         data = (request.body).decode('utf-8')
         data1 = data.replace("'","").replace('"','')
+        print('vwbwb',data1)
         from quiz import models
         s=models.MyModel.objects.get(code=data1)
         s.delete = True
