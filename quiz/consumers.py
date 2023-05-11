@@ -150,7 +150,7 @@ class gameConsumer(AsyncWebsocketConsumer):
             
             
         }))
-        
+        print('fqegfqeg',camera_correct)
         print('addadww32',question,answer,correctans)
 
     @sync_to_async
