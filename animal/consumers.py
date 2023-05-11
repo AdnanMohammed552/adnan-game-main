@@ -610,6 +610,7 @@ class gameConsumer(AsyncWebsocketConsumer):
 
                 
             }))
+            print('bwrbb22e',camera_correct)
 
     @sync_to_async
     def delete(self,RoomCode):
