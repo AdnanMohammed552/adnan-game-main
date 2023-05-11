@@ -615,6 +615,7 @@ def process_form(request,room_code):
     
 
 def view_questions(request,room_code):
+    from quiz import models
     x= models.MyModel.objects.all().filter(code=room_code).values()
     array = []
     for i in x:
