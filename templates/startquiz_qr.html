@@ -776,13 +776,13 @@ body{
                     o=i.answer.indexOf(x)+1
                     document.getElementById('answer'+o).innerHTML=(x)
                     console.log('cos',(i.answer).indexOf(x) , i.correctans)
-                    if(((i.answer).indexOf(x))+1 == i.correctans)
-                    gameSocketquiz.send(JSON.stringify({
-                      'camera_correct':x
-                    }))
+                    if(((i.answer).indexOf(x))+1 == i.correctans){
+                      gameSocketquiz.send(JSON.stringify({
+                        'camera_correct':x
+                      }))
                     document.getElementById('add'+i.question).innerHTML +=(
                       '<th style="font-size:20px;background-color:green;color:white;text-align: center;" scope="col">'+ x +'</th>'
-                    )
+                    )}
                     else{
                       document.getElementById('add'+i.question).innerHTML +=(
                       '<th style="font-size:20px;text-align: center;" scope="col">'+ x +'</th>'
