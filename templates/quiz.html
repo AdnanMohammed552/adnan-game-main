@@ -11,7 +11,7 @@
     </div>
     <div class="form-group">
       <label id="vewv" for="quiz-code">Quiz Code:</label>
-      <input type="text" class="form-control" id="code" name="quiz-code">
+      <label id="vewv" for="quiz-code">{{ran_code}}</label>
     </div>
     <div class="form-group">
       <label id="vewv" for="quiz-code">Quiz password: (You can use this to allow managing the quiz from another accont)</label>
@@ -210,7 +210,7 @@ function add() {
 
         }
           }
-        const code = document.getElementById('code').value
+        const code = '{{ran_code}}'
         const name = document.getElementById('name').value
         data.push(code)
         data.push(name)

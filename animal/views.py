@@ -258,7 +258,19 @@ def quiz(rewquest):
     for www in kfken:
         
         language =www['lang']
-    return render(rewquest,'quiz.html',{'lang':language})
+    from quiz import models as me
+    s=me.MyModel.objects.all()
+    arr = []
+    for i in s:
+        code = i['code']
+        arr.append(code)
+    random_number = random.randint(10000, 99999)
+    while random_number in arr:
+        random_number = random.randint(10000, 99999)
+    if random_number not in arr:
+        pass
+
+    return render(rewquest,'quiz.html',{'lang':language,'ran_code':random_number})
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
