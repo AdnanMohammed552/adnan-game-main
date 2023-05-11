@@ -34,6 +34,7 @@ class gameConsumer(AsyncWebsocketConsumer):
 
 
         data= json.loads(text_data)
+        print('Received JSON object:', data)
         username1=self.scope['user']
         self.glabaluser=username1
         self.glabaluser1=str(self.glabaluser)
