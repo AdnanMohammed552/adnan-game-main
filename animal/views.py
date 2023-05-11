@@ -37,7 +37,7 @@ def roomentering(request):
     language = 'english'
 
     from quiz import models
-    data = models.title.objects.all().filter(user=request.user).values()
+    data = models.title.objects.all().filter(user=request.user,delete=False).values()
     from animal.models import lang
     kfken = lang.objects.all().filter(user=request.user.username).values()
     language = 'english' # assign a default value
