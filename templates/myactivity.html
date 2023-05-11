@@ -67,6 +67,8 @@
       {% if i|is_numberic %}
       <center>
         <div id="addw{{i}}">
+          <i type="button" class="fas fa-undo" onclick="restore('{{i}}')">
+          </i>
         <button type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')" style="background-color: green;">{{i}}</button>
         <i type="button" class="fas fa-trash text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{i}}">
         </i>
@@ -112,6 +114,23 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
 
   <script>
+    function restore(code){
+
+      fetch('/api/endpoint_restore/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(code1)})
+      .then(response => response.json())
+      .then(data => {
+  
+      document.getElementById('addw'+code1).remove();
+      location.reload()
+    })
+      .catch(error => console.error(error));
+      
+    }
     function deleteItem(code1){
       console.log('gweg',code1)
       var myModal = document.getElementById('exampleModal'+code1);

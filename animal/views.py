@@ -635,3 +635,20 @@ def view_questions(request,room_code):
         e = i['data']
         array.append(e)
     return render(request,'view_questions.html',{'x':array})
+
+@csrf_exempt
+def endpoint_restore(request):
+    if request.method == 'POST':
+        import json
+        data = (request.body).decode('utf-8')
+        array = json.loads(data)
+        data1 = data.replace("'","").replace('"','')
+        from quiz import models
+        s=models.MyModel.objects.get(code=data1)
+        s.delete = False
+        s.save()
+        d=models.title.objects.get(code=data1)
+        d.delete=False
+        d.save()
+        return JsonResponse({'success': True})
+
