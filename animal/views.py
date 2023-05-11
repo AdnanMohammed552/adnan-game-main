@@ -612,3 +612,12 @@ def process_form(request,room_code):
 
     else:
         return HttpResponse('Error!!')
+    
+
+def view_questions(request,room_code):
+    x= models.MyModel.objects.all().filter(code=room_code).values()
+    array = []
+    for i in x:
+        e = i['data']
+        array.append(e)
+    return render(request,'view_questions.html',{'x':array})
