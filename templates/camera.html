@@ -4,7 +4,6 @@
 <head>
 	<title>QR Code Scanner</title>
   <script src="https://cdn.jsdelivr.net/npm/@zxing/library@0.18.4"></script>
-  <h3 id="camera_correct"></h3>
        {{ room_code|json_script:'json-roomcode' }}
 
 	<script>
@@ -65,6 +64,7 @@
 	  
 	<video id="video" width="1000" height="1000" autoplay="autoplay" playsinline autoplay controls></video>
 	</div>
+	<center><h3 id="camera_correct"></h3></center>
 
 	<script>
 		
