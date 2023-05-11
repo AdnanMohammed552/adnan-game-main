@@ -81,11 +81,11 @@ class gameConsumer(AsyncWebsocketConsumer):
             data = data['data']
         except:
             data = False
-        try:
-            camera_correct = bool(int(data['camera_correct'])) # convert string to int to bool
-            print('fwegw22ff', camera_correct)
-        except (KeyError, ValueError):
+        if 'camera_correct' in data:
+            camera_correct = data['camera_correct']
+        else:
             camera_correct = False
+
 
         print('fwegw22fff',camera_correct)
         await self.channel_layer.group_send(
