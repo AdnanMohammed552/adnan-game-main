@@ -801,7 +801,7 @@ body{
                       document.getElementById('answer'+correctlastasnwer.replaceAll(' ','')).style.background = '#f7f7f7'
                       document.getElementById('answer'+correctlastasnwer.replaceAll(' ','')).style.color = 'black'
                       console.log('fwgve',correctlastasnwer)
-                      gameSocketquiz.send(JSON.stringify({
+                      gameSocket2.send(JSON.stringify({
                         'camera_correct':correctlastasnwer
                       }))
                       document.getElementById('nextttt').innerHTML = 'End question'
