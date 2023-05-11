@@ -84,6 +84,7 @@ class gameConsumer(AsyncWebsocketConsumer):
             camera_correct = data['camera_correct']
         except:
             camera_correct = False
+        print('fwegw22ff',camera_correct)
         await self.channel_layer.group_send(
             self.room_group_name,
             {
