@@ -791,6 +791,9 @@ body{
                     
                     
                 }
+                gameSocketquiz.send(JSON.stringify({
+                  'camera_correct':i.answer
+                }))
                 document.getElementById('fwegweg').innerHTML = i.timer
                 document.getElementById('timerrr').innerHTML=(i.timer)
                 var correctlastasnwer = i.correctans
@@ -801,9 +804,7 @@ body{
                       document.getElementById('answer'+correctlastasnwer.replaceAll(' ','')).style.background = '#f7f7f7'
                       document.getElementById('answer'+correctlastasnwer.replaceAll(' ','')).style.color = 'black'
                       console.log('fwgve',correctlastasnwer)
-                      gameSocketquiz.send(JSON.stringify({
-                        'camera_correct':correctlastasnwer.trim()
-                      }))
+                      
                       document.getElementById('nextttt').innerHTML = 'End question'
 
                       remainingTime=0
