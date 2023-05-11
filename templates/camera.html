@@ -4,7 +4,8 @@
 <head>
 	<title>QR Code Scanner</title>
   <script src="https://cdn.jsdelivr.net/npm/@zxing/library@0.18.4"></script>
-      {{ room_code|json_script:'json-roomcode' }}
+  <h3 id="camera_correct"></h3>
+       {{ room_code|json_script:'json-roomcode' }}
 
 	<script>
     const codeReader = new ZXing.BrowserQRCodeReader();
@@ -12,6 +13,12 @@
     const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
 
     const ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
+	ws.onmessage = function(e){
+        const data = JSON.parse(e.data)
+		if (data.camera_correct != false){
+			document.getElementById('camera_correct').innerHTML = data.camera_correct
+		}
+	}
 
 		function scan() {
 			codeReader.decodeFromInputVideoDevice(undefined, 'video').then((result) => {

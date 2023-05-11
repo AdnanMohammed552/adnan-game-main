@@ -800,7 +800,9 @@ body{
                     document.getElementById('nextttt').onclick = function() {
                       document.getElementById('answer'+correctlastasnwer.replaceAll(' ','')).style.background = '#f7f7f7'
                       document.getElementById('answer'+correctlastasnwer.replaceAll(' ','')).style.color = 'black'
-
+                      gameSocketquiz.send(JSON.stringify({
+                        'camera_correct':correctlastasnwer
+                      }))
                       document.getElementById('nextttt').innerHTML = 'End question'
 
                       remainingTime=0
