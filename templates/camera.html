@@ -11,19 +11,15 @@
     const codeReader = new ZXing.BrowserQRCodeReader();
     
     const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
-	const gameSocket2 = new WebSocket(
-		'wss://' + window.location.host + '/ws/' + roomCode + '/'
-		)
-		gameSocket2.onmessage = function(e){
-			const data = JSON.parse(e.data)
-			if (data.camera_correct != false){
-				document.getElementById('camera_correct').innerHTML = data.camera_correct
-			}
-		}
-
+	
 
     const ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
-	
+	ws.onmessage = function(e){
+        const data = JSON.parse(e.data)
+		if (data.camera_correct != false){
+			document.getElementById('camera_correct').innerHTML = data.camera_correct
+		}
+	}
 
 		function scan() {
 			codeReader.decodeFromInputVideoDevice(undefined, 'video').then((result) => {
