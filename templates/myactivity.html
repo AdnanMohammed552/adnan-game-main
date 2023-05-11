@@ -121,11 +121,11 @@
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(code1)})
+        body: JSON.stringify(code)})
       .then(response => response.json())
       .then(data => {
   
-      document.getElementById('addw'+code1).remove();
+      document.getElementById('addw'+code).remove();
       location.reload()
     })
       .catch(error => console.error(error));
