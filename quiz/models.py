@@ -29,3 +29,7 @@ class room_created(models.Model):
 class password(models.Model):
     code =models.CharField(max_length=100,unique=True)
     password = models.CharField(max_length=200)
+
+class enumeration(models.Model):
+    quiz_number = models.CharField(max_length=10,null=True,blank=True)
+    user= models.CharField(max_length=10,unique=True)

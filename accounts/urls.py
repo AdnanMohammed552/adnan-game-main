@@ -22,7 +22,7 @@ urlpatterns = [
     path('game/quiz/<int:room_code>/startqr/end/<int:id>',v.room_admin_quiz_qr_end),
 
     
-    path('home',views.home),
+    path('home',views.home2),
     path('played',views.played),
     path('played/<int:room_code>/',views.playedacc),
 

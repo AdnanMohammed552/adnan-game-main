@@ -299,6 +299,15 @@ def req(rewquest):
         # process the incoming data
 
         models.title.objects.create(user=rewquest.user,title=x,code=code,num=questionnumber).save
+
+        df=models.enumeration.objects.all().filter(user=rewquest.user).values()
+        print('fewgv',df)
+        for v in df:
+            number= v['quiz_number']
+        s=models.enumeration.objects.get(user=rewquest.user)
+        print('vweww',((int(number))+1))
+        s.quiz_number = ((int(number))+1)
+        s.save()
         return JsonResponse({'success': True})
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method'})
@@ -554,7 +563,27 @@ def activity(request):
         
         language =www['lang']
 
-    return render(request,'myactivity.html',{'z':w,'lang':language,'e':x})
+    username = request.user.username
+    from accounts.models import room_created
+    valie = room_created.objects.all().filter(user=username).values()
+    c=[]
+    for i in valie:
+        cc = i['room_created']
+        ccc = i['date']
+        c.append(cc)
+        c.append(ccc)
+
+    from accounts.models import played
+    
+    valiee = played.objects.all().filter(user=request.user).values()
+    y=[]
+    for i in valiee:
+        yy = i['room_played']
+        y.append(yy)
+    
+    
+
+    return render(request,'myactivity.html',{'z':w,'lang':language,'e':x,'c':c,'y':y})
 
 
 

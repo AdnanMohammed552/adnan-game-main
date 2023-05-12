@@ -51,6 +51,8 @@ def signup(request):
                     patt = '([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+'
                     if re.match(patt , email):
                         if password == passwordv:
+                            from quiz.models import enumeration
+                            enumeration.objects.create(user=name,quiz_number=0)
                             user = User.objects.create_user(username = name,email=email,password=password)
                             user.save()
                             messages.info(request, 'Done', extra_tags='safe')
@@ -190,7 +192,23 @@ def home(request):
         language =www['lang']
 
     return render (request , 'accounthome.html',{'lang':language})
+def home2(request):
+    language = 'english'
 
+    from quiz import models
+
+    data = models.title.objects.all().filter(user=request.user).values()
+    from animal.models import lang
+    kfken = lang.objects.all().values()
+    for www in kfken:
+        
+        language =www['lang']
+    df=models.enumeration.objects.all().filter(user=request.user).values()
+    print('fewgv',df)
+    for v in df:
+        number= v['quiz_number']
+
+    return render (request , 'accounthome2.html',{'lang':language,'num':number})
 def played(request):
     language = 'english'
 

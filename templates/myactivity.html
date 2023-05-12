@@ -7,17 +7,32 @@
 
 <!-- HTML code -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Quizz</a>
+  </li>
+   
+  
     <li class="nav-item">
-      <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Created Quiz</a>
+      <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false">Created animal game</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Deleted Quiz</a>
-    </li>
+
   </ul>
   
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
-    
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+      <li class="nav-item">
+        <a class="nav-link active" id="tab5-tab" data-toggle="tab" href="#tab5" role="tab" aria-controls="tab5" aria-selected="false">Created Quiz</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="tab6-tab" data-toggle="tab" href="#tab6" role="tab" aria-controls="tab6" aria-selected="false">Deleted Quiz</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="tab5" role="tabpanel" aria-labelledby="tab5-tab">
+        <br>
+
         {% for i in z %}
 
         {% if i|is_numberic %}
@@ -60,8 +75,9 @@
     
     
     {% endfor %}
-    </div>
-    <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+  </div>
+
+    <div class="tab-pane fade" id="tab6" role="tabpanel" aria-labelledby="tab6-tab">
       {% for i in e %}
 
       {% if i|is_numberic %}
@@ -95,17 +111,71 @@
       </center>
       <br>
       <hr>
-  
+
       
   {% else %}
   <center>
   <h3 id="dww{{i}}">{{i}}</h3>
-</center>
+  </center>
   {% endif %}
-  
-  
-  
-  {% endfor %}    </div>
+
+
+
+  {% endfor %}   
+  </div>
+
+</div>
+</div>
+
+
+  <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link" id="tab7-tab" data-toggle="tab" href="#tab7" role="tab" aria-controls="tab7" aria-selected="true">Created</a>
+      </li>
+       
+      
+        <li class="nav-item">
+          <a class="nav-link" id="tab8-tab" data-toggle="tab" href="#tab8" role="tab" aria-controls="tab8" aria-selected="false">Played</a>
+        </li>
+    
+      </ul>
+
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="tab7" role="tabpanel" aria-labelledby="tab7-tab">
+          <br>
+          {% for i in c %}
+
+          {% if i|is_numberic %}
+          <center>
+          <button type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')" style="background-color: green;">{{i}}</button></center>
+          {% else %}
+          <center>
+          <h3 >{{i}}</h3>
+          <hr>
+          </center>
+          {% endif %}
+
+
+
+          {% endfor %}
+
+        </div>
+        <div class="tab-pane fade show active" id="tab8" role="tabpanel" aria-labelledby="tab8-tab">
+          <br>
+          <center>
+            {% for i in y %}
+            
+            <button type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')" style="background-color: green;">{{i}}</button>
+            <hr>
+            {% endfor %}
+            </center>
+        </div>
+      </div>
+
+</div>
+
+
 
   </div>
 
