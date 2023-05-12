@@ -102,7 +102,10 @@ rel="stylesheet"
         <li class="nav-item">
           <a class="nav-link" id="join1" href="/activity">My activity</a>
         </li>
-        
+        <li>
+          <a class="dropdown-item" id="qrr" href="/account/qrcodes">generate your qr codes</a>
+        </li>
+
       </ul>
       <!-- Left links -->
     </div>
@@ -166,8 +169,14 @@ rel="stylesheet"
           </li>
 
           <li>
+            <a class="dropdown-item" id="qrr" href="/activity">My activity</a>
+          </li>
+
+          <li>
             <a class="dropdown-item" id="qrr" href="/account/qrcodes">generate your qr codes</a>
           </li>
+
+      
           
           <li>
             <a class="dropdown-item" id="out" href="{% url 'logout' %}">Logout</a>
