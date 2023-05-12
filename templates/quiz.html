@@ -221,23 +221,41 @@ function add() {
           },
           body: JSON.stringify(data)})
         .then(response => response.json())
-        .then(data => alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from Your profile >> created games >> quiz >> and select your quiz..'))
-        .catch(error => console.error(error));
-
-          let passw = []
-          passw.push(pass)
-          passw.push(code)
-
-        fetch('/api/endpointpass/', {
+        .then(data => {
+          alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from My activity panel')
+          fetch('/api/endpointpass/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(passw)})
           .then(response => response.json())
-          .then(data => alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from Your profile >> created games >> quiz >> and select your quiz..'))
-          .catch(error => console.error(error));
+          .then(data =>alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from My activity panel'))
+          .catch(error => alert('Please check all fields are correct!!'));
+          sessionStorage.setItem("pageState", "redirected");
   
+          // Redirect to the new URL using window.location
+          window.location.href = window.location.origin +'/account/game/quiz/' +code
+          
+          // Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
+          window.addEventListener("pageshow", function(event) {
+            // Check if the page state is set to "redirected"
+            if (sessionStorage.getItem("pageState") === "redirected") {
+              // Reload the page to update its content
+              window.location.reload();
+              // Reset the page state to avoid an infinite loop
+              sessionStorage.setItem("pageState", "reloaded");
+            }
+          });
+
+        })
+        .catch(error => alert('Please check all fields are correct!!'));
+
+          let passw = []
+          passw.push(pass)
+          passw.push(code)
+
+     
 
       }
 
