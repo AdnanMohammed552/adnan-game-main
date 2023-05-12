@@ -281,12 +281,17 @@ def quiz_data(request,room_code):
 
     from quiz import models
     data = models.title.objects.all().filter(user=request.user,code=room_code).values()
-    from animal.models import lang
-    kfken = lang.objects.all().values()
-    for www in kfken:
-        
-        language =www['lang']
-    return render(request,'quiz_data.html',{'w':data,'lang':language})
+    print('gwgwe',data)
+    if not data.exists():
+        return HttpResponse('<h2>Error, its not your game</h2>')
+    else:
+
+        from animal.models import lang
+        kfken = lang.objects.all().values()
+        for www in kfken:
+            
+            language =www['lang']
+        return render(request,'quiz_data.html',{'w':data,'lang':language})
 
 
 def qrcodes(request):
@@ -370,7 +375,12 @@ def quiz_data_last(request,room_code):
     for www in kfken:
         
         language =www['lang']
-    return render(request,'last_quiz.html',{'z':s,'room_code':room_code,'lang':language})
+
+    b = md.title.objects.all().filter(user=request.user,code=room_code)
+    if not b.exists():
+        return HttpResponse('<h2>Error, its not your game</h2>')
+    else:
+        return render(request,'last_quiz.html',{'z':s,'room_code':room_code,'lang':language})
 
 
 def quiz_data_last_preview(request,id,room_code):
@@ -386,6 +396,9 @@ def quiz_data_last_preview(request,id,room_code):
     for www in kfken:
         
         language =www['lang']
-
-    return render(request,'last_quiz_preview.html',{'lang':language,'z':adnan.render(Context({}))})
+    b = md.title.objects.all().filter(user=request.user,code=room_code)
+    if not b.exists():
+        return HttpResponse('<h2>Error, its not your game</h2>')
+    else:
+        return render(request,'last_quiz_preview.html',{'lang':language,'z':adnan.render(Context({}))})
     

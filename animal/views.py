@@ -400,25 +400,27 @@ def room_admin_quiz_qr(request,room_code):
     for i in x:
         e = i['data']
         array.append(e)
-
-
-    import io   
-    import qrcode.image.svg 
-    import qrcode
-    context ={}
-    factory = qrcode.image.svg.SvgImage
-    qr_image = qrcode.make(f'https://adnan-game-animal.herokuapp.com/camera/{room_code}',image_factory=factory, box_size=10)    
-    bufstore = io.BytesIO()
-    qr_image.save(bufstore)    
-    
-    svg = bufstore.getvalue().decode() 
-    from animal.models import lang
-    kfken = lang.objects.all().filter(user=request.user).values()
-    for www in kfken:
+    b = models.title.objects.all().filter(user=request.user,code=room_code)
+    if not b.exists():
+        return HttpResponse('<h2>Error, its not your game</h2>')
+    else:
+        import io   
+        import qrcode.image.svg 
+        import qrcode
+        context ={}
+        factory = qrcode.image.svg.SvgImage
+        qr_image = qrcode.make(f'https://adnan-game-animal.herokuapp.com/camera/{room_code}',image_factory=factory, box_size=10)    
+        bufstore = io.BytesIO()
+        qr_image.save(bufstore)    
         
-        language =www['lang']
+        svg = bufstore.getvalue().decode() 
+        from animal.models import lang
+        kfken = lang.objects.all().filter(user=request.user).values()
+        for www in kfken:
+            
+            language =www['lang']
 
-    return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language})
+        return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language})
 
 
 
@@ -462,8 +464,12 @@ def edit(request,room_code):
         language =www['lang']
 
     name = models.title.objects.all().filter(code=room_code).values()
-    for zz in name:
-        e = zz['title']
+    b = models.title.objects.all().filter(user=request.user,code=room_code)
+    if not b.exists():
+        return HttpResponse('<h2>Error, its not your game</h2>')
+    else:
+        for zz in name:
+            e = zz['title']
 
 
     return render(request,'edit.html',{'data':array,'room_code':room_code,'lang':language,'name':e})
@@ -663,7 +669,12 @@ def view_questions(request,room_code):
     for i in x:
         e = i['data']
         array.append(e)
-    return render(request,'view_questions.html',{'x':array})
+    b = models.title.objects.all().filter(user=request.user,code=room_code)
+    if not b.exists():
+        return HttpResponse('<h2>Error, its not your game</h2>')
+    else:
+
+        return render(request,'view_questions.html',{'x':array})
 
 @csrf_exempt
 def endpoint_restore(request):
