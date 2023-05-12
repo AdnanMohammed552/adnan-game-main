@@ -4,7 +4,7 @@ from django.utils import timezone
 
 class MyModel(models.Model):
     data = ArrayField(models.CharField(max_length=100), blank=True)
-    code = models.IntegerField(max_length=100)
+    code = models.IntegerField(max_length=100,unique=True)
     delete = models.BooleanField(default=False)
 
 class title(models.Model):
