@@ -207,8 +207,7 @@ def home2(request):
     print('fewgv',df)
     for v in df:
         number= v['quiz_number']
-
-    return render (request , 'accounthome2.html',{'lang':language,'num':number})
+    return render (request , 'accounthome2.html',{'lang':language,'num':number,'user':request.user})
 def played(request):
     language = 'english'
 
