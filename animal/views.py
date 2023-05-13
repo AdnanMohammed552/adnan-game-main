@@ -285,7 +285,9 @@ def req(rewquest):
         x = array[-1]
         array.pop()
         print(array )
-        
+        pri = array[-1]
+        array.pop()
+
         code = array[-1]
 
 
@@ -301,6 +303,7 @@ def req(rewquest):
         models.title.objects.create(user=rewquest.user,title=x,code=code,num=questionnumber).save
 
         df=models.enumeration.objects.all().filter(user=rewquest.user).values()
+
         print('fewgv',df)
         for v in df:
             number= v['quiz_number']
@@ -308,6 +311,8 @@ def req(rewquest):
         print('vweww',((int(number))+1))
         s.quiz_number = ((int(number))+1)
         s.save()
+        models.priv.objects.create(priv=pri,code=code)
+
         return JsonResponse({'success': True})
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method'})
@@ -401,8 +406,33 @@ def room_admin_quiz_qr(request,room_code):
         e = i['data']
         array.append(e)
     b = models.title.objects.all().filter(user=request.user,code=room_code)
+    p=models.priv.objects.all().filter(code=room_code).values()
+    for i in p:
+        private = i['private']
     if not b.exists():
-        return HttpResponse('<h2>Error, its not your game</h2>')
+        if private == True:
+            return HttpResponse('<h2>Error, its not your game</h2>')
+        elif private == False:
+            import io   
+            import qrcode.image.svg 
+            import qrcode
+            context ={}
+            factory = qrcode.image.svg.SvgImage
+            qr_image = qrcode.make(f'https://adnan-game-animal.herokuapp.com/camera/{room_code}',image_factory=factory, box_size=10)    
+            bufstore = io.BytesIO()
+            qr_image.save(bufstore)    
+            
+            svg = bufstore.getvalue().decode() 
+            from animal.models import lang
+            kfken = lang.objects.all().filter(user=request.user).values()
+            for www in kfken:
+                
+                language =www['lang']
+
+            return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language})
+
+
+
     else:
         import io   
         import qrcode.image.svg 
@@ -465,14 +495,26 @@ def edit(request,room_code):
 
     name = models.title.objects.all().filter(code=room_code).values()
     b = models.title.objects.all().filter(user=request.user,code=room_code)
+    p=models.priv.objects.all().filter(code=room_code).values()
+    for i in p:
+        private = i['private']
     if not b.exists():
-        return HttpResponse('<h2>Error, its not your game</h2>')
+        if private == True:
+            return HttpResponse('<h2>Error, its not your game</h2>')
+        elif private == False:
+            for zz in name:
+                e = zz['title']
+
+
+            return render(request,'edit.html',{'data':array,'room_code':room_code,'lang':language,'name':e})
+
+            
     else:
         for zz in name:
             e = zz['title']
 
 
-    return render(request,'edit.html',{'data':array,'room_code':room_code,'lang':language,'name':e})
+        return render(request,'edit.html',{'data':array,'room_code':room_code,'lang':language,'name':e})
 
 
 
@@ -670,8 +712,15 @@ def view_questions(request,room_code):
         e = i['data']
         array.append(e)
     b = models.title.objects.all().filter(user=request.user,code=room_code)
+    p=models.priv.objects.all().filter(code=room_code).values()
+    for i in p:
+        private = i['private']
     if not b.exists():
-        return HttpResponse('<h2>Error, its not your game</h2>')
+        if private == True:
+            return HttpResponse('<h2>Error, its not your game</h2>')
+        elif private==False:
+            return render(request,'view_questions.html',{'x':array})
+
     else:
 
         return render(request,'view_questions.html',{'x':array})

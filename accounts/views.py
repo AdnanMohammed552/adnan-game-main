@@ -282,8 +282,20 @@ def quiz_data(request,room_code):
     from quiz import models
     data = models.title.objects.all().filter(user=request.user,code=room_code).values()
     print('gwgwe',data)
+    p=models.priv.objects.all().filter(code=room_code).values()
+    for i in p:
+        private = i['private']
     if not data.exists():
-        return HttpResponse('<h2>Error, its not your game</h2>')
+        if private == True:
+            return HttpResponse('<h2>Error, its not your game</h2>')
+        elif private == False:
+            from animal.models import lang
+            kfken = lang.objects.all().values()
+            for www in kfken:
+                
+                language =www['lang']
+            return render(request,'quiz_data.html',{'w':data,'lang':language})
+
     else:
 
         from animal.models import lang
@@ -377,8 +389,15 @@ def quiz_data_last(request,room_code):
         language =www['lang']
 
     b = md.title.objects.all().filter(user=request.user,code=room_code)
+    p=md.priv.objects.all().filter(code=room_code).values()
+    for i in p:
+        private = i['private']
     if not b.exists():
-        return HttpResponse('<h2>Error, its not your game</h2>')
+        if private == True:
+            return HttpResponse('<h2>Error, its not your game</h2>')
+        elif private == False:
+            return render(request,'last_quiz.html',{'z':s,'room_code':room_code,'lang':language})
+
     else:
         return render(request,'last_quiz.html',{'z':s,'room_code':room_code,'lang':language})
 
@@ -397,8 +416,14 @@ def quiz_data_last_preview(request,id,room_code):
         
         language =www['lang']
     b = md.title.objects.all().filter(user=request.user,code=room_code)
+    p=md.priv.objects.all().filter(code=room_code).values()
+    for i in p:
+        private = i['private']
     if not b.exists():
-        return HttpResponse('<h2>Error, its not your game</h2>')
+        if private == True:
+            return HttpResponse('<h2>Error, its not your game</h2>')
+        elif private == False:
+            return render(request,'last_quiz_preview.html',{'lang':language,'z':adnan.render(Context({}))})
     else:
         return render(request,'last_quiz_preview.html',{'lang':language,'z':adnan.render(Context({}))})
     

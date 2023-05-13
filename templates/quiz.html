@@ -17,6 +17,11 @@
       <label id="vewv" for="quiz-code">Quiz password: (You can use this to allow managing the quiz from another accont)</label>
       <input type="password" class="form-control" id="pass" name="quiz-pass">
     </div>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="privateToggle">
+      <label class="form-check-label" for="privateToggle">Private</label>
+    </div>
+    
     
 <script>
   const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
@@ -212,7 +217,16 @@ function add() {
           }
         const code = '{{ran_code}}'
         const name = document.getElementById('name').value
+        const privateToggle = document.querySelector('#privateToggle');
+        if (privateToggle.checked) {
+        private = true
+        
+        }
+        else{
+          private = false
+        }
         data.push(code)
+        data.push(private)
         data.push(name)
         fetch('/api/endpoint/', {
           method: 'POST',

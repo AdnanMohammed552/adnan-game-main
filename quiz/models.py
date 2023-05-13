@@ -15,7 +15,9 @@ class title(models.Model):
     num = models.CharField(max_length=200,default='')
     delete = models.BooleanField(default=False)
 
-
+class priv(models.Model):
+    private = models.BooleanField(default=True)
+    code = models.IntegerField(max_length=100,unique=True)
 
 
 
