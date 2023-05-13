@@ -28,6 +28,9 @@
       <li class="nav-item">
         <a class="nav-link" id="tab6-tab" data-toggle="tab" href="#tab6" role="tab" aria-controls="tab6" aria-selected="false">Deleted Quiz</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" id="tab9-tab" data-toggle="tab" href="#tab9" role="tab" aria-controls="tab9" aria-selected="false">Played Quiz</a>
+      </li>
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="tab5" role="tabpanel" aria-labelledby="tab5-tab">
@@ -76,6 +79,16 @@
     
     {% endfor %}
   </div>
+
+  <div class="tab-pane fade show active" id="tab9" role="tabpanel" aria-labelledby="tab9-tab">
+    <br>
+
+    {{played}}
+
+    {% for i in played %}
+    <h3>{{i}}</h3>
+    {% endfor %}
+</div>
 
     <div class="tab-pane fade" id="tab6" role="tabpanel" aria-labelledby="tab6-tab">
       {% for i in e %}
