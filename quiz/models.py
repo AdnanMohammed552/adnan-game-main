@@ -38,4 +38,6 @@ class enumeration(models.Model):
 class played_quiz(models.Model):
     user= models.CharField(max_length=100)
     code= models.IntegerField(max_length=100)
+    class Meta:
+        unique_together = ('code', 'user')
 
