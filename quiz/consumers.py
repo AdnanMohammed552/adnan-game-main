@@ -172,7 +172,7 @@ class gameConsumer(AsyncWebsocketConsumer):
             next = event['next']
         except:
             next = False
-
+        print('vwbw',next)
         await self.send(text_data=json.dumps({
 
             'question':question,
