@@ -641,8 +641,9 @@ def activity(request):
     playeds = played_quiz.objects.all().filter(user=request.user).values()
     array=[]
     for i in playeds:
-        array.append(i['code'])
         array.append(i['name'])
+
+        array.append(i['code'])
 
 
     return render(request,'myactivity.html',{'z':w,'lang':language,'e':x,'c':c,'y':y,'played':array})
