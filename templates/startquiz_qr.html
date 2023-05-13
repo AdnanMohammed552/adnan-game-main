@@ -457,6 +457,7 @@ body{
 
 </body>
 <script>
+  document.getElementById('nextttt').style.display='none'
   const lang1 = '{{lang}}'
 
   if(lang1=='arabic'){
@@ -689,6 +690,8 @@ body{
         console.log('fall ');
       }
       document.getElementById('done').onclick = function(){
+        document.getElementById('nextttt').style.display='block'
+
         document.getElementById('done').style.display = 'none'
         document.getElementById('end').style.display='block'
 
