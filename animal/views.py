@@ -394,11 +394,13 @@ def camera(request,room_code):
         language =www['lang']
 
     from quiz.models import title
-    ee = title.objects.all().filter(user=request.user).values()
+    ee = title.objects.all().filter(code=room_code).values()
     user=''
     for x in ee:
         user = x['user']
+    print('hguwiehg',request.user,user)
     if str(request.user) == str(user):
+        print('fwevge')
         return render(request,'camera.html',{'room_code':room_code,'lang':language})
     else:
         return render(request,'password_enter.html',{'room_code':room_code})
@@ -665,8 +667,7 @@ def password(request):
         from quiz import models
         print('vwgwg',array[1],array[0])
         models.password.objects.create(code=array[1],password=array[0]).save()
-        return JsonResponse('Error!')
-
+        return JsonResponse({'success': True})
 
         #models.title.objects.create(user)
 
