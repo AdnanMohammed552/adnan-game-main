@@ -295,7 +295,8 @@ def quiz_data(request,room_code):
                 
                 language =www['lang']
             return render(request,'quiz_data.html',{'w':data,'lang':language})
-
+        else:
+            return HttpResponse('<h2>No game with this code !!</h2>')
     else:
 
         from animal.models import lang
@@ -397,7 +398,8 @@ def quiz_data_last(request,room_code):
             return HttpResponse('<h2>Error, its not your game</h2>')
         elif private == False:
             return render(request,'last_quiz.html',{'z':s,'room_code':room_code,'lang':language})
-
+        else:
+            return HttpResponse('<h2>No game with this code !!</h2>')
     else:
         return render(request,'last_quiz.html',{'z':s,'room_code':room_code,'lang':language})
 
@@ -424,6 +426,8 @@ def quiz_data_last_preview(request,id,room_code):
             return HttpResponse('<h2>Error, its not your game</h2>')
         elif private == False:
             return render(request,'last_quiz_preview.html',{'lang':language,'z':adnan.render(Context({}))})
+        else:
+            return HttpResponse('<h2>No game with this code !!</h2>')
     else:
         return render(request,'last_quiz_preview.html',{'lang':language,'z':adnan.render(Context({}))})
     

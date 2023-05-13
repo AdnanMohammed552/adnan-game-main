@@ -430,7 +430,8 @@ def room_admin_quiz_qr(request,room_code):
                 language =www['lang']
 
             return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language})
-
+        else:
+            return HttpResponse('<h2>No game with this code !!</h2>')
 
 
     else:
@@ -505,10 +506,12 @@ def edit(request,room_code):
             for zz in name:
                 e = zz['title']
 
-
+        
             return render(request,'edit.html',{'data':array,'room_code':room_code,'lang':language,'name':e})
 
-            
+        else:
+            return HttpResponse('<h2>No game with this code !!</h2>')
+        
     else:
         for zz in name:
             e = zz['title']
@@ -720,7 +723,8 @@ def view_questions(request,room_code):
             return HttpResponse('<h2>Error, its not your game</h2>')
         elif private==False:
             return render(request,'view_questions.html',{'x':array})
-
+        else:
+            return HttpResponse('<h2>No game with this code !!</h2>')
     else:
 
         return render(request,'view_questions.html',{'x':array})
