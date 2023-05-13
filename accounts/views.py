@@ -295,6 +295,7 @@ def quiz_data(request,room_code):
             for www in kfken:
                 
                 language =www['lang']
+            data = models.title.objects.all().filter(code=room_code).values()
             return render(request,'quiz_data.html',{'w':data,'lang':language})
         else:
             return HttpResponse('<h2>No game with this code !!</h2>')
