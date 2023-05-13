@@ -139,8 +139,10 @@ function add() {
         labels.forEach(label => {
           label.style.float = 'right'
         });
-        document.getElementById('qqq'+questionCount).innerHTML = 'السؤال'+questionCount
-        document.getElementById('tt').innerHTML = 'وقت السؤال بالثواني:'
+        document.getElementById('qqq'+questionCount).innerHTML = 'السؤال'+questionCount+':'
+        document.querySelectorAll('#tt').forEach(t=>{
+          t.innerHTML='وقت السؤال بالثواني:'
+        })
 
 
       }
