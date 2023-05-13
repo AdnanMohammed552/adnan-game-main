@@ -37,5 +37,5 @@ class enumeration(models.Model):
     user= models.CharField(max_length=10,unique=True)
 class played_quiz(models.Model):
     user= models.CharField(max_length=100)
-    code= models.IntegerField(max_length=100,unique=True)
+    code= models.IntegerField(max_length=100)
 
