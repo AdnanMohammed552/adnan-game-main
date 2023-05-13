@@ -164,7 +164,7 @@ class gameConsumer(AsyncWebsocketConsumer):
             
             
         }))
-
+        await self.played_quiz(room,pp)
         print('fqegfqeg',camera_correct)
         print('addadww32',question,answer,correctans)
 
