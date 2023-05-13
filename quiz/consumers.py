@@ -183,6 +183,7 @@ class gameConsumer(AsyncWebsocketConsumer):
 
     @sync_to_async
     def played_quiz(self,room,players,name,id):
+        print('vewngirw',id,name,room)
         from .models import played_quiz
         print('gkeqg',players)
         for i in players:
