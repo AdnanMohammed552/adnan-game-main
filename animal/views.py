@@ -301,12 +301,6 @@ def req(rewquest):
         # process the incoming data
 
         models.title.objects.create(user=rewquest.user,title=x,code=code,num=questionnumber).save
-
-        df=models.enumeration.objects.all().filter(user=rewquest.user).values()
-        print('fwefg33w',pri)
-        print('fewgv',df)
-        for v in df:
-            number= v['quiz_number']
         try:
             s=models.enumeration.objects.get(user=rewquest.user)
         except:
@@ -314,6 +308,12 @@ def req(rewquest):
             enumeration.objects.create(user=rewquest.user,quiz_number=0)
 
 
+        df=models.enumeration.objects.all().filter(user=rewquest.user).values()
+        print('fwefg33w',pri)
+        print('fewgv',df)
+        for v in df:
+            number= v['quiz_number']
+        
         s=models.enumeration.objects.get(user=rewquest.user)
         print('vweww',((int(number))+1))
         s.quiz_number = ((int(number))+1)
