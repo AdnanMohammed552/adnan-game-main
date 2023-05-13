@@ -303,7 +303,7 @@ def req(rewquest):
         models.title.objects.create(user=rewquest.user,title=x,code=code,num=questionnumber).save
 
         df=models.enumeration.objects.all().filter(user=rewquest.user).values()
-
+        print('fwefg33w',pri)
         print('fewgv',df)
         for v in df:
             number= v['quiz_number']
@@ -311,7 +311,7 @@ def req(rewquest):
         print('vweww',((int(number))+1))
         s.quiz_number = ((int(number))+1)
         s.save()
-        models.priv.objects.create(priv=pri,code=code).save
+        models.priv.objects.create(private=pri,code=code).save
 
         return JsonResponse({'success': True})
     else:
