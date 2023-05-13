@@ -307,6 +307,13 @@ def req(rewquest):
         print('fewgv',df)
         for v in df:
             number= v['quiz_number']
+        try:
+            s=models.enumeration.objects.get(user=rewquest.user)
+        except:
+            from quiz.models import enumeration
+            enumeration.objects.create(user=rewquest.user,quiz_number=0)
+
+
         s=models.enumeration.objects.get(user=rewquest.user)
         print('vweww',((int(number))+1))
         s.quiz_number = ((int(number))+1)
