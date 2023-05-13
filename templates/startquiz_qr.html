@@ -812,6 +812,10 @@ body{
                       if (data.next != false){
                         document.getElementById('nextttt').click()
                       }
+                      if(data.end_ques!= false){
+                        document.getElementById('nextttt').click()
+
+                      }
 
                     }
                     document.getElementById('nextttt').onclick = function() {
@@ -923,6 +927,9 @@ body{
                 gameSocketquiz.onmessage = function(r){
                     console.log('here we go really ')
                     const data = JSON.parse(r.data)
+                    if(data.next != false){
+                      document.getElementById('nextttt').click()
+                    }
                     if(data.exam!= false){
                       
                         let ans = (data.exam).split('/')[1]
