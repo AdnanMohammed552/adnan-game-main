@@ -188,18 +188,15 @@
     const lang1 = '{{lang}}'
 
     if(lang1=='arabic'){
-      document.getElementById('fee').innerHTML = 'إسم الإختبار'
-      document.getElementById('vewv').innerHTML = 'رمز الإختبار'
-      document.getElementById('add').innerHTML = 'إضافة سؤال آخر'
-      document.getElementById('sub').innerHTML = 'إنشاء الإختبار'
-      document.getElementById('sub').style.float='right'
-      document.getElementById('add').style.float='right'
-      document.getElementById('privateToggle').style.float='right'
-      const labels = document.querySelectorAll('label');
-      labels.forEach(label => {
-        label.style.float = 'right'
-      });
-      
+      document.getElementById('tab1-tab').innerHTML = 'الإختبارات'
+      document.getElementById('tab3-tab').innerHTML = 'لعبة أسماء حيوان جماد'
+      document.getElementById('tab5-tab').innerHTML = 'إختبارات تم إنشاؤها'
+      document.getElementById('tab6-tab').innerHTML = 'إختبارات محذوفة'
+      document.getElementById('tab7-tab').innerHTML = 'تم إنشاؤها'
+      document.getElementById('tab8-tab').innerHTML = 'تم لعبها'
+
+     
+    }
     function restore(code){
 
       fetch('/api/endpoint_restore/', {
