@@ -68,7 +68,7 @@
 	<button id="next">Next question</button>
 	<script>
 		document.getElementById('next').onclick = function(){
-			wa.send(JSON.stringify({
+			ws.send(JSON.stringify({
 				'next':true
 			}))
 		}
