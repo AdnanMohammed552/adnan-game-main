@@ -184,6 +184,22 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
 
   <script>
+    
+    const lang1 = '{{lang}}'
+
+    if(lang1=='arabic'){
+      document.getElementById('fee').innerHTML = 'إسم الإختبار'
+      document.getElementById('vewv').innerHTML = 'رمز الإختبار'
+      document.getElementById('add').innerHTML = 'إضافة سؤال آخر'
+      document.getElementById('sub').innerHTML = 'إنشاء الإختبار'
+      document.getElementById('sub').style.float='right'
+      document.getElementById('add').style.float='right'
+      document.getElementById('privateToggle').style.float='right'
+      const labels = document.querySelectorAll('label');
+      labels.forEach(label => {
+        label.style.float = 'right'
+      });
+      
     function restore(code){
 
       fetch('/api/endpoint_restore/', {
