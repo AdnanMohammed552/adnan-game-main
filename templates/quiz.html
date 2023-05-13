@@ -45,6 +45,7 @@ const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
       document.getElementById('vewv').innerHTML = 'رمز الإختبار'
       document.getElementById('add').innerHTML = 'إضافة سؤال آخر'
       document.getElementById('sub').innerHTML = 'إنشاء الإختبار'
+      document.getElementById('privateToggle').style.float='right'
       const labels = document.querySelectorAll('label');
       labels.forEach(label => {
         label.style.float = 'right'
@@ -80,7 +81,7 @@ function add() {
   </div>
 
   <div class="form-group">
-    <label for="quiz-timer">Timer Duration (in seconds):</label>
+    <label id='tt' for="quiz-timer">Timer Duration (in seconds):</label>
     <input type="number" class="form-control" id="seconds-input${questionCount}" name="quiz-timer" value="120">
   </div>
 
@@ -131,6 +132,16 @@ function add() {
 `;
 
   document.getElementById("quiz").appendChild(question);
+  if(lang1=='arabic'){
+    const labels = document.querySelectorAll('label');
+        labels.forEach(label => {
+          label.style.float = 'right'
+        });
+        document.getElementById('qqq'+questionCount).innerHTML = 'السؤال'+questionCount
+        document.getElementById('tt').innerHTML = 'وقت السؤال بالثواني:'
+
+
+      }
 }
 
     function deleteQuestion(q){
