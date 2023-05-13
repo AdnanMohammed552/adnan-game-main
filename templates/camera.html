@@ -37,12 +37,7 @@
 			// Start scanning for QR codes
 			scan();
 		};
-		document.getElementById('next').onclick = function(){
-			wa.send(JSON.stringify({
-				'next':true
-			}))
-		}
-	</script>
+		</script>
 </head>
 <body>
 	<style>
@@ -72,7 +67,12 @@
 	<center><h3 id="camera_correct"></h3></center>
 	<button id="next">Next question</button>
 	<script>
-
+		document.getElementById('next').onclick = function(){
+			wa.send(JSON.stringify({
+				'next':true
+			}))
+		}
+	
 		
 		const videoContainer = document.querySelector('.video-container');
 
