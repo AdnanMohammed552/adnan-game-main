@@ -86,11 +86,11 @@
     <br>
 
         {% for i in played %}
-
-        {% if i|is_numberic %}
         <center>
+          <h3 id="dww{{i}}">{{i.name}}</h3>
+
           <div id="addw{{i}}">
-          <button type="submit" class="btn btn-primary" id="{{i.ids}}" onclick="redirect('{{i.ids}}')" style="background-color: green;">{{i.code}}</button>
+          <button type="submit" class="btn btn-primary" id="{{i.ids}}" onclick="end_player('{{i.code}}', '{{i.ids}}')" style="background-color: green;">{{i.code}}</button>
         
         </div>
         
@@ -99,11 +99,8 @@
         <hr>
     
         
-    {% else %}
     <center>
-    <h3 id="dww{{i}}">{{i.name}}</h3>
 </center>
-    {% endif %}
     
     
     
@@ -181,7 +178,7 @@
 
           {% if i|is_numberic %}
           <center>
-          <button type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')" style="background-color: green;">{{i}}</button></center>
+          <button type="submit" class="btn btn-primary" id="{{i}}" onclick="end_player('{{i}}')" style="background-color: green;">{{i}}</button></center>
           {% else %}
           <center>
           <h3 >{{i}}</h3>
@@ -231,7 +228,22 @@
      
     }
     function end_player(code,id){
-
+    // Store the current page state in a session storage variable
+    sessionStorage.setItem("pageState", "redirected");
+  
+    // Redirect to the new URL using window.location
+    window.location.href = window.location.origin +'/account/game/quiz/' +code +'/last/'+id
+    
+    // Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
+    window.addEventListener("pageshow", function(event) {
+      // Check if the page state is set to "redirected"
+      if (sessionStorage.getItem("pageState") === "redirected") {
+        // Reload the page to update its content
+        window.location.reload();
+        // Reset the page state to avoid an infinite loop
+        sessionStorage.setItem("pageState", "reloaded");
+      }
+    });
     }
     function restore(code){
 
