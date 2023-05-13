@@ -24,6 +24,7 @@
     
     
 <script>
+
   const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
 const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   return new bootstrap.Popover(popoverTriggerEl)
@@ -37,10 +38,19 @@ const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 </div>
 <script>
 
+    const lang1 = '{{lang}}'
 
-  const lang1 = '{{lang}}'
-  x=5
-  if(x==5){
+    if(lang1=='arabic'){
+      document.getElementById('fee').innerHTML = 'إسم الإختبار'
+      document.getElementById('vewv').innerHTML = 'رمز الإختبار'
+      document.getElementById('add').innerHTML = 'إضافة سؤال آخر'
+      document.getElementById('sub').innerHTML = 'إنشاء الإختبار'
+      const labels = document.querySelectorAll('label');
+      labels.forEach(label => {
+        label.style.float = 'right'
+      });
+  
+  
 let questionCount = 0;
 
 function add() {
@@ -246,7 +256,12 @@ function add() {
           .then(data =>alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from My activity panel'))
           .catch(error => alert('Please check all fields are correct!!'));
           sessionStorage.setItem("pageState", "redirected");
-  
+          const inputs = document.querySelectorAll("button, input[type='text']");
+
+          // Loop through each input and disable it
+          inputs.forEach(input => {
+            input.disabled = true;
+          });
           // Redirect to the new URL using window.location
           window.location.href = window.location.origin +'/account/game/quiz/' +code
           
