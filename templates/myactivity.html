@@ -90,7 +90,7 @@
         {% if i|is_numberic %}
         <center>
           <div id="addw{{i}}">
-          <button type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')" style="background-color: green;">{{i}}</button>
+          <button type="submit" class="btn btn-primary" id="{{i.ids}}" onclick="redirect('{{i.ids}}')" style="background-color: green;">{{i.code}}</button>
         
         </div>
         
@@ -101,7 +101,7 @@
         
     {% else %}
     <center>
-    <h3 id="dww{{i}}">{{i}}</h3>
+    <h3 id="dww{{i}}">{{i.name}}</h3>
 </center>
     {% endif %}
     
@@ -229,6 +229,9 @@
       document.getElementById('tab8-tab').innerHTML = 'تم لعبها'
 
      
+    }
+    function end_player(code,id){
+
     }
     function restore(code){
 
