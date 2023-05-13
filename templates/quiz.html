@@ -54,6 +54,13 @@ const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 let questionCount = 0;
 
 function add() {
+  const lang1 = '{{lang}}'
+  if(lang1=='arabic'){
+  const labels = document.querySelectorAll('label');
+      labels.forEach(label => {
+        label.style.float = 'right'
+      });
+    }
   questionCount++;
 
   const question = document.createElement("div");
