@@ -65,9 +65,28 @@
 	<video id="video" width="1000" height="1000" autoplay="autoplay" playsinline autoplay controls></video>
 	</div>
 	<center><h3 id="camera_correct"></h3></center>
-	<button id="next">Next question</button>
+	<button id="next">End question</button>
+	<button class="btn-danger" id="end_game">End game</button>
+
 	<script>
+		let x = 'end'
+		document.getElementById('end_game').onclick=function(){
+			ws.send(JSON.stringify({
+				'end_clicked':true
+			}))
+		}
+
+
 		document.getElementById('next').onclick = function(){
+			if (x=='next'){
+			x='end'
+			document.getElementById('next').innerHTML='End question'
+
+			}
+			else if (x=='end'){
+				x='next'
+				document.getElementById('next').innerHTML='Next question'
+			}
 			ws.send(JSON.stringify({
 				'next':true
 			}))

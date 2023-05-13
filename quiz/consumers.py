@@ -93,6 +93,10 @@ class gameConsumer(AsyncWebsocketConsumer):
             next = data['next']
         except:
             next = False
+        try:
+            end_clicked = data['end_clicked']
+        except:
+            end_clicked = False
 
         try:
             data = data['data']
@@ -117,7 +121,8 @@ class gameConsumer(AsyncWebsocketConsumer):
                 'camera_correct':camera_correct,
                 'pp':pp,
                 'name':name,
-                'next':next
+                'next':next,
+                'end_clicked':end_clicked
             }
             
         )
@@ -172,6 +177,11 @@ class gameConsumer(AsyncWebsocketConsumer):
             next = event['next']
         except:
             next = False
+        try:
+            end_clicked = event['end_clicked']
+        except:
+            end_clicked = False
+        
         print('vwbw',next)
         await self.send(text_data=json.dumps({
 
@@ -182,7 +192,8 @@ class gameConsumer(AsyncWebsocketConsumer):
             'result':result,
             'room':room,
             'camera_correct':camera_correct,
-            'next':next
+            'next':next,
+            'end_clicked':end_clicked
     
             
             

@@ -612,6 +612,9 @@ body{
 
       gameSocketquiz.onmessage=function(e){
         const data = JSON.parse(e.data)
+        if(data.end_clicked != false){
+          document.getElementById('end').click()
+        }
         if(data.exam !== false){
           const str = data.exam;
           const strBeforeSlash = str.split('/')[0];
@@ -809,6 +812,9 @@ body{
                   await new Promise((resolve) => {
                     gameSocketquiz.onmessage = function(e){
                       const data = JSON.parse(e.data)
+                      if(data.end_clicked != false){
+                        document.getElementById('end').click()
+                      }
                       if (data.next != false){
                         document.getElementById('nextttt').click()
                       }
@@ -927,6 +933,9 @@ body{
                 gameSocketquiz.onmessage = function(r){
                     console.log('here we go really ')
                     const data = JSON.parse(r.data)
+                    if(data.end_clicked != false){
+                      document.getElementById('end').click()
+                    }
                     if(data.next != false){
                       document.getElementById('nextttt').click()
                     }
