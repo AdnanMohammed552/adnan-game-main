@@ -39,7 +39,7 @@ class played_quiz(models.Model):
     user= models.CharField(max_length=100)
     code= models.IntegerField(max_length=100)
     name = models.CharField(max_length=200,default='')
-    ids = models.ImageField(max_length=10000,default=0)
+    ids = models.IntegerField(max_length=10000,default=0)
 
     class Meta:
         unique_together = ('code', 'user')
