@@ -425,9 +425,16 @@ def quiz_data_last_preview(request,id,room_code):
     private=''
     for i in p:
         private = i['private']
+    
+    n=md.played_quiz.objects.all().filter(user=request.user,code=room_code)
+
     if not b.exists():
         if private == True:
-            return HttpResponse('<h2>Error, its not your game</h2>')
+            if not n.exists():
+                return HttpResponse('<h2>Error, its not your game</h2>')
+            else:
+                return render(request,'last_quiz_preview.html',{'lang':language,'z':adnan.render(Context({}))})
+
         elif private == False:
             return render(request,'last_quiz_preview.html',{'lang':language,'z':adnan.render(Context({}))})
         else:
