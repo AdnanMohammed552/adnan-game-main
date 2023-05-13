@@ -311,7 +311,7 @@ def req(rewquest):
         print('vweww',((int(number))+1))
         s.quiz_number = ((int(number))+1)
         s.save()
-        models.priv.objects.create(priv=pri,code=code)
+        models.priv.objects.create(priv=pri,code=code).save
 
         return JsonResponse({'success': True})
     else:
