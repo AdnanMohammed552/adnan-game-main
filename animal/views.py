@@ -401,6 +401,9 @@ def room_admin_quiz_qr(request,room_code):
 
     from quiz import models
     x= models.MyModel.objects.all().filter(code=room_code).values()
+    t=models.title.objects.all().filter(code=room_code).values()
+    for i in t:
+        name = i['title']
     array = []
     for i in x:
         e = i['data']
@@ -430,7 +433,7 @@ def room_admin_quiz_qr(request,room_code):
                 
                 language =www['lang']
 
-            return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language})
+            return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language,'name':name})
         else:
             return HttpResponse('<h2>No game with this code !!</h2>')
 
@@ -452,7 +455,7 @@ def room_admin_quiz_qr(request,room_code):
             
             language =www['lang']
 
-        return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language})
+        return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language,'name':name})
 
 
 
@@ -639,6 +642,7 @@ def activity(request):
     array=[]
     for i in playeds:
         array.append(i['code'])
+        array.append(i['name'])
 
 
     return render(request,'myactivity.html',{'z':w,'lang':language,'e':x,'c':c,'y':y,'played':array})

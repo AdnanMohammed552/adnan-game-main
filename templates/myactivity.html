@@ -83,10 +83,30 @@
   <div class="tab-pane fade show active" id="tab9" role="tabpanel" aria-labelledby="tab9-tab">
     <br>
 
-    {{played}}
+    <br>
 
-    {% for i in played %}
-    <h3>{{i}}</h3>
+        {% for i in played %}
+
+        {% if i|is_numberic %}
+        <center>
+          <div id="addw{{i}}">
+          <button type="submit" class="btn btn-primary" id="{{i}}" onclick="redirect('{{i}}')" style="background-color: green;">{{i}}</button>
+        
+        </div>
+        
+        </center>
+        <br>
+        <hr>
+    
+        
+    {% else %}
+    <center>
+    <h3 id="dww{{i}}">{{i}}</h3>
+</center>
+    {% endif %}
+    
+    
+    
     {% endfor %}
 </div>
 

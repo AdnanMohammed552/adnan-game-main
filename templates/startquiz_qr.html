@@ -455,8 +455,11 @@ body{
 {{ room_code|json_script:'json-roomcode' }}
 {{ request.user.username|json_script:"user_id" }}
 
+
+
 </body>
 <script>
+  const name = '{{name}}'
   document.getElementById('nextttt').style.display='none'
   const lang1 = '{{lang}}'
 
@@ -1019,7 +1022,8 @@ body{
           'room':roomCode,
           'id':randomNum,
           'players':i,
-          'pp':arra
+          'pp':arra,
+          'name':name
         }))        
         sessionStorage.setItem("pageState", "redirected");
 

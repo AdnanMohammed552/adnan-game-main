@@ -85,6 +85,10 @@ class gameConsumer(AsyncWebsocketConsumer):
         except:
             pp = False
 
+        try:
+            name = data['name']
+        except:
+            name = False
 
         try:
             data = data['data']
@@ -107,7 +111,8 @@ class gameConsumer(AsyncWebsocketConsumer):
                 'players':players,
                 'data':data,
                 'camera_correct':camera_correct,
-                'pp':pp
+                'pp':pp,
+                'name':name
             }
             
         )
@@ -150,7 +155,11 @@ class gameConsumer(AsyncWebsocketConsumer):
             pp = event['pp']
         except:
             pp = False
-        
+        try:
+            name = event['name']
+        except:
+            name = False
+
         await self.send(text_data=json.dumps({
 
             'question':question,
@@ -165,16 +174,16 @@ class gameConsumer(AsyncWebsocketConsumer):
             
         }))
         if pp != False:
-            await self.played_quiz(room,pp)
+            await self.played_quiz(room,pp,name)
         print('fqegfqeg',camera_correct)
         print('addadww32',question,answer,correctans)
 
     @sync_to_async
-    def played_quiz(self,room,players):
+    def played_quiz(self,room,players,name):
         from .models import played_quiz
         print('gkeqg',players)
         for i in players:
-            played_quiz.objects.create(user=i,code=room).save()
+            played_quiz.objects.create(user=i,code=room,name=name).save()
     @sync_to_async
     def save(self,room,started,end):
         startingroom.objects.create(room=room,started=started,end=end)
