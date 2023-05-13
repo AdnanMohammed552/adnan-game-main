@@ -37,6 +37,11 @@
 			// Start scanning for QR codes
 			scan();
 		};
+		document.getElementById('next').onclick = function(){
+			wa.send(JSON.stringify({
+				'next':true
+			}))
+		}
 	</script>
 </head>
 <body>
@@ -65,8 +70,9 @@
 	<video id="video" width="1000" height="1000" autoplay="autoplay" playsinline autoplay controls></video>
 	</div>
 	<center><h3 id="camera_correct"></h3></center>
-
+	<button id="next">Next question</button>
 	<script>
+
 		
 		const videoContainer = document.querySelector('.video-container');
 

@@ -89,13 +89,17 @@ class gameConsumer(AsyncWebsocketConsumer):
             name = data['name']
         except:
             name = False
+        try:
+            next = data['next']
+        except:
+            next = False
 
         try:
             data = data['data']
         except:
             data = False
         
-
+        
         print('fwegw22fff',camera_correct)
         await self.channel_layer.group_send(
             self.room_group_name,
@@ -112,7 +116,8 @@ class gameConsumer(AsyncWebsocketConsumer):
                 'data':data,
                 'camera_correct':camera_correct,
                 'pp':pp,
-                'name':name
+                'name':name,
+                'next':next
             }
             
         )
@@ -163,6 +168,11 @@ class gameConsumer(AsyncWebsocketConsumer):
             id = event['id']
         except:
             id = False
+        try:
+            next = event['next']
+        except:
+            next = False
+
         await self.send(text_data=json.dumps({
 
             'question':question,
@@ -171,7 +181,8 @@ class gameConsumer(AsyncWebsocketConsumer):
             'exam':exam,
             'result':result,
             'room':room,
-            'camera_correct':camera_correct
+            'camera_correct':camera_correct,
+            'next':next
     
             
             

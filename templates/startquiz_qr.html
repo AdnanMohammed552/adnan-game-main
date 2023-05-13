@@ -807,6 +807,13 @@ body{
             
                   await wait((i.timer),correctlastasnwer,i.question); 
                   await new Promise((resolve) => {
+                    gameSocketquiz.onmessage = function(e){
+                      const data = JSON.parse(e.data)
+                      if (data.next != false){
+                        document.getElementById('nextttt').click()
+                      }
+
+                    }
                     document.getElementById('nextttt').onclick = function() {
                       document.getElementById('answer'+correctlastasnwer.replaceAll(' ','')).style.background = '#f7f7f7'
                       document.getElementById('answer'+correctlastasnwer.replaceAll(' ','')).style.color = 'black'
