@@ -283,6 +283,7 @@ def quiz_data(request,room_code):
     data = models.title.objects.all().filter(user=request.user,code=room_code).values()
     print('gwgwe',data)
     p=models.priv.objects.all().filter(code=room_code).values()
+    private=''
     for i in p:
         private = i['private']
     if not data.exists():
@@ -391,6 +392,7 @@ def quiz_data_last(request,room_code):
 
     b = md.title.objects.all().filter(user=request.user,code=room_code)
     p=md.priv.objects.all().filter(code=room_code).values()
+    private=''
     for i in p:
         private = i['private']
     if not b.exists():
@@ -419,6 +421,7 @@ def quiz_data_last_preview(request,id,room_code):
         language =www['lang']
     b = md.title.objects.all().filter(user=request.user,code=room_code)
     p=md.priv.objects.all().filter(code=room_code).values()
+    private=''
     for i in p:
         private = i['private']
     if not b.exists():

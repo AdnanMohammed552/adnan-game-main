@@ -407,6 +407,7 @@ def room_admin_quiz_qr(request,room_code):
         array.append(e)
     b = models.title.objects.all().filter(user=request.user,code=room_code)
     p=models.priv.objects.all().filter(code=room_code).values()
+    private=''
     for i in p:
         private = i['private']
     if not b.exists():
@@ -497,6 +498,7 @@ def edit(request,room_code):
     name = models.title.objects.all().filter(code=room_code).values()
     b = models.title.objects.all().filter(user=request.user,code=room_code)
     p=models.priv.objects.all().filter(code=room_code).values()
+    private=''
     for i in p:
         private = i['private']
     if not b.exists():
@@ -716,6 +718,7 @@ def view_questions(request,room_code):
         array.append(e)
     b = models.title.objects.all().filter(user=request.user,code=room_code)
     p=models.priv.objects.all().filter(code=room_code).values()
+    private=''
     for i in p:
         private = i['private']
     if not b.exists():
