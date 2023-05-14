@@ -99,6 +99,11 @@ class gameConsumer(AsyncWebsocketConsumer):
             end_clicked = False
 
         try:
+            scores = data['scores']
+        except:
+            scores = False
+
+        try:
             data = data['data']
         except:
             data = False
@@ -122,7 +127,8 @@ class gameConsumer(AsyncWebsocketConsumer):
                 'pp':pp,
                 'name':name,
                 'next':next,
-                'end_clicked':end_clicked
+                'end_clicked':end_clicked,
+                'scores':scores
             }
             
         )
@@ -181,6 +187,11 @@ class gameConsumer(AsyncWebsocketConsumer):
             end_clicked = event['end_clicked']
         except:
             end_clicked = False
+        try:
+            scores = event['scores']
+        except:
+            scores = False
+
         
         print('vwbw',next)
         await self.send(text_data=json.dumps({
@@ -199,12 +210,12 @@ class gameConsumer(AsyncWebsocketConsumer):
             
         }))
         if pp != False:
-            await self.played_quiz(room,pp,name,id)
+            await self.played_quiz(room,pp,name,id,scores)
         print('fqegfqeg',camera_correct)
         print('addadww32',question,answer,correctans)
 
     @sync_to_async
-    def played_quiz(self,room,players,name,id):
+    def played_quiz(self,room,players,name,id,scores):
         print('vewngirw',id,name,room)
         from .models import played_quiz
         print('gkeqg',players)
@@ -225,6 +236,9 @@ class gameConsumer(AsyncWebsocketConsumer):
             print('vweww21f',((int(number))+1))
             s.quiz_number_played = ((int(number))+1)
             s.save()
+
+        for i in scores:
+            print('ife',i)
 
 
     @sync_to_async
