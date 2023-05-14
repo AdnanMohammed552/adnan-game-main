@@ -707,6 +707,7 @@ def process_form(request,room_code):
         print('kewgew',passs,room_code)
         from quiz import models
         c=models.password.objects.all().filter(code=room_code).values()
+        print('ccis',c,room_code)
         for i in c:
             actual_password = i['password']
         print('actual iss ',actual_password)
@@ -717,7 +718,7 @@ def process_form(request,room_code):
             print('vgwegwe224')
             return HttpResponse('Error password!!')
 
-
+        
     else:
         return HttpResponse('Error!!')
     
