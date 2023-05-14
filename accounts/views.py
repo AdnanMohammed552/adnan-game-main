@@ -207,7 +207,12 @@ def home2(request):
     print('fewgv',df)
     for v in df:
         number= v['quiz_number']
-    return render (request , 'accounthome2.html',{'lang':language,'num':number,'user':request.user})
+
+    n=User.objects.all().filter(username=request.user).values()
+    for i in n:
+        joined_data = i['date_joined']
+    print('here weggg',joined_data)
+    return render (request , 'accounthome2.html',{'lang':language,'num':number,'user':request.user,'join':joined_data})
 def played(request):
     language = 'english'
 
