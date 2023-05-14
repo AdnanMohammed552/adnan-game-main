@@ -227,7 +227,7 @@ class gameConsumer(AsyncWebsocketConsumer):
                 total_score.objects.create(user=i,total_score=0)
             print('ife',scores[i])
 
-            df=models.total_score.objects.get(user=i)
+            df=models.total_score.objects.filter(user=i).values()
             for v in df:
                 tot = v['total_score']
 
