@@ -223,7 +223,7 @@ class gameConsumer(AsyncWebsocketConsumer):
             
             s=models.enumeration_played.objects.get(user=i)
             print('vweww21f',((int(number))+1))
-            s.quiz_number = ((int(number))+1)
+            s.quiz_number_played = ((int(number))+1)
             s.save()
 
 
