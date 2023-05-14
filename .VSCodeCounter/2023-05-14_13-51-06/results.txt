@@ -1,0 +1,270 @@
+Date : 2023-05-14 13:51:06
+Directory : d:\django projects\Full project code\adnan-game-animal
+Total : 216 files,  12971 codes, 1205 comments, 3270 blanks, all 17446 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| HTML             |         39 |      7,286 |        232 |      1,767 |      9,285 |
+| Python           |        175 |      5,481 |        973 |      1,503 |      7,957 |
+| pip requirements |          1 |        201 |          0 |          0 |        201 |
+| Markdown         |          1 |          3 |          0 |          0 |          3 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                  | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                     |        216 |     12,971 |      1,205 |      3,270 |     17,446 |
+| . (Files)                                                                                                                             |          4 |        264 |          7 |          8 |        279 |
+| accounts                                                                                                                              |         13 |        473 |         15 |        137 |        625 |
+| accounts (Files)                                                                                                                      |          7 |        391 |         11 |        109 |        511 |
+| accounts\migrations                                                                                                                   |          5 |         73 |          4 |         26 |        103 |
+| accounts\templatetags                                                                                                                 |          1 |          9 |          0 |          2 |         11 |
+| animal                                                                                                                                |        101 |      3,957 |        857 |      1,015 |      5,829 |
+| animal (Files)                                                                                                                        |          9 |      1,307 |         22 |        241 |      1,570 |
+| animal\channels                                                                                                                       |         29 |      1,696 |        773 |        400 |      2,869 |
+| animal\channels (Files)                                                                                                               |         16 |      1,117 |        499 |        264 |      1,880 |
+| animal\channels\generic                                                                                                               |          3 |        194 |        122 |         57 |        373 |
+| animal\channels\management                                                                                                            |          4 |        169 |         24 |         27 |        220 |
+| animal\channels\management (Files)                                                                                                    |          1 |          0 |          0 |          1 |          1 |
+| animal\channels\management\commands                                                                                                   |          3 |        169 |         24 |         26 |        219 |
+| animal\channels\security                                                                                                              |          2 |         69 |         68 |         18 |        155 |
+| animal\channels\testing                                                                                                               |          4 |        147 |         60 |         34 |        241 |
+| animal\migrations                                                                                                                     |         63 |        954 |         62 |        374 |      1,390 |
+| animals                                                                                                                               |          5 |        129 |         51 |         44 |        224 |
+| gameadmin                                                                                                                             |         12 |        213 |          7 |         65 |        285 |
+| gameadmin (Files)                                                                                                                     |          8 |        165 |          4 |         45 |        214 |
+| gameadmin\migrations                                                                                                                  |          4 |         48 |          3 |         20 |         71 |
+| letter                                                                                                                                |          9 |        126 |         10 |         30 |        166 |
+| letter (Files)                                                                                                                        |          8 |        126 |         10 |         29 |        165 |
+| letter\migrations                                                                                                                     |          1 |          0 |          0 |          1 |          1 |
+| quiz                                                                                                                                  |         34 |        568 |         30 |        207 |        805 |
+| quiz (Files)                                                                                                                          |          8 |        238 |          5 |         55 |        298 |
+| quiz\migrations                                                                                                                       |         26 |        330 |         25 |        152 |        507 |
+| templates                                                                                                                             |         38 |      7,241 |        228 |      1,764 |      9,233 |
++---------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                                                                                              | language         | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| d:\django projects\Full project code\adnan-game-animal\1.html                                                                         | HTML             |         45 |          4 |          3 |         52 |
+| d:\django projects\Full project code\adnan-game-animal\README.md                                                                      | Markdown         |          3 |          0 |          0 |          3 |
+| d:\django projects\Full project code\adnan-game-animal\accounts\__init__.py                                                           | Python           |          0 |          0 |          1 |          1 |
+| d:\django projects\Full project code\adnan-game-animal\accounts\admin.py                                                              | Python           |          1 |          1 |          2 |          4 |
+| d:\django projects\Full project code\adnan-game-animal\accounts\apps.py                                                               | Python           |          4 |          0 |          3 |          7 |
+| d:\django projects\Full project code\adnan-game-animal\accounts\migrations\0001_initial.py                                            | Python           |         17 |          1 |          7 |         25 |
+| d:\django projects\Full project code\adnan-game-animal\accounts\migrations\0002_room_created_players_room_created_table_and_more.py   | Python           |         27 |          1 |          6 |         34 |
+| d:\django projects\Full project code\adnan-game-animal\accounts\migrations\0003_played.py                                             | Python           |         15 |          1 |          6 |         22 |
+| d:\django projects\Full project code\adnan-game-animal\accounts\migrations\0004_room_created_date.py                                  | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\accounts\migrations\__init__.py                                                | Python           |          0 |          0 |          1 |          1 |
+| d:\django projects\Full project code\adnan-game-animal\accounts\models.py                                                             | Python           |         13 |          0 |          6 |         19 |
+| d:\django projects\Full project code\adnan-game-animal\accounts\templatetags\num.py                                                   | Python           |          9 |          0 |          2 |         11 |
+| d:\django projects\Full project code\adnan-game-animal\accounts\tests.py                                                              | Python           |          1 |          1 |          2 |          4 |
+| d:\django projects\Full project code\adnan-game-animal\accounts\urls.py                                                               | Python           |         24 |          0 |          8 |         32 |
+| d:\django projects\Full project code\adnan-game-animal\accounts\views.py                                                              | Python           |        348 |          9 |         87 |        444 |
+| d:\django projects\Full project code\adnan-game-animal\animal\__init__.py                                                             | Python           |          0 |          0 |          1 |          1 |
+| d:\django projects\Full project code\adnan-game-animal\animal\admin.py                                                                | Python           |          6 |          0 |          3 |          9 |
+| d:\django projects\Full project code\adnan-game-animal\animal\apps.py                                                                 | Python           |          4 |          0 |          3 |          7 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\__init__.py                                                    | Python           |          8 |          0 |          4 |         12 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\apps.py                                                        | Python           |          9 |          4 |          7 |         20 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\auth.py                                                        | Python           |        128 |         40 |         23 |        191 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\consumer.py                                                    | Python           |         66 |         47 |         21 |        134 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\db.py                                                          | Python           |         10 |          4 |          6 |         20 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\exceptions.py                                                  | Python           |         16 |         27 |         23 |         66 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\generic\__init__.py                                            | Python           |          0 |          0 |          1 |          1 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\generic\http.py                                                | Python           |         39 |         40 |         13 |         92 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\generic\websocket.py                                           | Python           |        155 |         82 |         43 |        280 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\hacks.py                                                       | Python           |          6 |          5 |          3 |         14 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\http.py                                                        | Python           |        256 |         81 |         31 |        368 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\layers.py                                                      | Python           |        212 |         98 |         56 |        366 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\management\__init__.py                                         | Python           |          0 |          0 |          1 |          1 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\management\commands\__init__.py                                | Python           |          0 |          0 |          1 |          1 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\management\commands\runserver.py                               | Python           |        134 |         21 |         16 |        171 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\management\commands\runworker.py                               | Python           |         35 |          3 |          9 |         47 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\middleware.py                                                  | Python           |          6 |         18 |          3 |         27 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\routing.py                                                     | Python           |        117 |         52 |         26 |        195 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\security\__init__.py                                           | Python           |          0 |          0 |          1 |          1 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\security\websocket.py                                          | Python           |         69 |         68 |         17 |        154 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\sessions.py                                                    | Python           |        175 |         65 |         29 |        269 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\signals.py                                                     | Python           |          5 |          1 |          3 |          9 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\staticfiles.py                                                 | Python           |         39 |         27 |         17 |         83 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\testing\__init__.py                                            | Python           |         10 |          0 |          3 |         13 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\testing\http.py                                                | Python           |         34 |         17 |          6 |         57 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\testing\live.py                                                | Python           |         45 |          9 |         14 |         68 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\testing\websocket.py                                           | Python           |         58 |         34 |         11 |        103 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\utils.py                                                       | Python           |         41 |         15 |          5 |         61 |
+| d:\django projects\Full project code\adnan-game-animal\animal\channels\worker.py                                                      | Python           |         23 |         15 |          7 |         45 |
+| d:\django projects\Full project code\adnan-game-animal\animal\consumers.py                                                            | Python           |        638 |         14 |         42 |        694 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0001_initial.py                                              | Python           |         33 |          1 |          7 |         41 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0002_alter_summeryofletter_time.py                           | Python           |         13 |          1 |          6 |         20 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0003_alter_summeryofletter_all_letter_as_and_more.py         | Python           |         18 |          1 |          6 |         25 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0004_alter_summeryofletter_time.py                           | Python           |         13 |          1 |          6 |         20 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0005_startingroom_alter_summeryofletter_time.py              | Python           |         21 |          1 |          6 |         28 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0006_alter_summeryofletter_time.py                           | Python           |         13 |          1 |          6 |         20 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0007_alter_summeryofletter_time.py                           | Python           |         13 |          1 |          6 |         20 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0008_delete_startingroom_alter_summeryofletter_time.py       | Python           |         16 |          1 |          6 |         23 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0009_alter_summeryofletter_time.py                           | Python           |         13 |          1 |          6 |         20 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0010_alter_summeryofletter_time.py                           | Python           |         13 |          1 |          6 |         20 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0011_alter_summeryofletter_time.py                           | Python           |         13 |          1 |          6 |         20 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0012_array_alter_summeryofletter_time.py                     | Python           |         21 |          1 |          6 |         28 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0013_alter_array_status_alter_summeryofletter_time.py        | Python           |         18 |          1 |          6 |         25 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0014_alter_array_status_alter_summeryofletter_time.py        | Python           |         18 |          1 |          6 |         25 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0015_players_alter_summeryofletter_time.py                   | Python           |         21 |          1 |          6 |         28 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0016_alter_players_players_alter_summeryofletter_time.py     | Python           |         18 |          1 |          6 |         25 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0017_alter_adnan_test11_letter_alter_summeryofletter_time.py | Python           |         18 |          1 |          6 |         25 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0018_alter_summeryofletter_time.py                           | Python           |         13 |          1 |          6 |         20 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0019_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0020_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0021_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0022_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0023_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0024_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0025_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0026_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0027_room_created_alter_summeryofletter_time.py              | Python           |         24 |          1 |          6 |         31 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0028_alter_room_created_room_created_and_more.py             | Python           |         19 |          1 |          6 |         26 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0029_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0030_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0031_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0032_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0033_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0034_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0035_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0036_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0037_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0038_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0039_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0040_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0041_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0042_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0043_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0044_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0045_lang_alter_summeryofletter_time.py                      | Python           |         21 |          1 |          6 |         28 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0046_lang_user_alter_summeryofletter_time.py                 | Python           |         19 |          1 |          6 |         26 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0047_alter_lang_user_alter_summeryofletter_time.py           | Python           |         19 |          1 |          6 |         26 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0048_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0049_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0050_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0051_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0052_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0053_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0054_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0055_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0056_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0057_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0058_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0059_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0060_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0061_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\0062_alter_summeryofletter_time.py                           | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\animal\migrations\__init__.py                                                  | Python           |          0 |          0 |          1 |          1 |
+| d:\django projects\Full project code\adnan-game-animal\animal\models.py                                                               | Python           |         39 |          0 |          6 |         45 |
+| d:\django projects\Full project code\adnan-game-animal\animal\routing.py                                                              | Python           |          5 |          0 |          2 |          7 |
+| d:\django projects\Full project code\adnan-game-animal\animal\tests.py                                                                | Python           |          1 |          1 |          2 |          4 |
+| d:\django projects\Full project code\adnan-game-animal\animal\urls.py                                                                 | Python           |         30 |          0 |          8 |         38 |
+| d:\django projects\Full project code\adnan-game-animal\animal\views.py                                                                | Python           |        584 |          7 |        174 |        765 |
+| d:\django projects\Full project code\adnan-game-animal\animals\__init__.py                                                            | Python           |          0 |          0 |          1 |          1 |
+| d:\django projects\Full project code\adnan-game-animal\animals\asgi.py                                                                | Python           |         21 |          1 |          4 |         26 |
+| d:\django projects\Full project code\adnan-game-animal\animals\settings.py                                                            | Python           |         97 |         27 |         32 |        156 |
+| d:\django projects\Full project code\adnan-game-animal\animals\urls.py                                                                | Python           |          7 |         15 |          2 |         24 |
+| d:\django projects\Full project code\adnan-game-animal\animals\wsgi.py                                                                | Python           |          4 |          8 |          5 |         17 |
+| d:\django projects\Full project code\adnan-game-animal\gameadmin\__init__.py                                                          | Python           |          0 |          0 |          1 |          1 |
+| d:\django projects\Full project code\adnan-game-animal\gameadmin\admin.py                                                             | Python           |          1 |          1 |          2 |          4 |
+| d:\django projects\Full project code\adnan-game-animal\gameadmin\apps.py                                                              | Python           |          4 |          0 |          3 |          7 |
+| d:\django projects\Full project code\adnan-game-animal\gameadmin\consumers.py                                                         | Python           |        141 |          1 |         29 |        171 |
+| d:\django projects\Full project code\adnan-game-animal\gameadmin\migrations\0001_initial.py                                           | Python           |         16 |          1 |          7 |         24 |
+| d:\django projects\Full project code\adnan-game-animal\gameadmin\migrations\0002_room.py                                              | Python           |         14 |          1 |          6 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\gameadmin\migrations\0003_startingroom_admin_startingroom_time.py              | Python           |         18 |          1 |          6 |         25 |
+| d:\django projects\Full project code\adnan-game-animal\gameadmin\migrations\__init__.py                                               | Python           |          0 |          0 |          1 |          1 |
+| d:\django projects\Full project code\adnan-game-animal\gameadmin\models.py                                                            | Python           |         12 |          0 |          4 |         16 |
+| d:\django projects\Full project code\adnan-game-animal\gameadmin\routing.py                                                           | Python           |          5 |          0 |          2 |          7 |
+| d:\django projects\Full project code\adnan-game-animal\gameadmin\tests.py                                                             | Python           |          1 |          1 |          2 |          4 |
+| d:\django projects\Full project code\adnan-game-animal\gameadmin\views.py                                                             | Python           |          1 |          1 |          2 |          4 |
+| d:\django projects\Full project code\adnan-game-animal\letter\__init__.py                                                             | Python           |          0 |          0 |          1 |          1 |
+| d:\django projects\Full project code\adnan-game-animal\letter\admin.py                                                                | Python           |          1 |          1 |          2 |          4 |
+| d:\django projects\Full project code\adnan-game-animal\letter\apps.py                                                                 | Python           |          4 |          0 |          3 |          7 |
+| d:\django projects\Full project code\adnan-game-animal\letter\consumers.py                                                            | Python           |        113 |          6 |         15 |        134 |
+| d:\django projects\Full project code\adnan-game-animal\letter\migrations\__init__.py                                                  | Python           |          0 |          0 |          1 |          1 |
+| d:\django projects\Full project code\adnan-game-animal\letter\models.py                                                               | Python           |          1 |          1 |          2 |          4 |
+| d:\django projects\Full project code\adnan-game-animal\letter\routing.py                                                              | Python           |          5 |          0 |          2 |          7 |
+| d:\django projects\Full project code\adnan-game-animal\letter\tests.py                                                                | Python           |          1 |          1 |          2 |          4 |
+| d:\django projects\Full project code\adnan-game-animal\letter\views.py                                                                | Python           |          1 |          1 |          2 |          4 |
+| d:\django projects\Full project code\adnan-game-animal\manage.py                                                                      | Python           |         15 |          3 |          5 |         23 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\__init__.py                                                               | Python           |          0 |          0 |          1 |          1 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\admin.py                                                                  | Python           |          1 |          1 |          2 |          4 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\apps.py                                                                   | Python           |          4 |          0 |          3 |          7 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\consumers.py                                                              | Python           |        190 |          2 |         32 |        224 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0001_initial.py                                                | Python           |         16 |          1 |          7 |         24 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0002_alter_mymodel_data.py                                     | Python           |         12 |          1 |          6 |         19 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0003_alter_mymodel_data.py                                     | Python           |         13 |          1 |          6 |         20 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0004_title.py                                                  | Python           |         15 |          1 |          6 |         22 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0005_title_user.py                                             | Python           |         12 |          1 |          6 |         19 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0006_title_date.py                                             | Python           |         13 |          1 |          6 |         20 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0007_room_created.py                                           | Python           |         18 |          1 |          6 |         25 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0008_alter_room_created_room_created.py                        | Python           |         12 |          1 |          6 |         19 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0009_title_edit.py                                             | Python           |         12 |          1 |          6 |         19 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0010_remove_title_edit.py                                      | Python           |         11 |          1 |          6 |         18 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0011_title_num.py                                              | Python           |         12 |          1 |          6 |         19 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0012_password.py                                               | Python           |         15 |          1 |          6 |         22 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0013_mymodel_delete.py                                         | Python           |         12 |          1 |          6 |         19 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0014_title_delete.py                                           | Python           |         12 |          1 |          6 |         19 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0015_enumeration.py                                            | Python           |         15 |          1 |          6 |         22 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0016_alter_mymodel_code.py                                     | Python           |         12 |          1 |          6 |         19 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0017_priv.py                                                   | Python           |         15 |          1 |          6 |         22 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0018_played_quiz.py                                            | Python           |         15 |          1 |          6 |         22 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0019_alter_played_quiz_code.py                                 | Python           |         12 |          1 |          6 |         19 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0020_alter_played_quiz_unique_together.py                      | Python           |         11 |          1 |          6 |         18 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0021_played_quiz_name.py                                       | Python           |         12 |          1 |          6 |         19 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0022_played_quiz_ids.py                                        | Python           |         12 |          1 |          6 |         19 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0023_alter_played_quiz_ids.py                                  | Python           |         12 |          1 |          6 |         19 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0024_alter_played_quiz_code_alter_played_quiz_ids.py           | Python           |         17 |          1 |          6 |         24 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\0025_alter_played_quiz_ids.py                                  | Python           |         12 |          1 |          6 |         19 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\migrations\__init__.py                                                    | Python           |          0 |          0 |          1 |          1 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\models.py                                                                 | Python           |         36 |          0 |         11 |         47 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\routing.py                                                                | Python           |          5 |          0 |          2 |          7 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\tests.py                                                                  | Python           |          1 |          1 |          2 |          4 |
+| d:\django projects\Full project code\adnan-game-animal\quiz\views.py                                                                  | Python           |          1 |          1 |          2 |          4 |
+| d:\django projects\Full project code\adnan-game-animal\requirements.txt                                                               | pip requirements |        201 |          0 |          0 |        201 |
+| d:\django projects\Full project code\adnan-game-animal\templates\accounthome.html                                                     | HTML             |         62 |          0 |         22 |         84 |
+| d:\django projects\Full project code\adnan-game-animal\templates\accounthome2.html                                                    | HTML             |         39 |          2 |          7 |         48 |
+| d:\django projects\Full project code\adnan-game-animal\templates\base.html                                                            | HTML             |        217 |         21 |         33 |        271 |
+| d:\django projects\Full project code\adnan-game-animal\templates\camera.html                                                          | HTML             |        101 |          0 |         25 |        126 |
+| d:\django projects\Full project code\adnan-game-animal\templates\create.html                                                          | HTML             |         98 |          0 |         19 |        117 |
+| d:\django projects\Full project code\adnan-game-animal\templates\created.html                                                         | HTML             |         97 |          0 |         20 |        117 |
+| d:\django projects\Full project code\adnan-game-animal\templates\edit.html                                                            | HTML             |        505 |          0 |        133 |        638 |
+| d:\django projects\Full project code\adnan-game-animal\templates\end.html                                                             | HTML             |         54 |          0 |         16 |         70 |
+| d:\django projects\Full project code\adnan-game-animal\templates\endAdmin.html                                                        | HTML             |        329 |          0 |         42 |        371 |
+| d:\django projects\Full project code\adnan-game-animal\templates\end_quiz_qr.html                                                     | HTML             |        251 |          1 |         47 |        299 |
+| d:\django projects\Full project code\adnan-game-animal\templates\game.html                                                            | HTML             |        812 |          0 |        167 |        979 |
+| d:\django projects\Full project code\adnan-game-animal\templates\gamequiz.html                                                        | HTML             |        192 |          0 |         47 |        239 |
+| d:\django projects\Full project code\adnan-game-animal\templates\join.html                                                            | HTML             |         64 |          9 |         27 |        100 |
+| d:\django projects\Full project code\adnan-game-animal\templates\joinqr.html                                                          | HTML             |         50 |          8 |         25 |         83 |
+| d:\django projects\Full project code\adnan-game-animal\templates\joinquiz.html                                                        | HTML             |         63 |          9 |         28 |        100 |
+| d:\django projects\Full project code\adnan-game-animal\templates\last_quiz.html                                                       | HTML             |         30 |          0 |         12 |         42 |
+| d:\django projects\Full project code\adnan-game-animal\templates\last_quiz_preview.html                                               | HTML             |        251 |          1 |         47 |        299 |
+| d:\django projects\Full project code\adnan-game-animal\templates\login.html                                                           | HTML             |        177 |         85 |         18 |        280 |
+| d:\django projects\Full project code\adnan-game-animal\templates\myaccount.html                                                       | HTML             |         13 |         74 |          4 |         91 |
+| d:\django projects\Full project code\adnan-game-animal\templates\myactivity.html                                                      | HTML             |        269 |          3 |         81 |        353 |
+| d:\django projects\Full project code\adnan-game-animal\templates\mygames.html                                                         | HTML             |         38 |          0 |         16 |         54 |
+| d:\django projects\Full project code\adnan-game-animal\templates\password_enter.html                                                  | HTML             |         18 |          3 |          5 |         26 |
+| d:\django projects\Full project code\adnan-game-animal\templates\played.html                                                          | HTML             |         10 |          0 |          5 |         15 |
+| d:\django projects\Full project code\adnan-game-animal\templates\playedas.html                                                        | HTML             |         32 |          0 |          8 |         40 |
+| d:\django projects\Full project code\adnan-game-animal\templates\qrcodes.html                                                         | HTML             |         18 |          0 |          3 |         21 |
+| d:\django projects\Full project code\adnan-game-animal\templates\quiz.html                                                            | HTML             |        262 |          0 |         61 |        323 |
+| d:\django projects\Full project code\adnan-game-animal\templates\quiz_data.html                                                       | HTML             |        121 |          4 |         30 |        155 |
+| d:\django projects\Full project code\adnan-game-animal\templates\quizlist.html                                                        | HTML             |         81 |          1 |         22 |        104 |
+| d:\django projects\Full project code\adnan-game-animal\templates\room.html                                                            | HTML             |        108 |          0 |         28 |        136 |
+| d:\django projects\Full project code\adnan-game-animal\templates\roomAdmin.html                                                       | HTML             |         99 |          0 |         18 |        117 |
+| d:\django projects\Full project code\adnan-game-animal\templates\signup.html                                                          | HTML             |         88 |          4 |         20 |        112 |
+| d:\django projects\Full project code\adnan-game-animal\templates\startquiz.html                                                       | HTML             |        344 |          0 |         92 |        436 |
+| d:\django projects\Full project code\adnan-game-animal\templates\startquiz_qr.html                                                    | HTML             |        849 |          3 |        226 |      1,078 |
+| d:\django projects\Full project code\adnan-game-animal\templates\startroom.html                                                       | HTML             |        950 |          0 |        279 |      1,229 |
+| d:\django projects\Full project code\adnan-game-animal\templates\type.html                                                            | HTML             |         74 |          0 |         23 |         97 |
+| d:\django projects\Full project code\adnan-game-animal\templates\view_questions.html                                                  | HTML             |        269 |          0 |         61 |        330 |
+| d:\django projects\Full project code\adnan-game-animal\templates\waiting.html                                                         | HTML             |        102 |          0 |         22 |        124 |
+| d:\django projects\Full project code\adnan-game-animal\templates\waitingquiz.html                                                     | HTML             |        104 |          0 |         25 |        129 |
+| Total                                                                                                                                 |                  |     12,971 |      1,205 |      3,270 |     17,446 |
++---------------------------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
