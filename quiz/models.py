@@ -38,6 +38,11 @@ class enumeration(models.Model):
 
 class enumeration_played(models.Model):
     quiz_number_played = models.CharField(max_length=10,null=True,blank=True)
+
+    user= models.CharField(max_length=10,unique=True)
+
+class total_score(models.Model):
+    total_score = models.CharField(max_length=1000000,null=True,blank=True)
     user= models.CharField(max_length=10,unique=True)
 
 class played_quiz(models.Model):
