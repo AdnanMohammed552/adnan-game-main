@@ -203,6 +203,13 @@ def home2(request):
     for www in kfken:
         
         language =www['lang']
+    try:
+        s=models.enumeration.objects.get(user=request.user)
+    except:
+        from quiz.models import enumeration
+        enumeration.objects.create(user=request.user,quiz_number=0)
+
+
     df=models.enumeration.objects.all().filter(user=request.user).values()
     print('fewgv',df)
     for v in df:
