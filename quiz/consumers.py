@@ -219,6 +219,8 @@ class gameConsumer(AsyncWebsocketConsumer):
         print('vewngirw',id,name,room)
         from .models import played_quiz
         print('gkeqg',players)
+        for i in scores:
+            print('ife',i)
         for i in players:
             played_quiz.objects.create(user=i,code=room,name=name,ids=id).save()
 
@@ -237,8 +239,7 @@ class gameConsumer(AsyncWebsocketConsumer):
             s.quiz_number_played = ((int(number))+1)
             s.save()
 
-        for i in scores:
-            print('ife',i)
+        
 
 
     @sync_to_async
