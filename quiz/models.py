@@ -35,6 +35,11 @@ class password(models.Model):
 class enumeration(models.Model):
     quiz_number = models.CharField(max_length=10,null=True,blank=True)
     user= models.CharField(max_length=10,unique=True)
+
+class enumeration_played(models.Model):
+    quiz_number_played = models.CharField(max_length=10,null=True,blank=True)
+    user= models.CharField(max_length=10,unique=True)
+
 class played_quiz(models.Model):
     user= models.CharField(max_length=100)
     code= models.IntegerField(max_length=1000)

@@ -210,6 +210,23 @@ class gameConsumer(AsyncWebsocketConsumer):
         print('gkeqg',players)
         for i in players:
             played_quiz.objects.create(user=i,code=room,name=name,ids=id).save()
+
+            try:
+                s=models.enumeration_played.objects.get(user=i)
+            except:
+                from quiz.models import enumeration_played
+                enumeration_played.objects.create(user=i,quiz_number_played=0)
+            df=models.enumeration_played.objects.all().filter(user=i).values()
+        
+            for v in df:
+                number= v['quiz_number_played']
+            
+            s=models.enumeration_played.objects.get(user=i)
+            print('vweww',((int(number))+1))
+            s.quiz_number = ((int(number))+1)
+            s.save()
+
+
     @sync_to_async
     def save(self,room,started,end):
         startingroom.objects.create(room=room,started=started,end=end)

@@ -215,11 +215,22 @@ def home2(request):
     for v in df:
         number= v['quiz_number']
 
+    try:
+        s=models.enumeration_played.objects.get(user=request.user)
+    except:
+        from quiz.models import enumeration_played
+        enumeration_played.objects.create(user=request.user,quiz_number_played=0)
+
+
+    df1=models.enumeration_played.objects.all().filter(user=request.user).values()
+    for v in df1:
+        number_played= v['quiz_number_played']
+
     n=User.objects.all().filter(username=request.user).values()
     for i in n:
         joined_data = i['date_joined']
     print('here weggg',joined_data)
-    return render (request , 'accounthome2.html',{'lang':language,'num':number,'user':request.user,'join':joined_data})
+    return render (request , 'accounthome2.html',{'lang':language,'num':number,'user':request.user,'join':joined_data,'number_played':number_played})
 def played(request):
     language = 'english'
 
