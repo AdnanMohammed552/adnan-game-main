@@ -232,7 +232,7 @@ class gameConsumer(AsyncWebsocketConsumer):
                 tot = v['total_score']
 
             s=models.total_score.objects.get(user=i)
-            print('vweww21f',((int(number))+1))
+            print('vweww21f',((int(tot))+1))
             s.total_score = ((int(tot))+int(scores[i]))
             s.save()
 
