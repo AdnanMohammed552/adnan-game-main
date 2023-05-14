@@ -20,7 +20,6 @@ class priv(models.Model):
     code = models.IntegerField(max_length=100,unique=True)
 
 
-
 class room_created(models.Model):
     user = models.CharField(max_length=100)
     room_created = models.CharField(max_length=10,null=True,blank=True)
@@ -35,15 +34,16 @@ class password(models.Model):
 class enumeration(models.Model):
     quiz_number = models.CharField(max_length=10,null=True,blank=True)
     user= models.CharField(max_length=10,unique=True)
+class total_score(models.Model):
+    total_score = models.CharField(max_length=1000000)
+    user= models.CharField(max_length=10,unique=True)
 
 class enumeration_played(models.Model):
     quiz_number_played = models.CharField(max_length=10,null=True,blank=True)
 
     user= models.CharField(max_length=10,unique=True)
 
-class total_score(models.Model):
-    total_score = models.CharField(max_length=1000000,null=True,blank=True)
-    user= models.CharField(max_length=10,unique=True)
+
 
 class played_quiz(models.Model):
     user= models.CharField(max_length=100)
