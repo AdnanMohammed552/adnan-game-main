@@ -231,7 +231,7 @@ class gameConsumer(AsyncWebsocketConsumer):
             for v in df:
                 tot = v['total_score']
                 curr = v['code']
-            if str(curr) == (room):
+            if str(curr) == str(room):
                 pass
             else:
                 s=models.total_score.objects.get(user=i)
