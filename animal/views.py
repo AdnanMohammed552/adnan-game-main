@@ -29,9 +29,16 @@ def my_variable(request):
             pass
     except:
         user_score=0
+    try:
+        my_model = models.image.objects.get(user=request.user)
+    except:
+        models.image.objects.create(user=request.user,image='Untitled.jpeg')
     # Return a dictionary with the variable
+    my_model = models.image.objects.get(user=request.user)
+
     return {
-        'my_variable': user_score
+        'my_variable': user_score,
+        'my_model':my_model
     }
 def room_end(request,room_code):
     language = 'english'
