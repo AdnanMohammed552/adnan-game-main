@@ -24,9 +24,10 @@ def my_variable(request):
             user_score = i['total_score']
         except:
             user_score = 0
-    if user_score :
-        pass
-    else:
+    try: 
+        if user_score:
+            pass
+    except:
         user_score=0
     # Return a dictionary with the variable
     return {

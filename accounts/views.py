@@ -236,6 +236,12 @@ def home2(request):
             user_score = i['total_score']
         except:
             user_score = 0
+
+    try: 
+        if user_score:
+            pass
+    except:
+        user_score=0
     return render (request , 'accounthome2.html',{'lang':language,'num':number,'user':request.user,'join':joined_data,'number_played':number_played,'user_score':user_score})
 def played(request):
     language = 'english'
