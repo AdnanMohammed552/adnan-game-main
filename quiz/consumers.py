@@ -224,7 +224,7 @@ class gameConsumer(AsyncWebsocketConsumer):
                 s=models.total_score.objects.get(user=i)
             except:
                 from quiz.models import total_score
-                total_score.objects.create(user=i,total_score=0,code=room)
+                total_score.objects.create(user=i,total_score=int(scores[i]),code=room)
             print('ife',scores[i])
 
             df=models.total_score.objects.filter(user=i).values()
