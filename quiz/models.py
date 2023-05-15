@@ -51,3 +51,6 @@ class played_quiz(models.Model):
     class Meta:
         unique_together = ('code', 'user')
 
+class image(models.Model):
+    image = models.ImageField(upload_to='images/')
+    user= models.CharField(max_length=100,null=True,blank=True)

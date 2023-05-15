@@ -242,7 +242,8 @@ def home2(request):
             pass
     except:
         user_score=0
-    return render (request , 'accounthome2.html',{'lang':language,'num':number,'user':request.user,'join':joined_data,'number_played':number_played,'user_score':user_score})
+    my_model = models.image.objects.get(user=request.user)
+    return render (request , 'accounthome2.html',{'lang':language,'num':number,'user':request.user,'join':joined_data,'number_played':number_played,'user_score':user_score,'my_model': my_model})
 def played(request):
     language = 'english'
 
@@ -476,4 +477,30 @@ def quiz_data_last_preview(request,id,room_code):
             return HttpResponse('<h2>No game with this code !!</h2>')
     else:
         return render(request,'last_quiz_preview.html',{'lang':language,'z':adnan.render(Context({}))})
-    
+
+from django.shortcuts import render
+from .forms import ImageUploadForm
+
+def upload_image(request):
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Save the uploaded image
+            image = form.cleaned_data['image']
+            from quiz import models as MyModel
+            try:
+                MyModel.image.objects.get(user=request.user)
+            except:
+                my_model = MyModel.image.objects.create(image=image,user=request.user)
+
+            
+            s=MyModel.image.objects.get(user=request.user)
+            s.image=image
+            s.save()
+            from django.shortcuts import redirect
+            return redirect('home')
+            # Handle other form fields if needed
+            # Redirect or display a success message
+    else:
+        form = ImageUploadForm()
+    return render(request, 'upload_image.html', {'form': form})
