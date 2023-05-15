@@ -63,131 +63,140 @@ rel="stylesheet"
     </style>
     <body id="aae" dir="ltr">
       
-<nav dir="ltr" class="navbar navbar-expand-lg navbar-light " id="adnannav">
-  <!-- Container wrapper -->
-  <div class="container-fluid">
-    <!-- Toggle button -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-mdb-toggle="collapse"
-      data-mdb-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <!-- Navbar brand -->
-      <a class="navbar-brand mt-2 mt-lg-0" href="/">
-        <div id="adnankhjhoiheof">
-        <img
-        style="height: 70;"
-          src="https://i.postimg.cc/63KRwR82/0abb09a7b6f64cebb1953d6bf95b56d4.png"
-          
-        />
-        </div>
-      </a>
-      <!-- Left links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-         <strong> <a class="nav-link text-capitalize" id="create1" href="/create/type">Create New game</a></strong>
-        </li>
-        <li class="nav-item">
-         <strong> <a class="nav-link text-capitalize" id="join1" href="/join">Join a room</a></strong>
-        </li>
-        <li class="nav-item">
-        <strong>  <a class="nav-link text-capitalize" id="join1" href="/activity">My activity</a></strong>
-        </li>
-        <li>
-         <strong> <a class="nav-link text-capitalize" id="qrr" href="/account/qrcodes">qr codes</a></strong>
-        </li>
-
-      </ul>
-      <!-- Left links -->
-    </div>
-    <!-- Collapsible wrapper -->
-
-    <!-- Right elements -->
-    <div class="d-flex align-items-center">
-      <!-- Icon -->
-     
-      <!-- Notifications -->
-      <div class="dropdown">
-        <a
-          class="text-reset me-3 dropdown-toggle hidden-arrow"
-          href="#"
-          id="navbarDropdownMenuLink"
-          role="button"
-          data-mdb-toggle="dropdown"
-          aria-expanded="false"
-        >
-          
-      </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          Select language
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-          <li><a class="dropdown-item" id="arabic" >Arabic</a></li>
-          <li><a class="dropdown-item" id="eng" >English</a></li>
-        </ul>
-      </div>
+      <nav dir="ltr" class="navbar navbar-expand-lg navbar-light " id="adnannav">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+          <!-- Toggle button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-mdb-toggle="collapse"
+            data-mdb-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
       
-      <!-- Avatar -->
-      <div class="dropdown">
-        <a
-  class="dropdown-toggle d-flex align-items-center hidden-arrow"
-  href="#"
-  id="navbarDropdownMenuAvatar"
-  role="button"
-  data-mdb-toggle="dropdown"
-  aria-expanded="false"
->
-  <div class="d-flex align-items-center">
-    <img
-      src="https://cdn1.iconfinder.com/data/icons/website-internet/48/website_-_male_user-512.png"
-      class="rounded-circle me-2"
-      height="40"
-      alt="Black and White Portrait of a Man"
-      loading="lazy"
-    />
-    <span class="fw-bold">{{request.user.username}}</span>
-  </div>
-</a>
-
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuAvatar"
-        >
-        
-          <li>
-            <a class="dropdown-item text-capitalize" id="prof" href="/account/home">My profile</a>
-          </li>
-
-          <li>
-            <a class="dropdown-item text-capitalize" id="qrr" href="/activity">My activity</a>
-          </li>
-
-          <li>
-            <a class="dropdown-item text-capitalize" id="qrr" href="/account/qrcodes">qr codes</a>
-          </li>
-
+          <!-- Collapsible wrapper -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Navbar brand -->
+            <a class="navbar-brand mt-2 mt-lg-0" href="/">
+              <div id="adnankhjhoiheof">
+              <img
+                style="height: 70;"
+                src="https://i.postimg.cc/63KRwR82/0abb09a7b6f64cebb1953d6bf95b56d4.png"
+              />
+              </div>
+            </a>
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <strong>
+                  <a class="nav-link text-capitalize" id="create1" href="/create/type">Create New game</a>
+                </strong>
+              </li>
+              <li class="nav-item">
+                <strong>
+                  <a class="nav-link text-capitalize" id="join1" href="/join">Join a room</a>
+                </strong>
+              </li>
+              <li class="nav-item">
+                <strong>
+                  <a class="nav-link text-capitalize" id="join1" href="/activity">My activity</a>
+                </strong>
+              </li>
+              <li>
+                <strong>
+                  <a class="nav-link text-capitalize" id="qrr" href="/account/qrcodes">qr codes</a>
+                </strong>
+              </li>
+            </ul>
+            <!-- Left links -->
+          </div>
+          <!-- Collapsible wrapper -->
       
-          
-          <li>
-            <a class="dropdown-item text-capitalize" id="out" href="{% url 'logout' %}">Logout</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!-- Right elements -->
-  </div>
-  <!-- Container wrapper -->
-</nav>
+          <!-- Right elements -->
+          <div class="d-flex align-items-center">
+            <!-- Points Icon -->
+            <div class="me-3">
+              <i class="fas fa-coins"></i> <!-- Replace "fa-coins" with the appropriate icon class for points -->
+              <span class="fw-bold">{{my_variable}}</span> <!-- Replace "100" with the actual number of collected points -->
+            </div>
+      
+            <!-- Notifications -->
+            <div class="dropdown">
+              <a
+                class="text-reset me-3 dropdown-toggle hidden-arrow"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-mdb-toggle="dropdown"
+                aria-expanded="false"
+              ></a>
+            </div>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                Select language
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                <li><a class="dropdown-item" id="arabic" >Arabic</a></li>
+                <li><a class="dropdown-item" id="eng" >English</a></li>
+              </ul>
+            </div>
+      
+            <!-- Avatar -->
+            <div class="dropdown">
+              <a
+                class="dropdown-toggle d-flex align-items-center hidden-arrow"
+               
+                href="#"
+                id="navbarDropdownMenuAvatar"
+                role="button"
+                data-mdb-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <div class="d-flex align-items-center">
+                  <img
+                    src="https://cdn1.iconfinder.com/data/icons/website-internet/48/website_-_male_user-512.png"
+                    class="rounded-circle me-2"
+                    height="40"
+                    alt="Black and White Portrait of a Man"
+                    loading="lazy"
+                  />
+                  <span class="fw-bold">{{request.user.username}}</span>
+                </div>
+              </a>
+              
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="navbarDropdownMenuAvatar"
+              >
+              
+                <li>
+                  <a class="dropdown-item text-capitalize" id="prof" href="/account/home">My profile</a>
+                </li>
+              
+                <li>
+                  <a class="dropdown-item text-capitalize" id="qrr" href="/activity">My activity</a>
+                </li>
+              
+                <li>
+                  <a class="dropdown-item text-capitalize" id="qrr" href="/account/qrcodes">qr codes</a>
+                </li>
+              
+                <li>
+                  <a class="dropdown-item text-capitalize" id="out" href="{% url 'logout' %}">Logout</a>
+                </li>
+              </ul>
+              </div>
+              </div>
+              <!-- Right elements -->
+              </div>
+              <!-- Container wrapper -->
+              </nav>
+                    
 <!-- Navbar -->
       
 

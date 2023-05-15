@@ -15,6 +15,20 @@ the_letter = 'ب'
 print('this is letterc from views',the_letter)
 
 from animal.models import lang
+def my_variable(request):
+    # Define your variable here
+    from quiz import models
+    score = models.total_score.objects.all().filter(user=request.user).values()
+    for i in score:
+        try:
+            user_score = i['total_score']
+        except:
+            user_score = 0
+
+    # Return a dictionary with the variable
+    return {
+        'my_variable': user_score
+    }
 def room_end(request,room_code):
     language = 'english'
 
