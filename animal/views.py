@@ -32,7 +32,7 @@ def my_variable(request):
     try:
         my_model = models.image.objects.get(user=request.user)
     except:
-        models.image.objects.create(user=request.user,image='Untitled.jpeg')
+        models.image.objects.create(user=request.user)
     # Return a dictionary with the variable
     my_model = models.image.objects.get(user=request.user)
 
