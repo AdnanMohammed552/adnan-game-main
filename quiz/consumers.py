@@ -224,17 +224,21 @@ class gameConsumer(AsyncWebsocketConsumer):
                 s=models.total_score.objects.get(user=i)
             except:
                 from quiz.models import total_score
-                total_score.objects.create(user=i,total_score=0)
+                total_score.objects.create(user=i,total_score=0,code=room)
             print('ife',scores[i])
 
             df=models.total_score.objects.filter(user=i).values()
             for v in df:
                 tot = v['total_score']
-
-            s=models.total_score.objects.get(user=i)
-            print('vweww21f',((int(tot))+1))
-            s.total_score = ((int(tot))+int(scores[i]))
-            s.save()
+                curr = v['code']
+            if curr == room:
+                pass
+            else:
+                s=models.total_score.objects.get(user=i)
+                print('vweww21f',((int(tot))+1))
+                s.total_score = ((int(tot))+int(scores[i]))
+                s.code=room
+                s.save()
 
            # models.total_score.objects.create(user=i,total_score=)
         for i in players:
