@@ -52,5 +52,5 @@ class played_quiz(models.Model):
         unique_together = ('code', 'user')
 
 class image(models.Model):
-    image = models.ImageField(upload_to='images/',default='3906412_uhtF0GE.png')
+    image = models.ImageField(upload_to='images/',default='3906412_GzOGzLN.png')
     user= models.CharField(max_length=100,null=True,blank=True)
