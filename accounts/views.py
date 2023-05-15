@@ -230,7 +230,13 @@ def home2(request):
     for i in n:
         joined_data = i['date_joined']
     print('here weggg',joined_data)
-    return render (request , 'accounthome2.html',{'lang':language,'num':number,'user':request.user,'join':joined_data,'number_played':number_played})
+    score = models.total_score.objects.all().filter(user=request.user).values()
+    for i in score:
+        try:
+            user_score = i['total_score']
+        except:
+            user_score = 0
+    return render (request , 'accounthome2.html',{'lang':language,'num':number,'user':request.user,'join':joined_data,'number_played':number_played,'user_score':user_score})
 def played(request):
     language = 'english'
 
