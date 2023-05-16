@@ -786,4 +786,10 @@ def endpoint_restore(request):
         d.delete=False
         d.save()
         return JsonResponse({'success': True})
-
+@csrf_exempt
+def endpoint_reeset(request):
+    if request.method == 'POST':
+        from quiz import models
+        x=models.image.objects.get(user=request.user)
+        x.image='images/3906412_DzsLBsC.png'
+        x.save()
