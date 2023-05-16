@@ -575,9 +575,18 @@ def req1(rewquest):
         print(array )
         
         code = array[-1]
+
+        questionnumber = ((len(array))-1)/7
+        questionnumber=int(questionnumber)
         from quiz import models
-        new = models.MyModel.objects.get(code=code).delete()
-        models.MyModel.objects.create(data=array,code=code).save
+        new = models.MyModel.objects.get(code=code)
+        new.data=array
+        new.save()
+
+        title=models.title.objects.get(code=code)
+        title.num=questionnumber
+        title.save()
+        #models.MyModel.objects.create(data=array,code=code).save
         
         #models.title.objects.create(user=rewquest.user,title=x,code=code,edit=edit).save
         return JsonResponse({'success': True})
