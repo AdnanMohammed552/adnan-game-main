@@ -793,3 +793,4 @@ def endpoint_reeset(request):
         x=models.image.objects.get(user=request.user)
         x.image='images/3906412_DzsLBsC.png'
         x.save()
+        return JsonResponse({'success': True})
