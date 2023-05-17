@@ -243,6 +243,7 @@ def home2(request):
     except:
         user_score=0
     my_model = models.image.objects.get(user=request.user)
+    
     return render (request , 'accounthome2.html',{'lang':language,'num':number,'user':request.user,'join':joined_data,'number_played':number_played,'user_score':user_score,'my_model': my_model})
 def played(request):
     language = 'english'
