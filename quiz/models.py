@@ -7,7 +7,7 @@ class MyModel(models.Model):
     code = models.IntegerField(max_length=100,unique=True)
     delete = models.BooleanField(default=False)
     def __str__(self):
-        return self.code
+        return str(self.code)
 
 class title(models.Model):
     user =models.CharField(max_length=100,null=True)
