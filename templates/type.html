@@ -14,8 +14,44 @@
     <div class="d-grid gap-2">
         
         <a class="nav-link text-center display-6" href="/account/home"><span id="feqwv"> Hello, </span>{{request.user.username}}</a>
-        <button class="btn " type="submit" id="Create"><img src="https://mqaall.com/wp-content/uploads/2018/10/%D9%85%D8%A7-%D8%AA%D9%81%D8%B3%D9%8A%D8%B1-%D8%A7%D9%84%D8%A3%D8%AD%D9%84%D8%A7%D9%85-%D8%A8%D8%A7%D9%84%D8%AD%D8%B1%D9%88%D9%81-%D8%A7%D9%84.jpg" style='width:800px;height: 400px; ' alt="buttonpng" border="0" />  </button>
-        <button class="btn " type="submit" id="Join"><img src="https://dz8fbjd9gwp2s.cloudfront.net/courses/60408b740cf27f88f14f9423/60408b740cf27f88f14f9423_scaled_cover.jpg?v=1" style='width: 800px;;height: 400px; ' alt="buttonpng" border="0" /></button>
+        <style>
+          .transparent-btn {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+          }
+          
+          .transparent-btn:focus {
+            outline: none;
+          }
+          
+          .transparent-btn img {
+            width: 100%;
+            height: auto;
+          }
+          
+        </style>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12"style='float:left'>
+              <h3 style="color: black;">Select game type:</h3>
+              <hr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <button class="btn transparent-btn" type="submit" id="Create">
+                <img src="https://i.postimg.cc/RFySJTvQ/Untitled-1.png" alt="buttonpng" />
+              </button>
+            </div>
+            <div class="col-sm-6">
+              <button class="btn transparent-btn" type="submit" id="Join">
+                <img src="https://dz8fbjd9gwp2s.cloudfront.net/courses/60408b740cf27f88f14f9423/60408b740cf27f88f14f9423_scaled_cover.jpg" alt="buttonpng" />
+              </button>
+            </div>
+          </div>
+        </div>
         
 
     </div>

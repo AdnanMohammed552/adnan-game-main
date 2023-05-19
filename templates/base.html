@@ -232,6 +232,22 @@ rel="stylesheet"
       small{
         color: black;
       }
+      button{
+        background-color: black;
+      }
+      .btn:not(:disabled):not(.disabled) {
+        color: #fff;
+
+        cursor: pointer;
+        background-color: black;
+        border-color: #000;
+
+      }
+      .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+        color: #fff;
+        background-color: #000;
+        border-color: #000;
+      }
 </style>
 <script>
   const lang = '{{lang}}'
