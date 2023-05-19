@@ -458,6 +458,15 @@ body{
 
 
 </body>
+<style>
+  .text-center-custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+</style>
 <script>
   const name = '{{name}}'
   document.getElementById('nextttt').style.display='none'
@@ -745,43 +754,30 @@ body{
                 document.getElementById('ques').innerHTML=(i.question)
                 document.getElementById('pdfgenerator').innerHTML += (
                  
-                          '<div class="accordion" id="'+ 
-                          'accordionExample'+ i.question +
-                          '" data-mdb-parent="#accordionExample">'+
-                            '<div class="accordion-item" >'+
-                              '<center>'+
-                            ' <h2 style="color:black" class="accordion-header" id="headingOne">'+
-                                '<button class="accordion-button text-center" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseOne'+i.question+'" aria-expanded="true" aria-controls="collapseOne">'+
-                                  '<center>'+
-                                  '<span>'+
-                                  i.question +
-                                  '</span>'+
-                                  '</center>'+
-                                '</button>' +
-                              '</h2>'+
-                              '</center>'+
-                              '<div id="collapseOne'+i.question+'" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample'+ i.question +'">'+
-                             
-                            '<div  class="accordion-body" ' + 'id="' + i.question + '">'+
-                              
-                                '<table class="table table-bordered border-primary" id="table'+ i.question +'">'+
-                                  '<thead>'+
-                                    '<tr id="add' + i.question + '">'+
-                                      
-                                    '</tr>'+
-                                  
-                                  '</thead>'+
-                                  
-                                    
-                                  '<tbody id="divve'+ i.question +'">'+
-                                    '</tbody>'+
-                                  
-                              '</table>'+
-                              '</div>'+
-                            '</div>'+
-                          '</div>'+
-                        
-                          '</div>'
+                '<div class="accordion" id="' + 'accordionExample' + i.question + '" data-mdb-parent="#accordionExample">' +
+                  '<div class="accordion-item">' +
+                    '<h2 style="color: black" class="accordion-header" id="headingOne">' +
+                      '<button class="accordion-button text-center-custom" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseOne' + i.question + '" aria-expanded="true" aria-controls="collapseOne">' +
+                        '<span>' +
+                          i.question +
+                        '</span>' +
+                      '</button>' +
+                    '</h2>' +
+                    '<div id="collapseOne' + i.question + '" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample' + i.question + '">' +
+                      '<div class="accordion-body" id="' + i.question + '">' +
+                        '<table class="table table-bordered border-primary" id="table' + i.question + '">' +
+                          '<thead>' +
+                            '<tr id="add' + i.question + '">' +
+                            '</tr>' +
+                          '</thead>' +
+                          '<tbody id="divve' + i.question + '">' +
+                          '</tbody>' +
+                        '</table>' +
+                      '</div>' +
+                    '</div>' +
+                  '</div>' +
+                '</div>'
+                
                         
                           )
                     
