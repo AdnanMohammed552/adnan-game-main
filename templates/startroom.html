@@ -213,6 +213,7 @@ body{
 {{ request.user.username|json_script:"user_id" }}
 
 <script>
+  document.getElementById('aae').dir='rtl'
   document.getElementById('send').disabled=true
   let text = document.querySelector('.hovertext').innerHTML;
     console.log('ad',text)
