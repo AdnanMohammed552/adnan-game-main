@@ -627,7 +627,7 @@ body{
             arra.push(strBeforeSlash)
 
             document.getElementById('users').innerHTML += (
-              ' <button  class="btn btn-tag btn-rounded text-center userbutton" style="background-color:black;color:white;" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span>'+ strBeforeSlash +'</span></button>'
+              ' <button  class="btn btn-tag btn-rounded text-center userbutton" style="background-color:black;color:white !important;" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span>'+ strBeforeSlash +'</span></button>'
              )
           }
       }
@@ -651,7 +651,7 @@ body{
           if (username !==""){
             
             document.getElementById('users').innerHTML += (
-             ' <button class="btn btn-tag btn-rounded text-center" style="background-color:black;color:white;" id="'+ username +'" onclick="userremove(\'' + username + '\')"><span>'+ username +'</span></button>'
+             ' <button class="btn btn-tag btn-rounded text-center" style="background-color:black;color:white !important;" id="'+ username +'" onclick="userremove(\'' + username + '\')"><span>'+ username +'</span></button>'
             )
             
           }
