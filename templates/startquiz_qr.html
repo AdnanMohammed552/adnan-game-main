@@ -627,7 +627,7 @@ body{
             arra.push(strBeforeSlash)
 
             document.getElementById('users').innerHTML += (
-              ' <button  style="color:white;background:black" class="btn btn-tag btn-rounded text-center userbutton" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span>'+ strBeforeSlash +'</span></button>'
+              ' <button  style="background:black;color:white;" class="btn btn-tag btn-rounded text-center userbutton" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span>'+ strBeforeSlash +'</span></button>'
              )
           }
       }
@@ -837,7 +837,7 @@ body{
                       const buttons = document.querySelectorAll('.userbutton');
 
                       buttons.forEach(button => {
-                        button.style.backgroundColor = 'black'; 
+                        button.style.backgroundColor = 'white'; 
                       });
                       resolve();
                     }
