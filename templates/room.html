@@ -13,9 +13,9 @@
 <section>
     <div class="d-grid gap-2">
         
-        <a class="nav-link text-center display-6" href="/account/home"><span id="fqweg"> Hello, </span>{{request.user.username}}</a>
-        <button class="btn btn-primary" type="submit" id="Create"><h1 id="gwg" class="display-6">Create new game</h1>  </button>
-        <button class="btn btn-primary" type="submit" id="Join"><h1 id="fwgr" class="display-6">  Join a game </h1> </button>
+        <a style="color: #000000;" class="nav-link text-center display-6" href="/account/home"><span id="fqweg" > Hello, </span>{{request.user.username}}</a>
+        <button class="btn btn-primary" type="submit" id="Create" style="background-color: #000000;"><h1 id="gwg" class="display-6">Create new game</h1>  </button>
+        <button class="btn btn-primary" type="submit" id="Join" style="background-color: #000000;"><h1 id="fwgr" class="display-6">  Join a game </h1> </button>
         <hr>
         
 
@@ -27,7 +27,7 @@
 <div class="card-container">
 <div class="container">
   {% if w %}
-  <h2 id="vwjnj">Last created quiz</h2>
+  <h2 style="color: black;" id="vwjnj">Last created quiz</h2>
   <hr>
   {% endif %}
   <div class="row">
@@ -39,7 +39,7 @@
             <h5 class="card-title">{{ i.title }}</h5>
             <p class="card-text"> {{ i.num }}  <span id="span22">Question</span> </p>
             <p class="card-text"><small class="text-muted"><span class="jnvwj"> Created on: </span>{{ i.date }}</small></p>
-            <a href="/account/game/quiz/{{i.code}}/" class="btn btn-primary vevv">Go to details</a>
+            <a style="background-color: #000000;" href="/account/game/quiz/{{i.code}}/" class="btn btn-primary vevv">Go to details</a>
           </center>
         </div>
       </div>
