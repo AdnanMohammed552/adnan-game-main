@@ -627,7 +627,7 @@ body{
             arra.push(strBeforeSlash)
 
             document.getElementById('users').innerHTML += (
-              ' <button style="background:black" class="btn btn-tag btn-rounded text-center userbutton" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span>'+ strBeforeSlash +'</span></button>'
+              ' <button  style="color:white;background:black" class="btn btn-tag btn-rounded text-center userbutton" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span>'+ strBeforeSlash +'</span></button>'
              )
           }
       }
@@ -749,11 +749,13 @@ body{
                           'accordionExample'+ i.question +
                           '" data-mdb-parent="#accordionExample">'+
                             '<div class="accordion-item" >'+
-                            ' <h2 class="accordion-header" id="headingOne">'+
+                              '<center>'+
+                            ' <h2 style="color:black" class="accordion-header" id="headingOne">'+
                                 '<button class="accordion-button" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseOne'+i.question+'" aria-expanded="true" aria-controls="collapseOne">'+
                                   i.question +
                                 '</button>' +
                               '</h2>'+
+                              '</center>'+
                               '<div id="collapseOne'+i.question+'" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample'+ i.question +'">'+
                              
                             '<div  class="accordion-body" ' + 'id="' + i.question + '">'+
