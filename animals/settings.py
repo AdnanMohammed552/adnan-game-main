@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '6577Fd65D17144C781787Cb1E90Ba7866F540Ecec4Ae0C74'
 
 # SECURITY WARNING: don't run with debug turned on in production
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://adnan-game-animal.herokuapp.com/']
 
@@ -86,7 +86,7 @@ ssl_context = ssl.SSLContext()
 ssl_context.check_hostname = False
 
 heroku_redis_ssl_host = {
-    'address': 'rediss://:p437ccdd6e48e2b85b03f58b9be8e9cd5c2c0af5775a985eb5da6194c61c7415e@ec2-44-196-75-203.compute-1.amazonaws.com:29359' ,
+    'address': 'rediss://:p437ccdd6e48e2b85b03f58b9be8e9cd5c2c0af5775a985eb5da6194c61c7415e@ec2-34-192-212-159.compute-1.amazonaws.com:21320' ,
     'ssl': ssl_context
 }
 CHANNEL_LAYERS = {
