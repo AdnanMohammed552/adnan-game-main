@@ -9,7 +9,8 @@
 
 {% block content %}
 
-
+<body dir="rtl">
+  
 </div>
 </div>
 <div id="anann">
@@ -55,7 +56,11 @@
         </div>
       </div>
     </div>
-
+    <style>
+      span{
+        color: white;
+      }
+    </style>
     <div class="accordion" id="accordionExample">
       <div class="accordion-item" style="margin-top:8px" >
        <h2 class="accordion-header" id="headingOne">
@@ -1226,4 +1231,6 @@ window.addEventListener("pageshow", function(event) {
     
   
 </script>
+
+</body>
 {% endblock %}
