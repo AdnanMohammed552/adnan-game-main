@@ -87,7 +87,7 @@
 			codeReader.decodeFromInputVideoDevice(undefined, 'video').then((result) => {
 				// Send WebSocket message with scanned code
 				alert(result.text)
-                const strBeforeSlash = str.split('/')[0];
+                const strBeforeSlash = result.text.split('/')[0];
                 if (strBeforeSlash === userName){
                     ws.send(JSON.stringify({'exam':result.text}));
                     // Scan again
