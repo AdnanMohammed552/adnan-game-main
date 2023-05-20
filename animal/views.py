@@ -419,6 +419,24 @@ def room_admin_quiz(request,room_code):
             return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language,'name':name})
         else:
             return HttpResponse('<h2>No game with this code !!</h2>')
+    else:
+        import io   
+        import qrcode.image.svg 
+        import qrcode
+        context ={}
+        factory = qrcode.image.svg.SvgImage
+        qr_image = qrcode.make(f'https://adnan-game-animal.herokuapp.com/play/{room_code}',image_factory=factory, box_size=10)    
+        bufstore = io.BytesIO()
+        qr_image.save(bufstore)    
+        
+        svg = bufstore.getvalue().decode() 
+        from animal.models import lang
+        kfken = lang.objects.all().filter(user=request.user).values()
+        for www in kfken:
+            
+            language =www['lang']
+
+        return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language,'name':name})
 
 
 def wait_quiz(request,room_code):
