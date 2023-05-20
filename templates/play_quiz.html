@@ -41,6 +41,7 @@
 	  </div>
 	 
       <script>
+        document.getElementById('video').style.display='none'
         $(document).ready(function() {
           $("#toggle-button").click(function() {
             $("#video").toggle();
@@ -51,7 +52,8 @@
        {{ room_code|json_script:'json-roomcode' }}
 
 	<script>
-       
+        var userName = "{{ user.username }}";
+
     const codeReader = new ZXing.BrowserQRCodeReader();
     
     const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
@@ -65,10 +67,13 @@
 		}
 	}
     document.getElementById('join').onclick=function(){
+
         var userName = "{{ user.username }}";
 		res= (userName+'/weg')
 
      ws.send(JSON.stringify({'exam':res}))       
+     document.getElementById('video').style.display='block'
+
      document.getElementById('join').style.display='none'
     }
 	function send_ans(ans){
@@ -82,9 +87,13 @@
 			codeReader.decodeFromInputVideoDevice(undefined, 'video').then((result) => {
 				// Send WebSocket message with scanned code
 				alert(result.text)
-				ws.send(JSON.stringify({'exam':result.text}));
-				// Scan again
-				scan();
+                const strBeforeSlash = str.split('/')[0];
+                if (strBeforeSlash === userName){
+                    ws.send(JSON.stringify({'exam':result.text}));
+                    // Scan again
+                    scan();
+                }
+				
 			}).catch((err) => {
 				console.error(err);
 				// Scan again
