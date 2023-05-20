@@ -849,4 +849,28 @@ def endpoint_reeset(request):
     
 
 def play(request,room_code):
-    return render(request,'play_quiz.html',{'room_code':room_code})
+    return render(request,'pass_enter_play.html',{'room_code':room_code})
+
+def process_form_play(request,room_code):
+    language = 'english'
+
+    if request.method == 'POST':
+        passs = request.POST.get('password')
+        print('kewgew',passs,room_code)
+        from quiz import models
+        c=models.password.objects.all().filter(code=room_code).values()
+        print('ccis',c,room_code)
+        for i in c:
+            actual_password = i['password']
+        print('actual iss ',actual_password)
+        if actual_password == passs:
+            print('yessswer')
+
+            return render(request,'play_quiz.html',{'room_code':room_code,'lang':language})
+        else:
+            print('vgwegwe224')
+            return HttpResponse('Error password!!')
+
+        
+    else:
+        return HttpResponse('Error!!')
