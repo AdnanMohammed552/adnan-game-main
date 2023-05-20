@@ -753,7 +753,7 @@ body{
               document.getElementById('answer4').classList.remove('selected');
               
             
-                document.getElementById('ques').innerHTML=(i.question)
+                document.getElementById('ques').innerHTML=(i.question+numm)
                 document.getElementById('pdfgenerator').innerHTML += (
                  
                 '<div class="accordion" id="' + 'accordionExample' + i.question + '" data-mdb-parent="#accordionExample">' +
@@ -761,7 +761,7 @@ body{
                     '<h2 style="color: black" class="accordion-header" id="headingOne">' +
                       '<button class="accordion-button text-center-custom" style="display:block;font-size:1em" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseOne' + i.question + '" aria-expanded="true" aria-controls="collapseOne">' +
                         '<span>' +
-                          numm+i.question +
+                       i.question +numm+
                         '</span>' +
                       '</button>' +
                     '</h2>' +
