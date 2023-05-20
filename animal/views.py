@@ -384,17 +384,41 @@ def room_admin_quiz(request,room_code):
 
     from quiz import models
     x= models.MyModel.objects.all().filter(code=room_code).values()
+    t=models.title.objects.all().filter(code=room_code).values()
+    for i in t:
+        name = i['title']
     array = []
     for i in x:
         e = i['data']
         array.append(e)
+    b = models.title.objects.all().filter(user=request.user,code=room_code)
+    p=models.priv.objects.all().filter(code=room_code).values()
+    private=''
+    for i in p:
+        private = i['private']
+    if not b.exists():
+        if private == True:
+            return HttpResponse('<h2>Error, its not your game</h2>')
+        elif private == False:
+            import io   
+            import qrcode.image.svg 
+            import qrcode
+            context ={}
+            factory = qrcode.image.svg.SvgImage
+            qr_image = qrcode.make(f'https://adnan-game-animal.herokuapp.com/play/{room_code}',image_factory=factory, box_size=10)    
+            bufstore = io.BytesIO()
+            qr_image.save(bufstore)    
+            
+            svg = bufstore.getvalue().decode() 
+            from animal.models import lang
+            kfken = lang.objects.all().filter(user=request.user).values()
+            for www in kfken:
+                
+                language =www['lang']
 
-    from animal.models import lang
-    kfken = lang.objects.all().filter(user=request.user).values()
-    for www in kfken:
-        
-        language =www['lang']
-    return render(request,'startquiz.html',{'room_code':room_code,'data':array,'lang':language})
+            return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language,'name':name})
+        else:
+            return HttpResponse('<h2>No game with this code !!</h2>')
 
 
 def wait_quiz(request,room_code):
@@ -747,7 +771,7 @@ def process_form(request,room_code):
         print('actual iss ',actual_password)
         if actual_password == passs:
             print('yessswer')
-            
+
             return render(request,'camera.html',{'room_code':room_code,'lang':language})
         else:
             print('vgwegwe224')
@@ -804,3 +828,7 @@ def endpoint_reeset(request):
         x.image='images/3906412_DzsLBsC.png'
         x.save()
         return JsonResponse({'success': True})
+    
+
+def play(request):
+    return render(request,'play_quiz.html')
