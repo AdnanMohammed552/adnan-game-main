@@ -23,7 +23,8 @@
 		<!-- Quiz questions and answers go here -->
 		{% endfor %}
 	</div>
-  <div class="d-flex justify-content-center align-items-center">
+  <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
+    <div class="d-flex flex-wrap justify-content-center mt-3">
     <div class="dropdown">
       <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Challenge friends
@@ -34,11 +35,13 @@
       </div>
     </div>
   
-    <a id="view" class="btn mx-1">Last played</a>
-    <a id="view_que" class="btn mx-1">View Questions</a>
-  
-    <a id="edit" class="btn mx-1">Edit</a>
+    
+      <a id="view" class="btn mx-1 mb-2">Last played</a>
+      <a id="view_que" class="btn mx-1 mb-2">View Questions</a>
+      <a id="edit" class="btn mx-1 mb-2">Edit</a>
+    </div>
   </div>
+</div>
   
 	<!-- Bootstrap JS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
