@@ -5,26 +5,41 @@
 	<title>QR Code Scanner</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<div class="container">
-        <button class="btn btn-primary btn-block" id="join">Join game</button>
+        <style>
+            .custom-button {
+                margin-bottom: 10px;
+                background-color: rgb(247, 247, 247) !important;
+                color: black !important;
+                font-weight: bold;
+                height: 50px; /* Adjust the height value as needed */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px; /* Adjust the font size as needed */
+                text-align: center; 
+              }
+        </style>
+        <button style="margin-bottom: 10px;" class="btn btn-primary btn-block" id="join">Join game</button>
 		<div class="row">
-		  <div class="col-sm-6 col-md-3">
-			<button class="btn btn-primary btn-block" onclick="send_ans('A')">A</button>
-		  </div>
-		  <div class="col-sm-6 col-md-3">
-			<button class="btn btn-primary btn-block" onclick="send_ans('B')">B</button>
-		  </div>
-		  <div class="col-sm-6 col-md-3">
-			<button class="btn btn-primary btn-block" onclick="send_ans('C')">C</button>
-		  </div>
-		  <div class="col-sm-6 col-md-3">
-			<button class="btn btn-primary btn-block" onclick="send_ans('D')">D</button>
-		  </div>
-		</div>
+            <div class="col-sm-6 col-md-3">
+              <button class="btn btn-block custom-button" onclick="send_ans('A')">A</button>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <button class="btn btn-block custom-button" onclick="send_ans('B')">B</button>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <button class="btn btn-block custom-button" onclick="send_ans('C')">C</button>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <button class="btn btn-block custom-button" onclick="send_ans('D')">D</button>
+            </div>
+          </div>
+          <button id="toggle-button" class="btn btn-primary">
+            <i id="eye-icon" class="fas fa-eye"></i>
+            <i id="eye-slash-icon" class="fas fa-eye-slash d-none"></i>
+          </button>
 	  </div>
-	  <button id="toggle-button" class="btn btn-primary">
-        <i id="eye-icon" class="fas fa-eye"></i>
-        <i id="eye-slash-icon" class="fas fa-eye-slash d-none"></i>
-      </button>
+	 
       <script>
         $(document).ready(function() {
           $("#toggle-button").click(function() {
@@ -54,6 +69,7 @@
 		res= (userName+'/weg')
 
      ws.send(JSON.stringify({'exam':res}))       
+     document.getElementById('join').style.display='none'
     }
 	function send_ans(ans){
 		var userName = "{{ user.username }}";
