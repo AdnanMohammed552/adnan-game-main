@@ -181,7 +181,7 @@ body{
  <style>
 
   #bare button{
-    background-color: black;
+    background-color: #808080;
     color: #ffffff;
   }
   #users button {
@@ -661,7 +661,7 @@ body{
             arra.push(strBeforeSlash)
 
             document.getElementById('users').innerHTML += (
-              ' <button  class="btn btn-tag btn-rounded text-center userbutton" style="background-color:black;color:white !important;" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span style="color:white">'+ strBeforeSlash +'</span></button>'
+              ' <button  class="btn btn-tag btn-rounded text-center userbutton" style="background-color:#808080;color:white !important;" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span style="color:white">'+ strBeforeSlash +'</span></button>'
              )
           }
       }
@@ -685,7 +685,7 @@ body{
           if (username !==""){
             
             document.getElementById('users').innerHTML += (
-             ' <button class="btn btn-tag btn-rounded text-center" style="background-color:black;color:white !important;" id="'+ username +'" onclick="userremove(\'' + username + '\')"><span style="color:white">'+ username +'</span></button>'
+             ' <button class="btn btn-tag btn-rounded text-center" style="background-color:#808080;color:white !important;" id="'+ username +'" onclick="userremove(\'' + username + '\')"><span style="color:white">'+ username +'</span></button>'
             )
             
           }
@@ -870,7 +870,7 @@ body{
                       const buttons = document.querySelectorAll('.userbutton');
 
                       buttons.forEach(button => {
-                        button.style.backgroundColor = 'black'; 
+                        button.style.backgroundColor = '#808080'; 
                         button.style.color = 'white'; 
 
 
