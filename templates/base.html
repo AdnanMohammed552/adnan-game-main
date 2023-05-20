@@ -92,7 +92,7 @@ rel="stylesheet"
         </div>
       </a>
       <!-- Left links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="drop">
         <li class="nav-item">
          <strong> <a class="nav-link text-capitalize" id="create1" href="/create/type">Create New game</a></strong>
         </li>
@@ -131,7 +131,7 @@ rel="stylesheet"
         >
           
       </div>
-      <div class="dropdown">
+      <div class="dropdown" id="lang">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
           Select language
         </button>
@@ -264,6 +264,18 @@ rel="stylesheet"
   // Example usage
   if (isMobileDevice()) {
     document.getElementById('usernames').style.display='none'
+    document.getElementById('lang').style.display='none'
+    document.getElementById('drop').innerHTML+=`
+    <div class="dropdown" id="lang">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        Select language
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+        <li><a class="dropdown-item" id="arabic" >Arabic</a></li>
+        <li><a class="dropdown-item" id="eng" >English</a></li>
+      </ul>
+    </div>
+    `
   } else {
     console.log("This is not a mobile device");
   }
