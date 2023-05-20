@@ -108,7 +108,10 @@
           <div class="col-lg-9">
             <div class="question-bar">
               <div class="question">
-                <h3 style="font-size: 2rem;color:black" id="ques"></h3>
+                
+              <div class="numbered-word" id="ques">
+               <!-- <h3 style="font-size: 2rem;color:black" id="ques"></h3>-->
+              </div>
               </div>
               <div class="choices">
                 <div class="d-flex justify-content-between">
@@ -455,7 +458,17 @@ body{
 {{ room_code|json_script:'json-roomcode' }}
 {{ request.user.username|json_script:"user_id" }}
 
-
+<style>
+  .numbered-word {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+  }
+  
+  .number {
+    margin-left: 5px;
+  }
+</style>
 
 </body>
 <style>
@@ -703,6 +716,7 @@ body{
       gameSocket.onclose = function (e) {
         console.log('fall ');
       }
+      
       document.getElementById('done').onclick = function(){
         document.getElementById('nextttt').style.display='block'
 
@@ -734,7 +748,7 @@ body{
     
     
             }
-
+          
             
         async function delayedLoop() {
           let numm=0
@@ -752,8 +766,11 @@ body{
               document.getElementById('answer3').classList.remove('selected');
               document.getElementById('answer4').classList.remove('selected');
               
-            
-                document.getElementById('ques').innerHTML=(i.question+numm)
+              
+                document.getElementById('ques').innerHTML=(`<h3 class="word">`+ i.question +`</h3>`)
+                document.getElementById('ques').innerHTML+=(`
+                <h4 class="number">` + numm + `</h4>
+                `)
                 document.getElementById('pdfgenerator').innerHTML += (
                  
                 '<div class="accordion" id="' + 'accordionExample' + i.question + '" data-mdb-parent="#accordionExample">' +
