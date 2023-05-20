@@ -88,8 +88,8 @@
 				// Send WebSocket message with scanned code
 				//alert(result.text)
                 const strBeforeSlash = (result.text).split('/')[0];
-                alert('str'+strBeforeSlash+'here'+userName)
-                if (str(strBeforeSlash.replace(/\s/g, "")) == str(userName.replace(/\s/g, ""))){
+                alert('str'+strBeforeSlash+'here'+userName+'"')
+                if ((strBeforeSlash.replace(/\s/g, "").toString()) == (userName.replace(/\s/g, "")).toString()){
                     ws.send(JSON.stringify({'exam':result.text}));
                     // Scan again
                     scan();
