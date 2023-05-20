@@ -12,7 +12,22 @@
 
 <section>
     <div class="d-grid gap-2">
-        
+        <style>
+          a {
+            color: #000000;
+            text-decoration: none;
+            display: inline-block;
+          }
+          
+          a span#fqweg {
+            pointer-events: none;
+          }
+          
+          a:not(span#fqweg) {
+            pointer-events: auto;
+          }
+          
+        </style>
         <a style="color: #000000;" class="nav-link text-center display-6" href="/account/home"><span id="fqweg" > Hello, </span>{{request.user.username}}</a>
         <button class="btn btn-primary" type="submit" id="Create" style="background-color: #000000;"><h1 id="gwg" class="display-6">Create new game</h1>  </button>
         <button class="btn btn-primary" type="submit" id="Join" style="background-color: #000000;"><h1 id="fwgr" class="display-6">  Join a game </h1> </button>

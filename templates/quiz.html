@@ -22,9 +22,39 @@
       <label class="form-check-label" for="privateToggle">Private</label>
     </div>
     
+    <script>
+      window.onbeforeunload = function (e) {
+        
+        if ((document.getElementById('endingEle').innerHTML)!=='Game had been ended'){
+        e = e || window.event;
     
+        // For IE and Firefox prior to version 4
+        if (e) {
+            e.returnValue = 'Sure?';
+            
+        }
+    
+        // For Safari
+        return 'Sure?';
+      }
+    };
+    </script>
 <script>
+  window.onbeforeunload = function (e) {
+        
+    if ((document.getElementById('endingEle').innerHTML)!=='Game had been ended'){
+    e = e || window.event;
 
+    // For IE and Firefox prior to version 4
+    if (e) {
+        e.returnValue = 'Sure?';
+        
+    }
+
+    // For Safari
+    return 'Sure?';
+  }
+};
   const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
 const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   return new bootstrap.Popover(popoverTriggerEl)
@@ -37,6 +67,21 @@ const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 <button type="button" id="sub" class="btn">Create Quiz</button>
 </div>
 <script>
+  window.onbeforeunload = function (e) {
+        
+    if ((document.getElementById('endingEle').innerHTML)!=='Game had been ended'){
+    e = e || window.event;
+
+    // For IE and Firefox prior to version 4
+    if (e) {
+        e.returnValue = 'Sure?';
+        
+    }
+
+    // For Safari
+    return 'Sure?';
+  }
+};
 
     const lang1 = '{{lang}}'
 
