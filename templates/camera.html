@@ -38,7 +38,10 @@
 		}
 	}
 	function send_ans(ans){
-		ws.send(JSON.stringify({'exam':result.text}));
+		var userName = "{{ user.username }}";
+		res= (userName+'/'+ans)
+		console.log('resfqe',res)
+		ws.send(JSON.stringify({'exam':res}));
 
 	}
 		function scan() {
