@@ -160,7 +160,7 @@ rel="stylesheet"
       alt="Black and White Portrait of a Man"
       loading="lazy"
     />
-    <span class="fw-bold">{{request.user.username}}</span>
+    <span id="usernames" class="fw-bold">{{request.user.username}}</span>
   </div>
 </a>
 
@@ -257,6 +257,17 @@ rel="stylesheet"
       }
 </style>
 <script>
+  function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
+  
+  // Example usage
+  if (isMobileDevice()) {
+    document.getElementById('usernames').style.display='none'
+  } else {
+    console.log("This is not a mobile device");
+  }
+  
   const lang = '{{lang}}'
   console.log('ff',lang)
   if(lang=='arabic'){
