@@ -747,6 +747,7 @@ def process_form(request,room_code):
         print('actual iss ',actual_password)
         if actual_password == passs:
             print('yessswer')
+            
             return render(request,'camera.html',{'room_code':room_code,'lang':language})
         else:
             print('vgwegwe224')
