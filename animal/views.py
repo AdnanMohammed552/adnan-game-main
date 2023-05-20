@@ -848,5 +848,5 @@ def endpoint_reeset(request):
         return JsonResponse({'success': True})
     
 
-def play(request):
-    return render(request,'play_quiz.html')
+def play(request,room_code):
+    return render(request,'play_quiz.html',{'room_code':room_code})
