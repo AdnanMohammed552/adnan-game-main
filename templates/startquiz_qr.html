@@ -737,7 +737,10 @@ body{
 
             
         async function delayedLoop() {
+          let numm=0
             for(i of question){
+              numm++
+
               console.log('sin',i)
               document.getElementById('answer1').disabled = false;
               document.getElementById('answer2').disabled = false;
@@ -758,7 +761,7 @@ body{
                     '<h2 style="color: black" class="accordion-header" id="headingOne">' +
                       '<button class="accordion-button text-center-custom" style="display:block;font-size:1em" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseOne' + i.question + '" aria-expanded="true" aria-controls="collapseOne">' +
                         '<span>' +
-                          i.question +
+                          numm+i.question +
                         '</span>' +
                       '</button>' +
                     '</h2>' +
