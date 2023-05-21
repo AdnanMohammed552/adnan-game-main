@@ -16,8 +16,7 @@
     if (data.mypass!=false){
         console.log('gwegcc')
         pass1=data.mypass
-
-    }
+            }
 
   }
 
@@ -26,6 +25,17 @@
 
     if (txt === pass1){
         alert('donee')
+        fetch('/api/red/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify('passw')})
+          .then(response => response.json())
+          .then(data =>alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from My activity panel'))
+          .catch(error => alert('Please check all fields are correct!!'));
+
+
     }
   }
 </script>
