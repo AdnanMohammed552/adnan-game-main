@@ -3,24 +3,6 @@
 {% block content %}
 <head>
 	<title>QR Code Scanner</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<div class="container">
-		<div class="row">
-		  <div class="col-sm-6 col-md-3">
-			<button class="btn btn-primary btn-block" onclick="send_ans('A')">A</button>
-		  </div>
-		  <div class="col-sm-6 col-md-3">
-			<button class="btn btn-primary btn-block" onclick="send_ans('B')">B</button>
-		  </div>
-		  <div class="col-sm-6 col-md-3">
-			<button class="btn btn-primary btn-block" onclick="send_ans('C')">C</button>
-		  </div>
-		  <div class="col-sm-6 col-md-3">
-			<button class="btn btn-primary btn-block" onclick="send_ans('D')">D</button>
-		  </div>
-		</div>
-	  </div>
-	  
   <script src="https://cdn.jsdelivr.net/npm/@zxing/library@0.18.4"></script>
        {{ room_code|json_script:'json-roomcode' }}
 
@@ -37,17 +19,10 @@
 			document.getElementById('camera_correct').innerHTML = data.camera_correct
 		}
 	}
-	function send_ans(ans){
-		var userName = "{{ user.username }}";
-		res= (userName+'/'+ans)
-		console.log('resfqe',res)
-		ws.send(JSON.stringify({'exam':res}));
 
-	}
 		function scan() {
 			codeReader.decodeFromInputVideoDevice(undefined, 'video').then((result) => {
 				// Send WebSocket message with scanned code
-				alert(result.text)
 				ws.send(JSON.stringify({'exam':result.text}));
 				// Scan again
 				scan();

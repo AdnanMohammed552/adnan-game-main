@@ -3,8 +3,61 @@
 <div id="data"></div>
 <input type="text" name="" id="pass">
 <button id="sub">sub</button>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    .video-container {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+      }
+      
+      #video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      
+      
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@zxing/library@0.18.4"></script>
+       {{ room_code|json_script:'json-roomcode' }}
 
+	<script>
+    const codeReader = new ZXing.BrowserQRCodeReader();
+    
+    const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
+	
+
+    const ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
+	ws.onmessage = function(e){
+        const data = JSON.parse(e.data)
+		if (data.camera_correct != false){
+			document.getElementById('camera_correct').innerHTML = data.camera_correct
+		}
+	}
+
+		function scan() {
+			codeReader.decodeFromInputVideoDevice(undefined, 'video').then((result) => {
+				// Send WebSocket message with scanned code
+				ws.send(JSON.stringify({'exam':result.text}));
+				// Scan again
+				scan();
+			}).catch((err) => {
+				console.error(err);
+				// Scan again
+				scan();
+			});
+		}
+
+		ws.onopen = function(event) {
+			// Start scanning for QR codes
+			scan();
+		};
+		</script>
 <script>
     let pass1=''
     roomCode='{{room_code}}'
@@ -29,176 +82,70 @@
         document.getElementById('sub').style.display='none'
         document.getElementById('pass').style.display='none'
         document.getElementById('data').innerHTML+=`
-        <div class="container">
-            <style>
-                .custom-button {
-                    margin-bottom: 10px;
-                    background-color: rgb(247, 247, 247) !important;
-                    color: black !important;
-                    font-weight: bold;
-                    height: 50px; /* Adjust the height value as needed */
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 16px; /* Adjust the font size as needed */
-                    text-align: center; 
-                  }
-            </style>
-            <button style="margin-bottom: 10px;" class="btn btn-primary btn-block" id="join">Join game</button>
-            <div class="row">
-                <div class="col-sm-6 col-md-3">
-                  <button class="btn btn-block custom-button" onclick="send_ans('A')">A</button>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                  <button class="btn btn-block custom-button" onclick="send_ans('B')">B</button>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                  <button class="btn btn-block custom-button" onclick="send_ans('C')">C</button>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                  <button class="btn btn-block custom-button" onclick="send_ans('D')">D</button>
-                </div>
-              </div>
-              <button id="toggle-button" class="btn btn-primary">
-                <i id="eye-icon" class="fas fa-eye"></i>
-                <i id="eye-slash-icon" class="fas fa-eye-slash d-none"></i>
-              </button>
-          </div>
-         
-     
-    </head>
-    <body>
-    
         <div class="video-container">
-          
-        <video id="video" width="1000" height="1000" autoplay="autoplay" playsinline autoplay controls></video>
-        </div>
-        
-    
-    </body>
+	  
+            <video id="video" width="1000" height="1000" autoplay="autoplay" playsinline autoplay controls></video>
+            </div>
+            <center><h3 id="camera_correct"></h3></center>
+            <center>
+            <button class="btn btn-primary" id="next">End question</button>
+            <button class="btn btn-danger" id="end_game">End game</button>
+        </center>
         `
       }
        }
 </script>
-<style>
-    .video-container {
-        position: relative;
-        width: 100%;
-        height: 0;
-        padding-bottom: 56.25%;
-      }
-      
-      #video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      
-      
-      
-</style>
 <script>
-    $(document).ready(function() {
-      $("#toggle-button").click(function() {
-        $("#video").toggle();
-      });
-    });
-  </script>
-<script src="https://cdn.jsdelivr.net/npm/@zxing/library@0.18.4"></script>
-   {{ room_code|json_script:'json-roomcode' }}
-
-<script>
-    var userName = "{{ user.username }}";
-
-const codeReader = new ZXing.BrowserQRCodeReader();
-
-const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
-
-
-const ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
-ws.onmessage = function(e){
-    const data = JSON.parse(e.data)
-    if (data.camera_correct != false){
-        document.getElementById('camera_correct').innerHTML = data.camera_correct
-    }
-}
-document.getElementById('join').onclick=function(){
-
-    var userName = "{{ user.username }}";
-    res= (userName+'/weg')
-
- ws.send(JSON.stringify({'exam':res}))       
- document.getElementById('video').style.display='block'
-
- document.getElementById('join').style.display='none'
-}
-function send_ans(ans){
-    var userName = "{{ user.username }}";
-    res= (userName+'/'+ans)
-    console.log('resfqe',res)
-    ws.send(JSON.stringify({'exam':res}));
-
-}
-    function scan() {
-        codeReader.decodeFromInputVideoDevice(undefined, 'video').then((result) => {
-            // Send WebSocket message with scanned code
-            //alert(result.text)
-            const strBeforeSlash = (result.text).split('/')[0];
-            alert('str'+strBeforeSlash+'here'+userName+'"')
-            if ((strBeforeSlash.replace(/\s/g, "").toString()) == (userName.replace(/\s/g, "")).toString()){
-                ws.send(JSON.stringify({'exam':result.text}));
-                // Scan again
-                scan();
-            }
-            else{
-                scan()
-            }
+    window.onbeforeunload = function (e) {
+    
+        if ((document.getElementById('endingEle').innerHTML)!=='Game had been ended'){
+        e = e || window.event;
+    
+        // For IE and Firefox prior to version 4
+        if (e) {
+            e.returnValue = 'Sure?';
             
-        }).catch((err) => {
-            console.error(err);
-            // Scan again
-            scan();
-        });
+        }
+    
+        // For Safari
+        return 'Sure?';
+      }
+    };
+
+    let x = 'end'
+    document.getElementById('end_game').onclick=function(){
+        ws.send(JSON.stringify({
+            'end_clicked':true
+        }))
     }
 
-    ws.onopen = function(event) {
-        // Start scanning for QR codes
-        scan();
-    };
-    </script>
-    <script>
-        document.getElementById('video').style.display='none'
 
-		window.onbeforeunload = function (e) {
-        
-			if ((document.getElementById('endingEle').innerHTML)!=='Game had been ended'){
-			e = e || window.event;
-		
-			// For IE and Firefox prior to version 4
-			if (e) {
-				e.returnValue = 'Sure?';
-				
-			}
-		
-			// For Safari
-			return 'Sure?';
-		  }
-		}
-	
-		
-		const videoContainer = document.querySelector('.video-container');
+    document.getElementById('next').onclick = function(){
+        if (x=='next'){
+        x='end'
+        document.getElementById('next').innerHTML='End question'
+
+        }
+        else if (x=='end'){
+            x='next'
+            document.getElementById('next').innerHTML='Next question'
+        }
+        ws.send(JSON.stringify({
+            'next':true
+        }))
+    }
+
+    
+    const videoContainer = document.querySelector('.video-container');
 
 function resizeVideoContainer() {
-  const screenHeight = window.innerHeight;
-  const videoContainerHeight = screenHeight - videoContainer.offsetTop;
-  videoContainer.style.height = `${videoContainerHeight}px`;
+const screenHeight = window.innerHeight;
+const videoContainerHeight = screenHeight - videoContainer.offsetTop;
+videoContainer.style.height = `${videoContainerHeight}px`;
 }
 
 window.addEventListener('resize', resizeVideoContainer);
 resizeVideoContainer();
 
-	</script>
+</script>
 {% endblock %}
