@@ -22,21 +22,31 @@
 
   document.getElementById('sub').onclick=function(){
     txt = document.getElementById('pass').value
-
-    if (txt === pass1){
-        alert('donee')
+    if (txt === pass1) {
+        alert('donee');
         fetch('/api/red/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify('passw')})
-          .then(response => response.json())
-          .then(data =>alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from My activity panel'))
-          .catch(error => alert('Please check all fields are correct!!'));
-
-
-    }
-  }
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+          },
+          body: JSON.stringify({ password: 'passw' }) // Pass an object instead of a string
+        })
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Error: ' + response.status);
+          })
+          .then(data => {
+            alert('Quiz created successfully');
+            // You can perform additional actions with the response data if needed
+          })
+          .catch(error => {
+            alert('Please check all fields are correct!!');
+            console.error(error);
+          });
+      }
+       }
 </script>
 {% endblock %}
