@@ -532,7 +532,7 @@ body{
   const name = '{{name}}'
   document.getElementById('nextttt').style.display='none'
   const lang1 = '{{lang}}'
-
+  if('{{svg2}}'){
   document.getElementById('sendddsn').onclick=function(){
     const gameSocketquiz = new WebSocket(
         
@@ -544,6 +544,7 @@ body{
   }
 
   }
+}
   if(lang1=='arabic'){
 
     try{
