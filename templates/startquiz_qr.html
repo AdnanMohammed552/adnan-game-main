@@ -539,7 +539,7 @@ body{
   )
   gameSocketquiz.onopen=function(){
     x=document.getElementById('passww').value;
-    ws.send(JSON.stringify({'mypass':x}))
+    gameSocketquiz.send(JSON.stringify({'mypass':x}))
   }
 
   }
