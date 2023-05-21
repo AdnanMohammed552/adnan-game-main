@@ -886,4 +886,4 @@ def process_form_play(request,room_code):
         return HttpResponse('Error!!')
     
 def managment(request,room_code):
-    return render('passs_managment.html')
+    return render(request,'passs_managment.html',{'room_code':room_code})

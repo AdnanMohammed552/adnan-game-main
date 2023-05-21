@@ -5,6 +5,7 @@
 <button id="sub">sub</button>
 
 <script>
+    roomCode='{{room_code}}'
     const gameSocketquiz = new WebSocket(
         
     'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
