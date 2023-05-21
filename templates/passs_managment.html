@@ -8,36 +8,7 @@
        {{ room_code|json_script:'json-roomcode' }}
 
 	<script>
-    const codeReader = new ZXing.BrowserQRCodeReader();
-    
-    const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
-	
-
-    const ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
-	ws.onmessage = function(e){
-        const data = JSON.parse(e.data)
-		if (data.camera_correct != false){
-			document.getElementById('camera_correct').innerHTML = data.camera_correct
-		}
-	}
-
-		function scan() {
-			codeReader.decodeFromInputVideoDevice(undefined, 'video').then((result) => {
-				// Send WebSocket message with scanned code
-				ws.send(JSON.stringify({'exam':result.text}));
-				// Scan again
-				scan();
-			}).catch((err) => {
-				console.error(err);
-				// Scan again
-				scan();
-			});
-		}
-
-		ws.onopen = function(event) {
-			// Start scanning for QR codes
-			scan();
-		};
+ 
 		</script>
         <style>
             .video-container {
@@ -95,7 +66,37 @@
         
         `
 
+      
+      const codeReader = new ZXing.BrowserQRCodeReader();
+    
+      const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
+      
+  
+      const ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
+      ws.onmessage = function(e){
+          const data = JSON.parse(e.data)
+          if (data.camera_correct != false){
+              document.getElementById('camera_correct').innerHTML = data.camera_correct
+          }
       }
+  
+          function scan() {
+              codeReader.decodeFromInputVideoDevice(undefined, 'video').then((result) => {
+                  // Send WebSocket message with scanned code
+                  ws.send(JSON.stringify({'exam':result.text}));
+                  // Scan again
+                  scan();
+              }).catch((err) => {
+                  console.error(err);
+                  // Scan again
+                  scan();
+              });
+          }
+  
+          ws.onopen = function(event) {
+              // Start scanning for QR codes
+              scan();
+          };
         window.onbeforeunload = function (e) {
         
             if ((document.getElementById('endingEle').innerHTML)!=='Game had been ended'){
@@ -147,7 +148,7 @@
     window.addEventListener('resize', resizeVideoContainer);
     resizeVideoContainer();
     
-       }
+       }}
 </script>
 
 {% endblock %}
