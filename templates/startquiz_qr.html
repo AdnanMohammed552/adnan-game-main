@@ -26,7 +26,7 @@
         <i id="eye-slash-icon" class="fas fa-eye-slash d-none"></i>
       </button>
   
-      
+      {% if svg2 %}
       <button clbuss="btn btn-primary" data-toggle="modal" data-target="#myModal" >Manage from your phone</button>
       <div class="modal" id="myModal">
         <div class="modal-dialog">
@@ -54,6 +54,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
 </div>
     </div>
   </div>
