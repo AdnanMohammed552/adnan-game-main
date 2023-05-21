@@ -75,13 +75,13 @@ const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
       <div class="modal-content">
           <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Create quiz ?</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" id="close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
               <p>You cant Undo this..</p>
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" id="closex" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <button type="button" id="sub" class="btn">Create</button>
           </div>
       </div>
@@ -290,9 +290,12 @@ function add() {
 
     }
       document.getElementById('sub').onclick=function(e){
-        var myModal = document.getElementById('exampleModal'+code1);
-              var modal = bootstrap.Modal.getInstance(myModal);
-              modal.hide();
+        document.getElementById('sub').disabled=true
+        document.getElementById('closex').disabled=true
+        document.getElementById('close').disabled=true
+
+
+        
         const pass = document.getElementById('pass').value
         quiz_data = document.getElementById('quiz').innerHTML
 
@@ -352,6 +355,9 @@ function add() {
           .then(response => response.json())
           .then(data =>alert('Quiz created successfuly, You can View,Edit,Challenge the quiz from My activity panel'))
           .catch(error => alert('Please check all fields are correct!!'));
+          document.getElementById('sub').disabled=false
+          document.getElementById('closex').disabled=false
+          document.getElementById('close').disabled=false
           sessionStorage.setItem("pageState", "redirected");
           const inputs = document.querySelectorAll("button, input[type='text']");
 
@@ -360,6 +366,12 @@ function add() {
             input.disabled = true;
           });
           // Redirect to the new URL using window.location
+          var myModal = document.getElementById('exampleModal');
+              var modal = bootstrap.Modal.getInstance(myModal);
+              modal.hide();
+              document.getElementById('sub').disabled=false
+        document.getElementById('closex').disabled=false
+        document.getElementById('close').disabled=false
           window.location.href = window.location.origin +'/account/game/quiz/' +code
           
           // Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
@@ -375,6 +387,9 @@ function add() {
 
         })
         .catch(error => alert('Please check all fields are correct!!'));
+        document.getElementById('sub').disabled=false
+        document.getElementById('closex').disabled=false
+        document.getElementById('close').disabled=false
 
           let passw = []
           passw.push(pass)
