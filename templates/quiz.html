@@ -61,10 +61,39 @@ const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 </script>
 </div>
 <div class="container">
-<button style="margin-bottom: 10px;"  id="add" type="button" class="btn" onclick="add()">Add Another Question</button>
-<button type="button" id="sub" class="btn">Create Quiz</button>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <div class="container">
+
+<button id="add" type="button" class="btn" onclick="add()">Add Another Question</button>
+
+<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Create quiz
+          </button>
+  </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Delete question ?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <p>You cant Undo this..</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" id="sub" class="btn">Create</button>
+          </div>
+      </div>
+  </div>
 </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+
 <script>
+  
   window.onbeforeunload = function (e) {
         
     e = e || window.event;
@@ -261,6 +290,9 @@ function add() {
 
     }
       document.getElementById('sub').onclick=function(e){
+        var myModal = document.getElementById('exampleModal'+code1);
+              var modal = bootstrap.Modal.getInstance(myModal);
+              modal.hide();
         const pass = document.getElementById('pass').value
         quiz_data = document.getElementById('quiz').innerHTML
 
