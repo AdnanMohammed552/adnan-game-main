@@ -88,6 +88,7 @@
 </script>
     <script src="https://cdn.jsdelivr.net/npm/@zxing/library@0.18.4"></script>
        {{ room_code|json_script:'json-roomcode' }}
+       <script>
 
     const codeReader = new ZXing.BrowserQRCodeReader();
     
@@ -126,7 +127,6 @@
 			// Start scanning for QR codes
 			scan();
 		};
-        <script>
             window.onbeforeunload = function (e) {
             
                 if ((document.getElementById('endingEle').innerHTML)!=='Game had been ended'){
