@@ -888,7 +888,7 @@ def process_form_play(request,room_code):
 def managment(request,room_code):
     return render(request,'passs_managment.html',{'room_code':room_code})
 
-
+@csrf_exempt
 def red(request):
     print('gweglll')
     return render(request,'camera.html')
