@@ -5,6 +5,7 @@
 <button id="sub">sub</button>
 
 <script>
+    let pass1=''
     roomCode='{{room_code}}'
     const gameSocketquiz = new WebSocket(
         
@@ -14,7 +15,7 @@
     const data = JSON.parse(e.data)
     if (data.mypass!=false){
         console.log('gwegcc')
-        let pass1=data.mypass
+        pass1=data.mypass
 
     }
 
