@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<input type="text" name="" id="pass">
+<button id="sub">sub</button>
+
+<script>
+    const gameSocketquiz = new WebSocket(
+        
+    'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
+  )
+  gameSocketquiz.onmessage=function(e){
+    const data = JSON.parse(e.data)
+    if (data.mypass!=false){
+        let pass1=data.mypass
+
+    }
+
+  }
+
+  document.getElementById('sub').onclick=function(){
+    txt = document.getElementById('pass').value
+
+    if (txt === pass1){
+        alert('donee')
+    }
+  }
+</script>
+{% endblock %}

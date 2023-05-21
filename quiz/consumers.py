@@ -104,6 +104,12 @@ class gameConsumer(AsyncWebsocketConsumer):
             scores = False
 
         try:
+            mypass = data['mypass']
+        except:
+            mypass = False
+
+
+        try:
             data = data['data']
         except:
             data = False
@@ -128,7 +134,8 @@ class gameConsumer(AsyncWebsocketConsumer):
                 'name':name,
                 'next':next,
                 'end_clicked':end_clicked,
-                'scores':scores
+                'scores':scores,
+                'mypass':mypass
             }
             
         )
@@ -192,6 +199,12 @@ class gameConsumer(AsyncWebsocketConsumer):
         except:
             scores = False
 
+        try:
+            mypass = event['mypass']
+        except:
+            mypass = False
+
+
         
         print('vwbw',next)
         await self.send(text_data=json.dumps({
@@ -204,7 +217,9 @@ class gameConsumer(AsyncWebsocketConsumer):
             'room':room,
             'camera_correct':camera_correct,
             'next':next,
-            'end_clicked':end_clicked
+            'end_clicked':end_clicked,
+            'mypass':mypass
+
     
             
             

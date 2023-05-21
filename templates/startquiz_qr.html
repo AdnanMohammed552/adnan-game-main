@@ -19,10 +19,45 @@
 </div>  
 </div>
 <center>
-<button id="toggle-button" class="btn btn-primary">
-  <i id="eye-icon" class="fas fa-eye"></i>
-  <i id="eye-slash-icon" class="fas fa-eye-slash d-none"></i>
-</button>
+  <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
+    <div class="d-flex flex-wrap justify-content-center mt-3">
+      <button id="toggle-button" class="btn mx-1 mb-2">
+        <i id="eye-icon" class="fas fa-eye"></i>
+        <i id="eye-slash-icon" class="fas fa-eye-slash d-none"></i>
+      </button>
+  
+      
+      <button clbuss="btn btn-primary" data-toggle="modal" data-target="#myModal" >Manage from your phone</button>
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal Title</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h3>Modal Content</h3>
+                    <p>1-scan this code from your mobile</p>
+                      {{ svg2|safe }}
+
+                    <p>2-enter the password in this field after the webste loaded in the mobile</p>
+                    <input type="text" name="" id="passww">
+                    <button id="sendddsn">Send password</button>
+
+                    <p>3-Enter same password in your mobile and click next</p>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+  </div>
+
 </center>
 <div class="collapse" id="fwjohg" style="display: none;">
   <div id="qrcode"style="text-align: center;">
@@ -496,7 +531,20 @@ body{
   const name = '{{name}}'
   document.getElementById('nextttt').style.display='none'
   const lang1 = '{{lang}}'
+  document.getElementById('manage').onclick=function(){
+    alert('Join from you phone')
+  }
+  document.getElementById('sendddsn').onclick=function(){
+    const gameSocketquiz = new WebSocket(
+        
+    'wss://' + window.location.host + '/ws/' + roomCode + '/quiz/'
+  )
+  gameSocketquiz.onopen=function(){
+    x=document.getElementById('passww').value;
+    ws.send(JSON.stringify({'mypass':x}))
+  }
 
+  }
   if(lang1=='arabic'){
 
     try{

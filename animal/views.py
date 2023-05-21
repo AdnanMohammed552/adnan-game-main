@@ -416,7 +416,13 @@ def room_admin_quiz(request,room_code):
                 
                 language =www['lang']
 
-            return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language,'name':name})
+            qr_image2 = qrcode.make(f'https://adnan-game-animal.herokuapp.com/managment/{room_code}',image_factory=factory, box_size=10)    
+            bufstore2 = io.BytesIO()
+            qr_image2.save(bufstore2)    
+            
+            svg2 = bufstore2.getvalue().decode() 
+
+            return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language,'name':name,'svg2':svg2})
         else:
             return HttpResponse('<h2>No game with this code !!</h2>')
     else:
@@ -435,8 +441,12 @@ def room_admin_quiz(request,room_code):
         for www in kfken:
             
             language =www['lang']
-
-        return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language,'name':name})
+        qr_image2 = qrcode.make(f'https://adnan-game-animal.herokuapp.com/managment/{room_code}',image_factory=factory, box_size=10)    
+        bufstore2 = io.BytesIO()
+        qr_image2.save(bufstore2)    
+        
+        svg2 = bufstore2.getvalue().decode() 
+        return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language,'name':name,'svg2':svg2})
 
 
 def wait_quiz(request,room_code):
@@ -874,3 +884,6 @@ def process_form_play(request,room_code):
         
     else:
         return HttpResponse('Error!!')
+    
+def managment(request,room_code):
+    return render('passs_managment.html')
