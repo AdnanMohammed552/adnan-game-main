@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<div id="data"></div>
 <input type="text" name="" id="pass">
 <button id="sub">sub</button>
 
@@ -22,46 +22,162 @@
 
   document.getElementById('sub').onclick=function(){
     txt = document.getElementById('pass').value
-    function getCookie(name) {
-        var cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-          var cookies = document.cookie.split(';');
-          for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === name + '=') {
-              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-              break;
-            }
-          }
-        }
-        return cookieValue;
-      }
+ 
       
       if (txt === pass1) {
-        alert('donee');
-        fetch('/api/red/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': getCookie('csrftoken')
-          },
-          body: JSON.stringify({ password: 'passw' }) // Pass an object instead of a string
-        })
-          .then(response => {
-            if (response.ok) {
-              return response.json();
-            }
-            throw new Error('Error: ' + response.status);
-          })
-          .then(data => {
-            alert('Quiz created successfully');
-            // You can perform additional actions with the response data if needed
-          })
-          .catch(error => {
-            alert('Please check all fields are correct!!');
-            console.error(error);
-          });
+        document.getElementById('sub').style.display='none'
+        document.getElementById('pass').style.display='none'
+        document.getElementById('data').innerHTML+=(`
+<head>
+	<title>QR Code Scanner</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<div class="container">
+		<div class="row">
+		  <div class="col-sm-6 col-md-3">
+			<button class="btn btn-primary btn-block" onclick="send_ans('A')">A</button>
+		  </div>
+		  <div class="col-sm-6 col-md-3">
+			<button class="btn btn-primary btn-block" onclick="send_ans('B')">B</button>
+		  </div>
+		  <div class="col-sm-6 col-md-3">
+			<button class="btn btn-primary btn-block" onclick="send_ans('C')">C</button>
+		  </div>
+		  <div class="col-sm-6 col-md-3">
+			<button class="btn btn-primary btn-block" onclick="send_ans('D')">D</button>
+		  </div>
+		</div>
+	  </div>
+	  
+  
+</head>
+<body>
+	<style>
+		.video-container {
+			position: relative;
+			width: 100%;
+			height: 0;
+			padding-bottom: 56.25%;
+		  }
+		  
+		  #video {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		  }
+		  
+		  
+		  
+	</style>
+	<div class="video-container">
+	  
+	<video id="video" width="1000" height="1000" autoplay="autoplay" playsinline autoplay controls></video>
+	</div>
+	<center><h3 id="camera_correct"></h3></center>
+	<center>
+	<button class="btn btn-primary" id="next">End question</button>
+	<button class="btn btn-danger" id="end_game">End game</button>
+</center>
+
+</body>
+        `)
       }
        }
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/@zxing/library@0.18.4"></script>
+       {{ room_code|json_script:'json-roomcode' }}
+
+    const codeReader = new ZXing.BrowserQRCodeReader();
+    
+    const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
+	
+
+    const ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
+	ws.onmessage = function(e){
+        const data = JSON.parse(e.data)
+		if (data.camera_correct != false){
+			document.getElementById('camera_correct').innerHTML = data.camera_correct
+		}
+	}
+	function send_ans(ans){
+		var userName = "{{ user.username }}";
+		res= (userName+'/'+ans)
+		console.log('resfqe',res)
+		ws.send(JSON.stringify({'exam':res}));
+
+	}
+		function scan() {
+			codeReader.decodeFromInputVideoDevice(undefined, 'video').then((result) => {
+				// Send WebSocket message with scanned code
+				alert(result.text)
+				ws.send(JSON.stringify({'exam':result.text}));
+				// Scan again
+				scan();
+			}).catch((err) => {
+				console.error(err);
+				// Scan again
+				scan();
+			});
+		}
+
+		ws.onopen = function(event) {
+			// Start scanning for QR codes
+			scan();
+		};
+        <script>
+            window.onbeforeunload = function (e) {
+            
+                if ((document.getElementById('endingEle').innerHTML)!=='Game had been ended'){
+                e = e || window.event;
+            
+                // For IE and Firefox prior to version 4
+                if (e) {
+                    e.returnValue = 'Sure?';
+                    
+                }
+            
+                // For Safari
+                return 'Sure?';
+              }
+            };
+        
+            let x = 'end'
+            document.getElementById('end_game').onclick=function(){
+                ws.send(JSON.stringify({
+                    'end_clicked':true
+                }))
+            }
+    
+    
+            document.getElementById('next').onclick = function(){
+                if (x=='next'){
+                x='end'
+                document.getElementById('next').innerHTML='End question'
+    
+                }
+                else if (x=='end'){
+                    x='next'
+                    document.getElementById('next').innerHTML='Next question'
+                }
+                ws.send(JSON.stringify({
+                    'next':true
+                }))
+            }
+        
+            
+            const videoContainer = document.querySelector('.video-container');
+    
+    function resizeVideoContainer() {
+      const screenHeight = window.innerHeight;
+      const videoContainerHeight = screenHeight - videoContainer.offsetTop;
+    }
+    
+    window.addEventListener('resize', resizeVideoContainer);
+    resizeVideoContainer();
+    
+        </script>
+		</script>
 </script>
 {% endblock %}
