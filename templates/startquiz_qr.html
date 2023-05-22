@@ -106,7 +106,9 @@
 </div>
     </div>
   </div>
-
+<center>
+  <h3 id="watit">Waiting for players to join.</h3>
+</center>
 </center>
 <div class="collapse" id="fwjohg" style="display: none;">
   <div id="qrcode"style="text-align: center;">
@@ -597,6 +599,10 @@ body{
 }
   if(lang1=='arabic'){
     try{
+      document.getElementById('watit').innerHTML='في انتظار انضمام اللاعبين ..'
+    }
+    catch{}
+    try{
       document.getElementById('player_ans').innerHTML='أجوبة اللاعبين'
     }
     catch{}
@@ -864,6 +870,7 @@ catch{}
           else{
             arra.push(strBeforeSlash)
             document.getElementById('done').style.display='block'
+            document.getElementById('watit').style.display='none'
             document.getElementById('users').innerHTML += (
               ' <button  class="btn btn-tag btn-rounded text-center userbutton" style="background-color:#808080;color:white !important;" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span style="color:white">'+ strBeforeSlash +'</span></button>'
              )
@@ -887,7 +894,8 @@ catch{}
           if(array.includes(username) === false){
           array.push(username)
           if (username !==""){
-            
+            document.getElementById('done').style.display='block'
+            document.getElementById('watit').style.display='none'
             document.getElementById('users').innerHTML += (
              ' <button class="btn btn-tag btn-rounded text-center" style="background-color:#808080;color:white !important;" id="'+ username +'" onclick="userremove(\'' + username + '\')"><span style="color:white">'+ username +'</span></button>'
             )
