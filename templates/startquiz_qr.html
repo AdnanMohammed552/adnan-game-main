@@ -22,80 +22,82 @@
   <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
     <div class="d-flex flex-wrap justify-content-center mt-3">
       {% if svg2 %}
-      <button id="" class="btn mx-1 mb-2" data-toggle="modal" data-target="#myModal1">
+      <button id="ngeir" class="btn mx-1 mb-2" data-toggle="modal" data-target="#myModal1">
         Allow players to join game (players)
       </button>
       <div class="modal" id="myModal1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Join from your mobile</h5>
-                    <button type="btn button" class="close" data-dismiss="modal">&times;</button>
+                    <h5 class="modal-title" id="j">Join from your mobile</h5>
+                    <button type="btn button" class="btn close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <h3>Players joining</h3>
-                    <p><strong>1-</strong>Players should scan this =></p>
+                    <h3 id="k">Players joining</h3>
+                    <p id="l"><strong>1-</strong>Players should scan this =></p>
                       {{ svg|safe }}
 
-                    <p><strong>2-</strong>Every player should enter password that admin told him</p>
+                    <p id="z"><strong>2-</strong>Every player should enter password that admin told him</p>
                     
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary closedd" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
     {% else %}
-    <button id="" class="btn mx-1 mb-2" data-toggle="modal" data-target="#myModal1">
+    <button id="x" class="btn mx-1 mb-2" data-toggle="modal" data-target="#myModal1">
       Manage from your phone (admin)
     </button>
     <div class="modal" id="myModal1">
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title">Join from your mobile</h5>
+                  <h5 class="modal-title" id="c">Join from your mobile</h5>
                   <button type="btn button" class="close" data-dismiss="modal">&times;</button>
               </div>
               <div class="modal-body">
-                  <h3>Manage game from your mobile</h3>
-                  <p><strong>1-</strong>Scan this from your mobile=></p>
+                  <h3 id="v">Manage game from your mobile</h3>
+                  <p id="b"><strong>1-</strong>Scan this from your mobile=></p>
                     {{ svg|safe }}
 
-                  <p><strong>2-</strong>Enter the password if required</p>
+                  <p id="n"><strong>2-</strong>Enter the password if required</p>
                   
               </div>
               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary closedd" data-dismiss="modal">Close</button>
               </div>
           </div>
       </div>
   </div>
       {% endif %}
       {% if svg2 %}
-      <button class="btn mx-1 mb-2" data-toggle="modal" data-target="#myModal" >Manage from your phone (admin)</button>
+      <button class="btn mx-1 mb-2" data-toggle="modal" data-target="#myModal" id="e" >Manage from your phone (admin)</button>
       <div class="modal" id="myModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Join from your mobile</h5>
+                    <h5 class="modal-title" id="r">Join from your mobile</h5>
                     <button type="btn button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <h3>Manage game from your mobile</h3>
-                    <p><strong>1-</strong>scan this code from your mobile</p>
+                    <h3 id="t">Manage game from your mobile</h3>
+                    <p id="y"> <strong>1-</strong>scan this code from your mobile</p>
                       {{ svg2|safe }}
+                    <p id="uu"><strong>2-</strong>Wait till the website loaded in your phone</p>
 
-                    <p><strong>2-</strong>enter the password in this field after the website loaded in the mobile</p>
+                    <p id="u2"><strong>3-</strong>enter the password in this field after the website loaded in the mobile</p>
                     <input type="password" name="" id="passww">
                     <button class="btn" id="sendddsn">Send password</button>
+                    <p id="aa"><strong>4-</strong>Click send password</p>
 
-                    <p><strong>3-</strong>Enter same password in your mobile phone and click next</p>
+                    <p id="i"><strong>5-</strong>Enter same password in your mobile phone and click next</p>
 
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary closedd" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -575,6 +577,7 @@ body{
   
 </style>
 <script>
+  document.getElementById('done').style.display='none'
   const name = '{{name}}'
   document.getElementById('nextttt').style.display='none'
   const lang1 = '{{lang}}'
@@ -593,7 +596,109 @@ body{
   }
 }
   if(lang1=='arabic'){
+    try{
+      document.getElementById('ngeir').innerHTML='إنضمام اللاعبين'
+    }
+    catch{}
+    try{
+      document.getElementById('j').innerHTML='إنضمام من الهاتف'
 
+    }
+    catch{}
+    try{
+      document.getElementById('k').innerHTML='إنضمام اللاعبين'
+
+    }
+    catch{}
+    try{
+      document.getElementById('l').innerHTML='1- يجب على كل لاعب مسح رمز QR أدناه'
+
+    }
+    catch{}
+    try{
+      document.getElementById('z').innerHTML='2- يجب على كل لاعب أن يُدخل كلمة السر التي تم اخبارهم بها من قبل منشئ الاختبار'
+
+    }
+    catch{}
+/////////////////////////////
+    try{
+      document.getElementById('x').innerHTML='إدارة اللعبة من الهاتف'
+    }
+    catch{}
+    try{
+      document.getElementById('c').innerHTML='إنضمام من الهاتف'
+
+    }
+    catch{}
+    try{
+      document.getElementById('v').innerHTML='إدارة اللعبة من الهاتف'
+
+    }
+    catch{}
+    try{
+      document.getElementById('b').innerHTML='1- يجب عليك مسح رمز ال QR أدناه'
+
+    }
+    catch{}
+    try{
+      document.getElementById('n').innerHTML='2- أدخل كلمة السر إذا تطلب الأمر'
+
+    }
+    catch{}
+
+/////////////////////////////////////////
+/////////////////////////////lastdata-toggle="modal" data-target="#myModal" id="e"
+try{
+  document.getElementById('e').innerHTML='إدارة اللعبة من الهاتف'
+}
+catch{}
+try{
+  document.getElementById('r').innerHTML='إدارة اللعبة من الهاتف'
+
+}
+catch{}
+try{
+  document.getElementById('t').innerHTML='إدارة اللعبة من الهاتف'
+
+}
+catch{}
+try{
+  document.getElementById('y').innerHTML='1- يجب عليك مسح رمز ال QR أدناه'
+
+}
+catch{}
+try{
+  document.getElementById('u2').innerHTML='3- أدخل كلمة السر في الحقل ادناه بعد ان يتم تحميل الموقع في هاتفك'
+
+}
+catch{}
+try{
+  document.getElementById('aa').innerHTML='4- إضغط تعيين كلمة السر'
+
+}
+catch{}
+try{
+  document.getElementById('sendddsn').innerHTML='تعيين كلمة السر'
+
+}
+catch{}
+try{
+  document.getElementById('i').innerHTML='5- أدخل نفس كلمة السر في هاتفك ثم اضغط التالي'
+
+}
+catch{}
+try{
+  document.getElementById('uu').innerHTML='2- إنتظر حتى يتم تحميل الموقع في الهاتف بشكل كامل'
+
+}
+catch{}
+try{
+  document.querySelectorAll('.closedd').forEach(btn=>{
+    btn.innerHTML='إغلاق'
+  })
+}
+catch{}
+/////////////////////////////////////////
     try{
     document.getElementById('done').innerHTML = 'بدء اللعبة'
     }
@@ -754,7 +859,7 @@ body{
           }
           else{
             arra.push(strBeforeSlash)
-
+            document.getElementById('done').style.display='block'
             document.getElementById('users').innerHTML += (
               ' <button  class="btn btn-tag btn-rounded text-center userbutton" style="background-color:#808080;color:white !important;" id="'+ strBeforeSlash +'" onclick="userremove(\'' + strBeforeSlash + '\')"><span style="color:white">'+ strBeforeSlash +'</span></button>'
              )

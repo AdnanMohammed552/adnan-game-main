@@ -709,7 +709,7 @@ def activity(request):
             w.append(v)
 
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']

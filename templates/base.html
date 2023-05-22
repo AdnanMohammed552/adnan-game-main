@@ -100,7 +100,7 @@ rel="stylesheet"
          <strong> <a class="nav-link text-capitalize" id="join1" href="/join">Join a room</a></strong>
         </li>
         <li class="nav-item">
-        <strong>  <a class="nav-link text-capitalize" id="join1" href="/activity">My activity</a></strong>
+        <strong>  <a class="nav-link text-capitalize" id="join2" href="/activity">My activity</a></strong>
         </li>
         <li>
          <strong> <a class="nav-link text-capitalize" id="qrr" href="/account/qrcodes">qr codes</a></strong>
@@ -174,7 +174,7 @@ rel="stylesheet"
           </li>
 
           <li>
-            <a class="dropdown-item text-capitalize" id="qrr" href="/activity">My activity</a>
+            <a class="dropdown-item text-capitalize" id="qrr2" href="/activity">My activity</a>
           </li>
 
           <li>
@@ -285,11 +285,15 @@ rel="stylesheet"
   if(lang=='arabic'){
     document.getElementById('create1').innerHTML = 'إنشاء لعبة'
     document.getElementById('join1').innerHTML = 'الإنضمام إلى لعبة'
+    document.getElementById('join2').innerHTML = 'أنشطتي'
+
     document.getElementById('aaa').dir='rtl'
     document.getElementById('aaa').lang='ar'
     document.getElementById('prof').innerHTML = 'الملف الشخصي'
     document.getElementById('out').innerHTML = 'تسجيل خروج'
-    document.getElementById('qrr').innerHTML = 'إنشاء رموز qr الخاصة بي'
+    document.getElementById('qrr').innerHTML = 'QR'
+    document.getElementById('qrr2').innerHTML = 'أنشطتي'
+
     document.getElementById('aae').dir='rtl'
     document.getElementById('aae').lang='ar'
   }
