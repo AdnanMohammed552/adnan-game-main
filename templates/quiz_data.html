@@ -26,7 +26,7 @@
   <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
     <div class="d-flex flex-wrap justify-content-center mt-3">
     <div class="dropdown">
-      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button class="btn dropdown-toggle ddd" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Challenge friends
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -56,6 +56,9 @@
         document.getElementById('dw').innerHTML = 'أنشأه: '
         document.getElementById('dwwf').innerHTML = 'في: '
         document.getElementById('fwwfv').innerHTML = 'عدد الأسئلة: '
+        document.querySelectorAll('.ddd').forEach(w=>{
+          w.innerHTML='تحدي الأصدقاء'
+        })
 
     
       }
