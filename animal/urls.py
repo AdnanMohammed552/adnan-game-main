@@ -27,7 +27,7 @@ urlpatterns = [
     path('api/endpointpass/', views.password, name='my-endpoint'),
     path('api/endpoint_restore/', views.endpoint_restore, name='my-endpoint'),
     path('api/endpoint_reeset/', views.endpoint_reeset, name='my-endpoint'),
-    path('play/<int:room_code>', views.play, name='my-endpoint'),
+    path('play/<int:room_code>', views.play, name='playy'),
     path('managment/<int:room_code>',views.managment),
     path('api/endpointpassword/', views.endpointpassword, name='my-endpoint'),
     path('api/red/', views.red, name='my-endpoint'),

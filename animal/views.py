@@ -229,29 +229,34 @@ def joinnow(request,room_code):
 
 def wait(request , room_code):
     language = 'english'
+    from quiz import models as m
+    b=m.title.objects.all().filter(code=room_code)
+    if not b.exists():
 
-    from gameadmin.models import startingroom
-    x=startingroom.objects.all().filter(room=room_code).values()
-    print('zzfegeg',x)
-    z=False
-    time=False
-    admin=False
-    for i in x:
-        z=i['started']
-        time=i['time']
-        admin=i['admin']
-        break
+        from gameadmin.models import startingroom
+        x=startingroom.objects.all().filter(room=room_code).values()
+        print('zzfegeg',x)
+        z=False
+        time=False
+        admin=False
+        for i in x:
+            z=i['started']
+            time=i['time']
+            admin=i['admin']
+            break
 
-    if z != True:
-        username = request.GET['username']
-        from animal.models import lang
-        kfken = lang.objects.all().filter(user=request.user).values()
-        for www in kfken:
-            
-            language =www['lang']
-        return render(request , 'waiting.html' , {'room_code':room_code ,'username':username ,'time':time,'admin':admin,'x':x,'lang':language})
+        if z != True:
+            username = request.GET['username']
+            from animal.models import lang
+            kfken = lang.objects.all().filter(user=request.user).values()
+            for www in kfken:
+                
+                language =www['lang']
+            return render(request , 'waiting.html' , {'room_code':room_code ,'username':username ,'time':time,'admin':admin,'x':x,'lang':language})
+        else:
+            return HttpResponse('Game already started')
     else:
-        return HttpResponse('Game already started')
+        return redirect('playy',room_code)
 
 def end(request , room_code):
     language = 'english'
