@@ -15,27 +15,27 @@
             <h2>User Information</h2>
             <table class="table">
                 <tr>
-                    <th>Name:</th>
+                    <th id="name">Name:</th>
                     <td>{{user.username}}</td>
                 </tr>
                 <tr>
-                    <th>Email:</th>
+                    <th id="email">Email:</th>
                     <td>{{user.email}}</td>
                 </tr>
                 <tr>
-                    <th>Number of created quizzes:</th>
+                    <th id="num_created">Number of created quizzes:</th>
                     <td><a href="https://adnan-game-animal.herokuapp.com/activity"><strong>{{num}}</strong></a></td>
                 </tr>
                 <tr>
-                    <th>Number of played quizzes:</th>
+                    <th id="num_played">Number of played quizzes:</th>
                     <td><a href="https://adnan-game-animal.herokuapp.com/activity#tab9"><strong>{{number_played}}</strong></a></td>
                 </tr>
                 <tr>
-                    <th>Your quiz score <span> <i style="color:D4AF37" class="fas fa-coins"></i> </span></th>
+                    <th id="score">Your quiz score <span> <i style="color:D4AF37" class="fas fa-coins"></i> </span></th>
                     <td><strong>{{user_score}}</strong></td>
                 </tr>
                 <tr>
-                    <th>Join date:</th>
+                    <th id="date">Join date:</th>
                     <td>{{join}}</td>
                 </tr>
             </table>
@@ -50,6 +50,20 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <script>
+    const lang1 = '{{lang}}'
+
+    if(lang1=='arabic'){
+     document.getElementById('name').innerHTML='الإسم:'
+     document.getElementById('email').innerHTML='البريد الإلكتروني:'
+     document.getElementById('num_created').innerHTML='عدد الإختبارات التي تم إنشاؤها'
+     document.getElementById('num_played').innerHTML='عدد الإختبارات التي تم لعبها'
+     document.getElementById('score').innerHTML='مجموع النقاط'
+     document.getElementById('date').innerHTML='تاريخ الإنضمام'
+     document.getElementById('tit').style.float='right'
+     document.getElementById('tit').innerHTML='معلومات المستخدم'
+     
+      
+    }
     document.getElementById('reset_image').onclick = function(){
         fetch('/api/endpoint_reeset/', {
             method: 'POST',
