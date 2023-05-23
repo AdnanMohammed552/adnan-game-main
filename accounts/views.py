@@ -63,7 +63,7 @@ def signup(request):
 
                             auth.login(request,user)
                             from animal.models import lang
-                            kfken = lang.objects.all().values()
+                            kfken = lang.objects.all().filter(user=request.user).filter(user=request.user).values()
                             for www in kfken:
                                 
                                 language =www['lang']
@@ -76,7 +76,7 @@ def signup(request):
                         messages.error(request, 'Email is incorrect', extra_tags='safe')
         
         from animal.models import lang
-        kfken = lang.objects.all().values()
+        kfken = lang.objects.all().filter(user=request.user).values()
         for www in kfken:
             
             language =www['lang']
@@ -89,7 +89,7 @@ def signup(request):
     
     else:
         from animal.models import lang
-        kfken = lang.objects.all().values()
+        kfken = lang.objects.all().filter(user=request.user).values()
         for www in kfken:
             
             language =www['lang']
@@ -109,7 +109,7 @@ def login(request):
         else:
             messages.error(request,'Wrong, Enter username not email!')   
             from animal.models import lang
-            kfken = lang.objects.all().values()
+            kfken = lang.objects.all().filter(user=request.user).values()
             for www in kfken:
                 
                 language =www['lang']
@@ -120,7 +120,7 @@ def login(request):
 
     else:
         from animal.models import lang
-        kfken = lang.objects.all().values()
+        kfken = lang.objects.all().filter(user=request.user).values()
         for www in kfken:
             
             language =www['lang']
@@ -147,7 +147,7 @@ def mygames(request):
             w.append(z)
             w.append(v)
         from animal.models import lang
-        kfken = lang.objects.all().values()
+        kfken = lang.objects.all().filter(user=request.user).values()
         for www in kfken:
             
             language =www['lang']
@@ -172,7 +172,7 @@ def myaccount(request,room_code):
 
         print('my is ',request.user ,z , type(z))
         from animal.models import lang
-        kfken = lang.objects.all().values()
+        kfken = lang.objects.all().filter(user=request.user).values()
         for www in kfken:
             
             language =www['lang']
@@ -186,7 +186,7 @@ def home(request):
 
     data = models.title.objects.all().filter(user=request.user).values()
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -199,7 +199,7 @@ def home2(request):
 
     data = models.title.objects.all().filter(user=request.user).values()
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -255,7 +255,7 @@ def played(request):
         z = i['room_played']
         w.append(z)
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -275,7 +275,7 @@ def playedacc(request,room_code):
             continue
     adnan = Template(z2)
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -286,7 +286,7 @@ def created(request):
     language = 'english'
 
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -304,7 +304,7 @@ def quiz(request):
         w.append(z)
         w.append(v)
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -327,7 +327,7 @@ def quiz_data(request,room_code):
             return HttpResponse('<h2>Error, its not your game</h2>')
         elif private == False:
             from animal.models import lang
-            kfken = lang.objects.all().values()
+            kfken = lang.objects.all().filter(user=request.user).values()
             for www in kfken:
                 
                 language =www['lang']
@@ -338,7 +338,7 @@ def quiz_data(request,room_code):
     else:
 
         from animal.models import lang
-        kfken = lang.objects.all().values()
+        kfken = lang.objects.all().filter(user=request.user).values()
         for www in kfken:
             
             language =www['lang']
@@ -402,7 +402,7 @@ def qrcodes(request):
     import base64
     encoded_string = base64.b64encode(image_byte_array).decode('utf-8')
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -422,7 +422,7 @@ def quiz_data_last(request,room_code):
         array.append(i['date'])
     #adnan.render(Context({}))
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
@@ -452,7 +452,7 @@ def quiz_data_last_preview(request,id,room_code):
         z2 = i['table']
     adnan=Template(z2)
     from animal.models import lang
-    kfken = lang.objects.all().values()
+    kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
         
         language =www['lang']
