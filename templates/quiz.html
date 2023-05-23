@@ -292,6 +292,7 @@ function add() {
       document.getElementById('sub').onclick=function(e){
         function checkEmptyFields() {
           var fields = document.querySelectorAll('input, select, textarea'); // Select all input, select, and textarea fields
+          var radioGroupNames = {}; // To track radio button groups
           
           for (var i = 0; i < fields.length; i++) {
             var fieldType = fields[i].type.toLowerCase();
@@ -300,20 +301,41 @@ function add() {
               if (fields[i].value.trim() === '') {
                 return true; // Found an empty field
               }
-            } else if (fieldType === 'checkbox' || fieldType === 'radio') {
-              if (!fields[i].checked) {
-                return true; // Found an unchecked checkbox or radio button
+            } else if (fieldType === 'checkbox') {
+              if (fields[i].checked && fields[i].value.trim() === '') {
+                return true; // Found an empty checkbox with value
+              }
+            } else if (fieldType === 'radio') {
+              var groupName = fields[i].name;
+              
+              if (!(groupName in radioGroupNames)) {
+                radioGroupNames[groupName] = true;
+                
+                var radioButtons = document.querySelectorAll('input[type="radio"][name="' + groupName + '"]');
+                var isChecked = false;
+                
+                for (var j = 0; j < radioButtons.length; j++) {
+                  if (radioButtons[j].checked) {
+                    isChecked = true;
+                    break;
+                  }
+                }
+                
+                if (!isChecked) {
+                  return true; // No option selected for the radio button group
+                }
               }
             }
           }
           
           return false; // No empty fields found
         }
-        var hasEmptyFields = checkEmptyFields();
+            var hasEmptyFields = checkEmptyFields();
 
         if (hasEmptyFields) {
-          alert('Please check all fields')
-        } else {
+          alert('Please check all inputs')
+        } else 
+        {
           console.log('All fields are filled.');
                
         document.getElementById('sub').disabled=true
