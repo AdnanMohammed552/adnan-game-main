@@ -290,6 +290,32 @@ function add() {
 
     }
       document.getElementById('sub').onclick=function(e){
+        function checkEmptyFields() {
+          var fields = document.querySelectorAll('input, select, textarea'); // Select all input, select, and textarea fields
+          
+          for (var i = 0; i < fields.length; i++) {
+            var fieldType = fields[i].type.toLowerCase();
+            
+            if (fieldType === 'text' || fieldType === 'password' || fieldType === 'textarea' || fieldType === 'select-one' || fieldType === 'select-multiple') {
+              if (fields[i].value.trim() === '') {
+                return true; // Found an empty field
+              }
+            } else if (fieldType === 'checkbox' || fieldType === 'radio') {
+              if (!fields[i].checked) {
+                return true; // Found an unchecked checkbox or radio button
+              }
+            }
+          }
+          
+          return false; // No empty fields found
+        }
+        var hasEmptyFields = checkEmptyFields();
+
+        if (hasEmptyFields) {
+          alert('Please check all fields')
+        } else {
+          console.log('All fields are filled.');
+               
         document.getElementById('sub').disabled=true
         document.getElementById('closex').disabled=true
         document.getElementById('close').disabled=true
@@ -402,7 +428,7 @@ function add() {
 
       
 
-  
+    } 
 
     
 </script>
