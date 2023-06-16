@@ -871,7 +871,7 @@ def process_form_play(request,room_code):
 
     if request.method == 'POST':
         passs = request.POST.get('password')
-        print('kewgew',passs,room_code)
+        print('kewgew',passs,room_code) 
         from quiz import models
         c=models.password.objects.all().filter(code=room_code).values()
         print('ccis',c,room_code)
