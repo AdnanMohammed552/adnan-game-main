@@ -24,6 +24,7 @@ urlpatterns = [
     path('game/quiz/<int:room_code>/view_questions',v.view_questions),
 
     path('game/quiz/<int:room_code>/startqr/end/<int:id>',v.room_admin_quiz_qr_end),
+    path('game/quiz/<int:room_code>/start/end/<int:id>',v.room_admin_quiz_qr_end),
 
     
     path('home',views.home2,name='home'),
