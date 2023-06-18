@@ -1266,7 +1266,33 @@ catch{}
                             incrementScore(user, 0);
 
                           }
+                          const div = document.getElementById('users');
+
+                          // Get all the buttons within the div
+                          const buttons = div.getElementsByTagName('button');
+
+                          // Flag to keep track if all buttons have the desired color
+                          let anyButtonGray = false;
+
+                          // Iterate through each button and check its color
+                          for (let i = 0; i < buttons.length; i++) {
+                            const button = buttons[i];
+                            const computedStyle = getComputedStyle(button);
+                            const buttonColor = computedStyle.backgroundColor;
                           
+                            // Check if the button color is #808080 (gray)
+                            if (buttonColor === 'rgb(128, 128, 128)' || buttonColor === '#808080') {
+                              anyButtonGray = true;
+                              break;
+                            }
+                          }
+                          
+                          // Check the result
+                          if (anyButtonGray) {
+                            console.log("At least one button within the div 'xx' has the color #808080.");
+                          } else {
+                            document.getElementById('nextttt').click()
+                          }
                           
 
 
