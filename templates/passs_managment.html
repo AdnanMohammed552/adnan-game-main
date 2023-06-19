@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
+<button id="toggle-button" class="btn btn-primary">
+    <i id="eye-icon" class="fas fa-eye"></i>
+    <i id="eye-slash-icon" class="fas fa-eye-slash d-none"></i>
+  </button>
+  <script>
+    $(document).ready(function() {
+      $("#toggle-button").click(function() {
+        $("#video").toggle();
+      });
+    });
+  </script>
 <div id="data"></div>
 <input type="text" name="" id="pass">
 <button id="sub">sub</button>
