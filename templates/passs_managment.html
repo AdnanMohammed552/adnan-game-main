@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <button id="toggle-button" class="btn btn-primary">
     <i id="eye-icon" class="fas fa-eye"></i>
     <i id="eye-slash-icon" class="fas fa-eye-slash d-none"></i>
@@ -43,6 +45,12 @@
               
               
         </style>
+        <style>
+            .btn-lg {
+              padding: 10px 20px;
+              font-size: 20px;
+            }
+          </style>
 <script>
     document.getElementById('toggle-button').style.display='none'
     let pass1=''
@@ -71,9 +79,13 @@
         document.getElementById('sub').style.display='none'
         document.getElementById('pass').style.display='none'
         document.getElementById('data').innerHTML+=`
-        <center>
-        <button class="btn btn-primary" id="next">End question</button>
-            <button class="btn btn-danger" id="end_game">End game</button></center>
+        
+            <div class="container d-flex justify-content-center align-items-center vh-100">
+                <div class="text-center">
+                  <button class="btn btn-primary btn-lg mb-3" id="next">End question</button>
+                  <button class="btn btn-danger btn-lg" id="end_game">End game</button>
+                </div>
+              </div>
         <div class="video-container">
             
             <video id="video" width="1000" height="1000" autoplay="autoplay" playsinline autoplay controls></video>
