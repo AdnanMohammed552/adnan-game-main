@@ -46,24 +46,26 @@
               
         </style>
         <style>
-            
-            .btn-lg {
-                padding: 12px 24px;
-                font-size: 24px;
-              }
-              
-              .custom-container {
-                height: 100vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-              }
-              
-              .custom-container .text-center {
-                margin: 0;
-              }
+           
             #end_game{
                 background-color: red !important;
+            }
+          </style>
+          <style>
+            .btn-lg {
+              padding: 12px 24px;
+              font-size: 24px;
+            }
+            
+            .custom-container {
+              height: 100vh;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            
+            .custom-container .text-center {
+              margin: 0;
             }
           </style>
 <script>
@@ -94,19 +96,19 @@
         document.getElementById('sub').style.display='none'
         document.getElementById('pass').style.display='none'
         document.getElementById('data').innerHTML+=`
-        
-        <div class="container custom-container">
-            <div class="text-center">
-              <button class="btn btn-primary btn-lg mb-3" id="next">End question</button>
-              <button class="btn btn-danger btn-lg" id="end_game">End game</button>
-            </div>
-          </div>
+                    <center><h3 id="camera_correct"></h3></center>
+                    <div class="container custom-container">
+                        <div class="text-center mt-0 mb-0">
+                          <button class="btn btn-primary btn-lg mb-3" id="next">End question</button>
+                          <button class="btn btn-danger btn-lg" id="end_game">End game</button>
+                        </div>
+                      </div>
+                    
         
         <div class="video-container">
             
             <video id="video" width="1000" height="1000" autoplay="autoplay" playsinline autoplay controls></video>
             </div>
-            <center><h3 id="camera_correct"></h3></center>
             <center>
             
         </center>
