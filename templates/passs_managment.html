@@ -103,14 +103,14 @@
         document.getElementById('data').innerHTML+=`
                     <center><h3 id="camera_correct"></h3></center>
                         <div class="text-center mt-0 mb-0">
-                          <button class="btn btn-primary btn-lg" id="next">End question</button>
+                          <button class="btn btn-primary btn-lg" id="next">Next question</button>
                           <button class="btn btn-danger btn-lg" id="doneeeeee" data-bs-toggle="modal" data-bs-target="#exampleModal">End game</button>
 
                           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Create quiz ?</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">End quiz ?</h5>
                                         <button type="button" id="close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -194,7 +194,7 @@
         document.getElementById('next').onclick = function(){
             if (x=='next'){
             x='end'
-            document.getElementById('next').innerHTML='End question'
+            document.getElementById('next').innerHTML='Next question'
     
             }
             else if (x=='end'){
