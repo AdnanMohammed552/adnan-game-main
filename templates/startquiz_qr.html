@@ -1181,6 +1181,9 @@ catch{}
                   
           
                 if (remainingTime <= 0) {
+                  document.getElementById('answer'+corrr.replaceAll(' ','')).style.background = 'green'
+                  document.getElementById('answer'+corrr.replaceAll(' ','')).style.color = 'white'
+
                   clearInterval(countdownInterval);
                   resolve(); // resolve the Promise after the countdown timer completes
                 }
