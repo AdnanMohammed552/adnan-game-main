@@ -1282,14 +1282,14 @@ catch{}
                           
                             // Check if the button color is #808080 (gray)
                             console.log('buttonColorff',buttonColor)
-                            if (buttonColor == 'rgb(128, 128, 128)' || buttonColor == '#808080') {
+                            if (buttonColor.toString() == 'rgb(128, 128, 128)' || buttonColor == '#808080') {
                               anyButtonGray = true;
                               break;
                             }
                           }
                           
                           // Check the result
-                          if (anyButtonGray) {
+                          if (anyButtonGray===true) {
                             console.log("At least one button within the div 'xx' has the color #808080.");
                           } else {
                             document.getElementById('nextttt').click()
