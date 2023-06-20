@@ -366,12 +366,12 @@ function add() {
           for (let i = 0; i <= questionCount; i++){
             try{
               console.log('this is ',i)
-          const question= (document.getElementById('question'+i).value).replace(",", "-").replace(/["']/g, "");
+          const question= (document.getElementById('question'+i).value).replace(",", "-").replace(/["']/g, "").replace(/\\/g,'÷')
 
-          const answer1= (document.getElementById('answer1'+i).value).replace(",", "-").replace(/["']/g, "");
-          const answer2= (document.getElementById('answer2'+i).value).replace(",", "-").replace(/["']/g, "");
-          const answer3= (document.getElementById('answer3'+i).value).replace(",", "-").replace(/["']/g, "");
-          const answer4= (document.getElementById('answer4'+i).value).replace(",", "-").replace(/["']/g, "");
+          const answer1= (document.getElementById('answer1'+i).value).replace(",", "-").replace(/["']/g, "").replace(/\\/g,'÷')
+          const answer2= (document.getElementById('answer2'+i).value).replace(",", "-").replace(/["']/g, "").replace(/\\/g,'÷')
+          const answer3= (document.getElementById('answer3'+i).value).replace(",", "-").replace(/["']/g, "").replace(/\\/g,'÷')
+          const answer4= (document.getElementById('answer4'+i).value).replace(",", "-").replace(/["']/g, "").replace(/\\/g,'÷')
           const time= document.getElementById('seconds-input'+i).value
           console.log(question,answer1,answer2,answer3,answer4,time)
 
