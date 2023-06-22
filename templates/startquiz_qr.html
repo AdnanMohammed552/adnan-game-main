@@ -1061,7 +1061,7 @@ catch{}
                         
                           )
                     
-                document.getElementById('popup_table').innerHTML += (
+                document.getElementById('popup_table').innerHTML = (
         
                 '<div class="accordion" id="' + 'accordionExample' + i.question + '" data-mdb-parent="#accordionExample">' +
                   '<div class="accordion-item">' +
@@ -1105,7 +1105,7 @@ catch{}
                       '<th style="font-size:20px;background-color:green;color:white;text-align: center;" scope="col">'+ x +'</th>'
                     )
                   
-                    document.getElementById('addd'+i.question).innerHTML =(
+                    document.getElementById('addd'+i.question).innerHTML +=(
                       '<th style="font-size:20px;background-color:green;color:white;text-align: center;" scope="col">'+ x +'</th>'
                     )
                   }
@@ -1113,7 +1113,7 @@ catch{}
                       document.getElementById('add'+i.question).innerHTML +=(
                       '<th style="font-size:20px;text-align: center;" scope="col">'+ x +'</th>'
                     )
-                    document.getElementById('addd'+i.question).innerHTML =(
+                    document.getElementById('addd'+i.question).innerHTML +=(
                       '<th style="font-size:20px;text-align: center;" scope="col">'+ x +'</th>'
                     )
                     }
