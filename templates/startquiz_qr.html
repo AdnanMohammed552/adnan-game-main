@@ -191,8 +191,8 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="popupModalLabel">Popup Title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+            <button type="button" onclick="closePopup()" class="close" style="background-color: white !important;" data-dismiss="modal" aria-label="Close">
+              <span style="background-color: white !important;" aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body" id="popup_table">
@@ -265,8 +265,7 @@
           </div>`
         </div>
       </div>
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      
     <div id="timerrr"></div>
     <div id="data"></div>
 
@@ -1128,9 +1127,7 @@ catch{}
                   $('#popupModal').modal('show');
                 }
             
-                function closePopup() {
-                  $('#popupModal').modal('hide');
-                }
+               
                 document.getElementById('fwegweg').innerHTML = i.timer
                 document.getElementById('timerrr').innerHTML=(i.timer)
                 var correctlastasnwer = i.correctans
@@ -1257,10 +1254,13 @@ catch{}
                   resolve(); // resolve the Promise after the countdown timer completes
                 }
                 document.getElementById('nextttt').onclick=function(){
+                  function closePopup() {
+                    $('#popupModal').modal('hide');
+                  }
                   $('#popupModal').modal('show');
                   document.getElementById('answer'+corrr.replaceAll(' ','')).style.background = 'green'
                   document.getElementById('answer'+corrr.replaceAll(' ','')).style.color = 'white'
-
+                  
                   document.getElementById('nextttt').innerHTML = 'Next question'
                   remainingTime = 0
                 }
