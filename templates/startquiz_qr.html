@@ -1278,7 +1278,11 @@ catch{}
                         console.log('tan',question,user)
                         var tableRow = document.createElement('tr');
                         tableRow.setAttribute('id', 'tr' + question + user);
+                        var tableRow1 = document.createElement('tr');
+                        tableRow1.setAttribute('id', 'trr' + question + user);
                         document.getElementById('divve'+question).appendChild(tableRow);
+                        document.getElementById('divvee'+question).appendChild(tableRow1);
+
 
                         if (!playerwhoanswered.includes(user)){
                           //alert(user+' answer is '+ans+corrr)
@@ -1307,10 +1311,20 @@ catch{}
                                   
                               '<th style="font-size:20px;text-align: center;" scope="col">'+ user +'</th>'
                               )
+                              document.getElementById('trr'+question+user).innerHTML+=(
+
+                                  
+                              '<th style="font-size:20px;text-align: center;" scope="col">'+ user +'</th>'
+                              )
                             }
                             else{
 
                               document.getElementById('tr'+question+user).innerHTML+=(
+
+                              '<th style="font-size:20px;text-align: center;" scope="col"></th>'
+                              )
+                              
+                              document.getElementById('trr'+question+user).innerHTML+=(
 
                               '<th style="font-size:20px;text-align: center;" scope="col"></th>'
                               )
