@@ -186,7 +186,25 @@
       }
       
     </style>
-    
+    <div class="modal fade" id="popupModal" tabindex="-1" role="dialog" aria-labelledby="popupModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="popupModalLabel">Popup Title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="popup_table">
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
       
       <div class="container-fluid">
         <div class="row" id="dwkfn" style="display: none;">
@@ -583,6 +601,9 @@ body{
   }
   
 </style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script>
   document.getElementById('lang').style.display='none'
   document.getElementById('progress-bar').style.display='none'
@@ -1041,6 +1062,36 @@ catch{}
                         
                           )
                     
+                document.getElementById('popup_table').innerHTML += (
+        
+                '<div class="accordion" id="' + 'accordionExample' + i.question + '" data-mdb-parent="#accordionExample">' +
+                  '<div class="accordion-item">' +
+                    '<h2 style="color: black" class="accordion-header" id="headingOne">' +
+                      '<button class="accordion-button text-center-custom" style="display:block;font-size:0.7em" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseOne' + i.question + '" aria-expanded="true" aria-controls="collapseOne">' +
+                        '<span>' +
+                          
+                        i.question +
+                        '</span>' +
+                      '</button>' +
+                    '</h2>' +
+                    '<div id="collapseOne' + i.question + '" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample' + i.question + '">' +
+                      '<div class="accordion-body" id="' + i.question + '">' +
+                        '<table class="table table-bordered border-primary" id="table' + i.question + '">' +
+                          '<thead>' +
+                            '<tr id="addd' + i.question + '">' +
+                            '</tr>' +
+                          '</thead>' +
+                          '<tbody id="divvee' + i.question + '">' +
+                          '</tbody>' +
+                        '</table>' +
+                      '</div>' +
+                    '</div>' +
+                  '</div>' +
+                '</div>'
+                
+                        
+                          )
+                              
 
                 for (x of i.answer){
                     console.log(typeof (i.answer).indexOf(x))
@@ -1053,9 +1104,17 @@ catch{}
                       }))
                     document.getElementById('add'+i.question).innerHTML +=(
                       '<th style="font-size:20px;background-color:green;color:white;text-align: center;" scope="col">'+ x +'</th>'
-                    )}
+                    )
+                  
+                    document.getElementById('addd'+i.question).innerHTML +=(
+                      '<th style="font-size:20px;background-color:green;color:white;text-align: center;" scope="col">'+ x +'</th>'
+                    )
+                  }
                     else{
                       document.getElementById('add'+i.question).innerHTML +=(
+                      '<th style="font-size:20px;text-align: center;" scope="col">'+ x +'</th>'
+                    )
+                    document.getElementById('addd'+i.question).innerHTML +=(
                       '<th style="font-size:20px;text-align: center;" scope="col">'+ x +'</th>'
                     )
                     }
