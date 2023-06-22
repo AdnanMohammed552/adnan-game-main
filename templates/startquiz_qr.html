@@ -1124,7 +1124,13 @@ catch{}
                     
                     
                 }
-                
+                function openPopup() {
+                  $('#popupModal').modal('show');
+                }
+            
+                function closePopup() {
+                  $('#popupModal').modal('hide');
+                }
                 document.getElementById('fwegweg').innerHTML = i.timer
                 document.getElementById('timerrr').innerHTML=(i.timer)
                 var correctlastasnwer = i.correctans
@@ -1250,7 +1256,7 @@ catch{}
                   resolve(); // resolve the Promise after the countdown timer completes
                 }
                 document.getElementById('nextttt').onclick=function(){
-
+                  $('#popupModal').modal('show');
                   document.getElementById('answer'+corrr.replaceAll(' ','')).style.background = 'green'
                   document.getElementById('answer'+corrr.replaceAll(' ','')).style.color = 'white'
 
@@ -1358,6 +1364,7 @@ catch{}
                             console.log("At least one button within the div 'xx' has the color #808080.");
                           } else {
                             document.getElementById('nextttt').click()
+                            
                           }
                           
 
