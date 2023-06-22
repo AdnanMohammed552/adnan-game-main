@@ -1254,10 +1254,12 @@ catch{}
                   resolve(); // resolve the Promise after the countdown timer completes
                 }
                 document.getElementById('nextttt').onclick=function(){
+                  
+                  $('#popupModal').modal('show');
+                  setTimeout(closePopup, 5000); 
                   function closePopup() {
                     $('#popupModal').modal('hide');
                   }
-                  $('#popupModal').modal('show');
                   document.getElementById('answer'+corrr.replaceAll(' ','')).style.background = 'green'
                   document.getElementById('answer'+corrr.replaceAll(' ','')).style.color = 'white'
                   
