@@ -190,7 +190,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="popupModalLabel">Popup Title</h5>
+            <h5 class="modal-title" id="popupModalLabel">أجوبة اللاعبين</h5>
             <button type="button" onclick="closePopup()" class="close" style="background-color: white !important;" data-dismiss="modal" aria-label="Close">
               <span style="background-color: white !important;" aria-hidden="true">&times;</span>
             </button>
@@ -1248,6 +1248,11 @@ catch{}
                 if (remainingTime <= 0) {
                   document.getElementById('answer'+corrr.replaceAll(' ','')).style.background = 'green'
                   document.getElementById('answer'+corrr.replaceAll(' ','')).style.color = 'white'
+                  $('#popupModal').modal('show');
+                  setTimeout(closePopup, 5000); 
+                  function closePopup() {
+                    $('#popupModal').modal('hide');
+                  }
 
                   clearInterval(countdownInterval);
                   resolve(); // resolve the Promise after the countdown timer completes
