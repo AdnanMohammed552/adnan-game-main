@@ -58,6 +58,7 @@
     const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
 	
 
+    const ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
     ws.onclose=function(e){
       const ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
       if (ws.readyState === WebSocket.CLOSED) {
