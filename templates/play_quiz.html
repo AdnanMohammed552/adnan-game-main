@@ -59,6 +59,14 @@
 	
 
     const ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
+    ws.onclose=function(e){
+      const ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
+      if (ws.readyState === WebSocket.CLOSED) {
+        const ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
+
+      }
+
+    }
 	ws.onmessage = function(e){
         const data = JSON.parse(e.data)
 		if (data.camera_correct != false){
