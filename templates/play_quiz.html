@@ -78,8 +78,8 @@
 
         var userName = "{{ user.username }}";
 		res= (userName+'/weg')
-
-     ws.send(JSON.stringify({'exam':res}))       
+      ws.onopen=function(){
+     ws.send(JSON.stringify({'exam':res}))       }
      document.getElementById('video').style.display='block'
 
      document.getElementById('join').style.display='none'
@@ -90,7 +90,8 @@
 		var userName = "{{ user.username }}";
 		res= (userName+'/'+ans)
 		console.log('resfqe',res)
-		ws.send(JSON.stringify({'exam':res}));
+    ws.onopen=function(){
+		ws.send(JSON.stringify({'exam':res}));}
 
 	}
 		function scan() {
