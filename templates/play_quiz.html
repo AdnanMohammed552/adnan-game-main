@@ -74,7 +74,7 @@
 		}
 	}
     document.getElementById('join').onclick=function(){
-      const ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
+       ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
 
         var userName = "{{ user.username }}";
 		res= (userName+'/weg')
@@ -85,6 +85,8 @@
      document.getElementById('join').style.display='none'
     }
 	function send_ans(ans){
+    ws = new WebSocket('wss://' + window.location.host + '/ws/' + roomCode + '/quiz/');
+
 		var userName = "{{ user.username }}";
 		res= (userName+'/'+ans)
 		console.log('resfqe',res)
