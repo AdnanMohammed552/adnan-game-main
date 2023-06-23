@@ -187,7 +187,7 @@
       
     </style>
     <div class="modal fade" id="popupModal" tabindex="-1" role="dialog" aria-labelledby="popupModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="popupModalLabel">أجوبة اللاعبين</h5>
@@ -198,12 +198,13 @@
           <div class="modal-body" id="popup_table">
             
           </div>
-
-          <button type="button" class="btn btn-secondary" onclick="closePopup()" >Done</button>
-
+    
+          <button type="button" class="btn btn-secondary" onclick="closePopup()">Done</button>
+    
         </div>
       </div>
     </div>
+    
   <script>
     function closePopup() {
       $('#popupModal').modal('hide');
