@@ -88,6 +88,10 @@
     }
 	function send_ans(ans){
     if (ws.readyState === WebSocket.OPEN) {
+      
+		var userName = "{{ user.username }}";
+		res= (userName+'/'+ans)
+		console.log('resfqe',res)
       ws.send(JSON.stringify({'exam':res}))
 
     }
