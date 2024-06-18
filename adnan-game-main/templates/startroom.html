@@ -1,0 +1,781 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Room Admin</title>
+{% endblock %}
+
+{% block content %}
+
+
+</div>
+</div>
+<div id="anann">
+</div>
+</div>
+</div>
+<div class="container-xxl">
+        
+     <h3 id="flep">الحرف القادم هو<span class="badge badge-primary" id="leetter"></span></h5>   
+     
+  
+    <button type="button" class="btn btn-primary btn-rounded" id="done">Start game</button>
+    
+
+   <div class="text-center">
+    <div class="btn-group text-center" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-primary btn-rounded" id="send" style="font-size: 20px;">Start game</button>   
+      <button type="button" class="btn btn-danger btn-rounded" id="end"  style="font-size: 20px;">End game</button>
+      <button id="view">Next letter</button>
+    </div>
+  </div>
+  </div>
+  <div id="users" class="text-center">
+    </div>
+  <div id="pdfgenerator"></div>
+  
+</div>
+ <style>
+
+  #bare button{
+    background-color: black;
+    color: #ffffff;
+  }
+  #users button {
+    width: 200px; /* set a width so it doesnt change upon hover */
+     border: 0px solid #004B84;
+     background: green;
+     padding: 3px 21px;
+     -webkit-border-radius: 16px;
+     -moz-border-radius: 16px;
+     border-radius: 16px;
+     color: #ffffff;
+     font-size: 12px;
+     font-family: Questrial;
+     text-decoration: none;
+     vertical-align: middle;
+     letter-spacing: 2px;
+  }
+  
+  #users button:hover span {
+    display:none
+  }
+  
+  #users button:hover:before {
+    content:"Remove Player!";
+  }
+  
+  #users button:hover {
+    background-color: red;
+  }
+  #removeme {
+    width: 200px; /* set a width so it doesnt change upon hover */
+     border: 0px solid #004B84;
+     background: green;
+     padding: 3px 21px;
+     -webkit-border-radius: 16px;
+     -moz-border-radius: 16px;
+     border-radius: 16px;
+     color: #ffffff;
+     font-size: 12px;
+     font-family: Questrial;
+     text-decoration: none;
+     vertical-align: middle;
+     letter-spacing: 2px;
+  }
+  
+  #removeme:hover span {
+    display:none
+  }
+  
+  #removeme:hover:before {
+    content:"Remove Player!";
+  }
+  
+  #removeme:hover {
+    background-color: red;
+  }
+ </style>
+{{ room_code|json_script:'json-roomcode' }}
+
+<script>
+  
+  document.getElementById('end').style.display='none'
+
+  var totalarray=[]
+  const fetchedarray = []
+
+  document.getElementById('done').style.display = "block"
+  document.getElementById('flep').style.display ="none"
+  function generateRandomColor(){
+    
+      let color = "#";
+      for (let i = 0; i < 3; i++)
+        color += ("0" + Math.floor(((1 + Math.random()) * Math.pow(16, 2)) / 2).toString(16)).slice(-2);
+      return color;
+    }
+
+  //document.getElementById("visable").onclick =function(e){
+    //if ((window.getComputedStyle(document.getElementById('leetter')).display) === 'block'){
+     // document.getElementById('leetter').style.display="none"
+   // }
+   // else{
+     // document.getElementById('leetter').style.display="block"
+
+    //}
+    
+  //}
+  const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
+  const gameSocketlettr = new WebSocket(
+        'wss://' + window.location.host + '/ws/' + roomCode + '/letter/'
+        )
+        const gameSocket2 = new WebSocket(
+                'wss://' + window.location.host + '/ws/' + roomCode + '/'
+                )
+  
+  document.querySelector('#view').disabled = true;
+  
+  const array2 =[]
+  
+
+    const waitForOpenConnection = (socket) => {
+        return new Promise((resolve, reject) => {
+            const maxNumberOfAttempts = 10
+            const intervalTime = 200 //ms
+    
+            let currentAttempt = 0
+            const interval = setInterval(() => {
+                if (currentAttempt > maxNumberOfAttempts - 1) {
+                    clearInterval(interval)
+                    reject(new Error('Maximum number of attempts exceeded'))
+                } else if (socket.readyState === socket.OPEN) {
+                    clearInterval(interval)
+                    resolve()
+                }
+                currentAttempt++
+            }, intervalTime)
+        })
+    }
+    console.log("it is " , roomCode)
+    const array = []
+    const gameSocket = new WebSocket(
+        
+        'wss://' + window.location.host + '/ws/' + roomCode + '/admin/'
+      )
+  
+    
+      gameSocket.onmessage = function (e) {
+        console.log('done');
+        const data = JSON.parse(e.data);
+        console.log(data)
+        if (data){
+          const username = data.userName;
+          console.log(username)
+          array.push(username)
+          if (username !==""){
+            
+            document.getElementById('users').innerHTML += (
+             ' <button class="btn btn-tag btn-rounded text-center" id="'+ username +'" onclick="userremove(\'' + username + '\')"><span>'+ username +'</span></button>'
+            )
+            //const h1Element = document.createElement("h1");
+            //h1Element.textContent = username;
+            //document.body.append(h1Element);
+          }
+          }
+        
+
+    }
+      function userremove(x){
+        const index = array.indexOf(x);
+        for (var i = 0; i < array.length; i++) {
+          if (array[i] === x) {
+              var spliced = array.splice(i, 1);
+              
+          }
+      }
+        //if (index > -1) { // only splice array when item is found
+        //  array.splice(index, 1); // 2nd parameter means remove one item only
+        //}
+        const gameSocketkick = new WebSocket(
+        'wss://' + window.location.host + '/ws/' + roomCode + '/'
+        )
+        gameSocketkick.onopen = function(e){
+        gameSocketkick.send(JSON.stringify({
+          'kick':true,
+          'user':x
+        }))
+        document.getElementById(x).remove()
+      }
+
+      }
+      gameSocket.onclose = function (e) {
+        console.log('fall ');
+      }
+     
+      document.querySelector('#send').onclick = function(e){
+        document.getElementById('send').style.display='none'
+        document.getElementById('end').style.display='block'
+        const started = false
+        console.log(started)
+        gameSocket.send(JSON.stringify({
+          'started' : true,
+          'room' : roomCode,
+        
+        }))  
+        document.getElementById('send').style.display = "none"
+        gameSocket2.onmessage = function(e){
+          const data = JSON.parse(e.data)
+          if (data.ready){
+
+          }
+        }
+
+      }
+      document.querySelector('#done').onclick = function(e){
+        console.log('last of last',array)
+        
+        document.getElementById('done').remove()
+        
+        //const gameSocket2 = new WebSocket(
+     //   'ws://' + window.location.host + '/ws/' + roomCode + '/'
+     //   )
+     doStuff()
+     async function doStuff(){
+      // Code to run before sleep
+     
+      // Sleep for 3 seconds
+      await new Promise(r => setTimeout(r, 3000));
+   
+          gameSocket2.send(JSON.stringify({
+            'RoomCode':roomCode,
+            'players': array,
+            'error':false,
+            'review':false
+          }))
+          gameSocket2.onmessage = function(e){
+            const data = JSON.parse(e.data)
+    
+            if (data.current_letter_this!==null&&typeof data.current_letter_this!=="undefined"&&data.current_letter_this!==""){
+              console.log('yeeesa')
+              document.querySelector('#leetter').innerHTML =data.current_letter_this;
+            }
+            console.log(data)
+            if ((data.error!==true)||(data.Noun!=='')){
+            
+            if ((data.noun_result === null)||(typeof data.noun_result ==='undefined')){
+              
+            noun = data.Noun
+            RoomCode =data.RoomCode
+            UserName =data.UserName
+            animal =data.animal
+            choosens =data.choosens
+            countries =data.countries
+            end =data.end
+            gnoun =data.gnoun
+            inanimate =data.inanimate
+            plants =data.plants
+            pret = data.pret
+            current_letter_this=data.current_letter_this1
+            admin_letter=data.admin_letter
+            const playersfetch=data.playersfetch
+            console.log('I want is:',playersfetch)
+            console.log('first is',fetchedarray)
+    
+            if (typeof playersfetch !== 'undefined'){
+            const playersfetch1 = playersfetch.replaceAll('"', '')
+            const playersfetch2= playersfetch1.replace('[','')
+            const playersfetch3 = playersfetch2.replace(']','')
+            const playersfetch4 = playersfetch2.replaceAll("'","")
+            
+            console.log('its 4',playersfetch4)
+            const playersfetch5 = playersfetch3.split(',')
+            console.log('fetched are',playersfetch5)
+            for (i of playersfetch5){
+              z = i.replaceAll("'",'')
+              
+              if (z!==' '){
+                t = z.replace(/\s+/g, '')
+            fetchedarray.push(t)
+            console.log('fetchedarray  gis',fetchedarray,t)}
+            else{
+              continue
+            }
+    
+            for (uae of fetchedarray){
+              totalarray.push(uae)
+            }
+          }
+          gameSocket2.send(JSON.stringify({
+            'oneortwo':'one',
+            'review':true,
+            'error':true,
+            'players_game':fetchedarray 
+          }))
+         
+            for (u of fetchedarray){
+                console.log('index is ',fetchedarray.indexOf(u))
+                const div = document.createElement("div");
+                div.setAttribute('id','div_id'+u);
+                document.getElementById('pdfgenerator').append(div);
+                document.getElementById('div_id'+u).innerHTML += (
+                 
+                  '<div class="accordion" id="'+ 
+                  'accordionExample'+ fetchedarray.indexOf(u) +
+                  '">'+
+                    '<div class="accordion-item" >'+
+                    ' <h2 class="accordion-header" id="headingOne">'+
+                        '<button class="accordion-button" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseOne'+u+'" aria-expanded="true" aria-controls="collapseOne">'+
+                          u +
+                        '</button>' +
+                      '</h2>'+
+                      '<div id="collapseOne'+u+'" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample'+ fetchedarray.indexOf(u) +'">'+
+                     
+                    '<div style="background-color:'+generateRandomColor()+'" class="accordion-body" ' + 'id="' + u + '">'+
+                      
+                        '<table class="table table-bordered border-primary">'+
+                          '<thead>'+
+                            '<tr>'+
+                              '<th style="font-size:20px;" scope="col">اللاعب</th>'+
+                              '<th style="font-size:20px;" scope="col">الحرف </th>'+
+                            ' <th style="font-size:20px;" scope="col">إسم </th>'+
+                              '<th style="font-size:20px;" scope="col">إسم بنت</th>'+
+                              '<th style="font-size:20px;" scope="col">حيوان </th>'+
+                              '<th style="font-size:20px;" scope="col">نبات </th>'+
+                              '<th style="font-size:20px;" scope="col">جماد </th>'+
+                              '<th style="font-size:20px;" scope="col">بلاد </th>'+
+                              '<th style="font-size:20px;" scope="col">الغرفة </th>'+
+                              '<th style="font-size:20px;" scope="col">مجموع </th>'+
+                            '</tr>'+
+                          '</thead>'+
+                          '<tbody id="divv'+u+'">'+
+                        
+                          '</tbody>'+
+                          
+                      '</table>'+
+                      '</div>'+
+                    '</div>'+
+                  '</div>'+
+                
+                  '</div>'
+                
+                  )
+            }
+            
+    
+          }
+        
+            else if(typeof playersfetch === 'undefined'){
+              console.log('current username is',UserName)
+              if (data.main_row === true){
+                gameSocket2.send(JSON.stringify({
+                  'oneortwo':'two',
+                  'review':true,
+                  'error':true,
+                  'UserName':UserName,
+                  'admin_letter':admin_letter,
+                  'noun_review':noun,
+                  'gnoun':gnoun,
+                  'animal':animal,
+                  'plants':plants,
+                  'countries':countries,
+                  'inanimate':inanimate,
+                  'RoomCode':RoomCode
+                }))
+                if (data.star === true){
+                  var noun_result = 'noun_result'
+                  var gnoun_result = "gnoun_result"
+                  var animal_result = "animal_result"
+                  var plants_result = "plants_result"
+                  var countries_result = "countries_result"
+                  var inanimate_result = "inanimate_result"
+    
+              document.getElementById('divv'+UserName).innerHTML += (
+              
+                   
+                    "<tr>"+ 
+                      '<th scope="row">⭐<button id="removeme" type="button" onclick="userremove(\'' + data.UserName + '\')" class="btn btn-primary btn-rounded" data-hover="CLICK ME" data-active="IM ACTIVE"><span>'+data.UserName+'</span></button> </th>'+
+                      "<td style='font-size:18px;' id = 'letter'>"+ admin_letter +"</td>"+
+                      "<td style='font-size:18px;' id = 'noun'>"+ noun +"</td>"+
+                      "<td style='font-size:18px;' id = 'gnoun'>"+ gnoun +"</td>"+
+                      "<td style='font-size:18px;' id = 'animalNoun'>"+ animal +"</td>"+
+                      "<td style='font-size:18px;' id = 'plants'>"+plants +"</td>"+
+                      "<td style='font-size:18px;' id = 'inanimate'>"+ inanimate +"</td>"+
+                      "<td style='font-size:18px;' id = 'countries'>"+ countries +"</td>"+
+                      "<td style='font-size:18px;' id = 'room'>"+ RoomCode +"</td>"+
+                      "<td style='font-size:18px;' id = 'sum'>"+  +"</td>"+
+                      
+                    "</tr>"+
+                    "<tr>"+
+                      '<td scope="row"></td>'+
+                      '<td scope="row"></td>'+
+                      
+                      '<td >'+
+                        
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + noun_result+'\',\'' + admin_letter +'\')" id="noun_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="noun_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                          
+                      '</td>'+
+                      '<td>'+
+                        
+                        
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + gnoun_result+'\',\'' + admin_letter +'\' )"  id="gnoun_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="gnoun_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '</td>'+
+                      '<td>'+
+                       
+                        
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + animal_result+'\',\'' + admin_letter +'\')"  id="animal_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="animal_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '</td>'+
+                      '<td>'+
+                       
+                        
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + plants_result +'\',\'' + admin_letter +'\')"  id="plants_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="plants_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '</td>'+
+                      '<td>'+
+                       
+                        
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + countries_result +'\',\'' + admin_letter +'\')"  id="countries_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="countries_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '</td>'+
+                      '<td>'+
+                       
+                        
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + inanimate_result +'\',\'' + admin_letter +'\')"  id="inanimate_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="inanimate_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '<td class="success" id="sum'+UserName+admin_letter+'"></td>'+
+                      '</td>'+
+                      '<div id="bare">'+
+                      '<button type="submit" class="btn btn-primary" id="calc'+UserName+admin_letter+'" onclick="calc(\'' + admin_letter + '\' ,\'' + UserName + '\' , \'' + admin_letter + '\' , \'' + noun + '\' ,\'' + gnoun + '\',\'' + animal + '\',\'' + plants + '\',\'' + inanimate + '\',\'' + countries + '\',\'' + RoomCode + '\')">Calculate</button>'+
+                        '</div>'
+    
+                  
+            )
+          }
+          else{
+            var noun_result = 'noun_result'
+            var gnoun_result = "gnoun_result"
+            var animal_result = "animal_result"
+            var plants_result = "plants_result"
+            var countries_result = "countries_result"
+            var inanimate_result = "inanimate_result"
+    
+            document.getElementById('divv'+UserName).innerHTML += (
+              
+                   
+                    "<tr>"+ 
+                      '<th scope="row"><button id="removeme" type="button" onclick="userremove(\'' + data.UserName + '\')" class="btn btn-primary btn-rounded" data-hover="CLICK ME" data-active="IM ACTIVE"><span>'+data.UserName+'</span></button> </th>'+
+                      "<td style='font-size:18px;' id = 'letter'>"+ admin_letter +"</td>"+
+                      "<td style='font-size:18px;' id = 'noun'>"+ noun +"</td>"+
+                      "<td style='font-size:18px;' id = 'gnoun'>"+ gnoun +"</td>"+
+                      "<td style='font-size:18px;' id = 'animalNoun'>"+ animal +"</td>"+
+                      "<td style='font-size:18px;' id = 'plants'>"+plants +"</td>"+
+                      "<td style='font-size:18px;' id = 'inanimate'>"+ inanimate +"</td>"+
+                      "<td style='font-size:18px;' id = 'countries'>"+ countries +"</td>"+
+                      "<td style='font-size:18px;' id = 'room'>"+ RoomCode +"</td>"+
+                      "<td style='font-size:18px;' id = 'sum'>"+  +"</td>"+
+                      
+                    "</tr>"+
+                    "<tr>"+
+                      '<td scope="row"></td>'+
+                      '<td scope="row"></td>'+
+                      
+                      '<td >'+
+                        
+                        
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + noun_result+'\',\'' + admin_letter +'\')" id="noun_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="noun_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '</td>'+
+                      '<td>'+
+                        
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + gnoun_result+'\' ,\'' + admin_letter +'\')"  id="gnoun_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="gnoun_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                        
+                      '</td>'+
+                      '<td>'+
+                        
+                        
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + animal_result+'\',\'' + admin_letter +'\')"  id="animal_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="animal_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '</td>'+
+                      '<td>'+
+                        
+                        
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + plants_result +'\',\'' + admin_letter +'\')"  id="plants_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="plants_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '</td>'+
+                      '<td>'+
+                        
+                        
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + countries_result +'\',\'' + admin_letter +'\')"  id="countries_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="countries_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '</td>'+
+                      '<td>'+
+                       
+                        
+                        '<select style="font-size:16px;" onChange="OnSelectedIndexChange(\'' + UserName + '\',\'' + inanimate_result +'\',\'' + admin_letter +'\')"  id="inanimate_result'+UserName+admin_letter+'" >'+
+                          '<option style="font-size:16px;" href="#">0</option>'+
+                         ' <option style="font-size:16px;" href="#">5</option>'+
+                          '<option style="font-size:16px;" href="#">10</option>'+
+                        '</select>'+
+                        '<div id="inanimate_resulttd'+ UserName +admin_letter+'">'+
+    
+                          '<\/div>'+
+                      '<td class="success" id="sum'+UserName+admin_letter+'"></td>'+
+                      '</td>'+
+                      '<div id="bare">'+
+                      '<button type="submit" class="btn btn-primary" id="calc'+UserName+admin_letter+'" onclick="calc(\'' + admin_letter + '\' ,\'' + UserName + '\' , \'' + admin_letter + '\' , \'' + noun + '\' ,\'' + gnoun + '\',\'' + animal + '\',\'' + plants + '\',\'' + inanimate + '\',\'' + countries + '\',\'' + RoomCode + '\')">Calculate</button>'+
+                      '</div>'
+    
+    
+                  
+            )
+          }
+                    }
+          }
+            
+            
+        }
+          
+        }
+      }
+      
+        
+        
+        }
+      }
+
+     function OnSelectedIndexChange(id,thisis,letter){
+      console.log('hfei'+id + thisis)
+      
+      const word_result = document.getElementById(thisis+id+letter);
+      console.log('word res is',word_result)
+      const noun_result = word_result.options[word_result.selectedIndex].text;;
+      if (noun_result == '5'){
+        document.getElementById(thisis+'td'+id+letter).innerHTML += (
+          '<select style="font-size:16px;" onChange="changemark(\'' + id + '\',\'' + thisis + '\',\'' + letter + '\')" id="noun_result5'+id+''+thisis+'" >'+
+            '<option style="font-size:10px;" href="#">--Choose similar player--</option>'+
+            '<\/select>'
+             )
+             console.log(totalarray)
+            for (name of fetchedarray){
+              document.getElementById('noun_result5'+id+thisis).innerHTML += (
+                '<option style="font-size:16px;" href="#">'+name+'</option>'
+              )
+            }
+            document.querySelector('#noun_result5'+id+thisis).options.selectedIndex = 0;
+            
+            
+          
+        
+
+      }
+      else if (noun_result == '10'){
+        document.getElementById('noun_result5'+id+thisis).remove()
+      }
+      else if (noun_result == '0'){
+        document.getElementById('noun_result5'+id+thisis).remove()
+      }
+
+
+    }
+    function changemark(id2,thisis2,letter2){
+      const word_result = document.querySelector('#noun_result5'+id2+thisis2);
+      const noun_result = word_result.options[word_result.selectedIndex].text;;
+      console.log('tr is',id2)
+      document.getElementById(thisis2+noun_result+letter2).getElementsByTagName('option')[1].selected = 'selected';
+    }
+    
+
+  
+
+   
+    document.getElementById('end').onclick = function(e){
+      
+        var data=document.getElementById('pdfgenerator').innerHTML;
+        var myWindow = window.open('', 'my div');
+        myWindow.document.write('<html><head><title>my div</title>');
+        /*optional stylesheet*/ //myWindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
+        myWindow.document.write('</head><body dir="rtl">');
+        myWindow.document.write(data);
+        myWindow.document.write('</body></html>');
+        myWindow.document.write(
+        '<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer">'+
+          '<\/script>'+
+        '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer">'+'<\/script>'+
+        '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">'+
+        '<link'+
+         ' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"'+
+          'rel="stylesheet"'+
+        '/>'+
+     
+        '<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"><\/script>'+
+          '<script>'+
+        'window.document.close(); '+
+
+            'window.focus(); '+
+            'window.print();'+
+            'window.close();'+
+        '<\/script>')
+       
+        
+        var alltables = document.getElementById('pdfgenerator').innerHTML;
+        gameSocket2.send(JSON.stringify({
+            'end' : true,
+            'RoomCode' : roomCode,
+            'alltables':alltables
+
+        
+
+        }))
+      
+      
+
+    }
+    
+          function calc(re,x,a,b,c,d,r,f,g,h){
+            console.log('its calc')
+                const word_result = document.querySelector('#noun_result'+x+re);
+                const noun_result = word_result.options[word_result.selectedIndex].text;;
+                const wordgnoun_result = document.querySelector('#gnoun_result'+x+re);
+                const gnoun_result = wordgnoun_result.options[wordgnoun_result.selectedIndex].text;;
+                const wordanimal_result = document.querySelector('#animal_result'+x+re);
+                const animal_result = wordanimal_result.options[wordanimal_result.selectedIndex].text;;
+                const wordplants_result = document.querySelector('#plants_result'+x+re);
+                const plants_result = wordplants_result.options[wordplants_result.selectedIndex].text;;
+                const wordcountries_result = document.querySelector('#countries_result'+x+re);
+                const countries_result = wordcountries_result.options[wordcountries_result.selectedIndex].text;;
+                const wordinanimate_result = document.querySelector('#inanimate_result'+x+re);
+                const inanimate_result = wordinanimate_result.options[wordinanimate_result.selectedIndex].text;;
+                var total =parseInt(noun_result)+parseInt(gnoun_result)+parseInt(animal_result)+parseInt(plants_result)+parseInt(countries_result)+parseInt(inanimate_result)
+                document.querySelector('#sum'+x+re).innerHTML=total
+                document.querySelector('#noun_result'+x+re).disabled = true;
+                document.querySelector('#gnoun_result'+x+re).disabled = true;
+                document.querySelector('#animal_result'+x+re).disabled = true;
+                document.querySelector('#plants_result'+x+re).disabled = true;
+                document.querySelector('#countries_result'+x+re).disabled = true;
+                document.querySelector('#inanimate_result'+x+re).disabled = true;
+                document.querySelector('#view').disabled = false;
+                console.log('heere we go',x,noun_result,
+                gnoun_result,
+                animal_result,
+                plants_result,
+                countries_result,
+                inanimate_result)
+             
+                gameSocket2.send(JSON.stringify({
+                  'noun_result':noun_result,
+                  'gnoun_result':gnoun_result,
+                  'animal_result':animal_result,
+                  'plants_result':plants_result,
+                  'countries_result':countries_result,
+                  'inanimate_result':inanimate_result,
+                  'sum':total,
+                  'UserName':x,
+                  'Noun' : b,
+                  'gnoun':c,
+                  'animal':d,
+                  'plants':r,
+                  'countries':g,
+                  'inanimate':f,
+                  'admin_letter':a,
+                  'review':true,
+                  'RoomCode':h,
+                  'error':true,
+                  'result':true,
+                  'private':true
+                  
+                }))}
+               
+    
+    document.getElementById('view').onclick=function(e){
+
+    
+      
+        gameSocketlettr.send(JSON.stringify({
+         'wantletter':'value',
+          'wantletter1':'value',
+          'RoomCode':roomCode
+      }))
+      gameSocketlettr.onmessage=function(e){
+        const data = JSON.parse(e.data)
+        if (data.choosens){
+          document.querySelector('#leetter').innerHTML =data.choosens;
+          gameSocket2.send(JSON.stringify({
+            'letterconsumer':data.choosens
+          }))
+           
+        }
+      }
+    }
+    
+  
+
+</script>
+{% endblock %}

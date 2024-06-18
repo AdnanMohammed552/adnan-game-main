@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Room Admin</title>
+{% endblock %}
+{% block content %}
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Accordion Item #1
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">اللاعب</th>
+              <th scope="col">الحرف </th>
+              <th scope="col">إسم </th>
+              <th scope="col">إسم بنت</th>
+              <th scope="col">حيوان </th>
+              <th scope="col">نبات </th>
+              <th scope="col">جماد </th>
+              <th scope="col">بلاد </th>
+              <th scope="col">الغرفة </th>
+              <th scope="col">مجموع </th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for x in info %}
+            <tr>
+              <th scope="row">{{x.user}}</th>
+              <td id = 'letter'>{{x.letter}}</td>
+              <td id = 'noun'>{{x.noun}}</td>
+              <td id = 'gnoun'>{{x.gnoun}}</td>
+              <td id = 'animalNoun'>{{x.animalNoun}}</td>
+              <td id = 'plants'>{{x.plants}}</td>
+              <td id = 'inanimate'>{{x.inanimate}}</td>
+              <td id = 'countries'>{{x.countries}}</td>
+              <td id = 'room'>{{x.room}}</td>
+              <td id = 'sum'>{{x.sum}}</td>
+              
+            </tr>
+            {% endfor %}
+          </tbody>
+          <h1 id="namw">tre</h1>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Accordion Item #2
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Accordion Item #3
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+   
+
+{{ room_code|json_script:'json-roomcode' }}
+<script>
+
+    const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
+    console.log("it is " , roomCode)
+    const gameSocket = new WebSocket(
+        
+        'wss://' + window.location.host + '/ws/' + roomCode + '/'
+      )
+      
+      
+      gameSocket.onmessage = function (e) {
+          console.log('done');
+          const data = JSON.parse(e.data);
+          console.log(data)
+          if (data){
+            document.querySelector('#namw').innerHTML = data.UserName;
+          }else{
+            alert('Message is empty');
+          }
+
+
+      }
+
+      gameSocket.onclose = function (e) {
+        console.log('fall ');
+      }
+
+
+
+</script>
+{% endblock %}

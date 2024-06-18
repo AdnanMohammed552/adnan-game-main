@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Room</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+<section>
+    <div class="d-grid gap-2">
+        
+        <a class="nav-link text-center display-6" href="/account/myaccount">Hello, {{request.user.username}}</a>
+        <button class="btn btn-primary" type="submit" id="Create"><h1 class="display-6">Create a room</h1>  </button>
+        <button class="btn btn-primary" type="submit" id="Join"><h1 class="display-6">Join a room </h1> </button>
+      </div>
+ 
+  <h4 id="error"></h4>
+</section>
+</div>
+
+<script>
+    
+    document.querySelector('#Create').onclick = function(e){
+
+        window.location.replace('create');
+
+    };
+
+    
+    document.getElementById('Join').onclick = function(e) {
+        window.location.replace('/join')
+
+    }
+</script>
+{% endblock %}
