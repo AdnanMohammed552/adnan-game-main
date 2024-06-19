@@ -35,8 +35,14 @@
                 <div class="modal-body">
                     <h3 id="k">Players joining</h3>
                     <p id="l"><strong>1-</strong>Players should scan this =></p>
-                      {{ svg|safe }}
-
+                    <div style="color: black;"> 
+                      <div id="qrcode">{{ svg | safe }}</div>
+                      <div id="qrcode">
+                        <svg width="100" height="100">
+                            <rect width="100" height="100" style="fill:rgb(0,0,255);"/>
+                        </svg>
+                    </div>
+                    </div>
                     <p id="z"><strong>2-</strong>Every player should enter password that admin told him</p>
                     
                 </div>

@@ -154,7 +154,7 @@ def room_admin(request,room_code):
     import qrcode
     context ={}
     factory = qrcode.image.svg.SvgImage
-    qr_image = qrcode.make(f'https://adnan-game-animal.herokuapp.com/joinqr/{room_code}',image_factory=factory, box_size=10)    
+    qr_image = qrcode.make(f'https://adnan-game-3cadb7fbb030.herokuapp.com/joinqr/{room_code}',image_factory=factory, box_size=10)    
     bufstore = io.BytesIO()
     qr_image.save(bufstore)    
     
@@ -410,7 +410,7 @@ def room_admin_quiz(request,room_code):
             import qrcode
             context ={}
             factory = qrcode.image.svg.SvgImage
-            qr_image = qrcode.make(f'https://adnan-game-animal.herokuapp.com/play/{room_code}',image_factory=factory, box_size=10)    
+            qr_image = qrcode.make(f'https://adnan-game-3cadb7fbb030.herokuapp.com/play/{room_code}',image_factory=factory, box_size=10)    
             bufstore = io.BytesIO()
             qr_image.save(bufstore)    
             
@@ -421,11 +421,12 @@ def room_admin_quiz(request,room_code):
                 
                 language =www['lang']
 
-            qr_image2 = qrcode.make(f'https://adnan-game-animal.herokuapp.com/managment/{room_code}',image_factory=factory, box_size=10)    
+            qr_image2 = qrcode.make(f'https://adnan-game-3cadb7fbb030.herokuapp.com/managment/{room_code}',image_factory=factory, box_size=10)    
             bufstore2 = io.BytesIO()
             qr_image2.save(bufstore2)    
             
             svg2 = bufstore2.getvalue().decode() 
+            print('ggggg',svg)
 
             return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language,'name':name,'svg2':svg2})
         else:
@@ -436,20 +437,24 @@ def room_admin_quiz(request,room_code):
         import qrcode
         context ={}
         factory = qrcode.image.svg.SvgImage
-        qr_image = qrcode.make(f'https://adnan-game-animal.herokuapp.com/play/{room_code}',image_factory=factory, box_size=10)    
+        qr_image = qrcode.make(f'https://adnan-game-3cadb7fbb030.herokuapp.com/play/{room_code}',image_factory=factory, box_size=10)    
         bufstore = io.BytesIO()
         qr_image.save(bufstore)    
-        
-        svg = bufstore.getvalue().decode() 
+
+
+        svgg = bufstore.getvalue().decode() 
+        svg = re.sub(r'\bsvg:', '', svgg)
+
         from animal.models import lang
         kfken = lang.objects.all().filter(user=request.user).values()
         for www in kfken:
             
             language =www['lang']
-        qr_image2 = qrcode.make(f'https://adnan-game-animal.herokuapp.com/managment/{room_code}',image_factory=factory, box_size=10)    
+        qr_image2 = qrcode.make(f'https://adnan-game-3cadb7fbb030.herokuapp.com/managment/{room_code}',image_factory=factory, box_size=10)    
         bufstore2 = io.BytesIO()
         qr_image2.save(bufstore2)    
-        
+        print('ggggg2',svg)
+
         svg2 = bufstore2.getvalue().decode() 
         return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language,'name':name,'svg2':svg2})
 
@@ -513,7 +518,7 @@ def room_admin_quiz_qr(request,room_code):
             import qrcode
             context ={}
             factory = qrcode.image.svg.SvgImage
-            qr_image = qrcode.make(f'https://adnan-game-animal.herokuapp.com/camera/{room_code}',image_factory=factory, box_size=10)    
+            qr_image = qrcode.make(f'https://adnan-game-3cadb7fbb030.herokuapp.com/camera/{room_code}',image_factory=factory, box_size=10)    
             bufstore = io.BytesIO()
             qr_image.save(bufstore)    
             
@@ -535,7 +540,7 @@ def room_admin_quiz_qr(request,room_code):
         import qrcode
         context ={}
         factory = qrcode.image.svg.SvgImage
-        qr_image = qrcode.make(f'https://adnan-game-animal.herokuapp.com/camera/{room_code}',image_factory=factory, box_size=10)    
+        qr_image = qrcode.make(f'https://adnan-game-3cadb7fbb030.herokuapp.com/camera/{room_code}',image_factory=factory, box_size=10)    
         bufstore = io.BytesIO()
         qr_image.save(bufstore)    
         
