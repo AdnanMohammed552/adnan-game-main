@@ -154,7 +154,8 @@ def room_admin(request,room_code):
     import qrcode
     context ={}
     factory = qrcode.image.svg.SvgImage
-    qr_image = qrcode.make(f'https://adnan-game-3cadb7fbb030.herokuapp.com/joinqr/{room_code}',image_factory=factory, box_size=10)    
+    host=request.get_host()
+    qr_image = qrcode.make(f'https://{host}/joinqr/{room_code}',image_factory=factory, box_size=10)    
     bufstore = io.BytesIO()
     qr_image.save(bufstore)    
     
@@ -410,7 +411,8 @@ def room_admin_quiz(request,room_code):
             import qrcode
             context ={}
             factory = qrcode.image.svg.SvgImage
-            qr_image = qrcode.make(f'https://adnan-game-3cadb7fbb030.herokuapp.com/play/{room_code}',image_factory=factory, box_size=10)    
+            host =  request.get_host()
+            qr_image = qrcode.make(f'https://{host}/play/{room_code}',image_factory=factory, box_size=10)    
             bufstore = io.BytesIO()
             qr_image.save(bufstore)    
             
@@ -420,8 +422,8 @@ def room_admin_quiz(request,room_code):
             for www in kfken:
                 
                 language =www['lang']
-
-            qr_image2 = qrcode.make(f'https://adnan-game-3cadb7fbb030.herokuapp.com/managment/{room_code}',image_factory=factory, box_size=10)    
+            host =  request.get_host()
+            qr_image2 = qrcode.make(f'https://{host}/managment/{room_code}',image_factory=factory, box_size=10)    
             bufstore2 = io.BytesIO()
             qr_image2.save(bufstore2)    
             
@@ -437,7 +439,8 @@ def room_admin_quiz(request,room_code):
         import qrcode
         context ={}
         factory = qrcode.image.svg.SvgImage
-        qr_image = qrcode.make(f'https://adnan-game-3cadb7fbb030.herokuapp.com/play/{room_code}',image_factory=factory, box_size=10)    
+        host =  request.get_host()
+        qr_image = qrcode.make(f'https://{host}/play/{room_code}',image_factory=factory, box_size=10)    
         bufstore = io.BytesIO()
         qr_image.save(bufstore)    
 
@@ -450,7 +453,8 @@ def room_admin_quiz(request,room_code):
         for www in kfken:
             
             language =www['lang']
-        qr_image2 = qrcode.make(f'https://adnan-game-3cadb7fbb030.herokuapp.com/managment/{room_code}',image_factory=factory, box_size=10)    
+        host =  request.get_host()
+        qr_image2 = qrcode.make(f'https://{host}/managment/{room_code}',image_factory=factory, box_size=10)    
         bufstore2 = io.BytesIO()
         qr_image2.save(bufstore2)    
         print('ggggg2',svg)
@@ -518,7 +522,8 @@ def room_admin_quiz_qr(request,room_code):
             import qrcode
             context ={}
             factory = qrcode.image.svg.SvgImage
-            qr_image = qrcode.make(f'https://adnan-game-3cadb7fbb030.herokuapp.com/camera/{room_code}',image_factory=factory, box_size=10)    
+            host =  request.get_host()
+            qr_image = qrcode.make(f'https://{host}/camera/{room_code}',image_factory=factory, box_size=10)    
             bufstore = io.BytesIO()
             qr_image.save(bufstore)    
             
@@ -540,7 +545,8 @@ def room_admin_quiz_qr(request,room_code):
         import qrcode
         context ={}
         factory = qrcode.image.svg.SvgImage
-        qr_image = qrcode.make(f'https://adnan-game-3cadb7fbb030.herokuapp.com/camera/{room_code}',image_factory=factory, box_size=10)    
+        host =  request.get_host()
+        qr_image = qrcode.make(f'https://{host}/camera/{room_code}',image_factory=factory, box_size=10)    
         bufstore = io.BytesIO()
         qr_image.save(bufstore)    
         
