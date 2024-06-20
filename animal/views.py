@@ -159,7 +159,8 @@ def room_admin(request,room_code):
     bufstore = io.BytesIO()
     qr_image.save(bufstore)    
     
-    svg = bufstore.getvalue().decode() 
+    svgg = bufstore.getvalue().decode() 
+    svg=re.sub(r'\bsvg:', '', svgg)
     from animal.models import lang
     kfken = lang.objects.all().filter(user=request.user).values()
     for www in kfken:
@@ -416,7 +417,7 @@ def room_admin_quiz(request,room_code):
             bufstore = io.BytesIO()
             qr_image.save(bufstore)    
             
-            svg = bufstore.getvalue().decode() 
+            svgg = bufstore.getvalue().decode() 
             from animal.models import lang
             kfken = lang.objects.all().filter(user=request.user).values()
             for www in kfken:
@@ -427,9 +428,10 @@ def room_admin_quiz(request,room_code):
             bufstore2 = io.BytesIO()
             qr_image2.save(bufstore2)    
             
-            svg2 = bufstore2.getvalue().decode() 
+            svgg2 = bufstore2.getvalue().decode() 
+            svg2=re.sub(r'\bsvg:', '', svgg2)
             print('ggggg',svg)
-
+            svg=re.sub(r'\bsvg:', '', svgg)
             return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language,'name':name,'svg2':svg2})
         else:
             return HttpResponse('<h2>No game with this code !!</h2>')
@@ -459,7 +461,8 @@ def room_admin_quiz(request,room_code):
         qr_image2.save(bufstore2)    
         print('ggggg2',svg)
 
-        svg2 = bufstore2.getvalue().decode() 
+        svgg2 = bufstore2.getvalue().decode() 
+        svg2=re.sub(r'\bsvg:', '', svgg2)
         return render(request,'startquiz_qr.html',{'room_code':room_code,'data':array,'svg':svg,'lang':language,'name':name,'svg2':svg2})
 
 
@@ -527,7 +530,8 @@ def room_admin_quiz_qr(request,room_code):
             bufstore = io.BytesIO()
             qr_image.save(bufstore)    
             
-            svg = bufstore.getvalue().decode() 
+            svgg = bufstore.getvalue().decode() 
+            svg=re.sub(r'\bsvg:', '', svgg)
             from animal.models import lang
             kfken = lang.objects.all().filter(user=request.user).values()
             for www in kfken:
@@ -550,7 +554,8 @@ def room_admin_quiz_qr(request,room_code):
         bufstore = io.BytesIO()
         qr_image.save(bufstore)    
         
-        svg = bufstore.getvalue().decode() 
+        svgg = bufstore.getvalue().decode() 
+        svg=re.sub(r'\bsvg:', '', svgg)
         from animal.models import lang
         kfken = lang.objects.all().filter(user=request.user).values()
         for www in kfken:
