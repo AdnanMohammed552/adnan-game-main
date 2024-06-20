@@ -24,7 +24,7 @@
                 </tr>
                 <tr>
                     <th id="num_created">Number of created quizzes:</th>
-                    <td><a href="https://adnan-game-animal.herokuapp.com/activity"><strong>{{num}}</strong></a></td>
+                    <td><a id="activity-link" href="#"><strong>{{num}}</strong></a></td>
                 </tr>
                 <tr>
                     <th id="num_played">Number of played quizzes:</th>
@@ -50,6 +50,11 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var hostname = window.location.hostname;
+        var link = document.getElementById("activity-link");
+        link.href = "http://" + hostname + "/activity";
+    });
     const lang1 = '{{lang}}'
 
     if(lang1=='arabic'){
