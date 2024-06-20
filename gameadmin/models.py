@@ -14,3 +14,6 @@ class startingroom(models.Model):
 
 class room(models.Model):
     room = models.CharField(max_length=150)
+
+class x():
+    pass
