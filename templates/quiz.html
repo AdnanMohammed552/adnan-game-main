@@ -110,8 +110,11 @@ const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
           document.getElementById("answer3"+questionCount).value = lines[3].trim();
           document.getElementById("answer4"+questionCount).value = lines[4].trim();
       }
+      document.getElementById('ggg'+questionCount).style.display= 'none'
+
       // Add more handling if you have more than 5 lines or less than 5 lines
   }
+
 </script>
 <script>
   document.querySelectorAll('#vewv').forEach(c=>{
@@ -171,7 +174,7 @@ function add() {
   question.classList.add("question"+questionCount);
 
   question.innerHTML = `
-  <div class="gh">
+  <div class="gh" id="ggg${questionCount}">
   <textarea id="inputText${questionCount}" rows="6" cols="40"></textarea>
   <br>
 
