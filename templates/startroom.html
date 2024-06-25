@@ -1103,9 +1103,11 @@ window.addEventListener("pageshow", function(event) {
                 totalsarray.push({name:x,total:total})
 
                 document.querySelector('#sum'+x+re).innerHTML=total
-                document.querySelector('#sum2'+x+re).innerHTML=total
+                try{
+                document.querySelector('#sum2'+x+re).innerHTML=total}
+                catch(e){
                 document.querySelector('#sum3'+x+re).innerHTML=total
-
+                }
 
                 document.querySelector('#noun_result'+x+re).disabled = true;
                 document.querySelector('#gnoun_result'+x+re).disabled = true;
