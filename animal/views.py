@@ -883,6 +883,13 @@ def play(request,room_code):
     return render(request,'pass_enter_play.html',{'room_code':room_code})
 
 def quiz_details(request,room_code):
+    language='english'
+    from animal.models import lang
+    kfken = lang.objects.all().filter(user=request.user).values()
+    for www in kfken:
+        
+        language =www['lang']
+
     
     if request.method == 'POST':
         passs = request.POST.get('password')
@@ -899,7 +906,7 @@ def quiz_details(request,room_code):
             
             from quiz import models
             data = models.title.objects.all().filter(code=room_code).values()
-            return render(request,'quiz_details.html',{'room_code':room_code , 'w':data})
+            return render(request,'quiz_details.html',{'room_code':room_code , 'w':data,'lang':language})
         else:
             print('vgwegwe224')
             return HttpResponse('Error password!!')
