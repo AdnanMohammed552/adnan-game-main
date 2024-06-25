@@ -156,6 +156,25 @@ function add() {
 
   question.innerHTML = `
   <div class="form-group">
+    <script>
+function splitAndFill${questionCount}() {
+    var inputText = document.getElementById("inputText${questionCount}").value.trim();
+    var lines = inputText.split('\n');
+
+    if (lines.length >= 5) {
+        document.getElementById("question${questionCount}").value = lines[0].trim();
+        document.getElementById("answer1${questionCount}").value = lines[1].trim();
+        document.getElementById("answer2${questionCount}").value = lines[2].trim();
+        document.getElementById("answer3${questionCount}").value = lines[3].trim();
+        document.getElementById("answer4${questionCount}").value = lines[4].trim();
+    }
+    // Add more handling if you have more than 5 lines or less than 5 lines
+}
+</script>
+<textarea id="inputText${questionCount}" rows="6" cols="40"></textarea>
+
+<button type="button" onclick="splitAndFill${questionCount}()">Split Text</button>
+
     <label id="qqq${questionCount}" for="question-${questionCount}">Question ${questionCount}:</label>
     <div class="input-group">
       <input type="text" class="form-control" id="question${questionCount}" name="question">
