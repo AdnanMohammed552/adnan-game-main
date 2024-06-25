@@ -33,7 +33,10 @@ urlpatterns = [
     path('api/red/', views.red, name='my-endpoint'),
 
     path('camera_manage/<int:room_code>/', views.process_form, name='camera_manage'),
-    path('playing/<int:room_code>/', views.process_form_play, name='playing'),
+
+    path('playing/<int:room_code>/start', views.process_form_play, name='playing'),
+    path('playing/<int:room_code>/', views.quiz_details, name='playing'),
+
 
     path('join',views.join),
     path('joinqr/<int:room_code>',views.joinqr),

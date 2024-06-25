@@ -882,6 +882,12 @@ def endpoint_reeset(request):
 def play(request,room_code):
     return render(request,'pass_enter_play.html',{'room_code':room_code})
 
+def quiz_details(request,room_code):
+    from quiz import models
+    data = models.title.objects.all().filter(code=room_code).values()
+    return render(request,'quiz_details.html',{'room_code':room_code , 'w':data})
+
+
 def process_form_play(request,room_code):
     language = 'english'
 

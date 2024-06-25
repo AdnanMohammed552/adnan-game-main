@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .quiz-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .quiz-info {
+            margin-top: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        button.join-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button.join-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz Details</h1>
+        <div class="quiz-info">
+            {% for x in w %}
+            <h2>{{x.title}}</h2>
+            <p>Created by: {{x.user}}</p>
+            <p>Created on: {{x.date}}</p>
+            <button id="click" class="join-button">Join Quiz</button>
+            {% endfor %}
+        </div>
+    </div>
+    {{ room_code|json_script:'json-roomcode' }}
+    
+    <script>
+          const roomCode = JSON.parse(document.getElementById('json-roomcode').textContent);
+
+        document.getElementById('click').onclick = function(){
+            sessionStorage.setItem("pageState", "redirected");
+
+// Redirect to the new URL using window.location
+window.location.href =  window.location.origin + '/playing/' + roomCode + '/start'
+
+// Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
+window.addEventListener("pageshow", function(event) {
+  // Check if the page state is set to "redirected"
+  if (sessionStorage.getItem("pageState") === "redirected") {
+    // Reload the page to update its content
+    window.location.reload();
+    // Reset the page state to avoid an infinite loop
+    sessionStorage.setItem("pageState", "reloaded");
+  }
+});
+        }
+    </script>
+</body>
+</html>
+
+
+		<h1 class="text-center mt-5 mb-3">{{x.title}}</h1>
+		<h3 class="text-center"><span id="fwwfv"> Question number: </span><strong>{{x.num}}</strong> </h3>
+
+		<h4 class="text-center mb-5"><span id="dw"> Created by: </span><strong>{{x.user}}</strong><span id="dwwf"> on: </span><strong>{{x.date}}</strong></h4>
+		
+		<!-- Quiz questions and answers go here -->
+	
