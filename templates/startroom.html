@@ -1064,21 +1064,7 @@ document.getElementById('flep').style.display ="none"
 
       sessionStorage.setItem("pageState", "redirected");
 
-// Redirect to the new URL using window.location
-window.location.href = window.location.origin +window.location.pathname+'/end?anan='+last
 
-// Add an event listener for the "pageshow" event, which is triggered when the user navigates back to the page
-window.addEventListener("pageshow", function(event) {
-  // Check if the page state is set to "redirected"
-  if (sessionStorage.getItem("pageState") === "redirected") {
-    // Reload the page to update its content
-    window.location.reload();
-    // Reset the page state to avoid an infinite loop
-    sessionStorage.setItem("pageState", "reloaded");
-  }
-});
-
-      
       
 
     }
