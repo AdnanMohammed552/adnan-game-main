@@ -883,15 +883,36 @@ def play(request,room_code):
     return render(request,'pass_enter_play.html',{'room_code':room_code})
 
 def quiz_details(request,room_code):
-    from quiz import models
-    data = models.title.objects.all().filter(code=room_code).values()
-    return render(request,'quiz_details.html',{'room_code':room_code , 'w':data})
+    
+    if request.method == 'POST':
+        passs = request.POST.get('password')
+        print('kewgew',passs,room_code) 
+        from quiz import models
+        c=models.password.objects.all().filter(code=room_code).values()
+        print('ccis',c,room_code)
+        for i in c:
+            actual_password = i['password']
+        print('actual iss ',actual_password)
+        if actual_password == passs:
+            print('yessswer')
 
+            
+            from quiz import models
+            data = models.title.objects.all().filter(code=room_code).values()
+            return render(request,'quiz_details.html',{'room_code':room_code , 'w':data})
+        else:
+            print('vgwegwe224')
+            return HttpResponse('Error password!!')
+
+        
+    else:
+        return HttpResponse('Error!!')
 
 def process_form_play(request,room_code):
+    return render(request,'play_quiz.html',{'room_code':room_code,'lang':language})
     language = 'english'
 
-    if True:
+    if request.method == 'POST':
         passs = request.POST.get('password')
         print('kewgew',passs,room_code) 
         from quiz import models
