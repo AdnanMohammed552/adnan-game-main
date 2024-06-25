@@ -891,7 +891,7 @@ def quiz_details(request,room_code):
 def process_form_play(request,room_code):
     language = 'english'
 
-    if request.method == 'POST':
+    if True:
         passs = request.POST.get('password')
         print('kewgew',passs,room_code) 
         from quiz import models
