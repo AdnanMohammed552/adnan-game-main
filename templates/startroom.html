@@ -675,7 +675,7 @@ document.getElementById('flep').style.display ="none"
                         '<div id="inanimate_resulttd'+ UserName +admin_letter+'">'+
     
                           '<\/div>'+
-                      '<td class="success" id="sum'+UserName+admin_letter+'">0</td>'+
+                      '<td class="success" id="sum2'+UserName+admin_letter+'">0</td>'+
                       '</td>'+
                       '<div id="bare">'+
                       '<button type="submit" class="calcc btn btn-primary" id="calc'+UserName+admin_letter+'" onclick="calc(\'' + admin_letter + '\' ,\'' + UserName + '\' , \'' + admin_letter + '\' , \'' + noun + '\' ,\'' + gnoun + '\',\'' + animal + '\',\'' + plants + '\',\'' + inanimate + '\',\'' + countries + '\',\'' + RoomCode + '\')">Calculate</button>'+
@@ -775,7 +775,7 @@ document.getElementById('flep').style.display ="none"
                         '<div id="inanimate_resulttd'+ UserName +admin_letter+'">'+
     
                           '<\/div>'+
-                      '<td class="success" id="sum'+UserName+admin_letter+'">0</td>'+
+                      '<td class="success" id="sum3'+UserName+admin_letter+'">0</td>'+
                       '</td>'+
                       '<div id="bare">'+
                       '<button type="submit" class="calcc btn btn-primary" id="calc'+UserName+admin_letter+'" onclick="calc(\'' + admin_letter + '\' ,\'' + UserName + '\' , \'' + admin_letter + '\' , \'' + noun + '\' ,\'' + gnoun + '\',\'' + animal + '\',\'' + plants + '\',\'' + inanimate + '\',\'' + countries + '\',\'' + RoomCode + '\')">Calculate</button>'+
@@ -1103,6 +1103,9 @@ window.addEventListener("pageshow", function(event) {
                 totalsarray.push({name:x,total:total})
 
                 document.querySelector('#sum'+x+re).innerHTML=total
+                document.querySelector('#sum2'+x+re).innerHTML=total
+                document.querySelector('#sum3'+x+re).innerHTML=total
+
 
                 document.querySelector('#noun_result'+x+re).disabled = true;
                 document.querySelector('#gnoun_result'+x+re).disabled = true;
