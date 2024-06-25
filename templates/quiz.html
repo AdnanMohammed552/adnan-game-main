@@ -171,12 +171,16 @@ function add() {
   question.classList.add("question"+questionCount);
 
   question.innerHTML = `
-  <div class="form-group">
-
-<textarea id="inputText${questionCount}" rows="6" cols="40"></textarea>
+  <div class="gh">
+  <textarea id="inputText${questionCount}" rows="6" cols="40"></textarea>
 
 <button type="button" onclick="splitAndFill(${questionCount})">Split Text</button>
+</div>
+  
+  <div class="form-group">
 
+
+<br>
     <label id="qqq${questionCount}" for="question-${questionCount}">Question ${questionCount}:</label>
     <div class="input-group">
       <input type="text" class="form-control" id="question${questionCount}" name="question">
@@ -241,6 +245,11 @@ function add() {
 
   document.getElementById("quiz").appendChild(question);
   if(lang1=='arabic'){
+    const divvv = document.getElementsByClassName('gh');
+for (let i = 0; i < divvv.length; i++) {
+  divvv[i].style.float = 'right';
+}
+
     const labels = document.querySelectorAll('label');
         labels.forEach(label => {
           label.style.float = 'right'
