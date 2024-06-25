@@ -561,7 +561,7 @@ ga('send', 'pageview');
           document.getElementById('inanimate_result'+data.UserName+data.admin_letter).innerHTML = data.inanimate_result;
          // alert(data.UserName +' points is '+data.sum)
          if(data.UserName === username){
-         document.getElementById("points").innerHTML =((parseInt(document.getElementById("points").innerHTML) + parseInt(data.sum)));
+         document.getElementById("points").innerHTML =((parseInt(data.sum)));
          startConfetti()
          doStuff()
      async function doStuff(){

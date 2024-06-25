@@ -545,7 +545,7 @@ document.getElementById('flep').style.display ="none"
                               '<th style="font-size:20px;" scope="col">نبات </th>'+
                               '<th style="font-size:20px;" scope="col">جماد </th>'+
                               '<th style="font-size:20px;" scope="col">بلاد </th>'+
-                              '<th style="font-size:20px;" scope="col">مجموع </th>'+
+                              '<th id="summation'+ u +'" style="font-size:20px;" scope="col">0</th>'+
                             '</tr>'+
                           '</thead>'+
                           '<tbody id="divv'+u+'">'+
@@ -1100,6 +1100,8 @@ window.addEventListener("pageshow", function(event) {
                 const wordinanimate_result = document.querySelector('#inanimate_result'+x+re);
                 const inanimate_result = wordinanimate_result.options[wordinanimate_result.selectedIndex].text;;
                 var total =parseInt(noun_result)+parseInt(gnoun_result)+parseInt(animal_result)+parseInt(plants_result)+parseInt(countries_result)+parseInt(inanimate_result)
+                ddd = (parseInt( document.getElementById('summation'+x).innerHTML))+total
+                document.getElementById('summation'+x).innerHTML=ddd
                 totalsarray.push({name:x,total:total})
 
                 document.querySelector('#sum'+x+re).innerHTML=total
@@ -1130,7 +1132,7 @@ window.addEventListener("pageshow", function(event) {
                   'plants_result':plants_result,
                   'countries_result':countries_result,
                   'inanimate_result':inanimate_result,
-                  'sum':total,
+                  'sum':ddd,
                   'UserName':x,
                   'Noun' : b,
                   'gnoun':c,
