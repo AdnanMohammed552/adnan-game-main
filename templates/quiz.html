@@ -102,7 +102,7 @@ const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
       var lines = inputText.split('\n');
 
       if (lines.length >= 5) {
-          document.getElementById("question}").value = lines[0].trim();
+          document.getElementById("question"+questionCount).value = lines[0].trim();
           document.getElementById("answer1"+questionCount).value = lines[1].trim();
           document.getElementById("answer2"+questionCount).value = lines[2].trim();
           document.getElementById("answer3"+questionCount).value = lines[3].trim();
