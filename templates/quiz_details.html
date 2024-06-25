@@ -3,7 +3,7 @@
 <title>details</title>
 {% endblock %}
 {% block content %}
-<head>
+<body>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Quiz</title>
@@ -55,8 +55,8 @@
             background-color: #0056b3;
         }
     </style>
-</head>
-<body>
+
+
     {% if lang == 'english' %}
     <div class="quiz-container">
         <h1>Quiz Details</h1>
@@ -64,6 +64,7 @@
             {% for x in w %}
             <h2>{{x.title}}</h2>
             <p>Created by: {{x.user}}</p>
+            <p>question number: {{x.num}}</p>
             <p>Created on: {{x.date}}</p>
             <button id="click" class="join-button">Yalla!</button>
             {% endfor %}
@@ -72,11 +73,13 @@
     {% endif %}
     {% if lang == 'arabic' %}
     <div class="quiz-container">
-        <h1>Quiz Details</h1>
+        <h1>التفاصيل</h1>
         <div class="quiz-info">
             {% for x in w %}
             <h2>{{x.title}}</h2>
             <p>تم انشاؤه من قبل: {{x.user}}</p>
+            <p>عدد الاسئلة: {{x.num}}</p>
+
             <p>تم انشاؤه في: {{x.date}}</p>
             <button id="click" class="join-button">يلا!</button>
             {% endfor %}
