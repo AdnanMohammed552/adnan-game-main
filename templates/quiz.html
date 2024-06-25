@@ -96,7 +96,21 @@ const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+<script>
+  function splitAndFill(questionCount) {
+      var inputText = document.getElementById("inputText"+questionCount).value.trim();
+      var lines = inputText.split('\n');
 
+      if (lines.length >= 5) {
+          document.getElementById("question}").value = lines[0].trim();
+          document.getElementById("answer1"+questionCount).value = lines[1].trim();
+          document.getElementById("answer2"+questionCount).value = lines[2].trim();
+          document.getElementById("answer3"+questionCount).value = lines[3].trim();
+          document.getElementById("answer4"+questionCount).value = lines[4].trim();
+      }
+      // Add more handling if you have more than 5 lines or less than 5 lines
+  }
+</script>
 <script>
   document.querySelectorAll('#vewv').forEach(c=>{
     c.style.display='none'
@@ -156,24 +170,10 @@ function add() {
 
   question.innerHTML = `
   <div class="form-group">
-    <script>
-function splitAndFill${questionCount}() {
-    var inputText = document.getElementById("inputText${questionCount}").value.trim();
-    var lines = inputText.split('\n');
 
-    if (lines.length >= 5) {
-        document.getElementById("question${questionCount}").value = lines[0].trim();
-        document.getElementById("answer1${questionCount}").value = lines[1].trim();
-        document.getElementById("answer2${questionCount}").value = lines[2].trim();
-        document.getElementById("answer3${questionCount}").value = lines[3].trim();
-        document.getElementById("answer4${questionCount}").value = lines[4].trim();
-    }
-    // Add more handling if you have more than 5 lines or less than 5 lines
-}
-</script>
 <textarea id="inputText${questionCount}" rows="6" cols="40"></textarea>
 
-<button type="button" onclick="splitAndFill${questionCount}()">Split Text</button>
+<button type="button" onclick="splitAndFill(${questionCount})">Split Text</button>
 
     <label id="qqq${questionCount}" for="question-${questionCount}">Question ${questionCount}:</label>
     <div class="input-group">
