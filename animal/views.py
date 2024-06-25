@@ -909,8 +909,9 @@ def quiz_details(request,room_code):
         return HttpResponse('Error!!')
 
 def process_form_play(request,room_code):
-    return render(request,'play_quiz.html',{'room_code':room_code,'lang':language})
     language = 'english'
+
+    return render(request,'play_quiz.html',{'room_code':room_code,'lang':language})
 
     if request.method == 'POST':
         passs = request.POST.get('password')
