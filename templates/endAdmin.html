@@ -16,7 +16,7 @@
 {{z}}
 {{ user|json_script:'json-roomcode' }}
 {{ rr|json_script:'json-rr' }}
-
+<button id="generate">generate</button>
 <style>
     @import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Lato:300,400,700,900&display=swap');
     *{
@@ -323,7 +323,8 @@ while(document.getElementById('bare')){
 
         
 
-
+document.getElementById('generate').onclick=function(){
+  
 
 var data=document.getElementById('pdfgenerator').innerHTML;
         var myWindow = window.open('', roomCode);
@@ -366,5 +367,6 @@ var data=document.getElementById('pdfgenerator').innerHTML;
 
         }))
       }
+    }
 </script>
 {% endblock %}
