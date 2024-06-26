@@ -138,8 +138,10 @@ def mygames(request):
 
     if request.user.is_authenticated:
         username = request.user.username
-
-        valie = models.room_created.objects.all().filter(user=username).values()
+        if (request.user) != 'admin': 
+            valie = models.room_created.objects.all().filter(user=username).values()
+        elif (request.user) == 'admin':
+            valie = models.room_created.objects.all().values()
         w=[]
         for i in valie:
             z = i['room_created']
@@ -159,7 +161,10 @@ def myaccount(request,room_code):
     language = 'english'
 
     if request.user.is_authenticated:
-        valie = mbd.room_created.objects.all().filter(user=request.user,room_created=room_code).order_by('-pk').values()
+        if (request.user) != 'admin':  
+            valie = mbd.room_created.objects.all().filter(user=request.user,room_created=room_code).order_by('-pk').values()
+        elif (request.user) == 'admin':
+            valie = mbd.room_created.objects.all().filter(room_created=room_code).order_by('-pk').values() 
         z= valie
         for i in valie:
             z = i['table']
@@ -209,8 +214,11 @@ def home2(request):
         from quiz.models import enumeration
         enumeration.objects.create(user=request.user,quiz_number=0)
 
+    if (request.user) != 'admin': 
+        df=models.enumeration.objects.all().filter(user=request.user).values()
+    elif (request.user) == 'admin':
+        df=models.enumeration.objects.all().values()
 
-    df=models.enumeration.objects.all().filter(user=request.user).values()
     print('fewgv',df)
     for v in df:
         number= v['quiz_number']
@@ -221,8 +229,11 @@ def home2(request):
         from quiz.models import enumeration_played
         enumeration_played.objects.create(user=request.user,quiz_number_played=0)
 
+    if (request.user) != 'admin': 
+        df1=models.enumeration_played.objects.all().filter(user=request.user).values()
+    elif (request.user) == 'admin':
+        df1=models.enumeration_played.objects.all().filter(user=request.user).values()
 
-    df1=models.enumeration_played.objects.all().filter(user=request.user).values()
     for v in df1:
         number_played= v['quiz_number_played']
 
