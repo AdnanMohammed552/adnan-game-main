@@ -62,6 +62,7 @@ def roomentering(request):
     language = 'english'
 
     from quiz import models
+    print('geiuhgwiu:',request.user)
     if (request.user) != 'admin': 
         data = models.title.objects.all().filter(user=request.user,delete=False).values()
     elif (request.user) == 'admin':
