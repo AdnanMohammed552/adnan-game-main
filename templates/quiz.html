@@ -340,13 +340,13 @@ for (let i = 0; i < divvv.length; i++) {
     }
       document.getElementById('sub').onclick=function(e){
         function checkEmptyFields() {
-          var fields = document.querySelectorAll('input, select, textarea'); // Select all input, select, and textarea fields
+          var fields = document.querySelectorAll('input, select'); // Select all input, select, and textarea fields
           var radioGroupNames = {}; // To track radio button groups
           
           for (var i = 0; i < fields.length; i++) {
             var fieldType = fields[i].type.toLowerCase();
             
-            if (fieldType === 'text' || fieldType === 'password' || fieldType === 'textarea' || fieldType === 'select-one' || fieldType === 'select-multiple') {
+            if (fieldType === 'text' || fieldType === 'password' || fieldType === 'select-one' || fieldType === 'select-multiple') {
               if (fields[i].value.trim() === '') {
                 return true; // Found an empty field
               }
