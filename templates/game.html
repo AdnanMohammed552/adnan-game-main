@@ -162,6 +162,19 @@ body{
 
 
     <script>
+            const username = JSON.parse(document.getElementById('json-username').textContent);
+
+      window.onload = function(){
+        const gameSocket = new WebSocket(
+        'wss://' + window.location.host + '/ws/' + roomCode + '/'
+      )
+      gameSocket.onopen= function(){
+      gameSocket.send(JSON.stringify({
+          'myuser':username
+        }))
+      }
+
+      }
       var maxParticleCount = 150; //set max confetti count
     var particleSpeed = 2; //set the particle animation speed
     var startConfetti; //call to start confetti animation
@@ -364,6 +377,9 @@ ga('send', 'pageview');
           'wss://' + window.location.host + '/ws/' + roomCode + '/'
         )}
         const data = JSON.parse(e.data);
+        if (data.admin_point_score !== false){
+          document.getElementById('points').innerHTML=data.admin_point_score
+        }
         if (data.letterconsumer!==null&&typeof data.letterconsumer!=="undefined"&&data.letterconsumer!=="" &&data.letterconsumer!==false){
           console.log('yeeesa')
           document.querySelector('#leetter').innerHTML =(data.letterconsumer);

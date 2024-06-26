@@ -327,6 +327,7 @@ document.getElementById('flep').style.display ="none"
         console.log('done');
         
         const data = JSON.parse(e.data);
+        
         if (data.finish !== true){
         console.log(data)
         if (data){
@@ -406,6 +407,14 @@ document.getElementById('flep').style.display ="none"
         document.getElementById('send').style.display = "none"
         gameSocket2.onmessage = function(e){
           const data = JSON.parse(e.data)
+          if (data.myuser !== false){
+            const ss = document.getElementById('summation'+data.myuser).innerHTML
+            gameSocket2.send(JSON.stringify({
+              'admin_point_score':ss
+            }))
+
+
+          }
           if(data.kickme === true){
             document.getElementById(data.userf).remove()
             document.getElementById(('div_id'+data.userf)).remove()

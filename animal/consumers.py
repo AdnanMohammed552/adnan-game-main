@@ -244,6 +244,15 @@ class gameConsumer(AsyncWebsocketConsumer):
             camera_correct=data['camera_correct']
         except:
             camera_correct=False 
+        try:
+            myuser=data['myuser']
+        except:
+            myuser=False 
+
+        try:
+            admin_point_score=data['admin_point_score']
+        except:
+            admin_point_score=False 
         print(inanimate )
         self.glabaluser1=str(self.glabaluser)
         await self.save_info(noun,gnoun,animal,plants,countries,inanimate,username,the_letter,RoomCode)
@@ -320,7 +329,9 @@ class gameConsumer(AsyncWebsocketConsumer):
                         'disabled':disabled,
                         'kickme':kickme,
                         'userf':userf,
-                        'camera_correct':camera_correct
+                        'camera_correct':camera_correct,
+                        'myuser':myuser,
+                        'admin_point_score':admin_point_score
 
                     
                     }
@@ -530,6 +541,15 @@ class gameConsumer(AsyncWebsocketConsumer):
                 camera_correct=event['camera_correct']
             except:
                 camera_correct=False 
+            try:
+                myuser=event['myuser']
+            except:
+                myuser=False 
+
+            try:
+                admin_point_score=event['admin_point_score']
+            except:
+                admin_point_score=False 
             the_letter_choosen = ''
             #print('alllll',alltables)
             if alltables != False:
@@ -603,7 +623,9 @@ class gameConsumer(AsyncWebsocketConsumer):
                 'disabled':disabled,
                 'kickme':kickme,
                 'userf':userf,
-                'camera_correct':camera_correct
+                'camera_correct':camera_correct,
+                'myuser':myuser,
+                'admin_point_score':admin_point_score
 
                 
 
