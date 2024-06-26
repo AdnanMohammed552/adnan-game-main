@@ -560,7 +560,11 @@ ga('send', 'pageview');
           document.getElementById('countries_result'+data.UserName+data.admin_letter).innerHTML = data.countries_result;
           document.getElementById('inanimate_result'+data.UserName+data.admin_letter).innerHTML = data.inanimate_result;
          // alert(data.UserName +' points is '+data.sum)
+         const vv = (parseInt(data.sum)) - ((document.getElementById("points").innerHTML))
+         document.getElementById(data.UserName+data.admin_letter+"sum").innerHTML = vv;
+
          if(data.UserName === username){
+
          document.getElementById("points").innerHTML =((parseInt(data.sum)));
          startConfetti()
          doStuff()
@@ -573,7 +577,6 @@ ga('send', 'pageview');
      }
          
         }
-         document.getElementById(data.UserName+data.admin_letter+"sum").innerHTML = data.sum;
             // alert(data.UserName +' points is '+data.sum)
 
 
@@ -891,7 +894,7 @@ window.addEventListener("pageshow", function(event) {
             document.getElementById('countries_result'+data.UserName+data.admin_letter).innerHTML = data.countries_result;
             document.getElementById('inanimate_result'+data.UserName+data.admin_letter).innerHTML = data.inanimate_result;
             //document.getElementById("points").innerHTML =((parseInt(document.getElementById("points").innerHTML) + parseInt(data.sum)));
-            document.getElementById(data.UserName+data.admin_letter+"sum").innerHTML = data.sum;
+            document.getElementById(data.UserName+data.admin_letter+"sum").innerHTML = (parseInt(data.noun_result))+(parseInt(data.gnoun_result))+(parseInt(data.animal_result))+(parseInt(data.plants_result))+(parseInt(data.countries_result))+(parseInt(data.inanimate_result))
              //alert(data.UserName +' points is '+data.sum)
   
           }   
