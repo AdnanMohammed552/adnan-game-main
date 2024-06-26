@@ -164,20 +164,7 @@ body{
     <script>
             const username = JSON.parse(document.getElementById('json-username').textContent);
 
-            if (sessionStorage.getItem('isRefreshed')) {
-            console.log("Page was refreshed");
-      
-        const gameSocket = new WebSocket(
-        'wss://' + window.location.host + '/ws/' + roomCode + '/'
-      )
-      gameSocket.onopen= function(){
-      gameSocket.send(JSON.stringify({
-          'myuser':username
-        }))
-      }
-
-      }
-      var maxParticleCount = 150; //set max confetti count
+    var maxParticleCount = 150; //set max confetti count
     var particleSpeed = 2; //set the particle animation speed
     var startConfetti; //call to start confetti animation
     var stopConfetti; //call to stop adding confetti

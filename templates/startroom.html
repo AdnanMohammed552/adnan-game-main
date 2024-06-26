@@ -489,7 +489,7 @@ document.getElementById('flep').style.display ="none"
             const playersfetch=data.playersfetch
             console.log('I want is:',playersfetch)
             console.log('first is',fetchedarray)
-    
+              
             if (typeof playersfetch !== 'undefined'){
             const playersfetch1 = playersfetch.replaceAll('"', '')
             const playersfetch2= playersfetch1.replace('[','')
@@ -514,11 +514,14 @@ document.getElementById('flep').style.display ="none"
               totalarray.push(uae)
             }
           }
+
           gameSocket2.send(JSON.stringify({
             'oneortwo':'one',
             'review':true,
             'error':true,
-            'players_game':fetchedarray 
+            'players_game':fetchedarray,
+            'admin_point_score':document.getElementById('summation'+userName).innerHTML
+
           }))
 
 
