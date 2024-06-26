@@ -407,14 +407,7 @@ document.getElementById('flep').style.display ="none"
         document.getElementById('send').style.display = "none"
         gameSocket2.onmessage = function(e){
           const data = JSON.parse(e.data)
-          if (data.myuser !== false){
-            const ss = document.getElementById('summation'+data.myuser).innerHTML
-            gameSocket2.send(JSON.stringify({
-              'admin_point_score':ss
-            }))
-
-
-          }
+    
           if(data.kickme === true){
             document.getElementById(data.userf).remove()
             document.getElementById(('div_id'+data.userf)).remove()
@@ -520,7 +513,6 @@ document.getElementById('flep').style.display ="none"
             'review':true,
             'error':true,
             'players_game':fetchedarray,
-            'admin_point_score':document.getElementById('summation'+userName).innerHTML
 
           }))
 
@@ -1157,7 +1149,9 @@ window.addEventListener("pageshow", function(event) {
                   'RoomCode':h,
                   'error':true,
                   'result':true,
-                  'private':true
+                  'private':true,
+                  'admin_point_score':document.getElementById('summation'+x).innerHTML
+
                   
                 }))
               
