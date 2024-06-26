@@ -65,8 +65,10 @@ def roomentering(request):
     print('geiuhgwiu:',request.user)
     if (request.user) != ' admin': 
         data = models.title.objects.all().filter(user=request.user,delete=False).values()
+        print('not adminnn')
     elif (request.user) == ' admin':
         data = models.title.objects.all().filter(delete=False).values()
+        print('adminnn')
     print('nhfhf',data)
     from animal.models import lang
     kfken = lang.objects.all().filter(user=request.user.username).values()
