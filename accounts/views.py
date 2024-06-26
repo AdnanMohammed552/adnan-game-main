@@ -232,7 +232,7 @@ def home2(request):
     if str(request.user).strip() != 'admin': 
         df1=models.enumeration_played.objects.all().filter(user=request.user).values()
     elif str(request.user).strip() == 'admin':
-        df1=models.enumeration_played.objects.all().filter(user=request.user).values()
+        df1=models.enumeration_played.objects.all().values()
 
     for v in df1:
         number_played= v['quiz_number_played']
@@ -259,8 +259,11 @@ def played(request):
     language = 'english'
 
     from .models import played
-    
-    valie = played.objects.all().filter(user=request.user).values()
+    if str(request.user).strip() != 'admin': 
+        valie = played.objects.all().filter(user=request.user).values()
+    elif str(request.user).strip() == 'admin':
+        valie = played.objects.all().values()
+
     w=[]
     for i in valie:
         z = i['room_played']
@@ -307,7 +310,11 @@ def quiz(request):
     language = 'english'
 
     from quiz import models
-    data = models.title.objects.all().filter(user=request.user).values()
+    if str(request.user).strip() != 'admin': 
+        data = models.title.objects.all().filter(user=request.user).values()
+    elif str(request.user).strip() == 'admin':
+        data = models.title.objects.all().values()
+
     w=[]
     for i in data:
         z = i['title']
@@ -327,7 +334,11 @@ def quiz_data(request,room_code):
     language = 'english'
 
     from quiz import models
-    data = models.title.objects.all().filter(user=request.user,code=room_code).values()
+    if str(request.user).strip() != 'admin': 
+        data = models.title.objects.all().filter(user=request.user,code=room_code).values()
+    elif str(request.user).strip() == 'admin':
+        data = models.title.objects.all().filter(code=room_code).values()
+
     print('gwgwe',data)
     p=models.priv.objects.all().filter(code=room_code).values()
     private=''
@@ -437,8 +448,11 @@ def quiz_data_last(request,room_code):
     for www in kfken:
         
         language =www['lang']
+    if str(request.user).strip() != 'admin': 
+        b = md.title.objects.all().filter(user=request.user,code=room_code)
+    elif str(request.user).strip() == 'admin':
+        b = md.title.objects.all().filter(code=room_code)
 
-    b = md.title.objects.all().filter(user=request.user,code=room_code)
     p=md.priv.objects.all().filter(code=room_code).values()
     private=''
     for i in p:
@@ -467,13 +481,20 @@ def quiz_data_last_preview(request,id,room_code):
     for www in kfken:
         
         language =www['lang']
-    b = md.title.objects.all().filter(user=request.user,code=room_code)
+    if str(request.user).strip() != 'admin': 
+        b = md.title.objects.all().filter(user=request.user,code=room_code)
+    elif str(request.user).strip() == 'admin':
+        b = md.title.objects.all().filter(code=room_code)
+
     p=md.priv.objects.all().filter(code=room_code).values()
     private=''
     for i in p:
         private = i['private']
-    
-    n=md.played_quiz.objects.all().filter(user=request.user,code=room_code)
+    if str(request.user).strip() != 'admin': 
+        n=md.played_quiz.objects.all().filter(user=request.user,code=room_code)
+    elif str(request.user).strip() == 'admin':
+        n=md.played_quiz.objects.all().filter(code=room_code)
+
 
     if not b.exists():
         if private == True:
