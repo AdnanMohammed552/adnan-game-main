@@ -164,7 +164,9 @@ body{
     <script>
             const username = JSON.parse(document.getElementById('json-username').textContent);
 
-      window.onload = function(){
+            if (sessionStorage.getItem('isRefreshed')) {
+            console.log("Page was refreshed");
+      
         const gameSocket = new WebSocket(
         'wss://' + window.location.host + '/ws/' + roomCode + '/'
       )
@@ -377,7 +379,7 @@ ga('send', 'pageview');
           'wss://' + window.location.host + '/ws/' + roomCode + '/'
         )}
         const data = JSON.parse(e.data);
-        if (data.admin_point_score !== false){
+        if (data.admin_point_score!==null&&typeof data.admin_point_score!=="undefined"&&data.admin_point_score!=="" &&data.admin_point_score!==false){
           document.getElementById('points').innerHTML=data.admin_point_score
         }
         if (data.letterconsumer!==null&&typeof data.letterconsumer!=="undefined"&&data.letterconsumer!=="" &&data.letterconsumer!==false){
