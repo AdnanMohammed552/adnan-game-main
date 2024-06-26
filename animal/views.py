@@ -67,7 +67,7 @@ def roomentering(request):
         data = models.title.objects.all().filter(user=request.user,delete=False).values()
     elif (request.user) == ' admin':
         data = models.title.objects.all().filter(delete=False).values()
-
+    print('nhfhf',data)
     from animal.models import lang
     kfken = lang.objects.all().filter(user=request.user.username).values()
     language = 'english' # assign a default value
