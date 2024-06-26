@@ -366,7 +366,7 @@ ga('send', 'pageview');
           'wss://' + window.location.host + '/ws/' + roomCode + '/'
         )}
         const data = JSON.parse(e.data);
-        if (data.admin_point_score!==null&&typeof data.admin_point_score!=="undefined"&&data.admin_point_score!=="" &&data.admin_point_score!==false){
+        if (data.admin_point_score!==null&&typeof data.admin_point_score!=="undefined"&&data.admin_point_score!=="" &&data.admin_point_score!==false &&data.UserName==username){
           document.getElementById('points').innerHTML=data.admin_point_score
         }
         if (data.letterconsumer!==null&&typeof data.letterconsumer!=="undefined"&&data.letterconsumer!=="" &&data.letterconsumer!==false){
