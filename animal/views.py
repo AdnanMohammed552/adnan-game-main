@@ -63,12 +63,13 @@ def roomentering(request):
 
     from quiz import models
     print('geiuhgwiu:',request.user)
-    if str(request.user) != ' admin': 
-        data = models.title.objects.all().filter(user=request.user,delete=False).values()
-        print('not adminnn')
-    elif str(request.user) == ' admin':
+    if str(request.user).strip() != 'admin': 
+        data = models.title.objects.all().filter(user=request.user, delete=False).values()
+        print('not admin')
+    elif str(request.user).strip() == 'admin':
         data = models.title.objects.all().filter(delete=False).values()
-        print('adminnn')
+        print('admin')
+
     print('nhfhf',data)
     from animal.models import lang
     kfken = lang.objects.all().filter(user=request.user.username).values()
