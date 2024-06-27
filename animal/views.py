@@ -323,6 +323,8 @@ def req(rewquest):
         data = (rewquest.body).decode('utf-8')
         array = json.loads(data)
         x = array[-1]
+        
+        
         array.pop()
         print(array )
         pri = array[-1]
