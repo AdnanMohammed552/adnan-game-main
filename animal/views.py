@@ -338,9 +338,8 @@ def req(rewquest):
         print('qnum',questionnumber)
 
         from quiz import models
-        array2=str(array)
 
-        models.MyModel.objects.create(data=array2,code=code).save
+        models.MyModel.objects.create(data=array,code=code).save
         print('my array tt',array)
         # process the incoming data
 

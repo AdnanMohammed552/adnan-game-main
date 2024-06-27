@@ -3,7 +3,7 @@ from django.contrib.postgres.fields import ArrayField
 from django.utils import timezone
 
 class MyModel(models.Model):
-    data = ArrayField(models.CharField(max_length=100), blank=True)
+    data = ArrayField(models.CharField(max_length=1000000000), blank=True)
     code = models.IntegerField(max_length=100,unique=True)
     delete = models.BooleanField(default=False)
     def __str__(self):
