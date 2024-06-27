@@ -322,6 +322,7 @@ def req(rewquest):
         import json
         data = (rewquest.body).decode('utf-8')
         array = json.loads(data)
+        array=str(array)
         x = array[-1]
         array.pop()
         print(array )

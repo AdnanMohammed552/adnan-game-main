@@ -401,8 +401,9 @@ for (let i = 0; i < divvv.length; i++) {
           for (let i = 0; i <= questionCount; i++){
             try{
               console.log('this is ',i)
-          const question= (document.getElementById('question'+i).value).replace(",", "-").replace(/["']/g, "").replace(/\\/g,'÷')
 
+          const question= (document.getElementById('question'+i).value).replace(",", "-").replace(/["']/g, "").replace(/\\/g,'÷')
+            console.log('vgwrbnlw',question)
           const answer1= (document.getElementById('answer1'+i).value).replace(",", "-").replace(/["']/g, "").replace(/\\/g,'÷')
           const answer2= (document.getElementById('answer2'+i).value).replace(",", "-").replace(/["']/g, "").replace(/\\/g,'÷')
           const answer3= (document.getElementById('answer3'+i).value).replace(",", "-").replace(/["']/g, "").replace(/\\/g,'÷')
