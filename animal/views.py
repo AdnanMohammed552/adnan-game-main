@@ -322,7 +322,6 @@ def req(rewquest):
         import json
         data = (rewquest.body).decode('utf-8')
         array = json.loads(data)
-        array=str(array)
         x = array[-1]
         array.pop()
         print(array )
@@ -337,7 +336,9 @@ def req(rewquest):
         print('qnum',questionnumber)
 
         from quiz import models
-        models.MyModel.objects.create(data=array,code=code).save
+        array2=str(array)
+
+        models.MyModel.objects.create(data=array2,code=code).save
         print('my array tt',array)
         # process the incoming data
 
